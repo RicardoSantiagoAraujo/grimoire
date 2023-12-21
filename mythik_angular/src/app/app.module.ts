@@ -7,28 +7,36 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { CreatureComponent } from './creature/creature.component';
 import { MenuComponent } from './menu/menu.component';
-import { HomeConnectedComponent } from './home-connected/home-connected.component';
 import { CompteComponent } from './compte/compte.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { GrimoireComponent } from './grimoire/grimoire.component';
+import { AuthInterceptor } from './auth.interceptor';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     InscriptionComponent,
-    ConnexionComponent,
     CreatureComponent,
     MenuComponent,
-    HomeConnectedComponent,
     CompteComponent,
     AccueilComponent,
-    GrimoireComponent
+    GrimoireComponent,
+    ConnexionComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

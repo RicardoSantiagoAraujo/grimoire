@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CompteService } from '../compte/compte.service';
+import { Compte } from '../model';
 
 @Component({
   selector: 'app-inscription',
@@ -6,5 +10,45 @@ import { Component } from '@angular/core';
   styleUrls: ['./inscription.component.css']
 })
 export class InscriptionComponent {
+  inscriptionForm!: FormGroup;
 
-}
+  showForm: boolean = true;
+
+  emailCtrl!: FormControl;
+  loginCtrl!: FormControl;
+  passwordCtrl!: FormControl;
+
+  constructor(private formBuilder: FormBuilder, private router: Router, private compteService: CompteService) {
+  }
+
+  ngOnInit() : void {
+
+    this.emailCtrl = this.formBuilder.control('');
+    this.loginCtrl = this.formBuilder.control('');
+    this.passwordCtrl = this.formBuilder.control('', [Validators.required, Validators.minLength(6)]);
+
+    this.inscriptionForm = this.formBuilder.group({
+      email: this.emailCtrl,
+      username: this.loginCtrl,
+      password: this.passwordCtrl
+    });
+  }
+
+
+  inscription() {
+    if (this.inscriptionForm.valid) {
+      const newCompte: Compte = {
+        email : this.emailCtrl.value,
+        login : this.loginCtrl.value,
+        password : this.passwordCtrl.value,
+      }
+
+      this.compteService.save(newCompte).subscribe(resp => {
+        this.inscriptionForm.patchValue(resp);
+        })
+      }
+
+      this.router.navigate(['/connexion']);
+    }
+  }
+
