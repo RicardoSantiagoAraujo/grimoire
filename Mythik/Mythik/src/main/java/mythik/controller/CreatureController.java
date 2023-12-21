@@ -41,9 +41,9 @@ public class CreatureController {
 	}
 	
 	@PostMapping
-	public Creature insert() 
+	public Creature insert(@RequestBody Creature creature) 
 	{
-		Creature creature = new Creature("kraken", null, false, 50, 1000, null, null, null ); 
+		 
 		return daoCreature.save(creature);
 	}
 	@PutMapping("/{id}")
