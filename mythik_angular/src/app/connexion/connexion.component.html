@@ -18,7 +18,9 @@
         </div>
     </div>
     <div class="card-footer">
-        <button type="submit" [disabled]="connexionForm.invalid" class="btn btn-success btn-lg"><i class="bi bi-check-lg"></i></button>
+        <button type="submit" [disabled]="connexionForm.invalid" class="btn btn-success btn-lg">Valider<i class="bi bi-check-lg"></i></button>
+        <a class="btn btn-warning btn-lg mx-2" [routerLink]="['/menu']" routerLinkActive="active">Retour<i class="bi bi-backspace"></i></a>
+        
     </div>
     </form>
 </div>

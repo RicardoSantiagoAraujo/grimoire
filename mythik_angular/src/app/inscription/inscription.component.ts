@@ -23,13 +23,13 @@ export class InscriptionComponent {
 
   ngOnInit() : void {
 
-    this.emailCtrl = this.formBuilder.control('');
-    this.loginCtrl = this.formBuilder.control('');
+    this.emailCtrl = this.formBuilder.control('', Validators.required);
+    this.loginCtrl = this.formBuilder.control('', [Validators.required, Validators.email]);
     this.passwordCtrl = this.formBuilder.control('', [Validators.required, Validators.minLength(6)]);
 
     this.inscriptionForm = this.formBuilder.group({
       email: this.emailCtrl,
-      username: this.loginCtrl,
+      login: this.loginCtrl,
       password: this.passwordCtrl
     });
   }
@@ -46,9 +46,9 @@ export class InscriptionComponent {
       this.compteService.save(newCompte).subscribe(resp => {
         this.inscriptionForm.patchValue(resp);
         })
-      }
+    }
 
       this.router.navigate(['/connexion']);
-    }
   }
+}
 
