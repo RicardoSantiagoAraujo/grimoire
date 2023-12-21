@@ -8,18 +8,22 @@ import { ConnexionComponent } from './connexion/connexion.component';
 import { CreatureComponent } from './creature/creature.component';
 import { MenuComponent } from './menu/menu.component';
 import { CompteComponent } from './compte/compte.component';
+import { AccueilComponent } from './accueil/accueil.component';
+import { GrimoireComponent } from './grimoire/grimoire.component';
+import { AuthInterceptor } from './auth.interceptor';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
     AppComponent,
     InscriptionComponent,
-    ConnexionComponent,
-    MenuComponent,
     CreatureComponent,
-    CompteComponent
-    
+    MenuComponent,
+    CompteComponent,
+    AccueilComponent,
+    GrimoireComponent,
+    ConnexionComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,11 @@ import { HttpClientModule } from '@angular/common/http'
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
