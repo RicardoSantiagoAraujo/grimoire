@@ -41,45 +41,72 @@
 
         </table>
 
-        <!--
+        
     </div>
     <div class="card-footer">
         <a (click)="add()" class="btn btn-success btn-lg"><i class="bi bi-plus-lg"></i></a>
     </div>
 </div>
 
-<div class="card mt-3" *ngIf="showForm">
-    <form (ngSubmit)="save()" [formGroup]="userForm">
+<!-- <div class="card mt-3" *ngIf="showForm">
+    <form (ngSubmit)="save()" [formGroup]="creatureForm">
     <div class="card-header text-white bg-primary">
-        Edition d'un utilisateur
+        Edition d'une creature
     </div>
     <div class="card-body"> 
         <div class="mb-3 mt-3">
-            <label for="id" class="form-label">Identifiant:</label>
+            <label for="id" class="form-label">Id</label>
             <input type="number" class="form-control" id="id" name="id" readonly formControlName="id">
-        </div>
-        <div class="mb-3">
-            <label for="prenom" class="form-label">Prénom:</label>
-            <input type="text" class="form-control" id="prenom" name="prenom" formControlName="prenom">
         </div>
         <div class="mb-3">
             <label for="nom" class="form-label">Nom:</label>
             <input type="text" class="form-control" id="nom" name="nom" formControlName="nom">
         </div>
         <div class="mb-3">
-            <label for="username" class="form-label">Login:</label>
-            <input type="text" class="form-control" id="username" name="username" formControlName="username">
-            <span class="text-danger" *ngIf="userForm.get('username')?.dirty && userForm.get('username')?.hasError('required')">Le login est obligatoire</span>
+            <label for="description" class="form-label">Description:</label>
+            <input type="text" class="form-control" id="description" name="description" formControlName="description">
         </div>
         <div class="mb-3">
-            <label for="password" class="form-label">Mot de passe:</label>
-            <input type="text" class="form-control" id="password" name="password" formControlName="password">
+            <label for="dieu" class="form-label">Dieu:</label>
+            <input type="checkbox" class="form-control" id="dieu" name="dieu" formControlName="dieu">
+            
+        <div class="mb-3">
+            <label for="attaque" class="form-label">Attaque:</label>
+            <input type="number" class="form-control" id="attaque" name="attaque" formControlName="attaque">
+        </div>
+        <div class="mb-3">
+            <label for="pv" class="form-label">Pv:</label>
+            <input type="number" class="form-control" id="pv" name="pv" formControlName="pv">
+        </div>
+        <div class="mb-3">
+            <label for="image" class="form-label">Image:</label>
+            <input type="text" class="form-control" id="image" name="image" formControlName="image">
+        </div>
+        <div class="mb-3">
+            <label for="mythologie" class="form-label">Mythologie:</label>
+            <select class="form-control" id="image" name="mythologie" formControlName="mythologie">
+                <option></option>
+                <option value="grec">Grec</option>
+                <option value="egyptienne">Egyptienne</option>
+                <option value="chinoise">Chinoise</option>
+                <option value="nordique">Nordique</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="typeElement" class="form-label">Type_Element:</label>
+            <select class="form-control" id="typeElement" name="typeElement" formControlName="typeElement">
+                <option></option>
+                <option value="feu">Feu</option>
+                <option value="air">Air</option>
+                <option value="eau">Eau</option>
+                <option value="terre">Terre</option>
+            </select>
         </div>
     </div>
     <div class="card-footer">
-        <button type="submit" [disabled]="userForm.invalid" class="btn btn-success btn-lg"><i class="bi bi-check-lg"></i></button>
+        <button type="submit" [disabled]="creatureForm.invalid" class="btn btn-success btn-lg"><i class="bi bi-check-lg"></i></button>
         <a (click)="cancel()" class="btn btn-warning btn-lg mx-2"><i class="bi bi-backspace"></i></a>
     </div>
     </form>
-</div>
--->
+</div> -->
+

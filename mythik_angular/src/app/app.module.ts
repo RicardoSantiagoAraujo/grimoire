@@ -16,9 +16,10 @@ import { HttpClientModule } from '@angular/common/http'
     AppComponent,
     InscriptionComponent,
     ConnexionComponent,
-    CreatureComponent,
     MenuComponent,
+    CreatureComponent,
     CompteComponent
+    
   ],
   imports: [
     BrowserModule,
