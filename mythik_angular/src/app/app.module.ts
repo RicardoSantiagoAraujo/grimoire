@@ -7,10 +7,9 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { CreatureComponent } from './creature/creature.component';
 import { MenuComponent } from './menu/menu.component';
-import { HomeConnectedComponent } from './home-connected/home-connected.component';
 import { CompteComponent } from './compte/compte.component';
-import { AccueilComponent } from './accueil/accueil.component';
-import { GrimoireComponent } from './grimoire/grimoire.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -19,14 +18,14 @@ import { GrimoireComponent } from './grimoire/grimoire.component';
     ConnexionComponent,
     CreatureComponent,
     MenuComponent,
-    HomeConnectedComponent,
-    CompteComponent,
-    AccueilComponent,
-    GrimoireComponent
+    CompteComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

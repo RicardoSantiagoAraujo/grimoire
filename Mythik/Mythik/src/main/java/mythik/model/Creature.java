@@ -17,7 +17,7 @@ public class Creature {
 	@Column(name="id_creature")
 	private Integer id;
 	
-    @Column(nullable=false, columnDefinition = "VARCHAR(25)")
+    @Column( columnDefinition = "VARCHAR(25)")
 	private String nom;
     
 	private String description; 
