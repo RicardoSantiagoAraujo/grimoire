@@ -34,7 +34,6 @@
 	--blur-overlay-l: 60%;
 	--candlight-effect-radial: radial-gradient(var(--color-overlay-l) var(--blur-overlay-l), var(--color-overlay-d) 75%);
 	--candlight-effect-linear: linear-gradient(var(--color-overlay-l) var(--blur-overlay-l) 90%, var(--color-overlay-d) 100%)
-
 }
 
 body, ul, table, form{
