@@ -3,6 +3,7 @@ import { CreatureService } from './creature.service';
 import { Observable } from 'rxjs';
 import { Creature } from '../model';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-creature',
@@ -26,9 +27,7 @@ typeElementCtrl!: FormControl;
   
 
 
-  constructor(
-    private creatureService: CreatureService,
-     private formBuilder: FormBuilder){
+  constructor(private creatureService: CreatureService, private formBuilder: FormBuilder, private router: Router){
     this.load(); 
   }
 
@@ -95,6 +94,9 @@ typeElementCtrl!: FormControl;
       this.cancel(); 
   }
 
-  
+  retour(){
+    this.router.navigate(['/accueil']);
+
+  }
   
 }

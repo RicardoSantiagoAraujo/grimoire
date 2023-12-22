@@ -29,7 +29,7 @@
                     <td>{{c.attaque}}</td>
                     <td>{{c.pv}}</td>
                     <!--<td>{{c.image}}</td>-->
-                    <td><img [src]="c.image"/></td>
+                    <td><img width="30px" height="30px" [src]="c.image"/></td>
                     <td>{{c.mythologie}}</td>
                     <td>{{c.typeElement}}</td>
                     <td><div class="btn-group btn-group-sm">
@@ -41,7 +41,7 @@
             </tbody>
 
         </table>
-
+        <a (click)="retour()" class="btn btn-warning btn-lg mx-2"><i class="bi bi-backspace"></i></a>
         
     </div>
     <div class="card-footer">
