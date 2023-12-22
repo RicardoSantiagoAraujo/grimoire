@@ -14,7 +14,7 @@
                     <th>dieu</th>
                     <th>attaque</th>
                     <th>pv</th>
-                    <th>immage</th>
+                    <th>image</th>
                     <th>mythologie</th>
                     <th>type_element</th>
                     <th></th>
@@ -28,7 +28,8 @@
                     <td>{{c.dieu}}</td>
                     <td>{{c.attaque}}</td>
                     <td>{{c.pv}}</td>
-                    <td>{{c.image}}</td>
+                    <!--<td>{{c.image}}</td>-->
+                    <td><img [src]="c.image"/></td>
                     <td>{{c.mythologie}}</td>
                     <td>{{c.typeElement}}</td>
                     <td><div class="btn-group btn-group-sm">
@@ -48,7 +49,7 @@
     </div>
 </div>
 
-<!-- <div class="card mt-3" *ngIf="showForm">
+ <div class="card mt-3" *ngIf="showForm">
     <form (ngSubmit)="save()" [formGroup]="creatureForm">
     <div class="card-header text-white bg-primary">
         Edition d'une creature
@@ -67,9 +68,8 @@
             <input type="text" class="form-control" id="description" name="description" formControlName="description">
         </div>
         <div class="mb-3">
-            <label for="dieu" class="form-label">Dieu:</label>
-            <input type="checkbox" class="form-control" id="dieu" name="dieu" formControlName="dieu">
-            
+            Dieu :  <input type="checkbox" class="form-check-input" name="dieu" formControlName="dieu">
+        
         <div class="mb-3">
             <label for="attaque" class="form-label">Attaque:</label>
             <input type="number" class="form-control" id="attaque" name="attaque" formControlName="attaque">
@@ -107,6 +107,6 @@
         <button type="submit" [disabled]="creatureForm.invalid" class="btn btn-success btn-lg"><i class="bi bi-check-lg"></i></button>
         <a (click)="cancel()" class="btn btn-warning btn-lg mx-2"><i class="bi bi-backspace"></i></a>
     </div>
-    </form>
-</div> -->
+    
+</div>
 
