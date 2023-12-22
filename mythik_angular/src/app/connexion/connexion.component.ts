@@ -13,6 +13,7 @@ export class ConnexionComponent implements OnInit  {
 
   loginCtrl!: FormControl;
   passwordCtrl!: FormControl;
+  router: any;
 
   constructor(private authService: AuthService, private formBuilder: FormBuilder) {
 
@@ -30,6 +31,7 @@ export class ConnexionComponent implements OnInit  {
 
   connexion() {
     this.authService.login(this.loginCtrl.value, this.passwordCtrl.value);
+    this.router.navigate(['/acceuil']);
   }
 
   cancel() {

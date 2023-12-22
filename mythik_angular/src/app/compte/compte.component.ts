@@ -17,7 +17,7 @@ export class CompteComponent {
   loginCtrl!: FormControl;
   passwordCtrl!: FormControl;
 
-  showForm: boolean = false;
+  showForm: boolean = true;
   compte$!: Observable<Compte[]>;
 
   constructor(private compteService: CompteService, private formBuilder: FormBuilder) {
