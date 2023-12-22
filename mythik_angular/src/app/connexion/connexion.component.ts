@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-connexion',
@@ -14,7 +15,7 @@ export class ConnexionComponent implements OnInit  {
   loginCtrl!: FormControl;
   passwordCtrl!: FormControl;
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder) {
+  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router) {
 
   }
 
@@ -30,6 +31,7 @@ export class ConnexionComponent implements OnInit  {
 
   connexion() {
     this.authService.login(this.loginCtrl.value, this.passwordCtrl.value);
+    this.router.navigate(['/accueil']);
   }
 
   cancel() {

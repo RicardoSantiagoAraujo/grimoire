@@ -46,7 +46,7 @@ typeElementCtrl!: FormControl;
     this.creatureForm = this.formBuilder.group( {
       id: this.idCtrl,
       nom: this.nomCtrl,
-      desciption: this.descriptionCtrl,
+      description: this.descriptionCtrl,
       dieu: this.dieuCtrl,
       attaque: this.attaqueCtrl,
       pv: this.pvCtrl,
