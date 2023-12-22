@@ -98,7 +98,7 @@ function zoomThis(pic) {
 				tmpContainer.appendTo($('body'));
 
 				$('body').css({'overflow': 'hidden'});
-				
+
 				tmpPic.css({
 					margin: position.top + 'px ' + position.left+'px'
 				}).
@@ -113,7 +113,7 @@ function zoomThis(pic) {
 		$('.sj-book').turn('disable', true);
 
 		$(window).resize(zoomOut);
-		
+
 		tmpContainer.click(zoomOut);
 
 		tmpPic.load(function() {
@@ -138,8 +138,8 @@ function zoomThis(pic) {
 
 			$('.samples .bar').css({visibility: 'hidden'});
 			$('#slider-bar').hide();
-			
-		
+
+
 			$('#book-zoom').transform(
 				'translate('+translate.left+'px, '+translate.top+'px)' +
 				'scale('+zoomFactor+', '+zoomFactor+')');
@@ -235,3 +235,26 @@ function isChrome() {
 	return navigator.userAgent.indexOf('Chrome')!=-1;
 
 }
+
+
+
+function candlelight(){
+
+	let lightH = Math.floor(Math.random() * 1);
+	let lightS = Math.floor(Math.random() * 100);
+	let lightL = Math.floor(Math.random() * 100);
+	let darkH = Math.floor(Math.random() * 1);
+	let darkS = Math.floor(Math.random() * 100);
+	let darkL = Math.floor(Math.random() * 10);
+	let colL = `hsla(${lightH},${lightS}%,${lightL}%, 0.1)`
+	let colD = `hsla(${darkH},${darkS}%,${darkL}%, 0.1)`
+
+	let blurL = Math.floor(Math.random() * 60);
+
+	document.documentElement.style.setProperty("--color-overlay-l", colL);
+	document.documentElement.style.setProperty("--color-overlay-d", colD);
+	document.documentElement.style.setProperty("--blur-overlay-l", blurL+"%");
+	console.log("test")
+}
+
+setInterval(candlelight, Math.floor(Math.random() * 100));
