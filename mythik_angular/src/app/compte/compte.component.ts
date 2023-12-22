@@ -62,7 +62,15 @@ export class CompteComponent {
   }
 
   save() {
-    this.compteService.save(this.compteForm.value).subscribe(resp => this.load());
+    const newcompte: Compte = {
+      id: this.idCtrl.value,
+      email: this.emailCtrl.value,
+      login: this.loginCtrl.value,
+      password: this.passwordCtrl.value,
+    }
+    this.compteService.save(newcompte).subscribe(resp => {
+      this.compteForm.patchValue(resp);
+      })
     this.cancel();
   }
 
