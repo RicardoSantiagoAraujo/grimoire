@@ -16,8 +16,9 @@ export class CompteComponent {
   emailCtrl!: FormControl;
   loginCtrl!: FormControl;
   passwordCtrl!: FormControl;
+  typeCompteCtrl!: FormControl;
 
-  showForm: boolean = true;
+  showForm: boolean = false;
   compte$!: Observable<Compte[]>;
 
   constructor(private compteService: CompteService, private formBuilder: FormBuilder) {
@@ -29,12 +30,14 @@ export class CompteComponent {
     this.emailCtrl = this.formBuilder.control('');
     this.loginCtrl = this.formBuilder.control('',Validators.required);
     this.passwordCtrl = this.formBuilder.control('');
+    this.typeCompteCtrl = this.formBuilder.control('');
 
     this.compteForm = this.formBuilder.group( {
       id: this.idCtrl,
       email: this.emailCtrl,
-      username: this.loginCtrl,
-      password: this.passwordCtrl
+      login: this.loginCtrl,
+      password: this.passwordCtrl,
+      typeCompte: this.typeCompteCtrl
     });
   }
 
