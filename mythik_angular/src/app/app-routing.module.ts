@@ -7,10 +7,10 @@ import { ConnexionComponent } from './connexion/connexion.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 
 const routes: Routes = [{path: "menu", component: MenuComponent},
-  {path: "compte", component: CompteComponent},
+  {path: "compte", component: CompteComponent, canActivate: [AuthGuard]},
   {path: "connexion", component: ConnexionComponent},
   {path: "inscription", component: InscriptionComponent},
-  {path: '', pathMatch: "full", redirectTo: "menu"}];
+  {path: "", pathMatch: "full", redirectTo: "menu"}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

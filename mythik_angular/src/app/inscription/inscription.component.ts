@@ -24,7 +24,7 @@ export class InscriptionComponent {
   ngOnInit() : void {
 
     this.emailCtrl = this.formBuilder.control('', Validators.required);
-    this.loginCtrl = this.formBuilder.control('', [Validators.required, Validators.email]);
+    this.loginCtrl = this.formBuilder.control('');
     this.passwordCtrl = this.formBuilder.control('', [Validators.required, Validators.minLength(6)]);
 
     this.inscriptionForm = this.formBuilder.group({
@@ -38,9 +38,9 @@ export class InscriptionComponent {
   inscription() {
     if (this.inscriptionForm.valid) {
       const newCompte: Compte = {
-        email : this.emailCtrl.value,
         login : this.loginCtrl.value,
         password : this.passwordCtrl.value,
+        email : this.emailCtrl.value,
       }
 
       this.compteService.save(newCompte).subscribe(resp => {
