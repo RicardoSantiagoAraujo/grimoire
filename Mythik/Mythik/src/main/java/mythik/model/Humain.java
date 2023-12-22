@@ -17,7 +17,7 @@ public class Humain extends Joueur{
 
 	
 	public Humain(String email) {
-	
+		super();
 		this.email = email;
 	}
 
