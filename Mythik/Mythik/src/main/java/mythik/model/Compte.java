@@ -22,7 +22,7 @@ public abstract class Compte {
 	private Integer id;
 	protected String login; 
 	protected String password; 
-	protected String email;
+	
 	
 	public Compte() {
 		// TODO Auto-generated constructor stub
@@ -32,12 +32,12 @@ public abstract class Compte {
 
 	
 
-	public Compte(Integer id, String login, String password, String email) {
+	public Compte(Integer id, String login, String password) {
 		super();
 		this.id = id;
 		this.login = login;
 		this.password = password;
-		this.email = email;
+		
 	}
 
 
