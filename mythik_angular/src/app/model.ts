@@ -10,6 +10,7 @@ export class Creature {
     }
 }
 
+export class Admin extends Compte {}
 export class Joueur extends Compte {}
 
 export class Humain extends Joueur {}
