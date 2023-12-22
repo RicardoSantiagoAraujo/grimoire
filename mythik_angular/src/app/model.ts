@@ -3,6 +3,7 @@ export class Compte {
     }
 }
 
+
 export class Creature {
     constructor(public id?: number, public nom?: string, public description?: string, public dieu?: boolean, public attaque?: number, public pv?: number,  public image?: string, public mythologie?: string, public typeElement?: string ) {
 
