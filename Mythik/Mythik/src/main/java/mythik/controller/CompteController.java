@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import mythik.dao.IDAOCompte;
 import mythik.model.Compte;
+import mythik.model.Humain;
 
 @RestController
 @RequestMapping("/api/compte")
@@ -26,6 +27,7 @@ public class CompteController {
 	IDAOCompte daoCompte; 
 
 	@GetMapping("/{id}")
+	@CrossOrigin("*")
 	public Compte findById(@PathVariable Integer id) 
 	{
 		Optional<Compte> opt = daoCompte.findById(id);
@@ -43,10 +45,10 @@ public class CompteController {
 	}
 	
 	@PostMapping
-	public Compte insert(@RequestBody Compte compte) 
+	public Compte insert(@RequestBody Humain humain) 
 	{
 		
-		return daoCompte.save(compte);
+		return daoCompte.save(humain);
 	}
 	@PutMapping("/{id}")
 	public Compte update( @RequestBody Compte compte) 

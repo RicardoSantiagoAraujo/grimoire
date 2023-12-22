@@ -46,6 +46,7 @@ export class InscriptionComponent {
       this.compteService.save(newCompte).subscribe(resp => {
         this.inscriptionForm.patchValue(resp);
         })
+       
     }
 
       this.router.navigate(['/connexion']);

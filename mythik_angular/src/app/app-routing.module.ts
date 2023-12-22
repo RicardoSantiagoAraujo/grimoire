@@ -5,11 +5,13 @@ import { MenuComponent } from './menu/menu.component';
 import { AuthGuard } from './auth.guard';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { CreatureComponent } from './creature/creature.component';
 
 const routes: Routes = [{path: "menu", component: MenuComponent},
   {path: "compte", component: CompteComponent, canActivate: [AuthGuard]},
   {path: "connexion", component: ConnexionComponent},
   {path: "inscription", component: InscriptionComponent},
+  {path: "creature", component: CreatureComponent},
   {path: "", pathMatch: "full", redirectTo: "menu"}];
 
 @NgModule({
