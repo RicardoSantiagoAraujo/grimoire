@@ -10,22 +10,21 @@
                     <th>Identifiant</th>
                     <th>Login</th>
                     <th>Mot de passe</th>
-                    <th>Nom</th>
-                    <th>Prénom</th>
+                    <th>Email</th>
                     <th>Roles</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let c of list() | async">
-                    <td>{{c.id}}</td>
-                    <td>{{c.login}}</td>
-                    <td>{{c.password}}</td>
-                    <td>{{c.email}}</td>
-                    <td>{{c.typeCompte}}</td>
+                <tr *ngFor="let u of list() | async">
+                    <td>{{u.id}}</td>
+                    <td>{{u.login}}</td>
+                    <td>{{u.password}}</td>
+                    <td>{{u.email}}</td>
+                    <td>{{u.typeCompte}}</td>
                     <td><div class="btn-group btn-group-sm">
-                        <a (click)="edit(c.id)" class="btn btn-primary"><i class="bi bi-pen"></i></a>
-                        <a (click)="remove(c.id)" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                        <a (click)="edit(u.id)" class="btn btn-primary"><i class="bi bi-pen"></i></a>
+                        <a (click)="remove(u.id)" class="btn btn-danger"><i class="bi bi-trash"></i></a>
                       </div></td>
                 </tr>
              
@@ -49,31 +48,30 @@
             <input type="number" class="form-control" id="id" name="id" readonly formControlName="id">
         </div>
         <div class="mb-3">
-            <label for="prenom" class="form-label">Prénom:</label>
-            <input type="text" class="form-control" id="prenom" name="prenom" formControlName="prenom">
-        </div>
-        <div class="mb-3">
-            <label for="nom" class="form-label">Nom:</label>
-            <input type="text" class="form-control" id="nom" name="nom" formControlName="nom">
-        </div>
-        <div class="mb-3">
-            <label for="username" class="form-label">Login:</label>
-            <input type="text" class="form-control" id="username" name="username" formControlName="username">
-            <span class="text-danger" *ngIf="compteForm.get('username')?.dirty && compteForm.get('username')?.hasError('required')">Le login est obligatoire</span>
+            <label for="login" class="form-label">Login:</label>
+            <input type="text" class="form-control" id="login" name="login" formControlName="login">
+            <span class="text-danger" *ngIf="compteForm.get('login')?.dirty && compteForm.get('login')?.hasError('login')">Le login est obligatoire</span>
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Mot de passe:</label>
             <input type="text" class="form-control" id="password" name="password" formControlName="password">
         </div>
-        <select class="form-control" id="typeCompte" name="typeCompte" formControlName="typeCompte">
-            <option></option>
-            <option value="Humain">Humain</option>
-            <option value="IA">IA</option>
-            <option value="Admin">Admin</option>
-        </select>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="text" class="form-control" id="email" name="email" formControlName="email">
+        </div>
+        <div class="mb-3">
+            <label for="typeCompte" class="form-label">Roles:</label>
+            <select class="form-control" id="typeCompte" name="typeCompte" formControlName="typeCompte">
+                <option></option>
+                <option value="Humain">Humain</option>
+                <option value="IA">IA</option>
+                <option value="Admin">Admin</option>
+            </select>
+        </div>
     </div>
     <div class="card-footer">
-        <button type="submit" [disabled]="compteForm.invalid" class="btn btn-success btn-lg"><i class="bi bi-check-lg"></i></button>
+        <button type="submit"  class="btn btn-success btn-lg"><i class="bi bi-check-lg"></i></button>
         <a (click)="cancel()" class="btn btn-warning btn-lg mx-2"><i class="bi bi-backspace"></i></a>
     </div>
     </form>
