@@ -1,0 +1,80 @@
+@font-face {
+  font-family: "Stempel-Garamond-W01-Roman";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../../assets/fonts/Stempel-Garamond-W01-Roman.woff") format("woff");
+}
+@font-face {
+  font-family: "Lugrasimo";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../../assets/fonts/Lugrasimo/Lugrasimo-Regular.ttf") format("woff");
+}
+@font-face {
+  font-family: "bronzion";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../../assets/fonts/bronzion_deco/BronzionDeco_PERSONAL_USE_ONLY.otf") format("woff");
+}
+.flipbook_container {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+flipbook .cover:first-of-type:before {
+  content: "Mythik";
+  font-family: bronzion;
+  display: flex;
+  font-size: xx-large;
+  transform: scale(2) translate(0%, -5%);
+  color: rgb(11, 0, 0);
+  text-shadow: rgba(20, 0, 27, 0.4862745098) 1px 1px 4px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+flipbook .cover:first-of-type:after {
+  content: "Grimoire";
+  opacity: 0.7;
+  font-family: bronzion;
+  display: flex;
+  font-size: xx-large;
+  transform: scale(1) translate(0%, 60px);
+  color: rgb(213, 210, 227);
+  text-shadow: rgba(20, 0, 27, 0.4862745098) 1px 1px 4px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+.sj-book .capital:first-letter {
+  display: block;
+  float: left;
+  font-size: 300%;
+  line-height: 70%;
+  margin-right: 6px;
+  margin-top: 7px;
+  margin-left: 18px;
+}
+
+flipbook-page .page:not(.cover) {
+  background-size: 10%;
+  transform: scaleX(-1);
+  background-position-x: left;
+  opacity: 1;
+}
+flipbook-page .page:not(.cover):after {
+  display: flex;
+  content: "TEST";
+  background: linear-gradient(0.25turn, rgba(255, 255, 255, 0) 95%, rgba(0, 0, 0, 0.46) 0%);
+  height: 100%;
+  width: 100%;
+}/*# sourceMappingURL=test-flipbook.component.css.map */

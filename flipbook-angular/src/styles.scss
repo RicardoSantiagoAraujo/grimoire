@@ -1,1 +1,54 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+	--text-color: rgb(71, 0, 0);
+	--paper-color-l: rgb(255, 251, 212);
+	--paper-color-d: rgb(100, 79, 30);
+	--paper-texture: url("../src/assets/flipbook-textures/natural-paper.png");
+	/* --paper-texture: url(../pics/black-paper.png); */
+	/* --paper-texture: url(../pics/old-paper-texture.webp); */
+	/* Candlelight effect */
+	--color-overlay-l: #ffd58d;
+	--color-overlay-d: #00021e;
+	--blur-overlay-l: 60%;
+	--candlight-effect-radial: radial-gradient(var(--color-overlay-l) var(--blur-overlay-l), var(--color-overlay-d) 75%);
+	--candlight-effect-linear: linear-gradient(var(--color-overlay-l) var(--blur-overlay-l) 90%, var(--color-overlay-d) 100%)
+}
+
+body{
+	background: url("../src/assets/flipbook-textures/wood-texture.jpeg"), radial-gradient(#e6b664, #000325);
+	background-blend-mode: multiply;
+	background-size: cover;
+	// cursor: url("../src/assets/cursors/middle-ages-cursor-32x32.png"),hand;
+	cursor: url("../src/assets/cursors/middle-ages-pointer-32x32.png"),pointer;
+}
+
+body:after {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	opacity:1;
+	z-index: -2;
+	background: var(--candlight-effect-radial);
+  }
+
+
+body:before{
+	content: "";
+	display: block;
+	position: absolute;
+	right: 0;
+	bottom: -1%;
+	left: 0;
+	width: 100%;
+	height: 40%;
+	opacity:0.3;
+	z-index: 2000;
+	background: url("../src/assets/fire.gif");
+	filter: blur(3px)brightness(1.5);
+	/* background-repeat: no-repeat; */
+}
