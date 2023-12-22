@@ -7,7 +7,6 @@ import jakarta.persistence.Entity;
 @DiscriminatorValue("Humain")
 public class Humain extends Joueur{
 
-	
 	private String email;
 
 	public Humain() {

@@ -9,3 +9,9 @@ export class Creature {
 
     }
 }
+
+export class Joueur extends Compte {}
+
+export class Humain extends Joueur {}
+
+export class IA extends Joueur {}
