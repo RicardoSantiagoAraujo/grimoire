@@ -18,6 +18,7 @@ import { IAComponent } from './ia/ia.component';
 import { HumainComponent } from './humain/humain.component';
 import { JoueurComponent } from './joueur/joueur.component';
 import { AdminComponent } from './admin/admin.component';
+import { CombatComponent } from './combat/combat.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AdminComponent } from './admin/admin.component';
     HumainComponent,
     JoueurComponent,
     AdminComponent,
+    CombatComponent,
   ],
   imports: [
     BrowserModule,
