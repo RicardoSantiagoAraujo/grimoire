@@ -13,6 +13,7 @@ import { GrimoireComponent } from './grimoire/grimoire.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SelectionCombatComponent } from './selection-combat/selection-combat.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AccueilComponent,
     GrimoireComponent,
     ConnexionComponent,
+    SelectionCombatComponent,
   ],
   imports: [
     BrowserModule,

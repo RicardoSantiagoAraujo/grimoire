@@ -1,0 +1,18 @@
+.accueil{
+
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+
+.section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ border : solid black; 
+ width: 500px;
+ height: 1000px;
+ background-color: rgba(165, 42, 42, 0.614);
+ 
+}
