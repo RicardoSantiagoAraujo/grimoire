@@ -9,9 +9,17 @@ import { CreatureComponent } from './creature/creature.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { GrimoireComponent } from './grimoire/grimoire.component';
 import { SelectionCombatComponent } from './selection-combat/selection-combat.component';
+import { AdminComponent } from './admin/admin.component';
+import { HumainComponent } from './humain/humain.component';
+import { IAComponent } from './ia/ia.component';
+import { JoueurComponent } from './joueur/joueur.component';
 
 const routes: Routes = [{path: "menu", component: MenuComponent},
   {path: "compte", component: CompteComponent,},
+  {path: "admin", component: AdminComponent},
+  {path: "humain", component: HumainComponent},
+  {path: "ia", component: IAComponent},
+  {path: "joueur", component: JoueurComponent},
   {path: "connexion", component: ConnexionComponent},
   {path: "inscription", component: InscriptionComponent},
   {path: "creature", component: CreatureComponent},
