@@ -17,6 +17,7 @@ export class CompteComponent {
   loginCtrl!: FormControl;
   passwordCtrl!: FormControl;
 
+  showForm: boolean = false;
   compte$!: Observable<Compte[]>;
 
   constructor(private compteService: CompteService, private formBuilder: FormBuilder) {
@@ -47,11 +48,13 @@ export class CompteComponent {
 
   add() {
     this.compteForm.reset();
+    this.showForm = true;
   }
 
   edit(id?: number) {
     this.compteService.findById(id).subscribe(resp => {
       this.compteForm.patchValue(resp);
+      this.showForm = true;
     });
   }
 
@@ -65,6 +68,7 @@ export class CompteComponent {
   }
 
   cancel() {
+    this.showForm = false;
     this.compteForm.reset();
   }
 }
