@@ -16,7 +16,9 @@ export class CompteComponent {
   emailCtrl!: FormControl;
   loginCtrl!: FormControl;
   passwordCtrl!: FormControl;
+  typeCompteCtrl!: FormControl;
 
+  showForm: boolean = false;
   compte$!: Observable<Compte[]>;
 
   constructor(private compteService: CompteService, private formBuilder: FormBuilder) {
@@ -28,12 +30,14 @@ export class CompteComponent {
     this.emailCtrl = this.formBuilder.control('');
     this.loginCtrl = this.formBuilder.control('',Validators.required);
     this.passwordCtrl = this.formBuilder.control('');
+    this.typeCompteCtrl = this.formBuilder.control('');
 
     this.compteForm = this.formBuilder.group( {
       id: this.idCtrl,
       email: this.emailCtrl,
-      username: this.loginCtrl,
-      password: this.passwordCtrl
+      login: this.loginCtrl,
+      password: this.passwordCtrl,
+      typeCompte: this.typeCompteCtrl
     });
   }
 
@@ -47,11 +51,13 @@ export class CompteComponent {
 
   add() {
     this.compteForm.reset();
+    this.showForm = true;
   }
 
   edit(id?: number) {
     this.compteService.findById(id).subscribe(resp => {
       this.compteForm.patchValue(resp);
+      this.showForm = true;
     });
   }
 
@@ -65,6 +71,7 @@ export class CompteComponent {
   }
 
   cancel() {
+    this.showForm = false;
     this.compteForm.reset();
   }
 }

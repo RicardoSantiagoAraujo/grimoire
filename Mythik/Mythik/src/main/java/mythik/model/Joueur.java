@@ -28,7 +28,7 @@ public abstract class Joueur extends Compte{
 	
 	
 	public Joueur() {
-		super();
+		
 	}
 
 
