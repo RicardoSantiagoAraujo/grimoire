@@ -1,5 +1,8 @@
 package mythik.model;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
@@ -10,6 +13,14 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
 
+
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({
+    @JsonSubTypes.Type(value = Admin.class, name = "admin"),
+    @JsonSubTypes.Type(value = Joueur.class, name = "joueur"),
+    @JsonSubTypes.Type(value = Humain.class, name = "humain"),
+    @JsonSubTypes.Type(value = IA.class, name = "ia")
+})
 @Entity
 @Table
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
