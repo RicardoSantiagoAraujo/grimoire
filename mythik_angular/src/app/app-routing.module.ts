@@ -14,6 +14,7 @@ import { HumainComponent } from './humain/humain.component';
 import { IAComponent } from './ia/ia.component';
 import { JoueurComponent } from './joueur/joueur.component';
 import { CombatComponent } from './combat/combat.component';
+import { DesktopComponent } from './desktop/desktop.component';
 
 const routes: Routes = [{path: "menu", component: MenuComponent},
   {path: "compte", component: CompteComponent,},
@@ -26,10 +27,11 @@ const routes: Routes = [{path: "menu", component: MenuComponent},
   {path: "creature", component: CreatureComponent},
   {path: "accueil", component: AccueilComponent},
   {path: "menu", component: MenuComponent},
-  {path: "grimoire", component: GrimoireComponent},
+  {path: "grimoire", component: DesktopComponent},
   {path: "selection-combat", component: SelectionCombatComponent},
   {path: "combat", component: CombatComponent},
-  {path: "", pathMatch: "full", redirectTo: "menu"}];
+  {path: "", pathMatch: "full", redirectTo: "menu"}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

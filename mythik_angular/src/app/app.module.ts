@@ -19,6 +19,10 @@ import { HumainComponent } from './humain/humain.component';
 import { JoueurComponent } from './joueur/joueur.component';
 import { AdminComponent } from './admin/admin.component';
 import { CombatComponent } from './combat/combat.component';
+import { DesktopComponent } from './desktop/desktop.component';
+import { FlipBookModule } from '@labsforge/flipbook';
+import { CreaturePageBComponent } from './creature-page-b/creature-page-b.component';
+import { CreaturePageAComponent } from './creature-page-a/creature-page-a.component';
 
 @NgModule({
   declarations: [
@@ -36,13 +40,17 @@ import { CombatComponent } from './combat/combat.component';
     JoueurComponent,
     AdminComponent,
     CombatComponent,
+    DesktopComponent,
+    CreaturePageBComponent,
+    CreaturePageAComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FlipBookModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

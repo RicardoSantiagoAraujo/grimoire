@@ -1,0 +1,244 @@
+@font-face {
+    font-family: 'Stempel-Garamond-W01-Roman';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../../assets/fonts/Stempel-Garamond-W01-Roman.woff');
+  }
+
+@font-face {
+	font-family: 'Lugrasimo';
+	font-style: normal;
+	font-weight: normal;
+	src: url('../../assets/fonts/Lugrasimo/Lugrasimo-Regular.ttf');
+}
+
+@font-face {
+	font-family: 'bronzion';
+	font-style: normal;
+	font-weight: normal;
+	src: url('../../assets/fonts/bronzion_deco/BronzionDeco_PERSONAL_USE_ONLY.otf');
+}
+
+@font-face {
+	font-family: 'eb_garamond';
+	font-style: normal;
+	font-weight: normal;
+	src: url('../../assets/fonts/EB_Garamond/EBGaramond-Italic-VariableFont_wght.ttf');
+}
+
+@font-face {
+	font-family: 'grandiflora';
+	font-style: normal;
+	font-weight: normal;
+	src: url('../../assets/fonts/Grandiflora_One/GrandifloraOne-Regular.ttf');
+}
+
+@font-face {
+	font-family: 'notoserif_jp';
+	font-style: normal;
+	font-weight: normal;
+	src: url('../../assets/fonts/Noto_Serif_JP/NotoSerifJP-Regular.otf') ;
+}
+
+@font-face {
+	font-family: 'notoserif_tc';
+	font-style: normal;
+	font-weight: normal;
+	src: url('../../assets/fonts/Noto_Serif_TC/NotoSerifTC-Regular.otf');
+}
+
+
+.flipbook_container{
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+	z-index: 2;
+}
+
+// FRONT COVER
+flipbook .cover:first-of-type{
+    // filter:brightness(0.5) !important;
+	&:before{
+    content:"Mythik";
+	font-family: bronzion;
+	display: flex;
+	font-size: xx-large;
+	transform: scale(2)translate(0%,-5%);
+	color: rgb(11, 0, 0);
+	text-shadow: #14001b7c 1px 1px 4px;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	z-index: 0;
+	width: 100%;
+	height: 100%;
+	background: var(--fire_light_effect-uniform) !important;
+	}
+	&:after{
+	content:"Grimoire";
+	opacity: 0.7;
+	font-family: bronzion;
+	display: flex;
+	font-size: xx-large;
+	transform: scale(1)translate(0%, 60px);
+	color: rgb(213, 210, 227);
+	text-shadow: #14001b7c 1px 1px 4px;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	}
+}
+
+flipbook .cover:first-of-type, flipbook .cover:last-of-type{
+	transition: 0.1s;
+	&:hover{
+		filter:saturate(2)
+	}
+}
+
+
+
+.sj-book .capital:first-letter {
+    display:block;
+    float:left;
+    font-size: 300%;
+    line-height: 70%;
+	margin-right: 6px;
+	margin-top: 7px;
+	margin-left:18px;
+}
+
+flipbook:after{
+	content: "";
+	position: absolute;
+	left:50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	//background-color: red;
+	background: url(../../assets/flipbook-textures/ring.png);
+	filter: brightness(0.75);
+	background-size:contain;
+	// background-repeat: repeat;
+	height: 70%;
+	width: 2%;
+}
+
+
+// ALL PAGES EXCEPT COVERS
+flipbook-page .page:not(.cover){
+	background-size:10%;
+	transform: scaleX(-1);
+	background-size: cover !important;
+	background-position-x: left;
+	opacity: 1;
+	&:after{
+		display: flex;
+		content:"";
+		background: linear-gradient(0.25turn, rgba(255, 255, 255, 0) 95%, rgba(45, 25, 0, 0.26) 99.9%, rgba(45, 25, 0, 0.916) 100%);
+		height: 100%;
+		width: 100%;
+	}
+	&:before{
+		content:"";
+		display: block;
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		top:0px !important;
+		background: var(--fire_light_effect-pages) !important;
+		opacity: 0.2;
+		filter:blur()10px;
+	}
+}
+
+// TARGET BACK OF COVER:
+flipbook-page .cover + .page{
+	// background-color: red !important;
+}
+
+
+flipbook-page .page{
+	box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
+	overflow: hidden;
+	cursor: url(../../assets/cursors/middle-ages-pointer-32x32.png),pointer;
+
+}
+
+
+.stain{
+	display: flex;
+	position: absolute;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+.page_content{
+	color:green;
+	display: block;
+	position: absolute;
+	top:0;
+	height: 100%;
+	width: 100%;
+	background-color: red !important;
+}
+
+.flipbook_container{
+	position: relative;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+	margin: 50px 0px;
+}
+
+.mocktext{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position:relative;
+	margin:50px 50px;
+	height: 80%;
+	width: 75%;
+	font-family: "Lugrasimo", "eb_garamond", "notoserif_tc", "notoserif_jp", "grandiflora";
+	color: rgba(78, 2, 2, 0.75);
+	overflow: hidden;
+	opacity: 0.9;
+	// filter: blur(1px);
+	&.side0{
+		transform:scaleX(-1);
+	}
+}
+
+.creature_pages{
+	height: 100%;
+	width: 800px*1.2; // adjust according to book width in "test-flipbook.component.ts"
+    display: flex;
+	display: none;
+	flex-direction: row;
+    justify-content: space-around;
+	gap: 5px;
+    align-items:center;
+	z-index:10;
+	position:absolute;
+	background-color: rgba(255, 255, 0, 0.503);
+	.creature_page_a{
+		position:relative;
+		background-color: rgba(255, 0, 0, 0.37);
+		width: 45%;
+		height: 90%;
+	}
+	.creature_page_b{
+		position:relative;
+		background-color: rgba(60, 255, 0, 0.37);
+		width: 45%;
+		height: 90%;
+	}
+}
