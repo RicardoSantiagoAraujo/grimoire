@@ -13,6 +13,7 @@ import { AdminComponent } from './admin/admin.component';
 import { HumainComponent } from './humain/humain.component';
 import { IAComponent } from './ia/ia.component';
 import { JoueurComponent } from './joueur/joueur.component';
+import { CombatComponent } from './combat/combat.component';
 
 const routes: Routes = [{path: "menu", component: MenuComponent},
   {path: "compte", component: CompteComponent,},
