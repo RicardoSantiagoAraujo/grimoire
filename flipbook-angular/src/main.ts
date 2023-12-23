@@ -26,7 +26,20 @@ function candlelight(){
     document.documentElement.style.setProperty("--color-overlay-l", colL);
     document.documentElement.style.setProperty("--color-overlay-d", colD);
     document.documentElement.style.setProperty("--blur-overlay-l", blurL+"%");
-    console.log("test")
   }
 
-  setInterval(candlelight, Math.floor(Math.random() * 100));
+setInterval(candlelight, Math.floor(Math.random() * 300));
+
+
+// desync fire gifs
+function firestart(){
+  const fires = document.querySelectorAll<HTMLImageElement>("#firewall img");
+  fires.forEach(function (fire, index) {
+    setTimeout(function () {
+      fire.src= "assets/fire.gif";
+      fire.style.display="block";
+    },index * 1000)
+  })
+}
+
+firestart()
