@@ -26,7 +26,7 @@ export class CompteService {
         return this.http.put<Compte>(environment.apiUrl + "/compte/"+compte.id, compte);
       }
   
-      return this.http.post<Compte>(environment.apiUrl + "/compte", compte);
+      return this.http.post<Compte>(environment.apiUrl + "/compte/humain", compte);
     }
   
     delete(id?: number): Observable<void> {

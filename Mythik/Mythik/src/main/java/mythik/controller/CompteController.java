@@ -50,6 +50,14 @@ public class CompteController {
 		
 		return daoCompte.save(compte);
 	}
+	
+	@PostMapping ("/humain")
+	public Humain insertHumain(@RequestBody Humain humain) 
+	{
+		
+		return daoCompte.save(humain);
+	}
+	
 	@PutMapping("/{id}")
 	public Compte update( @RequestBody Compte compte) 
 	{
