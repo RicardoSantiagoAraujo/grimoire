@@ -31,11 +31,6 @@ export class CompteService {
     
         return this.http.post<Compte>(environment.apiUrl + "/compte/admin", compte);
       }
-<<<<<<< HEAD
-  
-      return this.http.post<Compte>(environment.apiUrl + "/compte/humain", compte);
-    }
-=======
     
       if(compte.type == "ia")
       {
@@ -57,7 +52,7 @@ export class CompteService {
 
       }
    
->>>>>>> bm
+
   
     delete(id?: number): Observable<void> {
       return this.http.delete<void>(environment.apiUrl + "/compte/"+id);
