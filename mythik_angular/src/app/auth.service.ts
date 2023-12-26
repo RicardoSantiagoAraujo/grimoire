@@ -17,7 +17,7 @@ export class AuthService {
   constructor(private http:HttpClient, private router: Router) { }
 
   login(login: string, password: string) {
-    return this.http.post<Compte>(environment.apiUrl + `/connexion`, { "login": login, "password": password}).subscribe((resp) => {
+    return this.http.post<Compte>(environment.apiUrl + `/compte/connexion`, { "login": login, "password": password}).subscribe((resp) => {
       this.compte = resp;
       localStorage.setItem("compte", JSON.stringify(this.compte));
 

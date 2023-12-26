@@ -21,7 +21,7 @@
                     <td>{{u.login}}</td>
                     <td>{{u.password}}</td>
                     <td>{{u.email}}</td>
-                    <td>{{u.typeCompte}}</td>
+                    <td>{{u.type}}</td>
                     <td><div class="btn-group btn-group-sm">
                         <a (click)="edit(u.id)" class="btn btn-primary"><i class="bi bi-pen"></i></a>
                         <a (click)="remove(u.id)" class="btn btn-danger"><i class="bi bi-trash"></i></a>
@@ -31,9 +31,11 @@
             </tbody>
 
         </table>
+        
     </div>
     <div class="card-footer">
         <a (click)="add()" class="btn btn-success btn-lg"><i class="bi bi-plus-lg"></i></a>
+        <a (click)="retour()" class="btn btn-warning btn-lg mx-2"><i class="bi bi-backspace"></i></a>
     </div>
 </div>
 
@@ -61,12 +63,12 @@
             <input type="text" class="form-control" id="email" name="email" formControlName="email">
         </div>
         <div class="mb-3">
-            <label for="typeCompte" class="form-label">Roles:</label>
-            <select class="form-control" id="typeCompte" name="typeCompte" formControlName="typeCompte">
+            <label for="type" class="form-label">Roles:</label>
+            <select class="form-control" id="type" name="type" formControlName="type">
                 <option></option>
-                <option value="Humain">Humain</option>
-                <option value="IA">IA</option>
-                <option value="Admin">Admin</option>
+                <option value="humain">Humain</option>
+                <option value="ia">IA</option>
+                <option value="admin">Admin</option>
             </select>
         </div>
     </div>

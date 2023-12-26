@@ -19,10 +19,7 @@ import jakarta.persistence.Table;
 @JsonTypeName("joueur")
 public abstract class Joueur extends Compte{
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id_joueur")
-	protected Integer id;
+
 	
 	@OneToMany(mappedBy="joueur")
 	protected List<Combattant> combattant;
@@ -34,15 +31,12 @@ public abstract class Joueur extends Compte{
 	}
 
 
-	public Joueur( List<Combattant> combattant) {
-		super();
-		this.combattant = combattant;
-	}
+
 
 	
-	public Joueur(Integer id, List<Combattant> combattant) {
+	public Joueur (List<Combattant> combattant) {
 		super();
-		this.id = id;
+		
 		this.combattant = combattant;
 	}
 
@@ -55,14 +49,7 @@ public abstract class Joueur extends Compte{
 	}
 
 
-	public Integer getId() {
-		return id;
-	}
 
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
 	
 	
 

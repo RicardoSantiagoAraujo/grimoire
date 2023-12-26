@@ -10,7 +10,7 @@ import jakarta.persistence.Entity;
 @JsonTypeName("humain")
 public class Humain extends Joueur{
 
-	private String email;
+	
 
 	public Humain() {
 
@@ -18,19 +18,9 @@ public class Humain extends Joueur{
 	}
 
 	
-	public Humain(String email) {
-		super();
-		this.email = email;
-	}
 
 
-	public String getEmail() {
-		return email;
-	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	} 
 	
 	
 	

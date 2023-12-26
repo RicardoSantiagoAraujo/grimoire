@@ -9,11 +9,14 @@ import { AuthService } from '../auth.service';
 export class AccueilComponent {
 Admin: boolean = false; 
 
-constructor(private authService: AuthService){}
+constructor(private authService: AuthService){
+
+ 
+}
 
 isAdmin() : boolean{
 
-if(this.authService.getCompte()!.typeCompte == "admin"){
+if(this.authService.getCompte()!.type=="admin"){
 
   return true
 }
