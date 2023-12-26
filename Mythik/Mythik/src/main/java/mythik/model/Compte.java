@@ -33,6 +33,7 @@ public abstract class Compte {
 	private Integer id;
 	protected String login; 
 	protected String password; 
+	protected String email; 
 	
 	
 	public Compte() {
@@ -43,20 +44,30 @@ public abstract class Compte {
 
 	
 
-	public Compte(Integer id, String login, String password) {
-		super();
+
+
+	public Compte(Integer id, String login, String password, String email) {
 		this.id = id;
 		this.login = login;
 		this.password = password;
-		
+		this.email = email;
 	}
 
 
 
-	public Compte(String login, String password) {
+
+
+
+
+	public Compte(String login, String password, String email) {
 		this.login = login;
 		this.password = password;
+		this.email = email;
 	}
+
+
+
+
 
 
 
@@ -86,6 +97,26 @@ public abstract class Compte {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+
+
+
+
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+
+
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 }

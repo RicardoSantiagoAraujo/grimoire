@@ -41,6 +41,7 @@ export class InscriptionComponent {
         login : this.loginCtrl.value,
         password : this.passwordCtrl.value,
         email : this.emailCtrl.value,
+        type : "humain"
       }
 
       this.compteService.save(newCompte).subscribe(resp => {

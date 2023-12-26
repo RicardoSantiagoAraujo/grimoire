@@ -19,6 +19,10 @@ import jakarta.persistence.Table;
 @JsonTypeName("joueur")
 public abstract class Joueur extends Compte{
 	
+<<<<<<< HEAD
+=======
+
+>>>>>>> bm
 	
 	@OneToMany(mappedBy="joueur")
 	protected List<Combattant> combattant;
@@ -30,11 +34,17 @@ public abstract class Joueur extends Compte{
 	}
 
 
-	public Joueur( List<Combattant> combattant) {
+
+
+<<<<<<< HEAD
+=======
+	
+	public Joueur (List<Combattant> combattant) {
 		super();
+		
 		this.combattant = combattant;
 	}
-
+>>>>>>> bm
 
 	public List<Combattant> getCombattant() {
 		return combattant;
@@ -44,4 +54,12 @@ public abstract class Joueur extends Compte{
 		this.combattant = combattant;
 	}
 
+<<<<<<< HEAD
+=======
+
+
+	
+	
+
+>>>>>>> bm
 }

@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Compte } from '../model';
 import { Observable } from 'rxjs';
 import { CompteService } from './compte.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-compte',
@@ -16,12 +17,12 @@ export class CompteComponent {
   emailCtrl!: FormControl;
   loginCtrl!: FormControl;
   passwordCtrl!: FormControl;
-  typeCompteCtrl!: FormControl;
+  typeCtrl!: FormControl;
 
   showForm: boolean = false;
   compte$!: Observable<Compte[]>;
 
-  constructor(private compteService: CompteService, private formBuilder: FormBuilder) {
+  constructor(private compteService: CompteService, private formBuilder: FormBuilder, private router: Router) {
     this.load();
   }
 
@@ -30,12 +31,20 @@ export class CompteComponent {
     this.emailCtrl = this.formBuilder.control('');
     this.loginCtrl = this.formBuilder.control('',Validators.required);
     this.passwordCtrl = this.formBuilder.control('');
+<<<<<<< HEAD
+=======
+    this.typeCtrl = this.formBuilder.control('');
+>>>>>>> bm
 
     this.compteForm = this.formBuilder.group( {
       id: this.idCtrl,
       email: this.emailCtrl,
       login: this.loginCtrl,
       password: this.passwordCtrl,
+<<<<<<< HEAD
+=======
+      type: this.typeCtrl
+>>>>>>> bm
     });
   }
 
@@ -65,6 +74,7 @@ export class CompteComponent {
       email: this.emailCtrl.value,
       login: this.loginCtrl.value,
       password: this.passwordCtrl.value,
+      type: this.typeCtrl.value
     }
     this.compteService.save(newcompte).subscribe(resp => {
       this.compteForm.patchValue(resp);
@@ -79,6 +89,10 @@ export class CompteComponent {
   cancel() {
     this.showForm = false;
     this.compteForm.reset();
+  }
+  retour(){
+    this.router.navigate(['/accueil']);
+
   }
 }
 
