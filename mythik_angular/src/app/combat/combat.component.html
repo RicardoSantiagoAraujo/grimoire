@@ -1,1 +1,17 @@
 <p>combat works!</p>
+
+<div>
+    <h1>Combat de Créatures</h1>
+    <p>{{ creature1.nom }} - Points de vie: {{ creature1.pv }}</p>
+    <p>{{ creature2.nom }} - Points de vie: {{ creature2.pv }}</p>
+  
+
+<button (click)="combattre(creature1, creature2, 'pierre')" >Pierre</button>
+<button (click)="combattre(creature1, creature2, 'feuille')" >Feuille</button>
+<button (click)="combattre(creature1, creature2, 'ciseaux')" >Ciseaux</button>
+
+    <div *ngIf="resultatCombat !== ''">
+      <h2>Résultat du combat :</h2>
+      <p>{{ resultatCombat }}</p>
+    </div>
+  </div>

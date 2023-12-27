@@ -43,3 +43,9 @@ export class Combattant {
 constructor(public id?: number, public gagnant?: boolean, public joueur?: Joueur, public creature?: Creature ){}
 
 }
+
+export class Combat {
+    constructor(public id?: number, public dateCombat? : Date, public heureCombat?: string, public combattants?: Combattant[]){}
+    
+    }
+    
