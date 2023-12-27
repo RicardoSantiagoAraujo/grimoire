@@ -19,6 +19,7 @@ import { HumainComponent } from './humain/humain.component';
 import { JoueurComponent } from './joueur/joueur.component';
 import { AdminComponent } from './admin/admin.component';
 import { CombatComponent } from './combat/combat.component';
+import { DieuPipe } from './dieu.pipe';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { CombatComponent } from './combat/combat.component';
     JoueurComponent,
     AdminComponent,
     CombatComponent,
+    DieuPipe,
   ],
   imports: [
     BrowserModule,
