@@ -3,6 +3,8 @@ import { CreatureService } from '../creature/creature.service';
 import { Combattant, Creature, IA } from '../model';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
+import { CombattantService } from './combattant.service';
 
 @Component({
   selector: 'app-selection-combat',
@@ -14,10 +16,10 @@ export class SelectionCombatComponent {
   creatures$!: Observable<Creature[]>;
   creatures?: Creature[]; 
   ia?: IA;
-  combattant1?: Combattant | undefined; 
-  combattant2?: Combattant | undefined; 
+  combattant1!: Combattant; 
+  combattant2!: Combattant; 
 
-  constructor(private creatureService: CreatureService, private router: Router){
+  constructor(private creatureService: CreatureService, private router: Router, private authService: AuthService, private combattantService: CombattantService){
     this.load(); 
   }
 
@@ -31,11 +33,13 @@ export class SelectionCombatComponent {
     return this.creatures$;
   }
 
-  // creationCombattant1(){
-  //     this.combattant1.joueur = 
+  creationCombattant1(creature : Creature){
+      this.combattant1.joueur = this.authService.getCompte();
+      this.combattant1.creature = creature;
+      this.combattantService.save(this.combattant1).subscribe(resp => {this.combattant1}); 
 
-  // }
-  
+  }
+
   // creationCombattant2(){
     
   //   let nb = Math.floor(Math.random() * (this.creatures!.length +1))
