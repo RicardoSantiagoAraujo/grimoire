@@ -19,9 +19,9 @@ public class Combattant {
 	private Integer id;
 	private boolean gagnant; 
 	
-	@JoinColumn(name="joueur")
+	@JoinColumn(name="compte")
 	@ManyToOne
-	private Joueur joueur;
+	private Compte compte;
 	
 
 	@ManyToOne
@@ -36,17 +36,17 @@ public class Combattant {
 	}
 	
 
-	public Combattant(Integer id, boolean gagnant, Joueur joueur, Creature creature, Combat combat) {
+	public Combattant(Integer id, boolean gagnant, Compte compte, Creature creature, Combat combat) {
 		this.id = id;
 		this.gagnant = gagnant;
-		this.joueur = joueur;
+		this.compte = compte;
 		this.creature = creature;
 		this.combat = combat;
 	}
 
-	public Combattant(boolean gagnant, Joueur joueur, Creature creature, Combat combat) {
+	public Combattant(boolean gagnant, Compte compte, Creature creature, Combat combat) {
 		this.gagnant = gagnant;
-		this.joueur = joueur;
+		this.compte = compte;
 		this.creature = creature;
 		this.combat = combat;
 	}
@@ -71,13 +71,17 @@ public class Combattant {
 		this.gagnant = gagnant;
 	}
 
-	public Joueur getJoueur() {
-		return joueur;
+	
+
+	public Compte getCompte() {
+		return compte;
 	}
 
-	public void setJoueur(Joueur joueur) {
-		this.joueur = joueur;
+
+	public void setCompte(Compte compte) {
+		this.compte = compte;
 	}
+
 
 	public Creature getCreature() {
 		return creature;

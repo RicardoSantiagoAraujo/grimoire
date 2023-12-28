@@ -11,19 +11,23 @@
 
 
 
-<!-- 
+
 <div>
 
     <div *ngIf="combattant1">
-        <p><img width="30px" height="30px" [src]="combattant1"/></p>
-        <p>{{combattant1.creature}}</p>
-        <p>{{combattant1.joueur}}</p>
+        <p><img width="30px" height="30px" [src]="combattant1.creature?.image"/></p>
+        <p>{{combattant1.creature?.nom}}</p>
+        <p>{{combattant1.compte?.login}}</p>
     </div>
      <div> <a (click)="goCombat() " class="btn btn-success btn-lg">Combat</a></div>
     <div *ngIf="combattant2">
-        <p><img width="30px" height="30px" [src]="combattant2.creatue.image"/></p>
-        <p>{{combattant2.creature.nom}}</p>
-        <p>{{combattant2.joueur.nom}}</p>
+        <p><img width="30px" height="30px" [src]="combattant2.creature?.image"/></p>
+        <p>{{combattant2.creature?.nom}}</p>
+        <p>{{combattant2.compte?.login}}</p>
     </div> 
 
-</div> -->
+</div> 
+
+<div *ngIf="ready">
+<app-combat [combattant1]="combattant1" [combattant2]="combattant2" ></app-combat>
+</div>

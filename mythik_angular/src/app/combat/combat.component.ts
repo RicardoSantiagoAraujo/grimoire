@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CombatService } from './combat.service';
 import { Combattant, Creature } from '../model';
 
@@ -13,7 +13,8 @@ export class CombatComponent implements OnInit{
   creature1!: Creature;
   creature2!: Creature;
   resultatCombat: string = '';
- 
+  @Input("combattant1") combattant1!: Combattant
+  @Input("combattant2") combattant2!: Combattant
   
 
   constructor(private combatService: CombatService) {}
