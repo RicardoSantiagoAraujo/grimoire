@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CombatService } from './combat.service';
-import { Combattant, Creature } from '../model';
+import { Combat, Combattant, Creature } from '../model';
+import { Router } from '@angular/router';
+import { CombattantService } from '../selection-combat/combattant.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-combat',
@@ -9,23 +12,44 @@ import { Combattant, Creature } from '../model';
 })
 export class CombatComponent implements OnInit{
   
+  combat$!: Observable<Combat[]>;
   combattants!: Combattant[];
   creature1!: Creature;
   creature2!: Creature;
-  resultatCombat: string = '';
-  @Input("combattant1") combattant1!: Combattant
-  @Input("combattant2") combattant2!: Combattant
+  resultatCombat!: string;
+  combatTermine = false;
+  result: number | null = null;
+  choixJoueur!: string;
+  choixOrdi!: string;
+
+  @Input("combattant1") combattant1!: Combattant; 
+  @Input("combattant2") combattant2!: Combattant; 
   
 
-  constructor(private combatService: CombatService) {}
+constructor(private combatService: CombatService, private combattantService: CombattantService, private router: Router) {}
 
   ngOnInit(): void {
-    this.combatService.getCombattants().subscribe((combattants) => {
-      this.creature1 = combattants[0].creature!;
-      this.creature2 = combattants[1].creature!;
-    });
+    this.creature1 = this.combattant1.creature!;
+    this.creature2 = this.combattant2.creature!;
   }
   
+  load() {
+    this.combat$ = this.combatService.findAll();
+  }
+
+  list() {
+    return this.combat$;
+  }
+
+  save() {
+    const currentDate = new Date();
+    const newcombat: Combat = {
+      dateCombat: currentDate,
+      heureCombat: currentDate,
+      combattants: [this.combattant1, this.combattant2],
+    }
+    this.combatService.save(newcombat).subscribe(resp => {})
+  }
 
   choixOrdinateur(): string {
     const choixPossibles = ['pierre', 'feuille', 'ciseaux'];
@@ -34,14 +58,14 @@ export class CombatComponent implements OnInit{
   }
 
   jeu(choixJoueur:string):Number{
-    const choixOrdinateur = this.choixOrdinateur();
+    this.choixOrdi = this.choixOrdinateur();
     
-    if (choixJoueur === choixOrdinateur) {
+    if (choixJoueur === this.choixOrdi) {
         return 0;
       } else if (
-        (choixJoueur === 'pierre' && choixOrdinateur === 'ciseaux') ||
-        (choixJoueur === 'feuille' && choixOrdinateur === 'pierre') ||
-        (choixJoueur === 'ciseaux' && choixOrdinateur === 'feuille')
+        (choixJoueur === 'pierre' && this.choixOrdi === 'ciseaux') ||
+        (choixJoueur === 'feuille' && this.choixOrdi === 'pierre') ||
+        (choixJoueur === 'ciseaux' && this.choixOrdi === 'feuille')
       ) {
         return 1;
       } else {
@@ -67,37 +91,32 @@ export class CombatComponent implements OnInit{
     return { degat1, degat2 };
 }
 
-combattre(creature1: Creature, creature2: Creature, choixJoueur: string): boolean {
+  combattre(choixJoueur: string) {
 
-    const degats = this.degats(creature1, creature2);
+    const result = this.jeu(this.choixJoueur);
 
+    if (result === 1) {
+      const degats = this.degats(this.creature1, this.creature2);
+      this.creature2.pv! -= degats.degat1!;
+    } 
+    
+    else if (result === 2) {
+      const degats = this.degats(this.creature2, this.creature1);
+      this.creature1.pv! -= degats.degat2!;
+    }
 
-    while (creature1.pv! > 0 && creature2.pv! > 0) {
-      const result = this.jeu(choixJoueur);
-      if (result == 1) {
-          creature2.pv! -= degats.degat1!;
-      }
-
-      if (result == 2) {
-          creature1.pv! -= degats.degat2!;
-      }
-
-      if (creature2.pv! <= 0) {
-          return this.combattants[0].gagnant = true;
-      }
-
-      if (creature1.pv! <= 0) {
-        return this.combattants[1].gagnant = true;
-      }
+    if (this.creature2.pv! <= 0 || this.creature1.pv! <= 0) {
+      this.resultatCombat = this.creature2.pv! <= 0 ? this.creature1.nom! : this.creature2.nom!;
+      this.combattant1.gagnant = this.creature2.pv! <= 0;
+      this.combattant2.gagnant = this.creature1.pv! <= 0;
+      this.save();
+      this.combatTermine = true;
+   }
   }
 
-  return this.combattants[0].gagnant = false, this.combattants[1].gagnant = true;
-  
+  mancheSuivante() {
+    this.result = null;
+    this.choixJoueur = '';
+    this.choixOrdi = '';
+  }
 }
-}
-
-
-  
-  
-
-

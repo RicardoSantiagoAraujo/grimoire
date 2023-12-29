@@ -32,7 +32,6 @@ import { DieuPipe } from './dieu.pipe';
     GrimoireComponent,
     ConnexionComponent,
     SelectionCombatComponent,
-
     CombatComponent,
     DieuPipe,
   ],
