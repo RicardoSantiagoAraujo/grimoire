@@ -11,11 +11,10 @@
                 <button (click)="combattre('pierre')">Pierre</button>
                 <button (click)="combattre('feuille')">Feuille</button>
                 <button (click)="combattre('ciseaux')">Ciseaux</button>
+                <p>L'ordinateur a choisi: {{ choixOrdi }}</p>
             </div>
                 
             <div *ngIf="result">
-                <p>L'ordinateur a choisi: {{ choixOrdi }}</p>
-                
 
                 <p *ngIf="result === 0">Match nul !</p>
                 <p *ngIf="result === 1">{{ creature1.nom }} gagne la manche !</p>
@@ -29,7 +28,7 @@
         <div *ngIf="combatTermine">
         <h2>Résultat du combat</h2>
         <p>{{ resultatCombat }} remporte le combat !</p>
-        <p *ngIf="combattant1.gagnant">Gagnant: {{ creature1.nom }}</p>
+        <p *ngIf="combattant1.gagnant">Gagnant: {{ combattant1.compte!.login}}</p>
         <p *ngIf="combattant2.gagnant">Gagnant: {{ creature2.nom }}</p>
 
         <button (click)="nouvellePartie()">Nouvelle Partie</button>

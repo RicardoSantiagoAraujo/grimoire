@@ -59,10 +59,13 @@ constructor(private combatService: CombatService, private combattantService: Com
 
   jeu(choixJoueur:string):Number{
     this.choixOrdi = this.choixOrdinateur();
+    console.log(this.choixOrdi);
     
     if (choixJoueur === this.choixOrdi) {
         return 0;
-      } else if (
+      } 
+      
+    else if (
         (choixJoueur === 'pierre' && this.choixOrdi === 'ciseaux') ||
         (choixJoueur === 'feuille' && this.choixOrdi === 'pierre') ||
         (choixJoueur === 'ciseaux' && this.choixOrdi === 'feuille')
@@ -93,25 +96,33 @@ constructor(private combatService: CombatService, private combattantService: Com
 
   combattre(choixJoueur: string) {
 
-    const result = this.jeu(this.choixJoueur);
+    const result = this.jeu(choixJoueur);
 
     if (result === 1) {
       const degats = this.degats(this.creature1, this.creature2);
       this.creature2.pv! -= degats.degat1!;
     } 
     
-    else if (result === 2) {
+    if (result === 2) {
       const degats = this.degats(this.creature2, this.creature1);
       this.creature1.pv! -= degats.degat2!;
     }
 
-    if (this.creature2.pv! <= 0 || this.creature1.pv! <= 0) {
-      this.resultatCombat = this.creature2.pv! <= 0 ? this.creature1.nom! : this.creature2.nom!;
+    if (this.creature2.pv! <= 0) {
+      this.resultatCombat = this.creature1.nom!;
       this.save();
-      this.combattant1.gagnant = this.creature2.pv! <= 0;
-      this.combattant2.gagnant = this.creature1.pv! <= 0;
+      this.combattant1.gagnant = true;
+      this.combattant2.gagnant = false;
       this.combatTermine = true;
    }
+
+   if (this.creature1.pv! <= 0) {
+    this.resultatCombat = this.creature2.nom!;
+    this.combattant1.gagnant = false; 
+    this.combattant2.gagnant = true;
+    this.save(); 
+    this.combatTermine = true;
+    }
   }
 
   mancheSuivante() {
@@ -121,7 +132,7 @@ constructor(private combatService: CombatService, private combattantService: Com
   }
 
   nouvellePartie() {
-    this.router.navigate(['/selection-combat']);
+    window.location.reload();
   }
 
   statistiques() {
@@ -129,6 +140,6 @@ constructor(private combatService: CombatService, private combattantService: Com
   }
 
   retour() {
-    this.router.navigate(['/Acceuil']);
+    this.router.navigate(['/accueil']);
   }
 }
