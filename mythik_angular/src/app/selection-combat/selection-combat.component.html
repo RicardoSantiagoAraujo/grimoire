@@ -1,3 +1,5 @@
+
+<div *ngIf="creationCombattant">
 <h1 style="text-align: center;">selection Creatures</h1>
 
 
@@ -5,28 +7,32 @@
 <div class="selectionCrea">
     <div  *ngFor="let c of list() | async">
         <p (click)="creationCombattant1(c)">{{c.nom}}</p>
-        <p (click)="creationCombattant1(c)"><img width="30px" height="30px" [src]="c.image"/></p>
+        <p (click)="creationCombattant1(c)"><img width="100px"  [src]="c.image"/></p>
     </div>
 </div>
 
 
 
 
-<div>
+<div class="creationCombattant">
 
     <div *ngIf="combattant1">
-        <p><img width="30px" height="30px" [src]="combattant1.creature?.image"/></p>
+        <p><img width="300px"  [src]="combattant1.creature?.image"/></p>
         <p>{{combattant1.creature?.nom}}</p>
         <p>{{combattant1.compte?.login}}</p>
     </div>
-     <div> <a (click)="goCombat() " class="btn btn-success btn-lg">Combat</a></div>
+     <div> <a (click)="goCombat() " class="btn btn-success btn-lg">Combat</a><br/>
+      <a (click)="creationCombattant2() " class="btn btn-warning btn-lg">generer un adversaire</a></div>
     <div *ngIf="combattant2">
-        <p><img width="30px" height="30px" [src]="combattant2.creature?.image"/></p>
+        <p><img width="300px"  [src]="combattant2.creature?.image"/></p>
         <p>{{combattant2.creature?.nom}}</p>
         <p>{{combattant2.compte?.login}}</p>
     </div> 
 
 </div> 
+
+
+</div>
 
 <div *ngIf="ready">
 <app-combat [combattant1]="combattant1" [combattant2]="combattant2" ></app-combat>

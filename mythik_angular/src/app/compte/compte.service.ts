@@ -17,6 +17,9 @@ export class CompteService {
     findAll(): Observable<Compte[]> {
       return this.http.get<Compte[]>(environment.apiUrl + "/compte");
     }
+    findIA(): Observable<Compte> {
+      return this.http.get<Compte>(environment.apiUrl + "/compte/IA");
+    }
   
     findById(id?: number): Observable<Compte> {
       return this.http.get<Compte>(environment.apiUrl + "/compte/"+id);

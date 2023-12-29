@@ -14,10 +14,7 @@ import { AuthInterceptor } from './auth.interceptor';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SelectionCombatComponent } from './selection-combat/selection-combat.component';
-import { IAComponent } from './ia/ia.component';
-import { HumainComponent } from './humain/humain.component';
-import { JoueurComponent } from './joueur/joueur.component';
-import { AdminComponent } from './admin/admin.component';
+
 import { CombatComponent } from './combat/combat.component';
 import { DieuPipe } from './dieu.pipe';
 import { StatistiqueComponent } from './statistique/statistique.component';
