@@ -20,6 +20,7 @@ import { JoueurComponent } from './joueur/joueur.component';
 import { AdminComponent } from './admin/admin.component';
 import { CombatComponent } from './combat/combat.component';
 import { DieuPipe } from './dieu.pipe';
+import { StatistiqueComponent } from './statistique/statistique.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { DieuPipe } from './dieu.pipe';
     SelectionCombatComponent,
     CombatComponent,
     DieuPipe,
+    StatistiqueComponent,
   ],
   imports: [
     BrowserModule,

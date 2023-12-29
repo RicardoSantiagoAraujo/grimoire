@@ -1,33 +1,40 @@
 <div>
     <h1>Combat de Créatures</h1>
     
-    <div *ngIf="!combatTermine">
+    <div>
+        <p>{{ creature1.nom }} - Points de vie: {{ creature1.pv }}</p>
+        <p>{{ creature2.nom }} - Points de vie: {{ creature2.pv }}</p>
+    
+        <div *ngIf="!combatTermine">
         
-            <p>{{ creature1.nom }} - Points de vie: {{ creature1.pv }}</p>
-            <p>{{ creature2.nom }} - Points de vie: {{ creature2.pv }}</p>
+            <div *ngIf="!result">
+                <button (click)="combattre('pierre')">Pierre</button>
+                <button (click)="combattre('feuille')">Feuille</button>
+                <button (click)="combattre('ciseaux')">Ciseaux</button>
+            </div>
+                
+            <div *ngIf="result">
+                <p>L'ordinateur a choisi: {{ choixOrdi }}</p>
+                
+
+                <p *ngIf="result === 0">Match nul !</p>
+                <p *ngIf="result === 1">{{ creature1.nom }} gagne la manche !</p>
+                <p *ngIf="result === 2">{{ creature2.nom }} gagne la manche !</p>
+
+                <button (click)="mancheSuivante()">Manche suivante</button>
+            </div>
         
-        <div *ngIf="!result">
-            <button (click)="combattre('pierre')">Pierre</button>
-            <button (click)="combattre('feuille')">Feuille</button>
-            <button (click)="combattre('ciseaux')">Ciseaux</button>
         </div>
-            
-        <div *ngIf="result">
-            <p>L'ordinateur a choisi: {{ choixOrdi }}</p>
-            
+    
+        <div *ngIf="combatTermine">
+        <h2>Résultat du combat</h2>
+        <p>{{ resultatCombat }} remporte le combat !</p>
+        <p *ngIf="combattant1.gagnant">Gagnant: {{ creature1.nom }}</p>
+        <p *ngIf="combattant2.gagnant">Gagnant: {{ creature2.nom }}</p>
 
-            <p *ngIf="result === 0">Match nul !</p>
-            <p *ngIf="result === 1">{{ creature1.nom }} gagne la manche !</p>
-            <p *ngIf="result === 2">{{ creature2.nom }} gagne la manche !</p>
-
+        <button (click)="nouvellePartie()">Nouvelle Partie</button>
+        <button (click)="statistiques()">Récapitulatif des combats</button>
+        <button (click)="retour()">Acceuil</button>
         </div>
-      <button (click)="mancheSuivante()">Manche suivante</button>
-    </div>
-  
-    <div *ngIf="combatTermine">
-      <h2>Résultat du combat</h2>
-      <p>{{ resultatCombat }} remporte le combat !</p>
-      <p *ngIf="combattant1.gagnant">Gagnant: {{ creature1.nom }}</p>
-      <p *ngIf="combattant2.gagnant">Gagnant: {{ creature2.nom }}</p>
     </div>
 </div>

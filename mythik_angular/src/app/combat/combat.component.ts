@@ -107,9 +107,9 @@ constructor(private combatService: CombatService, private combattantService: Com
 
     if (this.creature2.pv! <= 0 || this.creature1.pv! <= 0) {
       this.resultatCombat = this.creature2.pv! <= 0 ? this.creature1.nom! : this.creature2.nom!;
+      this.save();
       this.combattant1.gagnant = this.creature2.pv! <= 0;
       this.combattant2.gagnant = this.creature1.pv! <= 0;
-      this.save();
       this.combatTermine = true;
    }
   }
@@ -118,5 +118,17 @@ constructor(private combatService: CombatService, private combattantService: Com
     this.result = null;
     this.choixJoueur = '';
     this.choixOrdi = '';
+  }
+
+  nouvellePartie() {
+    this.router.navigate(['/selection-combat']);
+  }
+
+  statistiques() {
+    this.router.navigate(['/statistique']);
+  }
+
+  retour() {
+    this.router.navigate(['/Acceuil']);
   }
 }
