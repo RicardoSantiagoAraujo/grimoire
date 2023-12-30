@@ -32,7 +32,6 @@ public class CompteController {
 	IDAOCompte daoCompte; 
 
 	@GetMapping("/{id}")
-	@CrossOrigin("*")
 	public Compte findById(@PathVariable Integer id) 
 	{
 		Optional<Compte> opt = daoCompte.findById(id);
@@ -48,6 +47,14 @@ public class CompteController {
 	{
 		return daoCompte.findAll();
 	}
+	
+	@GetMapping("/IA")
+	public IA findIa() 
+	{
+		return daoCompte.findIa();
+	}
+	
+	
 	@PostMapping("/connexion")
 	public Compte connexion(@RequestBody ConnexionRequest connexionRequest) {
 		Optional<Compte> opt = daoCompte.findByLoginAndPassword(connexionRequest.getLogin(),

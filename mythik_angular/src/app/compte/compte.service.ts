@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
-import { Admin, Compte } from "../model";
+
 import { Observable } from "rxjs";
 import { environment } from "../../environnements/environment";
 import { HttpClient } from "@angular/common/http";
+import { Compte } from "../model";
 
 
 
@@ -15,6 +16,9 @@ export class CompteService {
 
     findAll(): Observable<Compte[]> {
       return this.http.get<Compte[]>(environment.apiUrl + "/compte");
+    }
+    findIA(): Observable<Compte> {
+      return this.http.get<Compte>(environment.apiUrl + "/compte/IA");
     }
   
     findById(id?: number): Observable<Compte> {

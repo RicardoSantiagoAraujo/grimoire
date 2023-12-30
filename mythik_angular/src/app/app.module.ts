@@ -14,15 +14,8 @@ import { AuthInterceptor } from './auth.interceptor';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SelectionCombatComponent } from './selection-combat/selection-combat.component';
-import { IAComponent } from './ia/ia.component';
-import { HumainComponent } from './humain/humain.component';
-import { JoueurComponent } from './joueur/joueur.component';
-import { AdminComponent } from './admin/admin.component';
+
 import { CombatComponent } from './combat/combat.component';
-import { DesktopComponent } from './desktop/desktop.component';
-import { FlipBookModule } from '@labsforge/flipbook';
-import { CreaturePageBComponent } from './creature-page-b/creature-page-b.component';
-import { CreaturePageAComponent } from './creature-page-a/creature-page-a.component';
 
 @NgModule({
   declarations: [
@@ -35,14 +28,12 @@ import { CreaturePageAComponent } from './creature-page-a/creature-page-a.compon
     GrimoireComponent,
     ConnexionComponent,
     SelectionCombatComponent,
-    IAComponent,
-    HumainComponent,
-    JoueurComponent,
-    AdminComponent,
     CombatComponent,
     DesktopComponent,
     CreaturePageBComponent,
     CreaturePageAComponent,
+    DieuPipe,
+    StatistiqueComponent,
   ],
   imports: [
     BrowserModule,
