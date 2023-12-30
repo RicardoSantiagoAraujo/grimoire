@@ -29,8 +29,7 @@ const routes: Routes = [{path: "menu", component: MenuComponent},
   {path: "accueil", component: AccueilComponent},
   {path: "menu", component: MenuComponent},
   {path: "grimoire", component: GrimoireComponent},
-  {path: "selection-combat", component: SelectionCombatComponent},
-  {path: "combat", component: CombatComponent},
+  {path: "combat", component: SelectionCombatComponent},
   {path: "", pathMatch: "full", redirectTo: "menu"}];
 
 @NgModule({
