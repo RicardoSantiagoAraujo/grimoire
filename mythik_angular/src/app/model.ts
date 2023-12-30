@@ -40,12 +40,12 @@ export class Creature {
 }
 
 export class Combattant {
-constructor(public id?: number, public gagnant?: boolean, public compte?: Compte, public creature?: Creature ){}
+constructor(public id?: number, public gagnant?: boolean, public compte?: Compte, public creature?: Creature, public combat?: Combat ){}
 
 }
 
 export class Combat {
-    constructor(public id?: number, public dateCombat? : Date, public heureCombat?: Date, public combattants?: Combattant[]){}
+    constructor(public id?: number, public dateCombat? : string, public heureCombat?: string, public combattants?: Combattant[]){}
     
     }
     

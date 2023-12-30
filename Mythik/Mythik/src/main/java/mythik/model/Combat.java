@@ -45,10 +45,9 @@ public class Combat {
 		this.combattants = combattants;
 	}
 
-	public Combat(LocalDate dateCombat, LocalTime heureCombat, List<Combattant> combattants) {
+	public Combat(LocalDate dateCombat, LocalTime heureCombat) {
 		this.dateCombat = dateCombat;
 		this.heureCombat = heureCombat;
-		this.combattants = combattants;
 	}
 
 	

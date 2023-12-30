@@ -4,6 +4,7 @@ import { Combat, Combattant, Creature } from '../model';
 import { Router } from '@angular/router';
 import { CombattantService } from '../selection-combat/combattant.service';
 import { Observable } from 'rxjs';
+import { format } from 'date-fns';
 
 @Component({
   selector: 'app-combat',
@@ -12,6 +13,7 @@ import { Observable } from 'rxjs';
 })
 export class CombatComponent implements OnInit{
   
+  id! : number;
   combat$!: Observable<Combat[]>;
   combattants!: Combattant[];
   creature1!: Creature;
@@ -42,14 +44,25 @@ constructor(private combatService: CombatService, private combattantService: Com
   }
 
   save() {
-    const currentDate = new Date();
-    const newcombat: Combat = {
-      dateCombat: currentDate,
-      heureCombat: currentDate,
-      combattants: [this.combattant1, this.combattant2],
-    }
-    this.combatService.save(newcombat).subscribe(resp => {})
-  }
+  const currentDate = new Date();
+  const formattedDate = format(currentDate, 'yyyy-MM-dd'); // Format ISO 8601
+  const formattedTime = format(currentDate, 'HH:mm:ss'); // Format 24 heures
+  
+  const combat: Combat = {
+    dateCombat: formattedDate,
+    heureCombat: formattedTime,
+    combattants: [this.combattant1, this.combattant2]
+  };
+
+  this.combattant1.combat = combat;
+  this.combattant2.combat = combat;
+
+  console.log(this.combattant1)
+
+  this.combattantService.save(this.combattant1).subscribe(resp =>{});
+  this.combattantService.save(this.combattant2).subscribe(resp =>{});
+}
+    
 
   choixOrdinateur(): string {
     const choixPossibles = ['pierre', 'feuille', 'ciseaux'];
@@ -110,19 +123,26 @@ constructor(private combatService: CombatService, private combattantService: Com
 
     if (this.creature2.pv! <= 0) {
       this.resultatCombat = this.creature1.nom!;
-      this.save();
+      
       this.combattant1.gagnant = true;
       this.combattant2.gagnant = false;
+
+
+      this.save();
       this.combatTermine = true;
    }
 
    if (this.creature1.pv! <= 0) {
     this.resultatCombat = this.creature2.nom!;
+
     this.combattant1.gagnant = false; 
     this.combattant2.gagnant = true;
+
+    
     this.save(); 
     this.combatTermine = true;
     }
+
   }
 
   mancheSuivante() {

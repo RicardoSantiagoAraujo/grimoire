@@ -65,7 +65,6 @@ export class SelectionCombatComponent {
     
     this.ready = true; 
     this.creationCombattant = false; 
-    this.router.navigate(['/Combat']);
 
   }
 
