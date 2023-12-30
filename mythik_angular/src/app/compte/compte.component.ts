@@ -31,20 +31,14 @@ export class CompteComponent {
     this.emailCtrl = this.formBuilder.control('');
     this.loginCtrl = this.formBuilder.control('',Validators.required);
     this.passwordCtrl = this.formBuilder.control('');
-<<<<<<< HEAD
-=======
     this.typeCtrl = this.formBuilder.control('');
->>>>>>> bm
 
     this.compteForm = this.formBuilder.group( {
       id: this.idCtrl,
       email: this.emailCtrl,
       login: this.loginCtrl,
       password: this.passwordCtrl,
-<<<<<<< HEAD
-=======
       type: this.typeCtrl
->>>>>>> bm
     });
   }
 

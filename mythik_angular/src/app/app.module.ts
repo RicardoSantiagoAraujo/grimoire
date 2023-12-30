@@ -16,6 +16,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SelectionCombatComponent } from './selection-combat/selection-combat.component';
 
 import { CombatComponent } from './combat/combat.component';
+import { DieuPipe } from './dieu.pipe';
+import { CreaturePageAComponent } from './creature-page-a/creature-page-a.component';
+import { CreaturePageBComponent } from './creature-page-b/creature-page-b.component';
+import { DesktopComponent } from './desktop/desktop.component';
+import { StatistiqueComponent } from './statistique/statistique.component';
+import { FlipBookModule } from '@labsforge/flipbook'
 
 @NgModule({
   declarations: [
