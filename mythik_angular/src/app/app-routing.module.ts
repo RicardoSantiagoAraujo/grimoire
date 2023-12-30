@@ -16,6 +16,7 @@ import { JoueurComponent } from './joueur/joueur.component';
 import { CombatComponent } from './combat/combat.component';
 import { DesktopComponent } from './desktop/desktop.component';
 import { StatistiqueComponent } from './statistique/statistique.component';
+import { CreaturePageAComponent } from './creature-page-a/creature-page-a.component';
 
 const routes: Routes = [{path: "menu", component: MenuComponent},
   {path: "compte", component: CompteComponent,},
@@ -30,6 +31,7 @@ const routes: Routes = [{path: "menu", component: MenuComponent},
   {path: "menu", component: MenuComponent},
   {path: "grimoire", component: GrimoireComponent},
   {path: "combat", component: SelectionCombatComponent},
+  {path: "creaturea", component: CreaturePageAComponent},
   {path: "", pathMatch: "full", redirectTo: "menu"}];
 
 @NgModule({

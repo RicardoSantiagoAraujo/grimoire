@@ -1,5 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Book, PageType } from '@labsforge/flipbook';
+import { CreatureService } from '../creature/creature.service';
+import { Creature } from '../model';
 
 @Component({
   selector: 'app-grimoire',
@@ -8,6 +10,10 @@ import { Book, PageType } from '@labsforge/flipbook';
   encapsulation: ViewEncapsulation.None, // Use None to disable encapsulation and be able to style generated elements
 })
 export class GrimoireComponent {
+creatures?: Creature[];
+  constructor(private creatureService: CreatureService){
+this.creatureService.findAll().subscribe(resp => {this.creatures = resp})
+  }
   book: Book = {
       width: 900*1.2,
       height: 600*1.2,
@@ -174,9 +180,24 @@ setTimeout(()=>{
       // console.log(stain.style.background);
 
       // ADD MOCK CONTENTS
-      if (i > 2 && i < pages.length-3){ // skip transparent sheets (first and last pages)
-      let rnd = Math.floor(Math.random() * lorem_array.length) // generate random number
-      let lorem = lorem_array[rnd]; // random text
+      if (i > 2 && i < pages.length-3){
+    
+        // let nouveauContenu = "<div><p>{{creatures[i]}}</p><img [src]='creatures[i].image'/></div>";
+        // pages[i].innerHTML = nouveauContenu;
+
+        // let iframe = document.createElement("iframe");
+        // iframe.src = "creature-page-a/creature-page-a.component.html";
+        // iframe.style.width = "100%";
+        // iframe.style.height = "100%";
+        
+        // //pages[i].innerHTML = ""; // Efface le contenu existant
+        // pages[i].appendChild(iframe);
+
+
+
+        // skip transparent sheets (first and last pages)
+       let rnd = Math.floor(Math.random() * lorem_array.length) // generate random number
+       let lorem = lorem_array[rnd]; // random text
       lorem_array.splice(rnd, 1); // remove from array
       pages[i+p].innerHTML= "<div class='mocktext " + "side" + p +  "'>" + lorem + "</div>";
       }

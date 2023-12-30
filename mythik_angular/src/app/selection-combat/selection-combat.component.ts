@@ -53,7 +53,7 @@ export class SelectionCombatComponent {
 
   creationCombattant2(){
     
-    let nb = Math.floor(Math.random() * (this.creatures!.length +1))
+    let nb = Math.floor(Math.random() * (this.creatures!.length))
     this.combattant2!.creature = this.creatures![nb];
     this.combattant2!.compte = this.Ia; 
     console.log(this.Ia);
