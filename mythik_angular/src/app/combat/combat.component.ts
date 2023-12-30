@@ -43,7 +43,7 @@ constructor(private combatService: CombatService, private combattantService: Com
     return this.combat$;
   }
 
-  save() {
+  saveCombat() {
   const currentDate = new Date();
   const formattedDate = format(currentDate, 'yyyy-MM-dd'); // Format ISO 8601
   const formattedTime = format(currentDate, 'HH:mm:ss'); // Format 24 heures
@@ -54,13 +54,28 @@ constructor(private combatService: CombatService, private combattantService: Com
     combattants: [this.combattant1, this.combattant2]
   };
 
-  this.combattant1.combat = combat;
-  this.combattant2.combat = combat;
+  // Enregistrement du combat avec les combattants
+  this.combatService.save(combat).subscribe(
+    (combatSaved) => {
+      console.log('Combat enregistré avec succès !');
+      this.combattant1.combat = combatSaved;
+      this.combattant2.combat = combatSaved;
 
-  console.log(this.combattant1)
+      // Enregistrement des combattants
+      this.combattantService.save(this.combattant1).subscribe(
+        (combattant1Saved) => {
+          console.log('Combattant 1 enregistré avec succès !');
 
-  this.combattantService.save(this.combattant1).subscribe(resp =>{});
-  this.combattantService.save(this.combattant2).subscribe(resp =>{});
+          // Enregistrement du deuxième combattant
+          this.combattantService.save(this.combattant2).subscribe(
+            (combattant2Saved) => {
+              console.log('Combattant 2 enregistré avec succès !');
+            },
+          );
+        },
+      );
+    }
+  );
 }
     
 
@@ -127,8 +142,8 @@ constructor(private combatService: CombatService, private combattantService: Com
       this.combattant1.gagnant = true;
       this.combattant2.gagnant = false;
 
+      this.saveCombat();
 
-      this.save();
       this.combatTermine = true;
    }
 
@@ -137,9 +152,7 @@ constructor(private combatService: CombatService, private combattantService: Com
 
     this.combattant1.gagnant = false; 
     this.combattant2.gagnant = true;
-
-    
-    this.save(); 
+    this.saveCombat();
     this.combatTermine = true;
     }
 

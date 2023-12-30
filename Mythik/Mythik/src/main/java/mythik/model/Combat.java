@@ -45,7 +45,8 @@ public class Combat {
 		this.combattants = combattants;
 	}
 
-	public Combat(LocalDate dateCombat, LocalTime heureCombat) {
+	public Combat(Integer id, LocalDate dateCombat, LocalTime heureCombat) {
+		this.id = id;
 		this.dateCombat = dateCombat;
 		this.heureCombat = heureCombat;
 	}
