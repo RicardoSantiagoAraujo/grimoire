@@ -29,7 +29,7 @@ const routes: Routes = [{path: "menu", component: MenuComponent},
   {path: "creature", component: CreatureComponent},
   {path: "accueil", component: AccueilComponent},
   {path: "menu", component: MenuComponent},
-  {path: "grimoire", component: GrimoireComponent},
+  {path: "grimoire", component: DesktopComponent},
   {path: "combat", component: SelectionCombatComponent},
   {path: "creaturea", component: CreaturePageAComponent},
   {path: "", pathMatch: "full", redirectTo: "menu"}];

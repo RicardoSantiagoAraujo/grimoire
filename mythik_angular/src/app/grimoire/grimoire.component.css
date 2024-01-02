@@ -214,4 +214,64 @@ flipbook-page .page {
   background-color: rgba(60, 255, 0, 0.37);
   width: 45%;
   height: 90%;
+}
+
+#firstPage {
+  margin: auto;
+  margin-top: 7.5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scaleX(-1);
+  padding-top: 100px;
+  flex-direction: column;
+  color: rgba(41, 0, 0, 0.689);
+  font-family: "Lugrasimo";
+  height: 100%;
+  width: 90%;
+  background-image: url("../../assets/flipbook-textures/page_decoration1.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+#firstPage h1 {
+  color: rgba(194, 0, 0, 0.689);
+  font-family: "bronzion";
+  font-size: 100;
+}
+#firstPage h2 {
+  font-size: x-large;
+  padding-bottom: 50px;
+}
+#firstPage p {
+  width: 50%;
+  text-align: center;
+  padding-bottom: 100px;
+}
+#firstPage img {
+  width: 20%;
+  opacity: 0.3;
+}
+
+#lastPage {
+  margin: auto;
+  margin-top: 7.5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0px;
+  flex-direction: column;
+  color: rgba(41, 0, 0, 0.689);
+  font-family: "Lugrasimo";
+  height: 100%;
+  width: 90%;
+  background-image: url("../../assets/flipbook-textures/page_decoration2.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+#lastPage img {
+  width: 80%;
+  opacity: 0.9;
+  filter: sepia(1);
 }/*# sourceMappingURL=grimoire.component.css.map */

@@ -49,6 +49,30 @@ this.creatureService.findAll().subscribe(resp => {this.creatures = resp})
         ////////////////////////////////////////////////////////////
         // START OF CONTENTS
         ///////////////////////////////////////////////////////////
+        ///// COVER PAGE ==========================
+        {//SIDE A
+          imageUrl: '../../assets/flipbook-textures/old-paper-texture1.png',
+        },
+        {//SIDE B
+          imageUrl: '../../assets/flipbook-textures/old-paper-texture1.png',
+        },
+        ///// CREATURE PAGES ==========================
+        //////////
+        {//SIDE A
+          imageUrl: '../../assets/flipbook-textures/old-paper-texture2.png',
+        },
+        {//SIDE B CREATURE PAGE (first)
+          imageUrl: '../../assets/flipbook-textures/old-paper-texture2.png',
+          backgroundColor: "rgba(0,0,0,0)" // /!\ NE CHANGER SAUF SI STRICTMENT NECESSAIRE
+        },
+        {//SIDE A CREATURE PAGE (second)
+          imageUrl: '../../assets/flipbook-textures/old-paper-texture2.png',
+          backgroundColor: "rgba(0,0,0,0)" // /!\ NE CHANGER SAUF SI STRICTMENT NECESSAIRE
+        },
+        {//SIDE B
+          imageUrl: '../../assets/flipbook-textures/old-paper-texture2.png',
+        },
+        ///// FILLER PAGES ==========================
         {//SIDE A
           imageUrl: '../../assets/flipbook-textures/old-paper-texture1.png',
         },
@@ -69,27 +93,7 @@ this.creatureService.findAll().subscribe(resp => {this.creatures = resp})
         {//SIDE B
           imageUrl: '../../assets/flipbook-textures/old-paper-texture3.png',
         },
-                {//SIDE A
-                  imageUrl: '../../assets/flipbook-textures/old-paper-texture1.png',
-                },
-                {//SIDE B
-                  imageUrl: '../../assets/flipbook-textures/old-paper-texture1.png',
-                },
-                /////
-                {//SIDE A
-                  imageUrl: '../../assets/flipbook-textures/old-paper-texture2.png',
-                },
-                {//SIDE B
-                  imageUrl: '../../assets/flipbook-textures/old-paper-texture2.png',
-                },
-                /////
-                {//SIDE A
-                  imageUrl: '../../assets/flipbook-textures/old-paper-texture3.png',
-                },
-                {//SIDE B
-                  imageUrl: '../../assets/flipbook-textures/old-paper-texture3.png',
-                },
-                        {//SIDE A
+        {//SIDE A
           imageUrl: '../../assets/flipbook-textures/old-paper-texture1.png',
         },
         {//SIDE B
@@ -102,33 +106,6 @@ this.creatureService.findAll().subscribe(resp => {this.creatures = resp})
         {//SIDE B
           imageUrl: '../../assets/flipbook-textures/old-paper-texture2.png',
         },
-        /////
-        {//SIDE A
-          imageUrl: '../../assets/flipbook-textures/old-paper-texture3.png',
-        },
-        {//SIDE B
-          imageUrl: '../../assets/flipbook-textures/old-paper-texture3.png',
-        },
-                {//SIDE A
-                  imageUrl: '../../assets/flipbook-textures/old-paper-texture1.png',
-                },
-                {//SIDE B
-                  imageUrl: '../../assets/flipbook-textures/old-paper-texture1.png',
-                },
-                /////
-                {//SIDE A
-                  imageUrl: '../../assets/flipbook-textures/old-paper-texture2.png',
-                },
-                {//SIDE B
-                  imageUrl: '../../assets/flipbook-textures/old-paper-texture2.png',
-                },
-                /////
-                {//SIDE A
-                  imageUrl: '../../assets/flipbook-textures/old-paper-texture3.png',
-                },
-                {//SIDE B
-                  imageUrl: '../../assets/flipbook-textures/old-paper-texture3.png',
-                },
         /////
         ////////////////////////////////////////////////////////////
         // END OF CONTENTS
@@ -157,9 +134,12 @@ this.creatureService.findAll().subscribe(resp => {this.creatures = resp})
 }
 
 
+
 //// ADDITIONAL CODE TO MANIPULATE DOM
 setTimeout(()=>{
+  // ALL PAGES EXCEPT COVERS
   let pages = document.querySelectorAll<HTMLElement>("flipbook-page .page:not(.cover)") ;
+  let sheets = document.querySelectorAll<HTMLElement>("flipbook-page") ;
   for (let i = 1; i < pages.length-1; i=i+2){
     // console.log(i);
     let randomizer= 20
@@ -181,7 +161,7 @@ setTimeout(()=>{
 
       // ADD MOCK CONTENTS
       if (i > 2 && i < pages.length-3){
-    
+
         // let nouveauContenu = "<div><p>{{creatures[i]}}</p><img [src]='creatures[i].image'/></div>";
         // pages[i].innerHTML = nouveauContenu;
 
@@ -189,11 +169,9 @@ setTimeout(()=>{
         // iframe.src = "creature-page-a/creature-page-a.component.html";
         // iframe.style.width = "100%";
         // iframe.style.height = "100%";
-        
+
         // //pages[i].innerHTML = ""; // Efface le contenu existant
         // pages[i].appendChild(iframe);
-
-
 
         // skip transparent sheets (first and last pages)
        let rnd = Math.floor(Math.random() * lorem_array.length) // generate random number
@@ -203,8 +181,47 @@ setTimeout(()=>{
       }
     }
   }
-}, 0 )
 
+  // ADD CLASS TO SPECIFIC PAGES TO SIMPLIFY CSS SELECTION
+  const bookStart = sheets.length - 3 // actually corresponds to last page in DOM, excluding covers/transparent sheet
+  // COVER PAGE
+  const cover = sheets[sheets.length-1];
+  cover.classList.add("bookCover");
+  console.log(cover.getAttribute("ng-reflect-rotation"))
+  // trigger event on cover rotation
+  cover.addEventListener("mousemove", ()=>{
+    console.log(cover.getAttribute("ng-reflect-rotation"))
+    let coverRotation:any = cover.getAttribute("ng-reflect-rotation");
+    if (parseInt(coverRotation) < 0){
+      console.log(document.querySelector<HTMLElement>("#firewall")!);
+      document.querySelector<HTMLElement>("#firewall")!.style.visibility = "visible";
+    };
+  })
+
+  // FIRST PAGE
+  const firstPage = sheets[bookStart];
+  const firstPageFront = firstPage.querySelector<HTMLElement>(".page")!;
+  firstPageFront.classList.add("first-page");
+  firstPageFront.innerHTML = "<div id=firstPage>" +
+  "<h1>Mythik</h1>"+
+  "<h2>Grimoire</h2>"+
+  "<p>Project final SOPRA2023 Groupe 1</p>" +
+  "<img src='assets/loader.png'/>" +
+  "</div>";
+  const firstPageBack = firstPage.querySelector<HTMLElement>(".back")!;
+  firstPageBack.innerHTML = ""
+  // LAST PAGE
+  const lastPage = sheets[2]; // excludes back cover and transparent sheet
+  const lastPageFront = lastPage.querySelector<HTMLElement>(".page")!;
+  lastPageFront.classList.add("first-page");
+  lastPageFront.style.backgroundColor ="green !important";
+  lastPageFront.innerHTML = "";
+  const lastPageBack = lastPage.querySelector<HTMLElement>(".back")!;
+  lastPageBack.innerHTML = "<div id=lastPage>" +
+  "<div>  Est-ce que c’est bon pour vous ? </div>" +
+  "<img src='assets/flipbook-textures/duck.png'/>" +
+  "</div>"
+}, 0 )
 
 var lorem_array = ["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id eu nisl nunc mi ipsum faucibus vitae aliquet nec. Volutpat lacus laoreet non curabitur. Nec dui nunc mattis enim. Nulla facilisi nullam vehicula ipsum a. Faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Eget egestas purus viverra accumsan in nisl nisi scelerisque. At consectetur lorem donec massa.",
  "Habitant morbi tristique senectus et netus. Ultrices in iaculis nunc sed augue lacus viverra. Auctor neque vitae tempus quam pellentesque. Enim blandit volutpat maecenas volutpat blandit aliquam etiam. Nisl purus in mollis nunc sed id semper. Varius sit amet mattis vulputate enim nulla aliquet. A diam maecenas sed enim ut sem. Leo duis ut diam quam. Tincidunt praesent semper feugiat nibh sed pulvinar proin. Ut faucibus pulvinar elementum integer enim neque volutpat. Cum sociis natoque penatibus et magnis dis parturient. Lacus vestibulum sed arcu non odio euismod lacinia./\n Sapien pellentesque habitant morbi tristique senectus et netus. Urna neque viverra justo nec ultrices dui sapien eget mi. Curabitur vitae nunc sed velit. Dignissim suspendisse in est ante in nibh mauris. Fringilla ut morbi tincidunt augue interdum velit. Ultrices in iaculis nunc sed augue lacus viverra vitae. Eu augue ut lectus arcu bibendum at varius. Venenatis lectus magna fringilla urna.",
