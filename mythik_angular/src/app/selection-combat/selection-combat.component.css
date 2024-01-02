@@ -4,7 +4,18 @@
     font-weight: normal;
     src: url("../../assets/fonts/bronzion_deco/BronzionDeco_PERSONAL_USE_ONLY.otf");
   }
- 
+ @font-face {
+    font-family: "Stempel-Garamond-W01-Roman";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../../assets/fonts/Stempel-Garamond-W01-Roman.woff");
+  }
+  @font-face {
+    font-family: "Lugrasimo";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../../assets/fonts/Lugrasimo/Lugrasimo-Regular.ttf");
+  }
 
   body, html {
     height: 100%;
@@ -35,7 +46,7 @@ body {
   }
 
  
- .titre{
+ /* .titre{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,7 +63,7 @@ body {
   font-family: bronzion;
   color: darkred;
 
- }
+ } */
 
 
 
@@ -63,6 +74,9 @@ body {
     margin-top: 100px;
     color: white; 
     font-size: 30px;
+    font-family: "lugrasimo";
+    text-align: center;
+   
 }
 
 .creationCombattant{
@@ -72,4 +86,33 @@ body {
     margin-top: 100px;
     color: white; 
     font-size: 30px;
+    font-family: "lugrasimo";
+    text-align: center;
+}
+
+h1 {
+  font-family: "bronzion";
+  font-size: 36px;
+  text-align: center;
+  background-color:rgba(245, 245, 220, 0.555);
+  border-radius: 10px;
+  padding: 5px;
+  margin: 0px 100px;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  background-color: #573d26; /* Couleur de fond avec une teinte terreux */
+  color: #fff; /* Couleur du texte */
+  border: 2px solid #8b735b; /* Bordure */
+  border-radius: 8px; /* Coins arrondis */
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Ombre légère */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
 }
