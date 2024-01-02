@@ -51,7 +51,7 @@ body {
 
     display:flex;
     justify-content: space-evenly; 
-
+    cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
     margin-top: 30px;
  }
 
@@ -68,22 +68,27 @@ body {
     border-radius: 8px; /* Coins arrondis */
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Ombre légère */
     transition: background-color 0.3s ease, color 0.3s ease;
-    
+    cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
   }
 
-  .h1 {
+  .titre{
+    text-align: center;
     font-family: bronzion;
+    color: darkred;
+    font-size: 100px;
+    cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
+ 
   }
 
 
 .accueil{
-
+    
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
-    height: 90%;
-    
+    height: 100%;
+    cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
 }
 
 
@@ -92,14 +97,14 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    width: 300px;
-    height: 450px;
-    border: 5px solid rgba(125, 45, 45, 0.642); 
+    width: 400px;
+    height: 550px;
+    border: 5px solid darkred; 
     border-radius: 50%;
     position: relative;
     background-color:rgba(245, 245, 220, 0.555);
     font-family: bronzion;
     font-size: 25px;
-     
+    cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
 }
 

@@ -1,31 +1,35 @@
-<div class="card mt-3" *ngIf="showForm">
+
+<body>
+<div *ngIf="showForm">
     <form (ngSubmit)="inscription()" [formGroup]="inscriptionForm">
-    <div class="card-header text-white bg-primary">
+    <div class="titre">
         Inscription
     </div>
-    <div class="card-body"> 
-        <div class="mb-3 mt-3">
+    <div class="formulaire"> 
+        <div >
             <label for="id" class="form-label">Identifiant:</label>
             <input type="number" class="form-control" id="id" name="id" readonly formControlName="id">
         </div>
-        <div class="mb-3">
+        <div >
             <label for="email" class="form-label">Email:</label>
             <input type="email" class="form-control" id="email" name="email" formControlName="email">
         </div>
-        <div class="mb-3">
+        <div >
             <label for="login" class="form-label">Login:</label>
             <input type="text" class="form-control" id="login" name="login" formControlName="login">
             <span class="text-danger" *ngIf="inscriptionForm.get('login')?.dirty && inscriptionForm.get('login')?.hasError('required')">Le login est obligatoire</span>
         </div>
-        <div class="mb-3">
+        <div >
             <label for="password" class="form-label">Mot de passe:</label>
             <input type="text" class="form-control" id="password" name="password" formControlName="password">
             <span class="text-danger" *ngIf="inscriptionForm.get('password')?.dirty && inscriptionForm.get('password')?.hasError('required')">Le mot de passe est obligatoire</span>
         </div>
     </div>
-    <div class="card-footer">
-        <button type="submit" [disabled]="inscriptionForm.invalid" class="btn btn-success btn-lg">Valider<i class="bi bi-check-lg"></i></button>
-        <a class="btn btn-warning btn-lg mx-2" [routerLink]="['/menu']" routerLinkActive="active">Retour<i class="bi bi-backspace"></i></a>
+    <div >
+       
+        <button type="submit" [disabled]="inscriptionForm.invalid">Valider</button>
+        <a  [routerLink]="['/menu']" routerLinkActive="active"><button type="button" class="button">Retour</button></a>
     </div>
     </form>
 </div>
+</body>

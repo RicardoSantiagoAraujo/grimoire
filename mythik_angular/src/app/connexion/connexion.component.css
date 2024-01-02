@@ -33,6 +33,9 @@ body {
     width: 100vw;  /* 50% de la largeur de la fenêtre */
     height: 100vh;
     cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   #map img {
     display: flex;
@@ -45,37 +48,7 @@ body {
     z-index: 0;
     filter: brightness(0.7);
   }
-  
-  #zodiac {
-    width: -moz-fit-content;
-    width: fit-content;
-    height: 199px;
-    background-image: url(../../assets/flipbook-textures/old-paper-texture_alt.png);
-    display: flex;
-    background-color: rgba(0, 0, 0, 0.168);
-    position: absolute;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.501);
-    bottom: -150px;
-    right: 500px;
-    height: 60%;
-    transform: rotate(50deg);
-    z-index: 0;
-    justify-content: center;
-    filter: brightness(0.7);
-  }
-  #zodiac:after {
-    content: "";
-    position: absolute;
-    display: flex;
-    height: 70%;
-    width: 70%;
-    margin-top: 40px;
-    align-content: center;
-    background-image: url(../../assets/flipbook-textures/astrology_print.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    opacity: 0.2;
-  }
+
 
   .button {
     display: inline-block;
@@ -84,14 +57,68 @@ body {
     font-weight: bold;
     text-align: center;
     text-decoration: none;
-    background-color: #573d26; /* Couleur de fond avec une teinte terreux */
-    color: #fff; /* Couleur du texte */
-    border: 2px solid #8b735b; /* Bordure */
-    border-radius: 8px; /* Coins arrondis */
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Ombre légère */
-    transition: background-color 0.3s ease, color 0.3s ease;
+    background: url("../../assets/flipbook-textures/old-paper-texture_alt.png");
+    background-blend-mode: multiply;
+    background-size: cover;
+    cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
+    outline: none;
   }
 
-  .h1 {
-    font-family: bronzion;
-  }
+ .formulaire{
+  color: white; 
+  font-size: 30px;
+ }
+ .titre{
+  display: flex;
+    align-items: center;
+    justify-content: center;
+  text-align: center;
+  width: 300px;
+  height: 100px;
+  border: 5px solid darkred; 
+  border-radius: 10%;
+  position: relative;
+  background-color:rgba(245, 245, 220, 0.555);
+  font-size: 40px;
+  
+  font-family: bronzion;
+  color: darkred;
+
+ }
+
+ /* Appliquer des styles généraux aux champs de texte */
+input {
+  width: 600px;
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #d8b985bb;
+}
+
+/* Appliquer des styles spécifiques au survol du champ de texte */
+input:hover {
+  border-color: #333;
+}
+
+/* Appliquer des styles spécifiques au focus sur le champ de texte */
+input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+button[type=submit]{
+ 
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  background: url("../../assets/flipbook-textures/old-paper-texture1.png");
+  background-blend-mode: multiply;
+  background-size: cover;
+  margin-right: 10px;
+  cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
+  outline: none;
+}
