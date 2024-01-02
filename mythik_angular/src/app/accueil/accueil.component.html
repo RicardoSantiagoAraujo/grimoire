@@ -1,15 +1,21 @@
-<ul class="nav nav-pills mt-3">
+
+<body>
+<!-- <ul class="nav nav-pills mt-3">
     <li class="nav-item" >
-      <a class="nav-link" [routerLink]="['/menu']" routerLinkActive="active">Se déconnecter</a>
+      <a class="nav-link" [routerLink]="['/menu']" routerLinkActive="active"></a>
     </li>
     <li class="nav-item" *ngIf="isAdmin()">
-        <a class="nav-link" [routerLink]="['/creature']" routerLinkActive="active">Gestion des creatures</a>
+        <a class="nav-link" [routerLink]="['/creature']" routerLinkActive="active"></a>
       </li>
       <li class="nav-item" *ngIf="isAdmin()">
-          <a class="nav-link" [routerLink]="['/compte']" routerLinkActive="active">Gestion des comptes</a>
+          <a class="nav-link" [routerLink]="['/compte']" routerLinkActive="active"></a>
       </li>
-</ul>
-
+</ul> -->
+<div class="boutons">
+  <a  [routerLink]="['/menu']" routerLinkActive="active"><button type="button" class="button">Se déconnecter</button></a>
+  <a  [routerLink]="['/creature']" routerLinkActive="active"><button type="button" *ngIf="isAdmin()" class="button">Gestion des creatures</button></a>
+  <a  [routerLink]="['/compte']" routerLinkActive="active"><button type="button" *ngIf="isAdmin()" class="button">Gestion des comptes</button></a>
+</div>
 
 
 <div class="accueil">
@@ -18,3 +24,4 @@
 <div class="section"><a style="color: black;" [routerLink]="['/grimoire']" routerLinkActive="active">Partir à la découverte du Grimoire</a></div>
    
 </div>
+</body>
