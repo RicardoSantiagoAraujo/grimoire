@@ -56,8 +56,7 @@ body #firewall img {
   animation: fire_effect 2s infinite;
   display: none;
 }
-
-#firewall::before {
+body #firewall::before {
   content: "";
   display: block;
   position: absolute;

@@ -184,19 +184,32 @@ setTimeout(()=>{
 
   // ADD CLASS TO SPECIFIC PAGES TO SIMPLIFY CSS SELECTION
   const bookStart = sheets.length - 3 // actually corresponds to last page in DOM, excluding covers/transparent sheet
+  let candlelightIntervalId: any;
   // COVER PAGE
   const cover = sheets[sheets.length-1];
   cover.classList.add("bookCover");
   console.log(cover.getAttribute("ng-reflect-rotation"))
   // trigger event on cover rotation
-  cover.addEventListener("mousemove", ()=>{
+
+  function ouvrirLivre(event: { type: string; }){
     console.log(cover.getAttribute("ng-reflect-rotation"))
     let coverRotation:any = cover.getAttribute("ng-reflect-rotation");
-    if (parseInt(coverRotation) < 0){
-      console.log(document.querySelector<HTMLElement>("#firewall")!);
+    if (parseInt(coverRotation) < -60 || (parseInt(coverRotation) == 0 && event.type=="click")){
+      // console.log(document.querySelector<HTMLElement>("#firewall")!);
       document.querySelector<HTMLElement>("#firewall")!.style.visibility = "visible";
+      candlelightIntervalId = setInterval(candlelight, Math.floor(Math.random() * 300));
+      console.log("OPEN BOOK")
+    } else{
+      document.querySelector<HTMLElement>("#firewall")!.style.visibility = "hidden";
+      //Stop candlelight:
+      clearInterval(candlelightIntervalId); // /!\ NOT WORKING FOR UNKOWNREASON
+        // console.log("Interval id : " + candlelightIntervalId);
+        // console.log("Interval cleared !");
+        console.log("CLOSE BOOK")
     };
-  })
+  }
+  cover.addEventListener("mousemove", ouvrirLivre);
+  cover.addEventListener("click", ouvrirLivre);
 
   // FIRST PAGE
   const firstPage = sheets[bookStart];
@@ -253,3 +266,40 @@ var lorem_array = ["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
 "ذلك أمدها اسبوعين إذ, الحكم اليابان، ما حدى. والكساد بالسيطرة المؤلّفة أما في, وتم كل يذكر شدّت وصافرات. و بتحدّي العمليات بحث, ثم بتخصيص الأراضي وباستثناء لكل. الساحل مسؤولية هو جُل, إيو عل اللا لأداء.به، حقول كردة حكومة ٣٠. بالرّد انتباه المبرمة أما كل, عُقر جزيرتي نفس بـ. عرض إبّان بالمحور بل, عن جهة لعدم لمحاكم والفرنسي, شيء للأراضي وبريطانيا مع. واحدة اوروبا من عرض, هامش وبولندا والروسية يتم أي.",
 "تسمّى ليركز وحلفاؤها بعض كل, حصدت وسوء لبولندا، عل بعد, عل قام والنرويج بريطانيا-فرنسا. لمّ إنطلاق مواقعها بل, شيء ثم شواطيء وبولندا تزامناً, لها بسبب وكسبت عن. بها بينما الإقتصادي ان, من غير دفّة فشكّل. غير فهرست وحرمان بمباركة و, كل صفحة قررت دون. هو صفحة جسيمة ومن. و سليمان، المتاخمة المشتّتون دنو, لم الخارجية الأمريكية هذا.","","لم تلك طوكيو الأخذ الأرضية. و جُل إعادة المضي وبعدما. أمّا الأوضاع بل بها, في لكون بمعارضة تحت. تطوير مشروط البرية وفي بل, إذ واُسدل للسيطرة تزامناً فصل, أي أوزار مهمّات فصل.",
 "شيء ٣٠ بولندا، الكونجرس استطاعوا. لغزو والديون تم كلا, ما حين تمهيد الأرض واقتصار. جزيرتي وتنصيب الا لم. السادس بمحاولة تلك أم. و لكل الصفحات وباستثناء, ٣٠ الأوروبية ويكيبيديا، هذه.٢٠٠٤ الذود أن بحث. إعلان يتبقّ الخارجية قد غير, انتباه الأرواح ضرب ثم. جدول وقبل العالمية في حيث. بقصف حلّت بل كان, مكن هو إعلان مقاومة, بعد لم وبعد أسابيع ا."]
+
+
+
+// CANDLELIGHT EFFECT FOR BODY
+function candlelight(){
+  let lightH = Math.floor(Math.random() * 1);
+  let lightS = Math.floor(Math.random() * 100);
+  let lightL = Math.floor(Math.random() * 100);
+  let darkH = Math.floor(Math.random() * 1);
+  let darkS = Math.floor(Math.random() * 100);
+  let darkL = Math.floor(Math.random() * 10);
+  let colL = `hsla(${lightH},${lightS}%,${lightL}%, 0.1)`
+  let colD = `hsla(${darkH},${darkS}%,${darkL}%, 0.1)`
+
+  let blurL = Math.floor(Math.random() * 60);
+
+  document.documentElement.style.setProperty("--color-overlay-l", colL);
+  document.documentElement.style.setProperty("--color-overlay-d", colD);
+  document.documentElement.style.setProperty("--blur-overlay-l", blurL+"%");
+  // console.log("candlelight change")
+}
+candlelight()
+
+// desync fire gifs
+function firestart(){
+const fires = document.querySelectorAll<HTMLImageElement>("#firewall img");
+fires.forEach(function (fire, index) {
+  setTimeout(function () {
+    fire.src= "assets/fire.gif";
+    fire.style.display="block";
+    console.log("TEST FIRE START")
+  },index * 1000)
+})
+}
+
+firestart()
+setTimeout(firestart, 3000);

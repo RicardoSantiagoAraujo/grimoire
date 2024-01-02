@@ -59,9 +59,7 @@ body #firewall{
 		animation: fire_effect 2s infinite;
 		display: none;
 	}
-}
-
-#firewall::before{
+	&::before{
 	content: "";
 	display: block;
 	position: absolute;
@@ -76,6 +74,7 @@ body #firewall{
 	animation: fire_effect 1s infinite;
 	// filter: blur(3px)brightness(1.5);
 	//background-repeat: no-repeat;
+	}
 }
 
 @keyframes fire_effect {
