@@ -47,7 +47,7 @@ export class SelectionCombatComponent {
 
     this.combattant1.compte = this.authService.getCompte();
     this.combattant1.creature = creature;
-    //this.combattantService.save(this.combattant1).subscribe(resp => {this.combattant1}); 
+    
 
   }
 
@@ -58,7 +58,7 @@ export class SelectionCombatComponent {
     this.combattant2!.compte = this.Ia; 
     console.log(this.Ia);
     console.log(this.combattant2);
-    //this.combattantService.save(this.combattant2).subscribe(resp => {this.combattant2}); 
+   
   }
 
   goCombat(){
