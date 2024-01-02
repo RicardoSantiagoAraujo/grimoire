@@ -5,22 +5,6 @@
     src: url("../../assets/fonts/bronzion_deco/BronzionDeco_PERSONAL_USE_ONLY.otf");
   }
 
-:root {
-    --text-color: rgb(71, 0, 0);
-    --paper-color-l: rgb(255, 251, 212);
-    --paper-color-d: rgb(100, 79, 30);
-    --paper-texture: url("../../assets/flipbook-textures/natural-paper.png");
-    /* --paper-texture: url(../pics/black-paper.png); */
-    /* --paper-texture: url(../pics/old-paper-texture.webp); */
-    /* Candlelight effect */
-    --color-overlay-l: #ffd58d;
-    --color-overlay-d: #00021e;
-    --blur-overlay-l: 60%;
-    --fire_light_effect-radial: radial-gradient(var(--color-overlay-l) var(--blur-overlay-l), var(--color-overlay-d) 75%);
-    --fire_light_effect-linear: linear-gradient(var(--color-overlay-l) var(--blur-overlay-l) 90%, var(--color-overlay-d) 100%);
-    --fire_light_effect-uniform: var(--color-overlay-l);
-    --fire_light_effect-pages: radial-gradient(var(--color-overlay-l) var(--blur-overlay-l), rgba(0,0,0,0) 75%);
-  }
 body, html {
     height: 100%;
     overflow: hidden;
