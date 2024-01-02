@@ -1,0 +1,128 @@
+@font-face {
+    font-family: "Stempel-Garamond-W01-Roman";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../../assets/fonts/Stempel-Garamond-W01-Roman.woff");
+  }
+  @font-face {
+    font-family: "Lugrasimo";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../../assets/fonts/Lugrasimo/Lugrasimo-Regular.ttf");
+  }
+  @font-face {
+    font-family: "bronzion";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../../assets/fonts/bronzion_deco/BronzionDeco_PERSONAL_USE_ONLY.otf");
+  }
+  @font-face {
+    font-family: "eb_garamond";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../../assets/fonts/EB_Garamond/EBGaramond-Italic-VariableFont_wght.ttf");
+  }
+  @font-face {
+    font-family: "grandiflora";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../../assets/fonts/Grandiflora_One/GrandifloraOne-Regular.ttf");
+  }
+  @font-face {
+    font-family: "notoserif_jp";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../../assets/fonts/Noto_Serif_JP/NotoSerifJP-Regular.otf");
+  }
+  @font-face {
+    font-family: "notoserif_tc";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../../assets/fonts/Noto_Serif_TC/NotoSerifTC-Regular.otf");
+  }
+  
+  
+  body {
+    background: url("../../assets/flipbook-textures/wood-texture.jpeg"), radial-gradient(#e6b664, #000325);
+    background-blend-mode: multiply;
+    background-size: cover;
+    width: 100vw;  /* 50% de la largeur de la fenêtre */
+    height: 300vh;
+    cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 50px auto;
+  }
+  
+  h1 {
+    font-family: "bronzion";
+    font-size: 36px;
+    text-align: center;
+    background-color:rgba(245, 245, 220, 0.555);
+    border-radius: 10px;
+    padding: 5px;
+    margin: 0px 100px;
+  }
+
+  th {
+    font-family: "grandiflora";
+  }
+
+  tbody {
+    font-family: "notoserif_tc";
+  }
+  
+  .card {
+    
+    background-color: #d2b48c62;
+    border: 1px solid #8b4513;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 30px 10px;
+  }
+  
+  .card-header {
+    font-family: "Lugrasimo";
+    background-color: #8b4513b3;
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid #8b4513;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #8b4513;
+  }
+  
+  .btn:hover {
+    background-color: #654321;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .table th, .table td {
+    border: 1px solid #8b4513;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .table th {
+    background-color: #654321;
+    color: #fff;
+  }

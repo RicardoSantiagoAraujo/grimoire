@@ -1,6 +1,7 @@
+<body>
 <h1>Gestion des comptes</h1>
 <div class="card mt-3">
-    <div class="card-header text-white bg-primary">
+    <div class="card-header">
         Liste des comptes
     </div>
     <div class="card-body"> 
@@ -41,7 +42,7 @@
 
 <div class="card mt-3" *ngIf="showForm">
     <form (ngSubmit)="save()" [formGroup]="compteForm">
-    <div class="card-header text-white bg-primary">
+    <div class="card-header">
         Edition d'un compte
     </div>
     <div class="card-body"> 
@@ -78,3 +79,4 @@
     </div>
     </form>
 </div>
+</body>
