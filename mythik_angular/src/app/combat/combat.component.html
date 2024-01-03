@@ -1,7 +1,7 @@
-<div class="combat">
+<div>
     <h1>Combat de Créatures</h1>
     
-    <div>
+   
 
         <div class="combattants">
 
@@ -47,15 +47,15 @@
        
     
     
-        <div *ngIf="combatTermine">
-        <h2>Résultat du combat</h2>
-        <p>{{ resultatCombat }} remporte le combat !</p>
-        <p *ngIf="combattant1.gagnant">Gagnant: {{ combattant1.compte!.login}}</p>
-        <p *ngIf="combattant2.gagnant">Gagnant: {{ creature2.nom }}</p>
+        <div *ngIf="combatTermine" class="resultat">
+            <h2>Résultat du combat</h2>
+            <p>{{ resultatCombat }} remporte le combat !</p>
+            <p *ngIf="combattant1.gagnant">Gagnant: {{ combattant1.compte!.login}}</p>
+            <p *ngIf="combattant2.gagnant">Gagnant: {{ creature2.nom }}</p>
 
-        <button (click)="nouvellePartie()">Nouvelle Partie</button>
-        <button (click)="statistiques()">Récapitulatif des combats</button>
-        <button (click)="retour()">Acceuil</button>
+            <button (click)="nouvellePartie()">Nouvelle Partie</button>
+            <button (click)="statistiques()">Récapitulatif des combats</button>
+            <button (click)="retour()">Acceuil</button>
         </div>
-    </div>
+    
 </div>
