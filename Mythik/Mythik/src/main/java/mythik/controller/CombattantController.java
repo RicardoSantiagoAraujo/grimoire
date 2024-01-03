@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import mythik.controller.dto.CombattantRequest;
+import mythik.controller.dto.CombattantResponse;
 import mythik.dao.IDAOCombattant;
 import mythik.model.Combattant;
 
@@ -53,27 +53,24 @@ public class CombattantController {
 		return daoCombattant.save(combattant);
 	}
 	
-//	@PostMapping("/statistiques")
-//	@Transactional
-//	public Combattant insertWithCombat(@RequestBody CombattantRequest combattantRequest) 
-//	{
-//		Combattant combattant = new Combattant();
+//	@GetMapping("/statistiques/Joueur")
+//	public List<Combattant> findByCompte(@PathVariable Integer id)
+//	{	
+//		List<Combattant> combattantsJoueur = daoCombattant.findByCompte(id);
 //		
-//		BeanUtils.copyProperties(combattantRequest, combattant);
-//		
-//		combattant = daoCombattant.save(combattant);
-//		
-//		for(String email : combattantRequest.getEleves()) {
-//			Stagiaire stagiaire = daoStagiaire.findByEmail(email);
-//			stagiaire.setFiliere(filiere);
-//			
-//			stagiaire = daoStagiaire.save(stagiaire);
-//		}
-//		
-//		em.refresh(filiere);
-//		
-//		return filiere;
+//		return combattantsJoueur;
 //	}
+//	
+//	@GetMapping("/statistiques/IA")
+//	public List<Combattant> findByIA(@PathVariable Integer id)
+//	{	
+//		
+//		List<Combattant> combattantsIA = daoCombattant.findByIA();
+//		
+//		return combattantsIA;
+//	}
+	
+	
 	
 	@PutMapping("/{id}")
 	public Combattant update( @RequestBody Combattant combattant) 

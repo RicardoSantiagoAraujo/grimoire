@@ -2,7 +2,7 @@ package mythik.controller.dto;
 
 import java.util.List;
 
-public class CombattantRequest {
+public class CombattantResponse {
 	
 	private List<CreatureResponse> creatures; 
 	private List<CombatResponse> combats;
@@ -10,13 +10,13 @@ public class CombattantRequest {
 	
 	
 	
-	public CombattantRequest() {
+	public CombattantResponse() {
 		super();
 	}
 
 
 
-	public CombattantRequest(List<CreatureResponse> creatures, List<CombatResponse> combats, boolean gagnant) {
+	public CombattantResponse(List<CreatureResponse> creatures, List<CombatResponse> combats, boolean gagnant) {
 		super();
 		this.creatures = creatures;
 		this.combats = combats;
