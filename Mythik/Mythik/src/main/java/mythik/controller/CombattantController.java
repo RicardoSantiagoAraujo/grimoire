@@ -1,11 +1,11 @@
 package mythik.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -53,23 +53,17 @@ public class CombattantController {
 		return daoCombattant.save(combattant);
 	}
 	
-//	@GetMapping("/statistiques/Joueur")
-//	public List<Combattant> findByCompte(@PathVariable Integer id)
-//	{	
-//		List<Combattant> combattantsJoueur = daoCombattant.findByCompte(id);
-//		
-//		return combattantsJoueur;
-//	}
-//	
-//	@GetMapping("/statistiques/IA")
-//	public List<Combattant> findByIA(@PathVariable Integer id)
-//	{	
-//		
-//		List<Combattant> combattantsIA = daoCombattant.findByIA();
-//		
-//		return combattantsIA;
-//	}
-	
+	@GetMapping("/statistique/{id}")
+	public List<CombattantResponse> findByCompte(@PathVariable Integer id)
+	{	
+		List<CombattantResponse> combattantsResponse = new ArrayList();
+		
+		List<Combattant> combattantsJoueur = daoCombattant.findByCompte(id);
+		
+		BeanUtils.copyProperties(combattantsJoueur, combattantsResponse);
+		
+		return combattantsResponse;
+	}
 	
 	
 	@PutMapping("/{id}")

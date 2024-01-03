@@ -2,10 +2,11 @@ package mythik.controller.dto;
 
 import java.util.List;
 
+
 public class CombattantResponse {
 	
-	private List<CreatureResponse> creatures; 
-	private List<CombatResponse> combats;
+	private CreatureResponse creature; 
+	private CombatResponse combat;
 	private boolean gagnant;
 	
 	
@@ -14,54 +15,33 @@ public class CombattantResponse {
 		super();
 	}
 
-
-
-	public CombattantResponse(List<CreatureResponse> creatures, List<CombatResponse> combats, boolean gagnant) {
+	public CombattantResponse(CreatureResponse creature, CombatResponse combat, boolean gagnant) {
 		super();
-		this.creatures = creatures;
-		this.combats = combats;
+		this.creature = creature;
+		this.combat = combat;
 		this.gagnant = gagnant;
 	}
 
 
-
-	public List<CreatureResponse> getCreature() {
-		return creatures;
+	public CreatureResponse getCreature() {
+		return creature;
 	}
 
-
-
-	public void setCreature(List<CreatureResponse> creatures) {
-		this.creatures = creatures;
-	}
-	
-	public void addCreature(CreatureResponse creature) {
-		this.creatures.add(creature);
+	public void setCreature(CreatureResponse creature) {
+		this.creature = creature;
 	}
 
-
-
-	public List<CombatResponse> getCombats() {
-		return combats;
+	public CombatResponse getCombat() {
+		return combat;
 	}
 
-
-
-	public void setCombats(List<CombatResponse> combats) {
-		this.combats = combats;
+	public void setCombat(CombatResponse combat) {
+		this.combat = combat;
 	}
-	
-	
-	public void addCombat(CombatResponse combat) {
-		this.combats.add(combat);
-	}
-
 
 	public boolean isGagnant() {
 		return gagnant;
 	}
-
-
 
 	public void setGagnant(boolean gagnant) {
 		this.gagnant = gagnant;

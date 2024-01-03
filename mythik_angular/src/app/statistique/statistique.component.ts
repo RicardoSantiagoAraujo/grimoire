@@ -9,7 +9,7 @@ import { CombattantService } from '../selection-combat/combattant.service';
 })
 export class StatistiqueComponent {
 
-  constructor(private combatService: CombatService, private combattantService: CombattantService) {}
+  constructor(private combattantService: CombattantService) {}
 
   getStatJoueur () {
 
