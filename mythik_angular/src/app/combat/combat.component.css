@@ -1,0 +1,30 @@
+.combattants{
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 100px;
+    color: white; 
+    font-size: 30px;
+    font-family: "lugrasimo";
+    text-align: center;
+}
+
+h1 {
+    font-family: "bronzion";
+    font-size: 36px;
+    text-align: center;
+    background-color:rgba(245, 245, 220, 0.555);
+    border-radius: 10px;
+    padding: 5px;
+    margin: 0px 100px;
+  }
+
+  .resultat{
+    text-align: center;
+    margin-top: 100px;
+    color: white; 
+    font-size: 30px;
+    font-family: "lugrasimo";
+    text-align: center;
+  }

@@ -63,21 +63,29 @@ body {
   font-family: bronzion;
   color: darkred;
 
- } */
+ } 
 
 
 
 .selectionCrea{
 
     display: flex;
-    justify-content: space-evenly;
+   
+    flex-wrap: wrap;
     margin-top: 100px;
     color: white; 
     font-size: 30px;
     font-family: "lugrasimo";
     text-align: center;
+  
    
 }
+.item{
+width: 12%;
+
+
+}
+
 
 .creationCombattant{
 
