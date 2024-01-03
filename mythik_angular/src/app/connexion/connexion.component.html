@@ -5,8 +5,8 @@
     <div class="titre">
         Connexion
     </div>
-    <div class="card-body"> 
-        
+    <div class="card-body">
+
         <div >
             <label for="login" class="form-label">Login:</label>
             <input type="text" class="form-control" id="login" name="login" formControlName="login">
@@ -19,10 +19,9 @@
             <span class="text-danger" *ngIf="passwordCtrl.dirty && passwordCtrl.hasError('minlength')">Le mot passe doit avoir au moins 5 caractères</span>
         </div>
     </div>
-    <div>
+    <div class="button_group">
         <button type="submit" [disabled]="connexionForm.invalid">Se connecter</button>
         <a  [routerLink]="['/menu']" routerLinkActive="active"><button type="button" class="button">Retour</button></a>
-        
     </div>
     </form>
 </div>

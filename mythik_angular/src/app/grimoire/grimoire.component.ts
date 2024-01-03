@@ -364,6 +364,7 @@ function lightsOn(){
   let L = 35;
   let strength = 0.2
 
+
   // Smooth version (css bugs out, not recommended)
   function slowLoop(i: number){
     setTimeout(()=>{
@@ -391,12 +392,11 @@ function lightsOn(){
     }, 500)
   }
   suddenLights()
+
   console.log("LIGHT ON")
   lightstate="on"
   }
 }
-
-
 
 
 // desync fire gifs

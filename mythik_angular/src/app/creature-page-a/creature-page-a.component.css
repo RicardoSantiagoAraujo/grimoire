@@ -1,0 +1,89 @@
+@font-face {
+  font-family: "Lugrasimo";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../../assets/fonts/Lugrasimo/Lugrasimo-Regular.ttf");
+}
+@font-face {
+  font-family: "bronzion";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../../assets/fonts/bronzion_deco/BronzionDeco_PERSONAL_USE_ONLY.otf");
+}
+.creature {
+  font-family: "Lugrasimo";
+}
+
+#creature_contents {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+#creature_contents > div {
+  background-image: url(../../assets/flipbook-textures/nordic_frame.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+#pageLeft {
+  width: 45%;
+}
+#pageLeft .nom {
+  font-family: "bronzion";
+  font-size: 30px;
+  padding: 10px;
+}
+#pageLeft .nom::first-letter {
+  font-size: 100px;
+  font-weight: bold;
+  color: brown;
+}
+
+#pageRight {
+  position: relative;
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 20px;
+  align-items: center;
+}
+#pageRight .image {
+  width: 50%;
+}
+#pageRight .image img {
+  width: 100%;
+  height: auto;
+}
+#pageRight .memo {
+  background-color: red;
+}
+#pageRight .memo ul {
+  background-color: green;
+}
+
+#pageControls {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: absolute;
+  bottom: -50px;
+}
+#pageControls button {
+  background: url(../../assets/flipbook-textures/fantasy-button.png);
+  cursor: url(../../assets/cursors/middle-ages-pointer-32x32.png), pointer;
+  padding: 50px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  transition: 0.3s;
+}
+#pageControls button:hover {
+  filter: hue-rotate(50deg);
+  text-shadow: #342101 1px 1px 10px;
+  transform: scale(1.1);
+}/*# sourceMappingURL=creature-page-a.component.css.map */
