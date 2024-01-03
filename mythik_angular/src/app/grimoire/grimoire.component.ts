@@ -364,7 +364,10 @@ function lightsOn(){
   let L = 35;
   let strength = 0.2
 
+<<<<<<< HEAD
   // Smooth version (css bugs out, not recommended)
+=======
+>>>>>>> 39882ef (grimoire advance)
   function slowLoop(i: number){
     setTimeout(()=>{
       let Si = S > i ? i : S;
@@ -375,6 +378,7 @@ function lightsOn(){
       console.log("i :" + i)
     }, i*500)
   }
+<<<<<<< HEAD
   // for (let i = 0; i <=  Math. max(S, L); i++){
   //   slowLoop(i)
   // }
@@ -391,13 +395,21 @@ function lightsOn(){
     }, 500)
   }
   suddenLights()
+=======
+  for (let i = 0; i <=  Math. max(S, L); i++){
+    slowLoop(i)
+  }
+>>>>>>> 39882ef (grimoire advance)
   console.log("LIGHT ON")
   lightstate="on"
   }
 }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 39882ef (grimoire advance)
 
 // desync fire gifs
 function firestart(){
