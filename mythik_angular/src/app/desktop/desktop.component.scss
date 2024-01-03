@@ -68,6 +68,7 @@ body{
 
 body #firewall{
 	position: absolute;
+	pointer-events: none;
 	display: flex;
 	visibility: hidden;
 	width: 100vw;

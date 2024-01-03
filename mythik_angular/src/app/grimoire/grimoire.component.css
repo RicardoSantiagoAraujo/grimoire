@@ -211,7 +211,7 @@ flipbook-page .page {
 .creature_pages .creature_page_a {
   position: relative;
   background-color: rgba(255, 0, 0, 0.1);
-  width: 45%;
+  width: 90%;
   height: 90%;
 }
 .creature_pages .creature_page_b {
