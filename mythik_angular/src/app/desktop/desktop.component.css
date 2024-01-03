@@ -37,12 +37,34 @@ body {
   bottom: 0;
   left: 0;
   opacity: 1;
-  z-index: 0;
+  z-index: 10;
+  pointer-events: none;
   background: var(--fire_light_effect-radial);
 }
 
+@keyframes firelight_effect {
+  0% {
+    background-color: rgba(255, 0, 0, 0.1);
+  }
+  20% {
+    background-color: rgba(205, 133, 0, 0.01);
+  }
+  40% {
+    background-color: rgba(174, 153, 36, 0.05);
+  }
+  60% {
+    background-color: rgba(80, 62, 51, 0.005);
+  }
+  80% {
+    background-color: rgba(189, 0, 60, 0.05);
+  }
+  100% {
+    background-color: rgba(15, 6, 0, 0.01);
+  }
+}
 body #firewall {
   position: absolute;
+  pointer-events: none;
   display: flex;
   visibility: hidden;
   width: 100vw;
@@ -71,6 +93,14 @@ body #firewall::before {
   animation: fire_effect 1s infinite;
 }
 
+@keyframes fireAppear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 @keyframes fire_effect {
   0% {
     filter: blur(3px) brightness(3);
@@ -154,6 +184,7 @@ body #firewall::before {
 }
 
 #padlock {
+  display: none;
   height: 150px;
   width: 70px;
   top: 45%;
@@ -167,6 +198,7 @@ body #firewall::before {
 }
 
 #login {
+  display: none;
   position: absolute;
   filter: brightness(0.8);
   left: 400px;

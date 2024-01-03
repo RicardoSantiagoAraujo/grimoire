@@ -1,10 +1,16 @@
 
 
 <body>
-  <h1 class="title">Mythik</h1>
-  <div class="button">
-    <div class="section"> <a style="color: black;" class="nav-link" [routerLink]="['/connexion']" routerLinkActive="active">Se connecter</a></div>
-      <div class="section"> <a style="color: black;" class="nav-link" [routerLink]="['/inscription']" routerLinkActive="active">S'inscrire</a></div>
+  <div class="container">
+    <h1>Mythik</h1>
+    <img src="../../assets/flipbook-textures/fantasy-break.png"/>
+    <div class="connect">
+      <a class="nav-link" [routerLink]="['/connexion']" routerLinkActive="active"><button type="button">Se connecter</button></a>
+      <div id="key"></div>
+    </div>
+    <div class="inscript">
+    <a class="nav-link" [routerLink]="['/inscription']" routerLinkActive="active"><button type="button">S'inscrire</button></a>
+    <div id="feather"></div>
+    </div>
   </div>
-
 </body>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CreatureService } from '../creature/creature.service';
 import { Creature } from '../model';
-import { Observable } from 'rxjs';
+import { Observable, map, of } from 'rxjs';
 
 @Component({
   selector: 'app-creature-page-a',
@@ -10,38 +10,35 @@ import { Observable } from 'rxjs';
 })
 export class CreaturePageAComponent {
 
-creatures$!: Observable<Creature[]>; 
+creatures$!: Observable<Creature[]>;
+creatureList: Creature[] = [];
 creature!:Creature;
-creatureId: number = 0;
-
+num: number =0;
 
   constructor(private creatureService: CreatureService){
   }
   ngOnInit(): void {
-    this.loadCreature();
+    this.creatureService.findAll().subscribe(
+      (creatures) => {
+        this.creatureList = creatures;
+        this.loadCreature(this.num);
+      }
+    );
   }
 
-  
-  list() {
-    this.creatures$ = this.creatureService.findAll();
-    return this.creatures$;
-  }
-
-  loadCreature(): void {
-    this.creatureService.findById(this.creatureId).subscribe(
-      (resp) => {
-        this.creature = resp;
-      });
+    
+  loadCreature(num: number): void {
+    this.creature = this.creatureList[num];
   }
 
   previous(): void {
-    this.creatureId--;
-    this.loadCreature();
+    this.num--;
+    this.loadCreature(this.num);
   }
 
   next(): void {
-    this.creatureId++;
-    this.loadCreature();
+    this.num++;
+    this.loadCreature(this.num);
   }
 
 }

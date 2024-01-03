@@ -1,0 +1,226 @@
+@font-face {
+  font-family: "bronzion";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../../assets/fonts/bronzion_deco/BronzionDeco_PERSONAL_USE_ONLY.otf");
+}
+
+@font-face {
+  font-family: 'Lugrasimo';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../../assets/fonts/Lugrasimo/Lugrasimo-Regular.ttf');
+}
+
+:root {
+  --text-color: rgb(71, 0, 0);
+  --paper-color-l: rgb(255, 251, 212);
+  --paper-color-d: rgb(100, 79, 30);
+  --paper-texture: url("../../assets/flipbook-textures/natural-paper.png");
+  /* --paper-texture: url(../pics/black-paper.png); */
+  /* --paper-texture: url(../pics/old-paper-texture.webp); */
+  /* Candlelight effect */
+  --color-overlay-l: #ffd58d;
+  --color-overlay-d: #00021e;
+  --blur-overlay-l: 60%;
+  --fire_light_effect-radial: radial-gradient(var(--color-overlay-l) var(--blur-overlay-l), var(--color-overlay-d) 75%);
+  --fire_light_effect-linear: linear-gradient(var(--color-overlay-l) var(--blur-overlay-l) 90%, var(--color-overlay-d) 100%);
+  --fire_light_effect-uniform: var(--color-overlay-l);
+  --fire_light_effect-pages: radial-gradient(var(--color-overlay-l) var(--blur-overlay-l), rgba(0,0,0,0) 75%);
+}
+
+body, html {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: url("../../assets/flipbook-textures/wood-texture.jpeg"), radial-gradient(#e6b664, #000325);
+  background-blend-mode: multiply;
+  background-size: cover;
+  width: 100vw;  /* 50% de la largeur de la fenêtre */
+  height: 100vh;
+  cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  *{
+    z-index: 10;
+  }
+  margin: auto;
+  width: 33%;
+  height: 90%;
+  margin:auto;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  background: url(../../assets/flipbook-textures/scroll.png), radial-gradient(rgb(0, 0, 0), rgb(0, 0, 0) ,rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0));
+  background-blend-mode: lighten;
+  background-size: cover;
+  color: #fff; /* Couleur du texte */
+  // border: 2px solid #8b735b; /* Bordure */
+  // border-radius: 8px; /* Coins arrondis */
+  // background-color: #573d26; /* Couleur de fond avec une teinte terreux */
+  // box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Ombre légère */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: transform 0.3s ease;
+  &:hover{
+    transform: scale(1.01);
+    h1{
+      animation: glow 1s ease-in-out infinite alternate;
+    }
+    &::before{
+      position: absolute;
+      z-index: -1;
+      content: "";
+      background-image: radial-gradient(rgba(255, 255, 255, 0.5), rgb(255, 255, 255, 0.3), rgb(1, 1, 1, 0), rgba(1, 1, 1, 0));
+      height: 100%;
+      width: 100%;
+      border-radius: 50%;
+      animation: turnOn 0.3s;
+  }
+  }
+  animation: scrollDown 1s ease-out;
+  img{
+    width: 60%;
+    margin: 0 auto;
+  }
+}
+
+@keyframes turnOn {
+  from{
+    opacity: 0;
+
+  }
+  to{
+    opacity: 1;
+
+  }
+
+}
+
+
+
+
+@keyframes scrollDown {
+  from{
+    transform: scale(0.5)translateY(-100%);
+    opacity: 1;
+  }
+  to{
+    transform: scale(1)translateY(0%);
+    opacity: 1;
+  }
+}
+
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}
+
+h1 {
+  font-family: 'bronzion';
+  color: rgb(61, 0, 0) !important;
+  margin-top: 10%;
+  transition: 1s;
+}
+
+.nav-link{
+  margin-top: 10px;
+  button{
+    font-family: 'Lugrasimo';
+    min-width: 80%;
+    cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
+    border: none;
+    padding: 20px;
+    background: url("../../assets/flipbook-textures/fantasy-button.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.1s;
+    &:hover{
+      filter: hue-rotate(50deg);
+      text-shadow: #342101 1px 1px 10px;
+      transform: scale(1.1);
+    }
+  }
+  // &:last-child{
+  // }
+}
+
+
+
+	#key{
+		height: 250px;
+		position: absolute;
+    right:0;
+    top:65%;
+		width: 200px;
+		background:  url(../../assets/flipbook-textures/key.png), radial-gradient(#00000041, #00000000 , #00000000 50%);
+		border-radius: 50%;
+		transform: rotate(50deg);
+		background-blend-mode: lighten;
+		background-size: contain;
+		background-repeat: no-repeat;
+		animation: pulse 2s infinite;
+		transition: 1s;
+		z-index: 1000;
+    pointer-events: none;
+	}
+
+
+  #feather{
+		height: 150px;
+    width: 250px;
+		position: absolute;
+    left:-5%;
+    top:71%;
+		background:  url(../../assets/flipbook-textures/feather2.png), radial-gradient(#00000041, #00000000 , #00000000 50%);
+		// border-radius: 50%;
+		background-blend-mode: lighten;
+		background-size: contain;
+		background-repeat: no-repeat;
+		animation: pulse 2s infinite;
+		transition: 1s;
+		z-index: 1000;
+    pointer-events: none;
+	}
+
+.connect{
+  &:hover #key{
+			transform: scale(1.5)rotate(60deg);
+  }
+}
+
+.inscript{
+  &:hover #feather{
+			transform: scale(1.4)rotate(-10deg);
+  }
+}
+
+@keyframes pulse {
+	0%{
+		filter:brightness(1.2);
+	}
+	50%{
+		filter:brightness(1.5);
+	}
+	100%{
+		filter:brightness(1.2);
+	}
+}

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CombatService } from '../combat/combat.service';
+import { CombattantService } from '../selection-combat/combattant.service';
 
 @Component({
   selector: 'app-statistique',
@@ -7,4 +9,15 @@ import { Component } from '@angular/core';
 })
 export class StatistiqueComponent {
 
+  constructor(private combatService: CombatService, private combattantService: CombattantService) {}
+
+  getStatJoueur () {
+
+  }
+
+  getStatIA () {
+
+  }
+
+  
 }

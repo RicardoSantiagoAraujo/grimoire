@@ -38,20 +38,43 @@ body{
 	bottom: 0;
 	left: 0;
 	opacity:1;
-	z-index: 0;
+	z-index: 10;
+	pointer-events: none; // to be able to click-through
 	background: var(--fire_light_effect-radial);
+	// animation: firelight_effect 1s alternate infinite;
   }
 
-
+@keyframes firelight_effect {
+	0%{
+		background-color: rgba(255, 0, 0, 0.1);
+	}
+	20%{
+		background-color:  rgba(205, 133, 0, 0.01);
+	}
+	40%{
+		background-color:  rgba(174, 153, 36, 0.05);
+	}
+	60%{
+		background-color:  rgba(80, 62, 51, 0.005);
+	}
+	80%{
+		background-color:  rgba(189, 0, 60, 0.05);
+	}
+	100%{
+		background-color:  rgba(15, 6, 0, 0.01);
+	}
+}
 
 
 body #firewall{
 	position: absolute;
+	pointer-events: none;
 	display: flex;
 	visibility: hidden;
 	width: 100vw;
 	justify-content: center;
 	top:50vh;
+	// animation: fireAppear 1s ease-in;
 	img{
 		opacity:0.1;
 		z-index: 2000;
@@ -74,6 +97,15 @@ body #firewall{
 	animation: fire_effect 1s infinite;
 	// filter: blur(3px)brightness(1.5);
 	//background-repeat: no-repeat;
+	}
+}
+
+@keyframes fireAppear {
+	0%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 1;
 	}
 }
 
@@ -182,6 +214,7 @@ body #firewall{
 
 
 #padlock{
+	display: none;
 	height: 150px;
 	width:70px;
 	top:45%;
@@ -195,6 +228,7 @@ body #firewall{
 }
 
 #login{
+	display: none;
 	position: absolute;
 	// box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.217);
 	filter: brightness(0.8);

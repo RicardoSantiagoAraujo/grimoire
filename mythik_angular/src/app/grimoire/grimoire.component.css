@@ -40,6 +40,11 @@
   font-weight: normal;
   src: url("../../assets/fonts/Noto_Serif_TC/NotoSerifTC-Regular.otf");
 }
+:root {
+  --glowColor1: #f2e4ff;
+  --glowColor2: #000000;
+}
+
 .flipbook_container {
   height: 80vh;
   display: flex;
@@ -201,17 +206,17 @@ flipbook-page .page {
   align-items: center;
   z-index: 10;
   position: absolute;
-  background-color: rgba(255, 255, 0, 0.503);
+  background-color: rgba(255, 255, 0, 0.1);
 }
 .creature_pages .creature_page_a {
   position: relative;
-  background-color: rgba(255, 0, 0, 0.37);
-  width: 45%;
+  background-color: rgba(255, 0, 0, 0.1);
+  width: 90%;
   height: 90%;
 }
 .creature_pages .creature_page_b {
   position: relative;
-  background-color: rgba(60, 255, 0, 0.37);
+  background-color: rgba(60, 255, 0, 0.1);
   width: 45%;
   height: 90%;
 }
@@ -274,4 +279,108 @@ flipbook-page .page {
   width: 80%;
   opacity: 0.9;
   filter: sepia(1);
+  animation: waggle 0.1s infinite ease-in-out alternate;
+}
+
+@keyframes waggle {
+  from {
+    transform: rotate(20px);
+  }
+  to {
+    transform: rotate(-2deg);
+  }
+}
+#creaturesStart {
+  transform: scaleX(-1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(41, 0, 0, 0.689);
+  font-family: "Stempel-Garamond-W01-Roman", "bronzion";
+  color: rgba(6, 106, 38, 0.51);
+  font-size: 40px;
+  height: 100%;
+  width: 100%;
+  background: radial-gradient(#e66465, #9198e5, rgba(145, 152, 229, 0), rgba(145, 152, 229, 0));
+  animation: glowBg 5s infinite alternate;
+}
+#creaturesStart::after {
+  content: "";
+  background-image: url("../../assets/flipbook-textures/celtic_frame.png");
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  height: 80%;
+  width: 80%;
+  transform: translate(50%, -50%);
+  opacity: 0.1;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+#creaturesStart div {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 50%;
+  animation: glowText 0.4s ease-in-out infinite alternate;
+}
+#creaturesStart div::after {
+  content: "";
+  background-image: url("../../assets/flipbook-textures/celtic_knot.png");
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  height: 300px;
+  width: 300px;
+  transform: translate(50%, -50%);
+  opacity: 0.1;
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: glowDecoration 5s infinite linear;
+}
+
+@keyframes glowText {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--glowColor1), 0 0 40px var(--glowColor1), 0 0 50px var(--glowColor1), 0 0 60px var(--glowColor1), 0 0 70px var(--glowColor1);
+    transform: translateX(0.5px);
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px var(--glowColor2), 0 0 40px var(--glowColor2), 0 0 50px var(--glowColor2), 0 0 60px var(--glowColor2), 0 0 70px var(--glowColor2), 0 0 80px var(--glowColor2);
+    transform: skew(90deg 90deg);
+    transform: translateX(-0.5px);
+  }
+}
+@keyframes glowDecoration {
+  0% {
+    opacity: 0.2;
+    transform: translate(50%, -50%) rotate(0deg) scale(0.9, 0.7);
+    filter: hue-rotate(50deg) blur(3px);
+    background: radial-gradient(#e66465, #03030d, rgba(145, 152, 229, 0), rgba(145, 152, 229, 0));
+  }
+  50% {
+    opacity: 1;
+    transform: translate(50%, -50%) rotate(180deg) scale(1.1, 0.9);
+    filter: hue-rotate(180deg) blur(0px);
+    background: radial-gradient(#2a0404, #ffffff, rgba(145, 152, 229, 0), rgba(145, 152, 229, 0));
+  }
+  100% {
+    opacity: 0.2;
+    transform: translate(50%, -50%) rotate(360deg) scale(0.9, 0.7);
+    filter: hue-rotate(50deg) blur(3px);
+    background: radial-gradient(#e66465, #9198e5, rgba(145, 152, 229, 0), rgba(145, 152, 229, 0));
+  }
+}
+@keyframes glowBg {
+  0% {
+    filter: blur(0px) hue-rotate(90deg) brightness(2);
+  }
+  50% {
+    filter: blur(1px) hue-rotate(180deg);
+  }
+  100% {
+    filter: blur(0px) hue-rotate(-90deg) brightness(0.1);
+  }
 }/*# sourceMappingURL=grimoire.component.css.map */
