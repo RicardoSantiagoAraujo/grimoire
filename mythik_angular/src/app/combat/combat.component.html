@@ -1,29 +1,51 @@
-<div>
+<div class="combat">
     <h1>Combat de Créatures</h1>
     
     <div>
-        <p>{{ creature1.nom }} - Points de vie: {{ creature1.pv }}</p>
-        <p>{{ creature2.nom }} - Points de vie: {{ creature2.pv }}</p>
-    
-        <div *ngIf="!combatTermine">
-        
-            <div *ngIf="!result">
-                <button (click)="combattre('pierre')">Pierre</button>
-                <button (click)="combattre('feuille')">Feuille</button>
-                <button (click)="combattre('ciseaux')">Ciseaux</button>
-                <p>L'ordinateur a choisi: {{ choixOrdi }}</p>
+
+        <div class="combattants">
+
+            <div >
+                <p><img width="300px"  [src]="combattant1.creature?.image"/></p>
+                <p>{{ creature1.nom }} - Points de vie: {{ creature1.pv }}</p>
+                <p>{{combattant1.compte?.login}}</p>
             </div>
                 
-            <div *ngIf="result">
 
-                <p *ngIf="result === 0">Match nul !</p>
-                <p *ngIf="result === 1">{{ creature1.nom }} gagne la manche !</p>
-                <p *ngIf="result === 2">{{ creature2.nom }} gagne la manche !</p>
-
-                <button (click)="mancheSuivante()">Manche suivante</button>
-            </div>
+             <div *ngIf="!combatTermine">
         
-        </div>
+                    <div *ngIf="!result">
+                        <button (click)="combattre('pierre')">Pierre</button>
+                        <button (click)="combattre('feuille')">Feuille</button>
+                        <button (click)="combattre('ciseaux')">Ciseaux</button>
+                        <p>L'ordinateur a choisi: {{ choixOrdi }}</p>
+                    </div>
+                        
+           
+
+
+                   <div *ngIf="result">
+        
+                        <p *ngIf="result === 0">Match nul !</p>
+                        <p *ngIf="result === 1">{{ creature1.nom }} gagne la manche !</p>
+                        <p *ngIf="result === 2">{{ creature2.nom }} gagne la manche !</p>
+        
+                        <button (click)="mancheSuivante()">Manche suivante</button>
+                   </div>
+             </div>
+                
+                
+            <div >
+                <p><img width="300px"  [src]="combattant2.creature?.image"/></p>
+                <p>{{ creature2.nom }} - Points de vie: {{ creature2.pv }}</p>
+                <p>{{combattant2.compte?.login}}</p>
+            </div> 
+        
+        </div> 
+
+        
+       
+    
     
         <div *ngIf="combatTermine">
         <h2>Résultat du combat</h2>

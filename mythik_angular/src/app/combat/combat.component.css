@@ -1,0 +1,16 @@
+.combattants{
+
+    display: flex;
+    justify-content: space-evenly;
+    
+    margin-top: 100px;
+    color: white; 
+    font-size: 30px;
+    font-family: "lugrasimo";
+    text-align: center;
+}
+
+/* .combat{
+
+    display: flex;
+} */
