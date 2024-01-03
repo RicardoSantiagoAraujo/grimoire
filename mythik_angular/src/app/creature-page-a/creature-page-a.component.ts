@@ -12,7 +12,7 @@ export class CreaturePageAComponent {
 
 creatures$!: Observable<Creature[]>; 
 creature!:Creature;
-creatureId: number = 0;
+creatureId: number = 1;
 
 
   constructor(private creatureService: CreatureService){
@@ -36,11 +36,13 @@ creatureId: number = 0;
 
   previous(): void {
     this.creatureId--;
+    window.location.reload();
     this.loadCreature();
   }
 
   next(): void {
     this.creatureId++;
+    window.location.reload();
     this.loadCreature();
   }
 

@@ -1,6 +1,5 @@
 <div *ngIf="creature" class="creature">
     <div class="nom">{{creature.nom}}</div>
-    <div>{{creature.nom}}</div>
     <div>{{creature.description}}</div>
     <div class="image"><img width="30px" height="30px" [src]="creature.image"/></div>
     <div class="memo">Memo
@@ -9,7 +8,7 @@
         <ul>Niveau d'attaque : {{creature.attaque}}</ul>
     </div>
     <div>
-        <button (click)="previous()">Suivant</button>
+        <button (click)="previous()">Precedent</button>
         <button (click)="next()">Suivant</button>
     </div>
 </div>
