@@ -184,34 +184,39 @@ setTimeout(()=>{
 
   // ADD CLASS TO SPECIFIC PAGES TO SIMPLIFY CSS SELECTION
   const bookStart = sheets.length - 3 // actually corresponds to last page in DOM, excluding covers/transparent sheet
-  let candlelightIntervalId: any;
+  var candlelightIntervalId: any;
+
   // COVER PAGE
   const cover = sheets[sheets.length-1];
   cover.classList.add("bookCover");
-  console.log(cover.getAttribute("ng-reflect-rotation"))
-  // trigger event on cover rotation
-
+  const backcover = sheets[0];
+  backcover.classList.add("bookCoverBack");
+  // trigger event on cover/backcover rotation
+  // CHECK WHETHER BOOK IS OPEN; IF SO, TURN ON LIGHT
   function ouvrirLivre(event: { type: string; }){
-    console.log(cover.getAttribute("ng-reflect-rotation"))
+    console.log("CHECK BOOK STATE")
     let coverRotation:any = cover.getAttribute("ng-reflect-rotation");
-    if (parseInt(coverRotation) < -60 || (parseInt(coverRotation) == 0 && event.type=="click")){
-      // console.log(document.querySelector<HTMLElement>("#firewall")!);
+    let backcoverRotation:any = backcover.getAttribute("ng-reflect-rotation");
+    if (parseInt(coverRotation) < -90 && parseInt(backcoverRotation) > -90){
       document.querySelector<HTMLElement>("#firewall")!.style.visibility = "visible";
-      candlelightIntervalId = setInterval(candlelight, Math.floor(Math.random() * 300));
-      console.log("OPEN BOOK")
-    } else{
+      document.querySelector<HTMLElement>("#firewall")!.style.animation = "fireAppear 3s ease-in";
+      document.querySelector<HTMLElement>("#firelight_effect")!.style.animation = "firelight_effect 0.1s alternate infinite";
+      // candlelightIntervalId = setInterval(candlelight, Math.floor(Math.random() * 300));
+      lightsOn();
+
+    } else{ // revert back to closed book illumination
       document.querySelector<HTMLElement>("#firewall")!.style.visibility = "hidden";
-      //Stop candlelight:
-      clearInterval(candlelightIntervalId); // /!\ NOT WORKING FOR UNKOWNREASON
-        // console.log("Interval id : " + candlelightIntervalId);
-        // console.log("Interval cleared !");
-        console.log("CLOSE BOOK")
+      document.querySelector<HTMLElement>("#firewall")!.style.animation = "none";
+      document.querySelector<HTMLElement>("#firelight_effect")!.style.animation = "none";
+      // clearInterval(candlelightIntervalId); // /!\ NOT WORKING FOR UNKOWN REASON
+      lightsOut();
     };
   }
-  cover.addEventListener("mousemove", ouvrirLivre);
-  cover.addEventListener("click", ouvrirLivre);
+  setInterval(ouvrirLivre, 1000)
+
 
   // FIRST PAGE
+  //front
   const firstPage = sheets[bookStart];
   const firstPageFront = firstPage.querySelector<HTMLElement>(".page")!;
   firstPageFront.classList.add("first-page");
@@ -221,19 +226,64 @@ setTimeout(()=>{
   "<p>Project final SOPRA2023 Groupe 1</p>" +
   "<img src='assets/loader.png'/>" +
   "</div>";
+  //back
   const firstPageBack = firstPage.querySelector<HTMLElement>(".back")!;
   firstPageBack.innerHTML = ""
   // LAST PAGE
+  //front
   const lastPage = sheets[2]; // excludes back cover and transparent sheet
   const lastPageFront = lastPage.querySelector<HTMLElement>(".page")!;
   lastPageFront.classList.add("first-page");
   lastPageFront.style.backgroundColor ="green !important";
   lastPageFront.innerHTML = "";
+    //back
   const lastPageBack = lastPage.querySelector<HTMLElement>(".back")!;
   lastPageBack.innerHTML = "<div id=lastPage>" +
   "<div>  Est-ce que c’est bon pour vous ? </div>" +
   "<img src='assets/flipbook-textures/duck.png'/>" +
   "</div>"
+
+  // CREATURE PAGE A
+  //front
+  const creaturePageA = sheets[bookStart-2];
+  const creaturePageAFront = creaturePageA.querySelector<HTMLElement>(".page")!;
+  creaturePageAFront.classList.add("first-page");
+  creaturePageAFront.style.backgroundColor ="green !important";
+  creaturePageAFront.innerHTML = "<div id=creaturesStart>" +
+  "<div>  GRIMOIRE </div>" +
+  "</div>";
+  //back
+  const creaturePageABack = creaturePageA.querySelector<HTMLElement>(".back")!;
+  creaturePageABack.innerHTML = "";
+    // CREATURE PAGE B
+  //front
+  const creaturePageB = sheets[bookStart-3];
+  const creaturePageBFront = creaturePageB.querySelector<HTMLElement>(".page")!;
+  creaturePageBFront.classList.add("first-page");
+  creaturePageBFront.style.backgroundColor ="green !important";
+  creaturePageBFront.innerHTML = "";
+  //back
+  const creaturePageBBack = creaturePageB.querySelector<HTMLElement>(".back")!;
+  creaturePageBBack.innerHTML = "";
+
+
+  //// FUNCTION TO OPEN/CLOSE GRIMOIRE SECTION
+  function ouvrirSectionGrimoire(){
+    // console.log(creaturePageA.getAttribute("ng-reflect-rotation"))
+    let pageARotation:any = creaturePageA.getAttribute("ng-reflect-rotation");
+    let pageBRotation:any = creaturePageB.getAttribute("ng-reflect-rotation");
+    if (
+      (parseInt(pageARotation) < -170 && parseInt(pageBRotation) > -10)
+    ){
+      document.querySelector<HTMLElement>(".creature_pages")!.style.display = "flex";
+      console.log("OPEN GRIMOIRE SECTION")
+    } else{ //
+      document.querySelector<HTMLElement>(".creature_pages")!.style.display = "none";
+    };
+  }
+  setInterval(ouvrirSectionGrimoire, 1000)
+
+
 }, 0 )
 
 var lorem_array = ["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id eu nisl nunc mi ipsum faucibus vitae aliquet nec. Volutpat lacus laoreet non curabitur. Nec dui nunc mattis enim. Nulla facilisi nullam vehicula ipsum a. Faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Eget egestas purus viverra accumsan in nisl nisi scelerisque. At consectetur lorem donec massa.",
@@ -269,7 +319,7 @@ var lorem_array = ["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
 
 
 
-// CANDLELIGHT EFFECT FOR BODY
+// CANDLELIGHT EFFECT FOR BODY (RANDOMIZED TO MIMIC CANDLE FLICKER)
 function candlelight(){
   let lightH = Math.floor(Math.random() * 1);
   let lightS = Math.floor(Math.random() * 100);
@@ -277,8 +327,9 @@ function candlelight(){
   let darkH = Math.floor(Math.random() * 1);
   let darkS = Math.floor(Math.random() * 100);
   let darkL = Math.floor(Math.random() * 10);
-  let colL = `hsla(${lightH},${lightS}%,${lightL}%, 0.1)`
-  let colD = `hsla(${darkH},${darkS}%,${darkL}%, 0.1)`
+  let strength = 0.1;
+  let colL = `hsla(${lightH},${lightS}%,${lightL}%, ${strength})`
+  let colD = `hsla(${darkH},${darkS}%,${darkL}%, ${strength})`
 
   let blurL = Math.floor(Math.random() * 60);
 
@@ -287,7 +338,66 @@ function candlelight(){
   document.documentElement.style.setProperty("--blur-overlay-l", blurL+"%");
   // console.log("candlelight change")
 }
-candlelight()
+// candlelight()
+
+
+var lightstate = "off";
+// CANDLELIGHT OFF (STATIC)
+function lightsOut(){
+  let H = 150;
+  let S = 0;
+  let L = 0;
+  let strength = 0.2
+  document.documentElement.style.setProperty("--color-overlay-l", `hsla(${H},${S}%,${L}%, ${strength})`);
+  document.documentElement.style.setProperty("--color-overlay-d", `hsla(${H},${S}%,${L}%, ${strength})`);
+  document.documentElement.style.setProperty("--blur-overlay-l", "0%");
+  console.log("LIGHT OFF");
+  lightstate="off"
+}
+lightsOut()
+
+// CANDLELIGHT ON (STATIC)
+function lightsOn(){
+  if (lightstate == "off"){
+  let H = 0;
+  let S = 25;
+  let L = 35;
+  let strength = 0.2
+
+  // Smooth version (css bugs out, not recommended)
+  function slowLoop(i: number){
+    setTimeout(()=>{
+      let Si = S > i ? i : S;
+      let Li = S > i ? i : L;
+      document.documentElement.style.setProperty("--color-overlay-l", `hsla(${H},${Si}%,${Li}%, ${strength})`);
+      document.documentElement.style.setProperty("--color-overlay-d", `hsla(${H},${Si}%,${Li}%, ${strength})`);
+      document.documentElement.style.setProperty("--blur-overlay-l", "0%");
+      console.log("i :" + i)
+    }, i*500)
+  }
+  // for (let i = 0; i <=  Math. max(S, L); i++){
+  //   slowLoop(i)
+  // }
+
+
+  // Abrurpt version
+  function suddenLights(){
+    setTimeout(()=>{
+      let S = 50;
+      let L = 50;
+      document.documentElement.style.setProperty("--color-overlay-l", `hsla(${H},${S}%,${L}%, ${strength})`);
+      document.documentElement.style.setProperty("--color-overlay-d", `hsla(${H},${S}%,${L}%, ${strength})`);
+      document.documentElement.style.setProperty("--blur-overlay-l", "0%");
+    }, 500)
+  }
+  suddenLights()
+  console.log("LIGHT ON")
+  lightstate="on"
+  }
+}
+
+
+
 
 // desync fire gifs
 function firestart(){
