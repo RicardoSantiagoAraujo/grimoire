@@ -19,6 +19,7 @@ export class CombattantService {
     return this.http.get<Combattant>(environment.apiUrl + "/combattant/"+id);
   }
 
+
   save(combattant: Combattant): Observable<Combattant>{
     
     
