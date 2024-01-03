@@ -56,10 +56,12 @@ export class CompteComponent {
   }
 
   edit(id?: number) {
+    
     this.compteService.findById(id).subscribe(resp => {
       this.compteForm.patchValue(resp);
       this.showForm = true;
     });
+    
   }
 
   save() {
@@ -72,6 +74,7 @@ export class CompteComponent {
     }
     this.compteService.save(newcompte).subscribe(resp => {
       this.compteForm.patchValue(resp);
+      this.load();
       })
     this.cancel();
   }

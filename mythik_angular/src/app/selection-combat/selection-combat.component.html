@@ -1,10 +1,13 @@
 
-<div *ngIf="creationCombattant">
-<h1 style="text-align: center;">selection Creatures</h1>
+<body>
 
+<div *ngIf="creationCombattant">
+
+   <h1>selection Creatures</h1>
 
 
 <div class="selectionCrea">
+    
     <div  *ngFor="let c of list() | async">
         <p (click)="creationCombattant1(c)">{{c.nom}}</p>
         <p (click)="creationCombattant1(c)"><img width="100px"  [src]="c.image"/></p>
@@ -21,8 +24,9 @@
         <p>{{combattant1.creature?.nom}}</p>
         <p>{{combattant1.compte?.login}}</p>
     </div>
-     <div> <a (click)="goCombat() " class="btn btn-success btn-lg">Combat</a><br/>
-      <a (click)="creationCombattant2() " class="btn btn-warning btn-lg">generer un adversaire</a></div>
+     <div> <a (click)="goCombat()"><button type="button" class="button">Combat</button></a><br/>
+      <a (click)="creationCombattant2()"><button type="button" class="button">Trouver un adversaire</button></a>
+    </div>
     <div *ngIf="combattant2">
         <p><img width="300px"  [src]="combattant2.creature?.image"/></p>
         <p>{{combattant2.creature?.nom}}</p>
@@ -37,3 +41,4 @@
 <div *ngIf="ready">
 <app-combat [combattant1]="combattant1" [combattant2]="combattant2" ></app-combat>
 </div>
+</body>
