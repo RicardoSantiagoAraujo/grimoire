@@ -18,7 +18,7 @@
 
 
     <div id="pageControls">
-        <button (click)="previous()">Precedent</button>
-        <button (click)="next()">Suivant</button>
+        <button *ngIf="num>0" (click)="previous()">Precedent</button>
+        <button *ngIf="num<creatureList.length-1"(click)="next()">Suivant</button>
     </div>
 </div>
