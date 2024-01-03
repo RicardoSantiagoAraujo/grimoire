@@ -13,20 +13,20 @@ import jakarta.persistence.OneToMany;
 @JsonTypeName("ia")
 public class IA extends Compte{
 	
-
-	@OneToMany(mappedBy="compte")
-	protected List<Combattant> combattant;
+//
+//	@OneToMany(mappedBy="compte")
+//	protected List<Combattant> combattant;
 
 	public IA() {
 	}
 
-	public List<Combattant> getCombattant() {
-		return combattant;
-	}
-
-	public void setCombattant(List<Combattant> combattant) {
-		this.combattant = combattant;
-	}
+//	public List<Combattant> getCombattant() {
+//		return combattant;
+//	}
+//
+//	public void setCombattant(List<Combattant> combattant) {
+//		this.combattant = combattant;
+//	}
 
 	
 	

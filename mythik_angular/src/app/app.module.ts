@@ -23,6 +23,7 @@ import { DesktopComponent } from './desktop/desktop.component';
 import { StatistiqueComponent } from './statistique/statistique.component';
 import { FlipBookModule } from '@labsforge/flipbook'
 
+
 @NgModule({
   declarations: [
     AppComponent,
