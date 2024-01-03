@@ -44,7 +44,10 @@ body {
 
 @keyframes firelight_effect {
   0% {
-    background-color: rgba(255, 0, 0, 0.1);
+    background-color: rgba(255, 0, 0, 0);
+  }
+  10% {
+    background-color: rgba(255, 0, 0, 0.001);
   }
   20% {
     background-color: rgba(205, 133, 0, 0.01);

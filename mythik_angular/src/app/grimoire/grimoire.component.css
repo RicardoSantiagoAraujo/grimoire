@@ -295,7 +295,6 @@ flipbook-page .page {
   background-image: url("../../assets/flipbook-textures/page_decoration2.png");
   background-size: contain;
   background-repeat: no-repeat;
-  overflow: hidden;
 }
 #lastPage img {
   width: 80%;

@@ -374,7 +374,7 @@ function lightsOn(){
       document.documentElement.style.setProperty("--color-overlay-d", `hsla(${H},${Si}%,${Li}%, ${strength})`);
       document.documentElement.style.setProperty("--blur-overlay-l", "0%");
       console.log("i :" + i)
-    }, i*500)
+    }, i*50)
   }
   // for (let i = 0; i <=  Math. max(S, L); i++){
   //   slowLoop(i)
