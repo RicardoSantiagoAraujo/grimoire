@@ -5,10 +5,15 @@
 
         <div class="combattants">
 
-            <div >
-                <p><img width="300px"  [src]="combattant1.creature?.image"/></p>
-                <p>{{ creature1.nom }} - Points de vie: {{ creature1.pv }}</p>
-                <p>{{combattant1.compte?.login}}</p>
+            <div class="combattant">
+                <div>
+                    <p><img width="300px"  [src]="combattant1.creature?.image"/></p>
+                     <p>{{ creature1.nom }} - {{combattant1.compte?.login}} </p>
+                 </div>
+                <div class="barre-vie">
+                    <div class="vie-restante" [style.width]="vieRestant1 + '%'"></div>
+                </div>
+                <div style="margin-top: 20px;">Points de vie : {{ creature1.pv }}</div>
             </div>
                 
 
@@ -35,16 +40,22 @@
              </div>
                 
                 
-            <div >
-                <p><img width="300px"  [src]="combattant2.creature?.image"/></p>
-                <p>{{ creature2.nom }} - Points de vie: {{ creature2.pv }}</p>
-                <p>{{combattant2.compte?.login}}</p>
+            <div class="combattant">
+                <div><p><img width="300px"  [src]="combattant2.creature?.image"/></p>
+                <p>{{ creature2.nom }} - {{combattant2.compte?.login}} </p></div>
+                <div class="barre-vie">
+                    <div class="vie-restante" [style.width]="vieRestant2 + '%'"></div>
+                </div>
+                <div style="margin-top: 20px;">Points de vie: {{ creature2.pv }}</div>
             </div> 
         
         </div> 
+    <div class="conteneur">
+        <div *ngIf="!combatTermine" class="suiviCombat" >
+            <p>{{affichage}}</p>
 
-        
-       
+        </div>
+    </div>
     
     
         <div *ngIf="combatTermine" class="resultat">

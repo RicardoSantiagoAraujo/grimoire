@@ -14,19 +14,12 @@ import jakarta.persistence.OneToMany;
 public class IA extends Compte{
 	
 
-	@OneToMany(mappedBy="compte")
-	protected List<Combattant> combattant;
+	
 
 	public IA() {
 	}
 
-	public List<Combattant> getCombattant() {
-		return combattant;
-	}
-
-	public void setCombattant(List<Combattant> combattant) {
-		this.combattant = combattant;
-	}
+	
 
 	
 	
