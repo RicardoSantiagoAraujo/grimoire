@@ -53,17 +53,29 @@ public class CombattantController {
 		return daoCombattant.save(combattant);
 	}
 	
-	@GetMapping("/statistique/{id}")
-	public List<CombattantResponse> findByCompte(@PathVariable Integer id)
-	{	
-		List<CombattantResponse> combattantsResponse = new ArrayList();
-		
-		List<Combattant> combattantsJoueur = daoCombattant.findByCompte(id);
-		
-		BeanUtils.copyProperties(combattantsJoueur, combattantsResponse);
-		
-		return combattantsResponse;
-	}
+//	@GetMapping("/statistique/{id}")
+//	public List<CombattantResponse> findByCompte(@PathVariable Integer id)
+//	{	
+//		List<CombattantResponse> combattantsResponse = new ArrayList();
+//
+//		
+//		List<Combattant> combattantsJoueur = daoCombattant.findByCompte(id);
+//		
+//		
+//		BeanUtils.copyProperties(combattantsJoueur, combattantsResponse);
+//		
+////		for (CombattantResponse combattantResponse : combattantsResponse) {
+////
+////	        // Copiez les propriétés de combattant à combattantResponse
+////	        combattantResponse.setCreature(mapCreatureResponse(combattant.getCreature()));
+////	        combattantResponse.setCombat(mapCombatResponse(combattant.getCombat()));
+////	        combattantResponse.setGagnant(combattant.isGagnant());
+////
+////	        // Ajoutez combattantResponse à la liste
+////	        combattantsResponse.add(combattantResponse);
+////		
+//		return combattantsResponse;
+//	}
 	
 	
 	@PutMapping("/{id}")

@@ -1,1 +1,43 @@
 <p>statistique works!</p>
+
+
+<h1>Statistiques de jeu</h1>
+<div class="card mt-3">
+    <div class="card-header">
+        {{compte.login}}
+    </div>
+    <div>
+        <button (click)="mesparties()" >Mes parties</button>
+        <button (click)="IAparties()">Les parties de l'IA</button>
+    </div>
+
+    <div> 
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nom de la creature</th>
+                    <th>Element</th>
+                    <th>Date et heure</th>
+                    <th>Gagnant / Perdant</th>
+                </tr>
+            </thead>
+            <tbody *ngIf="mesParties==true && IAParties==false">
+                <tr *ngFor="let c of getStatJoueur() | async">
+                    <td>{{c.creature?.nom}}</td>
+                    <td>{{c.creature?.typeElement}}</td>
+                    <td>{{c.combat?.dateCombat}} {{c.combat?.heureCombat}}</td>
+                    <td>{{c.gagnant}}</td>
+                </tr>
+            </tbody>
+
+            <tbody *ngIf="mesParties==false && IAParties==true">
+                <tr *ngFor="let c of getStatIA()| async">
+                    <td>{{c.creature?.nom}}</td>
+                    <td>{{c.creature?.typeElement}}</td>
+                    <td>{{c.combat?.dateCombat}} {{c.combat?.heureCombat}}</td>
+                    <td>{{c.gagnant}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
