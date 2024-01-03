@@ -23,25 +23,39 @@ export class CombatComponent implements OnInit{
   result: number | null = null;
   choixJoueur!: string;
   choixOrdi!: string;
+ 
 
   @Input("combattant1") combattant1!: Combattant; 
   @Input("combattant2") combattant2!: Combattant; 
-  
+  vieRestant1!: number;
+  vieRestant2!: number;
+  pvtoto1? : number ;
+  pvtoto2? : number ;
+  affichage? : string; 
 
-constructor(private combatService: CombatService, private combattantService: CombattantService, private router: Router) {}
+constructor(private combatService: CombatService, private combattantService: CombattantService, private router: Router) { 
+
+  
+}
 
   ngOnInit(): void {
     this.creature1 = this.combattant1.creature!;
     this.creature2 = this.combattant2.creature!;
-  }
+    
   
-  load() {
-    this.combat$ = this.combatService.findAll();
+    
   }
 
-  list() {
-    return this.combat$;
+  ngAfterViewInit(){
+
+    this.pvtoto1 = this.combattant1.creature!.pv;
+    this.pvtoto2 = this.combattant2.creature!.pv;
+     
   }
+  ngAfterContentInit() {
+    this.barreVie();
+  }
+  
 
   saveCombat() {
   const currentDate = new Date();
@@ -90,7 +104,9 @@ constructor(private combatService: CombatService, private combattantService: Com
     console.log(this.choixOrdi);
     
     if (choixJoueur === this.choixOrdi) {
-        return 0;
+      this.afficheDegats(0, 0);
+      return 0;
+        
       } 
       
     else if (
@@ -118,7 +134,7 @@ constructor(private combatService: CombatService, private combattantService: Com
       degat2! *= 1.2;
       degat1! *= 0.85;
     }
-  
+    
     return { degat1, degat2 };
 }
 
@@ -129,11 +145,15 @@ constructor(private combatService: CombatService, private combattantService: Com
     if (result === 1) {
       const degats = this.degats(this.creature1, this.creature2);
       this.creature2.pv! -= degats.degat1!;
+      this.barreVie(); 
+      this.afficheDegats(1, degats.degat1!);
     } 
     
     if (result === 2) {
-      const degats = this.degats(this.creature2, this.creature1);
+      const degats = this.degats(this.creature1, this.creature2);
       this.creature1.pv! -= degats.degat2!;
+      this.barreVie(); 
+      this.afficheDegats(2, degats.degat2!);
     }
 
     if (this.creature2.pv! <= 0) {
@@ -157,11 +177,24 @@ constructor(private combatService: CombatService, private combattantService: Com
     }
 
   }
+  afficheDegats (result : number, degat : number) {
+    if (result==1){
+      this.affichage = this.creature1.nom +" inflige " + degat + " points de dégats à " + this.creature2.nom; 
+      }
+      
+    else if (result==2){
+    
+        this.affichage = this.creature2.nom +" inflige " + degat + " points de dégats à " + this.creature1.nom; 
+      }
+    else{this.affichage =  "égalité";}
+      
+    }
 
   mancheSuivante() {
     this.result = null;
     this.choixJoueur = '';
     this.choixOrdi = '';
+    
   }
 
   nouvellePartie() {
@@ -175,4 +208,19 @@ constructor(private combatService: CombatService, private combattantService: Com
   retour() {
     this.router.navigate(['/accueil']);
   }
+
+
+  barreVie() {
+
+    
+  if(this.combattant1.creature?.pv && this.creature1.pv)
+  { this.vieRestant1=((this.creature1.pv)/(this.pvtoto1!))*100 ;
+     console.log(this.creature1.pv);
+     console.log(this.pvtoto1!);}
+  if(this.combattant2.creature?.pv && this.creature2.pv)
+  { this.vieRestant2=((this.creature2.pv)/(this.pvtoto2!))*100 }  
+  
+  }
+
+ 
 }
