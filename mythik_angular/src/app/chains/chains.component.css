@@ -1,0 +1,47 @@
+.chain:nth-child(1) {
+  pointer-events: none;
+  z-index: 0;
+  content: "ffffff";
+  position: absolute;
+  width: 13%;
+  height: 3000px;
+  top: -200%;
+  left: 50%;
+  background: url(../../assets/flipbook-textures/chain_repeat.png), linear-gradient(0.25turn, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.51), rgba(0, 0, 0, 0));
+  background-blend-mode: lighten;
+  filter: brightness(0.6);
+  transform: rotate(calc(-40deg * 1));
+  background-position: center;
+}
+
+.chain:nth-child(2) {
+  pointer-events: none;
+  z-index: 0;
+  content: "ffffff";
+  position: absolute;
+  width: 13%;
+  height: 3000px;
+  top: -200%;
+  left: 50%;
+  background: url(../../assets/flipbook-textures/chain_repeat.png), linear-gradient(0.25turn, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.51), rgba(0, 0, 0, 0));
+  background-blend-mode: lighten;
+  filter: brightness(0.6);
+  transform: rotate(calc(-40deg * 2));
+  background-position: center;
+}
+
+.chain:nth-child(3) {
+  pointer-events: none;
+  z-index: 0;
+  content: "ffffff";
+  position: absolute;
+  width: 13%;
+  height: 3000px;
+  top: -200%;
+  left: 50%;
+  background: url(../../assets/flipbook-textures/chain_repeat.png), linear-gradient(0.25turn, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.51), rgba(0, 0, 0, 0));
+  background-blend-mode: lighten;
+  filter: brightness(0.6);
+  transform: rotate(calc(-40deg * 3));
+  background-position: center;
+}/*# sourceMappingURL=chains.component.css.map */
