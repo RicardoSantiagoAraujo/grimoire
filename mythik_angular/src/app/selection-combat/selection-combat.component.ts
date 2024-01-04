@@ -24,6 +24,8 @@ export class SelectionCombatComponent {
   
   combattant1!: Combattant; 
   combattant2!: Combattant; 
+  cb1: boolean = false; 
+  cb2: boolean = false;
 
   constructor(private creatureService: CreatureService, private router: Router, private authService: AuthService, private combattantService: CombattantService, private compteService: CompteService){
     this.load(); 
@@ -47,7 +49,7 @@ export class SelectionCombatComponent {
 
     this.combattant1.compte = this.authService.getCompte();
     this.combattant1.creature = creature;
-    
+    this.cb1 = true; 
 
   }
 
@@ -58,7 +60,7 @@ export class SelectionCombatComponent {
     this.combattant2!.compte = this.Ia; 
     console.log(this.Ia);
     console.log(this.combattant2);
-   
+    this.cb2=true;
   }
 
   goCombat(){

@@ -161,6 +161,7 @@ constructor(private combatService: CombatService, private combattantService: Com
 
     if (this.creature2.pv! <= 0) {
       this.resultatCombat = this.creature1.nom!;
+      this.creature2.pv =0;
       this.barreVie(); 
       this.combattant1.gagnant = true;
       this.combattant2.gagnant = false;
@@ -172,6 +173,7 @@ constructor(private combatService: CombatService, private combattantService: Com
 
    if (this.creature1.pv! <= 0) {
     this.resultatCombat = this.creature2.nom!;
+    this.creature1.pv =0;
     this.barreVie(); 
     this.combattant1.gagnant = false; 
     this.combattant2.gagnant = true;
@@ -217,15 +219,22 @@ constructor(private combatService: CombatService, private combattantService: Com
 
   barreVie() {
 
-    
+  
   if(this.combattant1.creature?.pv && this.creature1.pv)
   { this.vieRestant1=((this.creature1.pv)/(this.pvtoto1!))*100 ;
      console.log(this.creature1.pv);
      console.log(this.pvtoto1!);}
+  
   if(this.combattant2.creature?.pv && this.creature2.pv)
   { this.vieRestant2=((this.creature2.pv)/(this.pvtoto2!))*100 }  
   
+  if (this.vieRestant1<0){
+    this.vieRestant1 =0;
   }
 
+  if (this.vieRestant2<0){
+    this.vieRestant2 = 0;
+  }
+  }
  
 }
