@@ -176,8 +176,6 @@ flipbook-page .page {
   justify-content: center;
   align-items: center;
   margin: 50px 0px;
-  animation: flipbookAppear 2s ease-in-out;
-  opacity: 0;
   animation-delay: 2s;
   animation-fill-mode: forwards;
 }

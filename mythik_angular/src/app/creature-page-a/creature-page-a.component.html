@@ -7,26 +7,25 @@
         </div>
 
         <div id="creature_contents">
-            <div id="pageLeft">
+            <div class="creaturePage" id="pageLeft">
                 <div class="nom">{{selectedCreature.nom}}</div>
-                <div>{{selectedCreature.description}}</div>
+                <div class="descript">{{selectedCreature.description}}</div>
                 <div class="numeroPageLeft">
-                    <ul>{{creatureList.indexOf(this.selectedCreature)+1}} / {{creatureList.length}}</ul>
+                    <ul><span>{{creatureList.indexOf(this.selectedCreature)+1}} </span> / {{creatureList.length}}</ul>
                 </div>
+                <button class="pageControlBtn" *ngIf="this.num > 0" (click)="previous()">Precedent</button>
             </div>
-            <div id="pageRight">
+            <div class="creaturePage" id="pageRight">
                 <div class="image"><img width="30px" height="30px" [src]="selectedCreature.image" /></div>
-                <div class="memo">Memo
-                    <ul>Domaine mythologique : {{selectedCreature.mythologie}}</ul>
-                    <ul>Type d'éléments : {{selectedCreature.typeElement}}</ul>
-                    <ul>Niveau d'attaque : {{selectedCreature.attaque}}</ul>
+                <img class="break" src="../../assets/flipbook-textures/fantasy-break.png"/>
+                <div class="memo">
+                    <h6>Memo</h6>
+                    <ul id="mytho">Domaine mythologique : <span>{{selectedCreature.mythologie}}</span> </ul>
+                    <ul id="element">Type d'éléments : <span>{{selectedCreature.typeElement}}</span> </ul>
+                    <ul id="attack">Niveau d'attaque : <span>{{selectedCreature.attaque}}</span> </ul>
                 </div>
+                <button class="pageControlBtn" *ngIf="this.num < this.creatureList.length -1" (click)="next()">Suivant</button>
             </div>
-
-        <div>
-            <button *ngIf="this.num > 0" (click)="previous()">Precedent</button>
-            <button *ngIf="this.num < this.creatureList.length -1" (click)="next()">Suivant</button>
-        </div>
         </div>
     </div>
     <div>

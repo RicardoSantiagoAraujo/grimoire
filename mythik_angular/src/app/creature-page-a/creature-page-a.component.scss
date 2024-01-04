@@ -28,13 +28,17 @@ app-creature-page-a{
     flex-direction: row;
     justify-content: space-evenly;
     size: 100% 100%;
-    &> div{
+    &> .creaturePage{
         background-image: url(../../assets/flipbook-textures/nordic_frame.png);
         background-position: center;
         background-repeat: no-repeat;
         background-size: 100% 100%;
     }
     animation: creatureAppear 2s;
+}
+
+.break{
+    width: 40%;
 }
 
 @keyframes creatureAppear {
@@ -55,7 +59,15 @@ app-creature-page-a{
 
 #pageLeft{
     width: 45%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
     .nom{
+        width: 100%;
+        margin-top: 20%;
+        margin-left: 25%;
         font-family: "bronzion";
         font-size: 30px;
         padding: 10px;
@@ -64,6 +76,21 @@ app-creature-page-a{
             font-weight: bold;
             color: brown;
           }
+    }
+    .descript{
+        width: 70%;
+        margin: auto;
+        padding-bottom: 20%;
+    }
+    .numeroPageLeft{
+        position: absolute;
+        bottom: 2%;
+        left:7%;
+        color: rgba(79, 5, 5, 0.623);
+        span{
+            color: rgb(136, 0, 0);
+            font-weight: bold;
+        }
     }
 }
 
@@ -74,18 +101,28 @@ app-creature-page-a{
     flex-direction: column;
     justify-content: space-evenly;
     gap: 20px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     .image{
-        width: 50%;
+        height: 40%;
         img{
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: contain;
         }
     }
     .memo{
-        background-color: red;
+        height: 25%;
+        h6{
+            text-align: center;
+            font-weight: bold;
+        }
         ul{
-            background-color: green;
+            span{
+                color: red;
+            }
         }
     }
 }
@@ -107,7 +144,7 @@ app-creature-page-a{
 
     // background pattern created with: https://heropatterns.com
     background-color: #b0ffaf;
-    background-image: url("data:image/svg+xml,%3Csvg width='32' height='64' viewBox='0 0 32 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 28h20V16h-4v8H4V4h28v28h-4V8H8v12h4v-8h12v20H0v-4zm12 8h20v4H16v24H0v-4h12V36zm16 12h-4v12h8v4H20V44h12v12h-4v-8zM0 36h8v20H0v-4h4V40H0v-4z' fill='%239b00a5' fill-opacity='0.12' fill-rule='evenodd'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='32' height='64' viewBox='0 0 32 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 28h20V16h-4v8H4V4h28v28h-4V8H8v12h4v-8h12v20H0v-4zm12 8h20v4H16v24H0v-4h12V36zm16 12h-4v12h8v4H20V44h12v12h-4v-8zM0 36h8v20H0v-4h4V40H0v-4z' fill='%239b00a5' fill-opacity='0.12' fill-rule='evenodd'/%3E%3C/svg%3E"),  url(../../assets/flipbook-textures/natural-paper.png);
     border-radius: 1%;
     border: 3px ridge rgba(128, 0, 128, 0.395);
     box-shadow: 10px 10px 10px rgba(38, 0, 0, 0.377);
@@ -119,6 +156,7 @@ app-creature-page-a{
     select{
         //background-color: #be46ff48;
         background: url(../../assets/flipbook-textures/fantasy_border2.png);
+
         cursor: url(../../assets/cursors/middle-ages-pointer-32x32.png),pointer;
         background-position:bottom;
         background-repeat: no-repeat;
@@ -149,30 +187,33 @@ app-creature-page-a{
         border-left: 20px solid #b0ffaf;
         border-top: 20px solid transparent;
         border-bottom: 20px solid transparent;
+        background-image: url(../../assets/flipbook-textures/natural-paper.png);
+        background-size: cover;
       }
 }
 
 
-#pageControls{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    position: absolute;
-    bottom:-50px;
-    button{
-        background: url(../../assets/flipbook-textures/fantasy-button.png);
-        cursor: url(../../assets/cursors/middle-ages-pointer-32x32.png),pointer;
-        padding: 50px;
-        background-size: contain;
-        background-position: center;
-        background-repeat: no-repeat;
-        border: none;
-        transition: 0.3s;
-        &:hover{
-            filter: hue-rotate(50deg);
-            text-shadow: #342101 1px 1px 10px;
-            transform: scale(1.1);
-        }
-    }
 
+.pageControlBtn{
+    position: absolute;
+    bottom: -8px;
+    display: block;
+    text-align: center;
+    margin: auto;
+    text-align: center;
+    background: url(../../assets/flipbook-textures/fantasy-button.png), radial-gradient( rgba(172, 255, 47, 0.37), rgba(0, 0, 0, 0) 50%);
+    cursor: url(../../assets/cursors/middle-ages-pointer-32x32.png),pointer;
+    padding: 50px 25px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    transition: 0.3s;
+    pointer-events:all;
+    color: rgba(80, 0, 0, 0.649);
+    &:hover{
+        filter: hue-rotate(50deg);
+        text-shadow: #342101 1px 1px 10px;
+        transform: scale(1.1);
+    }
 }
