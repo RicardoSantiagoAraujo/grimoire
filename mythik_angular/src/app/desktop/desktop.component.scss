@@ -284,6 +284,8 @@ body #firewall{
 	animation: booksAppear 1s ease-in;
 	opacity: 0;
 	animation-fill-mode: forwards;
+	user-select: none;
+	pointer-events: none;
 }
 
 @for $i from 1 through 5 {

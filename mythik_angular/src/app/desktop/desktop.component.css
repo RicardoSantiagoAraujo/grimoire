@@ -251,6 +251,10 @@ body #firewall::before {
   animation: booksAppear 1s ease-in;
   opacity: 0;
   animation-fill-mode: forwards;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  pointer-events: none;
 }
 
 .desktop_prop:nth-child(1) {

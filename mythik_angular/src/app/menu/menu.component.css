@@ -42,41 +42,6 @@ body {
   cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
 }
 
-.button {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  width: 33%;
-  height: 90%;
-  margin: auto;
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
-  text-decoration: none;
-  background-image: url(../../assets/flipbook-textures/scroll.png);
-  background-size: cover;
-  color: #fff; /* Couleur du texte */
-  transition: background-color 0.3s ease, color 0.3s ease;
-  transition: transform 0.3s ease;
-  animation: scrollDown 1s ease-out;
-}
-.button:hover {
-  transform: scale(1.05);
-}
-.button:hover h1 {
-  animation: glow 1s ease-in-out infinite alternate;
-}
-
-@keyframes scrollDown {
-  from {
-    transform: scale(0.5) translateY(-100%);
-    opacity: 1;
 .chain {
   z-index: 0;
   content: "ffffff";
@@ -147,15 +112,8 @@ body {
     opacity: 0;
   }
   to {
-    transform: scale(1) translateY(0%);
-    opacity: 1;
-  to {
     opacity: 1;
   }
-}
-@keyframes glow {
-  from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
 }
 @keyframes scrollDown {
   from {
@@ -163,18 +121,9 @@ body {
     opacity: 1;
   }
   to {
-    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
-  to {
     transform: scale(1) translateY(0%);
     opacity: 1;
   }
-}
-h1 {
-  font-family: "bronzion";
-  color: rgb(61, 0, 0) !important;
-  margin-top: 10%;
-  transition: 1s;
-}
 }
 @keyframes glow {
   from {
@@ -191,27 +140,6 @@ h1 {
   transition: 1s;
 }
 
-.nav-link button {
-  font-family: "Lugrasimo";
-  min-width: 80%;
-  cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
-  border: none;
-  padding: 20px;
-  background: url("../../assets/flipbook-textures/fantasy-button.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  transition: 0.1s;
-}
-.nav-link button:hover {
-  filter: hue-rotate(50deg);
-  text-shadow: #342101 1px 1px 10px;
-  transform: scale(1.1);
-}
-.nav-link:last-child {
-  color: green;
-  margin-bottom: 70px;
-}/*# sourceMappingURL=menu.component.css.map */
 .nav-link {
   margin-top: 10px;
 }

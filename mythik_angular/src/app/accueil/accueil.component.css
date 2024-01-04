@@ -51,11 +51,16 @@ body {
   display: flex;
   width: 100vw;
   justify-content: center;
-  cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
   animation: boutonsAppear 1s;
   margin-top: -300px;
   animation-fill-mode: forwards;
   animation-delay: 3s;
+}
+.boutons .button {
+  cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
+  font-size: small;
+  min-width: 200px;
+  margin: 0px 10px;
 }
 
 @keyframes boutonsAppear {
@@ -121,7 +126,7 @@ body {
   color: rgba(67, 0, 0, 0.952);
   font-size: 100px;
   cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
-  animation: glowText 0.05s ease-in-out infinite alternate, titreAppear 3s 0.3s forwards;
+  animation: glowText 1s ease-in-out infinite alternate, titreAppear 3s 0.3s forwards;
   animation: name duration timing-function delay iteration-count direction fill-mode;
   transition: 2s;
 }
@@ -189,6 +194,7 @@ body {
   width: 100%;
   border-radius: 50%;
   transition: 2s;
+  text-decoration: none;
 }
 .section:after {
   position: absolute;
@@ -225,8 +231,15 @@ body {
 .sec_grimoire:hover #grimoire_deco {
   transform: scale(1.3) translate(0px, -60px);
 }
+.sec_grimoire a {
+  cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
+}
 
 #grimoire_deco {
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   transition: 0.3s;
   background-color: green;
   position: absolute;
@@ -321,8 +334,15 @@ body {
 .sec_combat:hover #combat_deco {
   transform: scale(1) translate(-50px, -300px);
 }
+.sec_combat a {
+  cursor: url("../../assets/cursors/sword.cur"), pointer;
+}
 
 #combat_deco {
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   transition: 0.3s;
   background-color: green;
   position: absolute;
