@@ -45,3 +45,9 @@
     <button (click)="stat()" >Mes Statistiques</button>
     <p *ngIf="tauxVictoire">{{tauxVictoire | number: '1.2-2'}} %</p>
 </div>
+
+<div>
+    <a  [routerLink]="['/accueil']" routerLinkActive="active">
+        <button type="button" class="button">Retour</button>
+      </a>
+</div>
