@@ -254,14 +254,14 @@ setTimeout(()=>{
   "</div>";
   //back
   const creaturePageABack = creaturePageA.querySelector<HTMLElement>(".back")!;
-  creaturePageABack.innerHTML = "";
+  creaturePageABack.innerHTML = "<div class='magic_effect'></div>";
     // CREATURE PAGE B
   //front
   const creaturePageB = sheets[bookStart-3];
   const creaturePageBFront = creaturePageB.querySelector<HTMLElement>(".page")!;
   creaturePageBFront.classList.add("first-page");
   creaturePageBFront.style.backgroundColor ="green !important";
-  creaturePageBFront.innerHTML = "";
+  creaturePageBFront.innerHTML = "<div class='magic_effect'></div>";
   //back
   const creaturePageBBack = creaturePageB.querySelector<HTMLElement>(".back")!;
   creaturePageBBack.innerHTML = "";
@@ -276,9 +276,11 @@ setTimeout(()=>{
       (parseInt(pageARotation) < -170 && parseInt(pageBRotation) > -10)
     ){
       document.querySelector<HTMLElement>(".creature_pages")!.style.display = "flex";
+      document.querySelectorAll<HTMLElement>(".magic_effect")!.forEach(page => {page.classList.add("fadeRing")});
       console.log("OPEN GRIMOIRE SECTION")
     } else{ //
       document.querySelector<HTMLElement>(".creature_pages")!.style.display = "none";
+      document.querySelectorAll<HTMLElement>(".magic_effect")!.forEach(page => {page.classList.remove("fadeRing")});
     };
   }
   setInterval(ouvrirSectionGrimoire, 100)
