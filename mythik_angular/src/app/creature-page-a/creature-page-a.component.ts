@@ -15,7 +15,8 @@ creatureList: Creature[] = [];
 creature!:Creature;
 num: number =0;
 selectedCreature!: Creature;
-selectShow : boolean = false
+selectShow : boolean = false;
+i:number=1;
 
   constructor(private creatureService: CreatureService){
   }
@@ -36,7 +37,7 @@ selectShow : boolean = false
 
   previous(): void {
     if (this.num < this.creatureList.length - 1) {
-      this.num = this.creatureList.indexOf(this.selectedCreature)-1;
+      this.num = this.creatureList.indexOf(this.selectedCreature);
       this.selectedCreature = this.loadCreature();
     }
   }
