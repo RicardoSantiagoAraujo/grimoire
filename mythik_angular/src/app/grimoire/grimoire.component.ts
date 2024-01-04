@@ -391,7 +391,7 @@ function lightsOn(){
       document.documentElement.style.setProperty("--blur-overlay-l", "0%");
     }, 500)
   }
-  suddenLights()
+suddenLights()
 
   console.log("LIGHT ON")
   lightstate="on"
