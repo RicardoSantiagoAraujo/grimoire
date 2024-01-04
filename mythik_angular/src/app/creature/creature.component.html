@@ -4,11 +4,11 @@
 <h1>Gestion des créatures</h1>
 </header>
 
-<div class="card mt-3">
-    <h2 class="card-header">
+<div class="card creature_list mt-3">
+    <h2 class="card-header creature_list_header">
         <div><span>L</span>iste des creatures</div>
     </h2>
-    <div class="card-body">
+    <div class="card-body creature_list_body">
         <table>
             <thead>
                 <tr>
@@ -27,18 +27,20 @@
             <tbody>
                 <tr *ngFor="let c of list() | async">
                     <td>{{c.id}}</td>
-                    <td>{{c.nom}}</td>
+                    <td class="td_nom">{{c.nom}}</td>
                     <td>{{c.description}}</td>
                     <td>{{c.dieu! | dieu}} </td>
                     <td>{{c.attaque}}</td>
                     <td>{{c.pv}}</td>
                     <!--<td>{{c.image}}</td>-->
-                    <td><img width="30px" height="30px" [src]="c.image"/></td>
+                    <td><img class="creature_img" [src]="c.image"/></td>
                     <td>{{c.mythologie}}</td>
                     <td>{{c.typeElement}}</td>
                     <td><div class="btn-group">
                         <a (click)="edit(c.id)" class="btn"><i class="bi bi-feather"></i></a>
-                        <a (click)="remove(c.id)" class="btn"><i class="bi bi-trash"></i></a>
+                        <a (click)="remove(c.id)" class="btn">
+                            <!-- <i class="bi bi-trash"></i> -->
+                            <img src="../../assets/icons/skull-solid.svg"></a>
                       </div></td>
                 </tr>
 
@@ -48,47 +50,47 @@
 
 
     </div>
-    <div class="card-footer">
+    <div class="card-footer creature_list_footer">
         <a (click)="add()" class="btn btn-success btn-lg"><i class="bi bi-plus-lg"></i></a>
         <a (click)="retour()" class="btn btn-warning btn-lg mx-2"><i class="bi bi-backspace"></i></a>
     </div>
 </div>
 
 
- <div class="card mt-3" *ngIf="showForm">
+ <div class="creature_edit card mt-3" *ngIf="showForm">
     <form (ngSubmit)="save()" [formGroup]="creatureForm">
     <div class="card-header">
         Edition d'une creature
     </div>
     <div class="card-body">
-        <div class="mb-3 mt-3">
+        <div class="mb-3 form_item mt-3">
             <label for="id" class="form-label">Id</label>
             <input type="number" class="form-control" id="id" name="id" readonly formControlName="id">
         </div>
-        <div class="mb-3">
+        <div class="mb-3 form_item">
             <label for="nom" class="form-label">Nom:</label>
             <input type="text" class="form-control" id="nom" name="nom" formControlName="nom">
         </div>
-        <div class="mb-3">
+        <div class="mb-3 form_item">
             <label for="description" class="form-label">Description:</label>
             <input type="text" class="form-control" id="description" name="description" formControlName="description">
         </div>
-        <div class="mb-3">
-            Dieu :  <input type="checkbox" class="form-check-input" name="dieu" formControlName="dieu">
+        <div class="mb-3 form_item">
+           <span> Dieu :  <input type="checkbox" class="form-check-input" name="dieu" formControlName="dieu"> </span>
         </div>
-        <div class="mb-3">
+        <div class="mb-3 form_item">
             <label for="attaque" class="form-label">Attaque:</label>
             <input type="number" class="form-control" id="attaque" name="attaque" formControlName="attaque">
         </div>
-        <div class="mb-3">
+        <div class="mb-3 form_item">
             <label for="pv" class="form-label">Pv:</label>
             <input type="number" class="form-control" id="pv" name="pv" formControlName="pv">
         </div>
-        <div class="mb-3">
+        <div class="mb-3 form_item">
             <label for="image" class="form-label">Image:</label>
             <input type="text" class="form-control" id="image" name="image" formControlName="image">
         </div>
-        <div class="mb-3">
+        <div class="mb-3 form_item">
             <label for="mythologie" class="form-label">Mythologie:</label>
             <select class="form-control" id="image" name="mythologie" formControlName="mythologie">
                 <option></option>
@@ -98,7 +100,7 @@
                 <option value="nordique">Nordique</option>
             </select>
         </div>
-        <div class="mb-3">
+        <div class="mb-3 form_item">
             <label for="typeElement" class="form-label">Type_Element:</label>
             <select class="form-control" id="typeElement" name="typeElement" formControlName="typeElement">
                 <option></option>
