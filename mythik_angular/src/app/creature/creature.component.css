@@ -50,6 +50,7 @@ body {
   height: 100%;
   cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
   font-family: "Lugrasimo";
+  overflow: auto;
 }
 
 header {
