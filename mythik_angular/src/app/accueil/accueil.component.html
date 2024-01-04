@@ -11,19 +11,56 @@
           <a class="nav-link" [routerLink]="['/compte']" routerLinkActive="active"></a>
       </li>
 </ul> -->
-<div class="boutons">
-  <a  [routerLink]="['/menu']" routerLinkActive="active"><button type="button" class="button">Se déconnecter</button></a>
-  <a  [routerLink]="['/creature']" routerLinkActive="active"><button type="button" *ngIf="isAdmin()" class="button">Gestion des creatures</button></a>
-  <a  [routerLink]="['/compte']" routerLinkActive="active"><button type="button" *ngIf="isAdmin()" class="button">Gestion des comptes</button></a>
-</div>
+<div id="main_container">
+  <div class="boutons">
+    <a  [routerLink]="['/menu']" routerLinkActive="active"><button type="button" class="button">Se déconnecter</button></a>
+    <a  [routerLink]="['/creature']" routerLinkActive="active"><button type="button" *ngIf="isAdmin()" class="button">Gestion des creatures</button></a>
+    <a  [routerLink]="['/compte']" routerLinkActive="active"><button type="button" *ngIf="isAdmin()" class="button">Gestion des comptes</button></a>
+  </div>
 
 
-<div class="accueil">
+  <div class="accueil">
 
-<div class="section">  <a  style="color: black;" [routerLink]="['/combat']" routerLinkActive="active">Affronter de terribles créatures mythologiques</a></div>
-<div class="titre">Mythik</div>
-<div class="section"><a style="color: black;" [routerLink]="['/grimoire']" routerLinkActive="active">Partir à la découverte du Grimoire</a></div>
+  <div class="section sec_combat">
+    <a  [routerLink]="['/combat']" routerLinkActive="active">
+      Affronter de terribles créatures mythologiques</a>
+      <div id="combat_deco">
+        <img src="../../assets/weapons/weapons7.png"/>
+        <img src="../../assets/weapons/weapons6.png"/>
+        <img src="../../assets/weapons/weapons5.png"/>
+        <img src="../../assets/weapons/weapons4.png"/>
+        <img src="../../assets/weapons/weapons3.png"/>
+        <img src="../../assets/weapons/weapons2.png"/>
+        <img src="../../assets/weapons/weapons1.png"/>
+        <img src="../../assets/weapons/weapons6.png"/>
+        <img src="../../assets/weapons/weapons5.png"/>
+        <img src="../../assets/weapons/weapons4.png"/>
+        <img src="../../assets/weapons/weapons3.png"/>
+        <img src="../../assets/weapons/weapons2.png"/>
+        <img src="../../assets/weapons/weapons1.png"/>
+      </div>
+  </div>
 
+  <div class="titre">Mythik</div>
+
+  <div class="section sec_grimoire">
+    <a  [routerLink]="['/grimoire']" routerLinkActive="active">
+      Partir à la découverte du <br><span><span id="letterG">G</span>rimoire</span>
+    </a>
+    <div id="grimoire_deco">
+      <img src="../../assets/illuminations/illumination1.png"/>
+      <img src="../../assets/illuminations/illumination2.png"/>
+      <img src="../../assets/illuminations/illumination3.png"/>
+      <img src="../../assets/illuminations/illumination4.png"/>
+      <img src="../../assets/illuminations/illumination5.png"/>
+      <img src="../../assets/illuminations/illumination6.png"/>
+      <img src="../../assets/illuminations/illumination7.png"/>
+      <img src="../../assets/illuminations/illumination8.png"/>
+      <img src="../../assets/illuminations/illumination9.png"/>
+    </div>
+  </div>
+
+  </div>
 </div>
 
 <div class="chain_dissolve"><app-chains></app-chains></div>

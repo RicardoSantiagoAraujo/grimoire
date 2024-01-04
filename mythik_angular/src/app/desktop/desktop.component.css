@@ -44,7 +44,10 @@ body {
 
 @keyframes firelight_effect {
   0% {
-    background-color: rgba(255, 0, 0, 0.1);
+    background-color: rgba(255, 0, 0, 0);
+  }
+  10% {
+    background-color: rgba(255, 0, 0, 0.001);
   }
   20% {
     background-color: rgba(205, 133, 0, 0.01);
@@ -248,6 +251,10 @@ body #firewall::before {
   animation: booksAppear 1s ease-in;
   opacity: 0;
   animation-fill-mode: forwards;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  pointer-events: none;
 }
 
 .desktop_prop:nth-child(1) {
