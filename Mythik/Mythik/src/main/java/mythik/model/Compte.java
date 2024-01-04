@@ -17,7 +17,6 @@ import jakarta.persistence.Table;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
     @JsonSubTypes.Type(value = Admin.class, name = "admin"),
-   
     @JsonSubTypes.Type(value = Humain.class, name = "humain"),
     @JsonSubTypes.Type(value = IA.class, name = "ia")
 })

@@ -85,6 +85,4 @@ public class Combat {
 	public void setCombattants(List<Combattant> combattants) {
 		this.combattants = combattants;
 	} 
-	
-	
 }
