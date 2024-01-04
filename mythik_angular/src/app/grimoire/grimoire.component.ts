@@ -354,7 +354,7 @@ function lightsOut(){
   console.log("LIGHT OFF");
   lightstate="off"
 }
-lightsOut()
+// lightsOut()
 
 // CANDLELIGHT ON (STATIC)
 function lightsOn(){
