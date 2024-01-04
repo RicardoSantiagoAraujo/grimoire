@@ -23,6 +23,7 @@ export class CombatComponent implements OnInit{
   result: number | null = null;
   choixJoueur!: string;
   choixOrdi!: string;
+  debut:boolean = true; 
  
 
   @Input("combattant1") combattant1!: Combattant; 
@@ -32,6 +33,7 @@ export class CombatComponent implements OnInit{
   pvtoto1? : number ;
   pvtoto2? : number ;
   affichage? : string; 
+  resultat?: string; 
 
 constructor(private combatService: CombatService, private combattantService: CombattantService, private router: Router) { 
 
@@ -50,6 +52,7 @@ constructor(private combatService: CombatService, private combattantService: Com
 
     this.pvtoto1 = this.combattant1.creature!.pv;
     this.pvtoto2 = this.combattant2.creature!.pv;
+    this.debut=false; 
      
   }
   ngAfterContentInit() {
@@ -158,7 +161,7 @@ constructor(private combatService: CombatService, private combattantService: Com
 
     if (this.creature2.pv! <= 0) {
       this.resultatCombat = this.creature1.nom!;
-      
+      this.barreVie(); 
       this.combattant1.gagnant = true;
       this.combattant2.gagnant = false;
 
@@ -169,7 +172,7 @@ constructor(private combatService: CombatService, private combattantService: Com
 
    if (this.creature1.pv! <= 0) {
     this.resultatCombat = this.creature2.nom!;
-
+    this.barreVie(); 
     this.combattant1.gagnant = false; 
     this.combattant2.gagnant = true;
     this.saveCombat();
@@ -179,15 +182,17 @@ constructor(private combatService: CombatService, private combattantService: Com
   }
   afficheDegats (result : number, degat : number) {
     if (result==1){
+      this.resultat = "darkgreen";
       this.affichage = this.creature1.nom +" inflige " + degat + " points de dégats à " + this.creature2.nom; 
       }
       
     else if (result==2){
-    
+        this.resultat = "darkred";
         this.affichage = this.creature2.nom +" inflige " + degat + " points de dégats à " + this.creature1.nom; 
       }
-    else{this.affichage =  "égalité";}
-      
+    else{
+      this.resultat = "black";
+      this.affichage =  "égalité";}
     }
 
   mancheSuivante() {

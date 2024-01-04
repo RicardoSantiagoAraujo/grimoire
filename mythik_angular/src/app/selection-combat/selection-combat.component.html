@@ -8,8 +8,8 @@
 
 <div class="selectionCrea">
     
-    <div  *ngFor="let c of list() | async" class="item">
-        <p (click)="creationCombattant1(c)">{{c.nom}}</p>
+    <div  *ngFor="let c of list() |async" class="item">
+        <p (click)="creationCombattant1(c)" [style.color] = "c.typeElement! | element">{{c.nom}}</p>
         <p (click)="creationCombattant1(c)"><img width="100px"  [src]="c.image"/></p>
     </div>
 </div>
