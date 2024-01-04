@@ -19,8 +19,8 @@ export class CombattantService {
     return this.http.get<Combattant>(environment.apiUrl + "/combattant/"+id);
   }
 
-  findByCompte(compte?: Compte): Observable<Combattant[]> {
-    return this.http.get<Combattant[]>(environment.apiUrl + "/statistique");
+  findByCompteId(id?: number): Observable<Combattant[]> {
+    return this.http.get<Combattant[]>(environment.apiUrl + "/statistique/"+id);
   }
 
 

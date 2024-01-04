@@ -1,10 +1,8 @@
 package mythik.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import mythik.controller.dto.CombattantResponse;
 import mythik.dao.IDAOCombattant;
 import mythik.model.Combattant;
 import mythik.model.Compte;
@@ -54,23 +51,10 @@ public class CombattantController {
 		return daoCombattant.save(combattant);
 	}
 	
-	@GetMapping("/statistique")
-	public List<Combattant> findByCompte(Compte compte)
-	{	List<Combattant> combattantsJoueur = daoCombattant.findByCompte(compte);
-		
-		
-//		BeanUtils.copyProperties(combattantsJoueur, combattantsResponse);
-		
-//		for (CombattantResponse combattantResponse : combattantsResponse) {
-//
-//	        // Copiez les propriétés de combattant à combattantResponse
-//	        combattantResponse.setCreature(mapCreatureResponse(combattant.getCreature()));
-//	        combattantResponse.setCombat(mapCombatResponse(combattant.getCombat()));
-//	        combattantResponse.setGagnant(combattant.isGagnant());
-//
-//	        // Ajoutez combattantResponse à la liste
-//	        combattantsResponse.add(combattantResponse);
-//		
+	@GetMapping("/statistique/{id}")
+	public List<Combattant> findByCompte(@PathVariable Integer id)
+	{	
+		List<Combattant> combattantsJoueur = daoCombattant.findByCompteId(id);	
 		return combattantsJoueur;
 	}
 	
