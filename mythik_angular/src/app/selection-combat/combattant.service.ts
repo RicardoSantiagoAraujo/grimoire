@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Combattant } from '../model';
+import { Combattant, Compte } from '../model';
 import { environment } from 'src/environnements/environment';
 
 @Injectable({
@@ -17,6 +17,12 @@ export class CombattantService {
 
   findById(id?: number): Observable<Combattant> {
     return this.http.get<Combattant>(environment.apiUrl + "/combattant/"+id);
+  }
+
+  findByCompteId(id?: number): Observable<Combattant[]> {
+    console.log(environment.apiUrl + "/statistique/"+id);
+    return this.http.get<Combattant[]>(environment.apiUrl + "/combattant/statistique/"+id);
+    
   }
 
 

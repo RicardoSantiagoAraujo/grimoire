@@ -24,7 +24,8 @@ import { StatistiqueComponent } from './statistique/statistique.component';
 import { FlipBookModule } from '@labsforge/flipbook';
 import { ChainsComponent } from './chains/chains.component';
 import { ElementPipe } from './element.pipe';
-import { MythologiePipe } from './mythologie.pipe'
+import { MythologiePipe } from './mythologie.pipe';
+import { GagnantPipe } from './gagnant.pipe'
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { MythologiePipe } from './mythologie.pipe'
     ChainsComponent,
     ElementPipe,
     MythologiePipe,
+    GagnantPipe,
   ],
   imports: [
     BrowserModule,

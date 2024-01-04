@@ -27,8 +27,8 @@ public class Combat {
 	@Column(name="heure_combat")
 	private LocalTime heureCombat; 
 	
-	@OneToMany(mappedBy = "combat")
-	private List<Combattant> combattants;
+//	@OneToMany(mappedBy = "combat")
+//	private List<Combattant> combattants;
 	
 	
 	public Combat() {
@@ -38,12 +38,12 @@ public class Combat {
 
 
 
-	public Combat(Integer id, LocalDate dateCombat, LocalTime heureCombat, List<Combattant> combattants) {
-		this.id = id;
-		this.dateCombat = dateCombat;
-		this.heureCombat = heureCombat;
-		this.combattants = combattants;
-	}
+//	public Combat(Integer id, LocalDate dateCombat, LocalTime heureCombat, List<Combattant> combattants) {
+//		this.id = id;
+//		this.dateCombat = dateCombat;
+//		this.heureCombat = heureCombat;
+//		this.combattants = combattants;
+//	}
 
 	public Combat(Integer id, LocalDate dateCombat, LocalTime heureCombat) {
 		this.id = id;
@@ -79,12 +79,10 @@ public class Combat {
 	public void setHeureCombat(LocalTime heureCombat) {
 		this.heureCombat = heureCombat;
 	}
-	public List<Combattant> getCombattants() {
-		return combattants;
-	}
-	public void setCombattants(List<Combattant> combattants) {
-		this.combattants = combattants;
-	} 
-	
-	
+//	public List<Combattant> getCombattants() {
+//		return combattants;
+//	}
+//	public void setCombattants(List<Combattant> combattants) {
+//		this.combattants = combattants;
+//	} 
 }

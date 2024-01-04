@@ -44,8 +44,11 @@ constructor(public id?: number, public gagnant?: boolean, public compte?: Compte
 
 }
 
+export class CombattantResponse {
+    }
+
 export class Combat {
     constructor(public id?: number, public dateCombat? : string, public heureCombat?: string, public combattants?: Combattant[]){}
     
     }
-    
+   
