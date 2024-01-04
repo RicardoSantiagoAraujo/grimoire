@@ -21,7 +21,8 @@ import { CreaturePageAComponent } from './creature-page-a/creature-page-a.compon
 import { CreaturePageBComponent } from './creature-page-b/creature-page-b.component';
 import { DesktopComponent } from './desktop/desktop.component';
 import { StatistiqueComponent } from './statistique/statistique.component';
-import { FlipBookModule } from '@labsforge/flipbook'
+import { FlipBookModule } from '@labsforge/flipbook';
+import { ChainsComponent } from './chains/chains.component'
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { FlipBookModule } from '@labsforge/flipbook'
     CreaturePageAComponent,
     DieuPipe,
     StatistiqueComponent,
+    ChainsComponent,
   ],
   imports: [
     BrowserModule,

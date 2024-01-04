@@ -31,7 +31,6 @@ export class ConnexionComponent implements OnInit  {
 
   connexion() {
     this.authService.login(this.loginCtrl.value, this.passwordCtrl.value);
-    this.router.navigate(['/accueil']);
   }
 
   cancel() {

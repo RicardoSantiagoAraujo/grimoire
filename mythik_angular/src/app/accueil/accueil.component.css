@@ -1,94 +1,108 @@
+@charset "UTF-8";
 @font-face {
-    font-family: "bronzion";
-    font-style: normal;
-    font-weight: normal;
-    src: url("../../assets/fonts/bronzion_deco/BronzionDeco_PERSONAL_USE_ONLY.otf");
-  }
-
+  font-family: "bronzion";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../../assets/fonts/bronzion_deco/BronzionDeco_PERSONAL_USE_ONLY.otf");
+}
 body, html {
-    height: 100%;
-    overflow: hidden;
-  }
+  height: 100%;
+  overflow: hidden;
+}
 
 body {
-    background: url("../../assets/flipbook-textures/wood-texture.jpeg"), radial-gradient(#e6b664, #000325);
-    background-blend-mode: multiply;
-    background-size: cover;
-    width: 100vw;  /* 50% de la largeur de la fenêtre */
-    height: 100vh;
-    cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
- 
-  }
-  #map img {
-    display: flex;
-    position: absolute;
-    box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.501);
-    top: -250px;
-    right: 700px;
-    height: 60%;
-    transform: rotate(30deg);
-    z-index: 0;
-    filter: brightness(0.7);
-  }
-  
- .boutons{
-
-    display:flex;
-    justify-content: space-evenly; 
-    cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
-    margin-top: 30px;
- }
-
-  .button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    background-color: #573d26; /* Couleur de fond avec une teinte terreux */
-    color: #fff; /* Couleur du texte */
-    border: 2px solid #8b735b; /* Bordure */
-    border-radius: 8px; /* Coins arrondis */
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Ombre légère */
-    transition: background-color 0.3s ease, color 0.3s ease;
-    cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
-  }
-
-  .titre{
-    text-align: center;
-    font-family: bronzion;
-    color: darkred;
-    font-size: 100px;
-    cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
- 
-  }
-
-
-.accueil{
-    
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
+  background: url("../../assets/flipbook-textures/wood-texture.jpeg"), radial-gradient(#e6b664, #000325);
+  background-blend-mode: multiply;
+  background-size: cover;
+  width: 100vw; /* 50% de la largeur de la fenêtre */
+  height: 100vh;
+  cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
 }
 
-
-.section{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    width: 400px;
-    height: 550px;
-    border: 5px solid darkred; 
-    border-radius: 50%;
-    position: relative;
-    background-color:rgba(245, 245, 220, 0.555);
-    font-family: bronzion;
-    font-size: 25px;
-    cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
+#map img {
+  display: flex;
+  position: absolute;
+  box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.501);
+  top: -250px;
+  right: 700px;
+  height: 60%;
+  transform: rotate(30deg);
+  z-index: 0;
+  filter: brightness(0.7);
 }
 
+.boutons {
+  display: flex;
+  justify-content: space-evenly;
+  cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
+  margin-top: 30px;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  background-color: #573d26; /* Couleur de fond avec une teinte terreux */
+  color: #fff; /* Couleur du texte */
+  border: 2px solid #8b735b; /* Bordure */
+  border-radius: 8px; /* Coins arrondis */
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Ombre légère */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
+}
+
+.titre {
+  text-align: center;
+  font-family: bronzion;
+  color: darkred;
+  font-size: 100px;
+  cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
+}
+
+.accueil {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
+}
+
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 400px;
+  height: 550px;
+  border: 5px solid darkred;
+  border-radius: 50%;
+  position: relative;
+  background-color: rgba(245, 245, 220, 0.555);
+  font-family: bronzion;
+  font-size: 25px;
+  cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
+}
+
+.chain_dissolve .chain {
+  animation: chainBreak 10s;
+  animation-fill-mode: forwards;
+  animation-delay: 0s;
+}
+
+@keyframes chainBreak {
+  0% {
+    opacity: 1;
+  }
+  15% {
+    filter: brightness(5) blur(50px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2);
+  }
+}/*# sourceMappingURL=accueil.component.css.map */

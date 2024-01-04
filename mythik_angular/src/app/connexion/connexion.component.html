@@ -15,14 +15,20 @@
         <div >
             <label for="password" class="form-label">Password:</label>
             <input type="password" class="form-control" id="password" name="password" formControlName="password">
-            <span class="text-danger" *ngIf="passwordCtrl.dirty && passwordCtrl.hasError('required')">Le mot passe est obligatoire</span>
-            <span class="text-danger" *ngIf="passwordCtrl.dirty && passwordCtrl.hasError('minlength')">Le mot passe doit avoir au moins 5 caractères</span>
+            <span class="text-danger user-danger" *ngIf="passwordCtrl.dirty && passwordCtrl.hasError('required')">Le mot passe est obligatoire</span>
+            <span class="text-danger pass-danger" *ngIf="passwordCtrl.dirty && passwordCtrl.hasError('minlength')">Le mot passe doit avoir au moins 5 caractères</span>
         </div>
     </div>
     <div class="button_group">
         <button type="submit" [disabled]="connexionForm.invalid">Se connecter</button>
-        <a  [routerLink]="['/menu']" routerLinkActive="active"><button type="button" class="button">Retour</button></a>
+        <a  [routerLink]="['/menu']" routerLinkActive="active">
+            <button type="button" class="button">Retour</button>
+        </a>
     </div>
     </form>
+    <div class="shield"><span>M</span>ythik</div>
 </div>
+
+<app-chains></app-chains>
+
 </body>

@@ -275,3 +275,25 @@ body #firewall{
 		filter:brightness(1);
 	}
 }
+
+
+.desktop_prop{
+	animation: booksAppear 1s ease-in;
+	opacity: 0;
+	animation-fill-mode: forwards;
+}
+
+@for $i from 1 through 5 {
+    .desktop_prop:nth-child(#{$i}) {
+		animation-delay: calc(#{$i} * 0.2s);
+    }
+}
+
+@keyframes booksAppear{
+	from{
+		opacity: 0;
+	}
+	to{
+		opacity: 1;
+	}
+}
