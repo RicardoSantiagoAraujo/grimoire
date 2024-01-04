@@ -24,7 +24,7 @@ export class CombatComponent implements OnInit{
   choixJoueur!: string;
   choixOrdi!: string;
   debut:boolean = true; 
- 
+  fin: boolean = false; 
 
   @Input("combattant1") combattant1!: Combattant; 
   @Input("combattant2") combattant2!: Combattant; 
@@ -148,6 +148,9 @@ constructor(private combatService: CombatService, private combattantService: Com
     if (result === 1) {
       const degats = this.degats(this.creature1, this.creature2);
       this.creature2.pv! -= degats.degat1!;
+      if(this.creature2.pv! <= 0){
+        this.creature2.pv!=0;
+      }
       this.barreVie(); 
       this.afficheDegats(1, degats.degat1!);
     } 
@@ -155,28 +158,35 @@ constructor(private combatService: CombatService, private combattantService: Com
     if (result === 2) {
       const degats = this.degats(this.creature1, this.creature2);
       this.creature1.pv! -= degats.degat2!;
+      if(this.creature1.pv! <= 0){
+        this.creature1.pv!=0;
+      }
       this.barreVie(); 
       this.afficheDegats(2, degats.degat2!);
     }
 
     if (this.creature2.pv! <= 0) {
+      this.creature2.pv=0;
       this.resultatCombat = this.creature1.nom!;
-      this.barreVie(); 
+      this.fin = true; 
       this.combattant1.gagnant = true;
       this.combattant2.gagnant = false;
 
       this.saveCombat();
 
       this.combatTermine = true;
+      this.barreVie();
    }
 
    if (this.creature1.pv! <= 0) {
+    this.creature1.pv=0; 
     this.resultatCombat = this.creature2.nom!;
-    this.barreVie(); 
+    this.fin = true;  
     this.combattant1.gagnant = false; 
     this.combattant2.gagnant = true;
     this.saveCombat();
     this.combatTermine = true;
+    this.barreVie();
     }
 
   }

@@ -12,7 +12,9 @@
                  </div>
                 <div class="barre-vie">
                     <div class="vie-restante" style="width: 100%;" *ngIf="debut"></div>
-                    <div class="vie-restante" [style.width]="vieRestant1 + '%'"></div>
+                    
+                    <div  class="vie-restante" [style.width]="vieRestant1 + '%'"></div>
+                    
                 </div>
                 <div style="margin-top: 20px;">Points de vie : {{ creature1.pv }}</div>
             </div>
@@ -46,7 +48,9 @@
                 <p>{{ creature2.nom }} - {{combattant2.compte?.login}} </p></div>
                 <div class="barre-vie">
                     <div class="vie-restante" style="width: 100%;" *ngIf="debut"></div>
+                   
                     <div class="vie-restante" [style.width]="vieRestant2 + '%'"></div>
+                    
                 </div>
                 <div style="margin-top: 20px;">Points de vie: {{ creature2.pv }}</div>
             </div> 
