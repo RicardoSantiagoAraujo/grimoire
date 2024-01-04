@@ -97,6 +97,10 @@ flipbook .cover:first-of-type{
 	}
 }
 
+
+
+
+
 flipbook .cover:first-of-type, flipbook .cover:last-of-type{
 	transition: 0.1s;
 	&:hover{
@@ -201,6 +205,32 @@ flipbook-page .page{
     justify-content: center;
     align-items:center;
 	margin: 50px 0px;
+	animation:  flipbookAppear 2s ease-in-out;
+	opacity: 0;
+	animation-delay: 2s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes flipbookAppear {
+	0%{
+		opacity: 0;
+		filter: brightness(5)blur(0px)drop-shadow(0 0 0px rgb(255, 0, 0));
+	}
+	25%{
+		opacity: 0.9;
+		filter: brightness(10)blur(20px)drop-shadow(0 0 20px rgb(0, 195, 255));
+
+	}
+	50%{
+		opacity: 1;
+		filter: brightness(10)blur(10px)drop-shadow(0 0 15px rgb(255, 255, 0));
+
+	}
+	100%{
+		opacity: 1;
+		filter: brightness(1)blur(0px)drop-shadow(0 0 0px rgb(0,0,0,0.1));
+	}
+
 }
 
 .mocktext{
@@ -301,7 +331,7 @@ flipbook-page .page{
 	background-image: url("../../assets/flipbook-textures/page_decoration2.png");
 	background-size: contain;
 	background-repeat: no-repeat;
-	overflow: hidden;
+	// overflow: hidden;
 	img{
 		width: 80%;
 		opacity: 0.9;

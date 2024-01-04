@@ -49,6 +49,8 @@ body {
 
 
  .formulaire{
+  position: relative;
+  z-index: 1;
   background: url("../../assets/flipbook-textures/dialog_scroll.png");
   display: flex;
   align-items: center;
@@ -56,11 +58,18 @@ body {
   background-size:contain;
   background-repeat: no-repeat;
   background-position: center;
-  width: 80%;
+  width: 70%;
   height: 80%;
   color: white;
   font-size: 25px;
   animation: scrollAppear 1s ease-out;
+  transition: 1s ease-in-out;
+  &:hover{
+    transform: scale(1.05);
+    .shield{
+      transform: rotate(0deg)scale(1.1);
+    }
+  }
  }
 
  @keyframes scrollAppear {
@@ -73,7 +82,7 @@ body {
   }
  }
 
- .formulaire * {
+ .formulaire *:not(.text-danger) {
   opacity: 0;
   animation: contentAppear 1s ease-in;
   animation-delay: 0.7s;
@@ -99,14 +108,15 @@ body {
   text-align: center;
   width: 50%;
   margin: auto;
-  border: 3px solid darkred;
-  border-radius: 10%;
+  border: 10px double rgba(0, 255, 0, 0.1);
+  border-radius: 1% 1% 50% 50%;
   position: relative;
   background-color:rgba(245, 245, 220, 0.555);
   font-size: 40px;
 
   font-family: bronzion;
   color: darkred;
+  text-shadow: 1px 1px 1px rgba(0, 128, 0, 0.501);
 
  }
 
@@ -121,10 +131,10 @@ input {
   width: 500px;
   padding: 10px;
   margin: 5px;
-  border: 1px solid #ccc;
+  border: 1px dashed #ccc;
   border-radius: 4px;
   box-sizing: border-box;
-  background-color: #d8ba859b;
+  background-color: #d8ba856b;
   cursor: url("../../assets/cursors/feather.png"), pointer ;
 }
 
@@ -138,8 +148,10 @@ input:focus {
   outline: none;
   border-color: #007bff;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-  background-color: pink;
+  background-color: rgba(255, 128, 0, 0.1);
+  animation: inputFocus 1s infinite alternate;
 }
+
 
 .button_group{
   display: flex;
@@ -175,5 +187,75 @@ input:focus {
     border: none;
     height: 100%;
     cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer ;
+    box-shadow: none;
+  }
+}
+
+.shield{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-family: bronzion;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  color: rgba(255, 111, 111, 0.486);
+  width: 30%;
+  height: 50%;
+  top:10px;
+  background: url(../../assets/flipbook-textures/shield.png), radial-gradient(black, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  right:10%;
+  transform: rotate(10deg);
+  span{
+    font-size: 60px;
+    font-weight: bold;
+    color: rgb(84, 87, 255);
+  }
+  transition: 1s;
+}
+
+
+
+.text-danger{
+  position: absolute;
+  bottom:0px;
+  right: 50%;
+  width: 100%;
+  text-align: center;
+  transform: translateX(50%);
+  animation: dangerAppear 0.3s ease-in, dangerAnimate 0.3s ease-in-out infinite alternate;
+  &.pass-danger{
+    bottom:30px;
+  }
+  &.user-danger{
+    bottom:20px;
+  }
+}
+
+@keyframes dangerAppear {
+  from{
+    opacity: 0;
+  }
+
+  to{
+    opacity: 1;
+  }
+}
+
+@keyframes dangerAnimate{
+  0%{
+    text-shadow: 0 0 8px rgba(0, 0, 255, 0.503);
+  }
+
+  50%{
+    text-shadow: 0 0 12px rgba(85, 0, 255, 0.484);
+  }
+
+  100%{
+    text-shadow: 0 0 5px rgba(0, 183, 255, 0.598);
   }
 }

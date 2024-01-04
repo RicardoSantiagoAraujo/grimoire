@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 import mythik.controller.dto.CombattantResponse;
 import mythik.dao.IDAOCombattant;
 import mythik.model.Combattant;
+import quest.controller.dto.FiliereRequest;
+import quest.model.Filiere;
+import quest.model.Stagiaire;
 
 
 @RestController

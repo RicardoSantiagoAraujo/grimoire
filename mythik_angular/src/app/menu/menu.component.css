@@ -42,6 +42,21 @@ body {
   cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
 }
 
+.chain {
+  z-index: 0;
+  content: "ffffff";
+  position: absolute;
+  width: 13%;
+  height: 3000px;
+  top: -200%;
+  left: 50%;
+  background: url(../../assets/flipbook-textures/chain_repeat.png), linear-gradient(0.25turn, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.51), rgba(0, 0, 0, 0));
+  background-blend-mode: lighten;
+  filter: brightness(0.6);
+  transform: rotate(-120deg);
+  background-position: center;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -51,6 +66,7 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 1;
   margin: auto;
   width: 33%;
   height: 90%;
