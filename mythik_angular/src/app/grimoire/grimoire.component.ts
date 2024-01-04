@@ -281,7 +281,7 @@ setTimeout(()=>{
       document.querySelector<HTMLElement>(".creature_pages")!.style.display = "none";
     };
   }
-  setInterval(ouvrirSectionGrimoire, 1000)
+  setInterval(ouvrirSectionGrimoire, 100)
 
 
 }, 0 )
@@ -391,7 +391,7 @@ function lightsOn(){
       document.documentElement.style.setProperty("--blur-overlay-l", "0%");
     }, 500)
   }
-  suddenLights()
+suddenLights()
 
   console.log("LIGHT ON")
   lightstate="on"

@@ -205,8 +205,8 @@ flipbook-page .page{
     justify-content: center;
     align-items:center;
 	margin: 50px 0px;
-	animation:  flipbookAppear 2s ease-in-out;
-	opacity: 0;
+	// animation:  flipbookAppear 2s ease-in-out;
+	// opacity: 0;
 	animation-delay: 2s;
 	animation-fill-mode: forwards;
 }
@@ -252,7 +252,8 @@ flipbook-page .page{
 }
 
 .creature_pages{
-	height: 100%;
+	pointer-events: none;
+	height: 105%;
 	width: 800px*1.2; // adjust according to book width in "test-flipbook.component.ts"
     display: flex;
 	display: none;
@@ -267,10 +268,10 @@ flipbook-page .page{
 		position:relative;
 		background-color: rgba(255, 0, 0, 0.1);
 		// width: 45%;
-		width: 90%;
-		height: 90%;
+		width: 95%;
+		height: 100%;
 	}
-	.creature_page_b{  //
+	.creature_page_b{  // excluded
 		position:relative;
 		background-color: rgba(60, 255, 0, 0.1);
 		width: 45%;
