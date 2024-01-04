@@ -19,7 +19,7 @@ export class StatistiqueComponent implements OnInit{
   mesParties : boolean = true;
   IAParties : boolean = false;
   id!:number;
-
+  tauxVictoire? : number; 
   constructor(private combattantService: CombattantService, private compteService: CompteService, private authService: AuthService) {
   }
 
@@ -47,4 +47,16 @@ export class StatistiqueComponent implements OnInit{
     });
   }
   
+  stat(){
+  let v: number = 0; 
+  let d: number = 0; 
+    this.combattants.forEach((c : Combattant) => {
+      if(c.gagnant){
+        v++;
+      }
+      else{d++;}
+    })
+    this.tauxVictoire = (v/(v+d))*100
+
+  }
 }

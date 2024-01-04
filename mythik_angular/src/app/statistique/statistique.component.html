@@ -26,7 +26,7 @@
                     <td>{{c.creature?.nom}}</td>
                     <td>{{c.creature?.typeElement}}</td>
                     <td>{{c.combat?.dateCombat}} {{c.combat?.heureCombat}}</td>
-                    <td>{{c.gagnant}}</td>
+                    <td>{{c.gagnant! | gagnant}}</td>
                 </tr>
             </tbody>
             <tbody *ngIf="mesParties==false && IAParties==true">
@@ -39,4 +39,9 @@
             </tbody>
         </table>
     </div>
+</div>
+
+<div *ngIf="combattants">
+    <button (click)="stat()" >Mes Statistiques</button>
+    <p *ngIf="tauxVictoire">{{tauxVictoire | number: '1.2-2'}} %</p>
 </div>
