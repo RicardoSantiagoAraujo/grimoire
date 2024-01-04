@@ -24,7 +24,7 @@ export class CombatComponent implements OnInit{
   choixJoueur!: string;
   choixOrdi!: string;
   debut:boolean = true; 
-  fin: boolean = false; 
+ 
 
   @Input("combattant1") combattant1!: Combattant; 
   @Input("combattant2") combattant2!: Combattant; 
@@ -148,9 +148,6 @@ constructor(private combatService: CombatService, private combattantService: Com
     if (result === 1) {
       const degats = this.degats(this.creature1, this.creature2);
       this.creature2.pv! -= degats.degat1!;
-      if(this.creature2.pv! <= 0){
-        this.creature2.pv!=0;
-      }
       this.barreVie(); 
       this.afficheDegats(1, degats.degat1!);
     } 
@@ -158,35 +155,30 @@ constructor(private combatService: CombatService, private combattantService: Com
     if (result === 2) {
       const degats = this.degats(this.creature1, this.creature2);
       this.creature1.pv! -= degats.degat2!;
-      if(this.creature1.pv! <= 0){
-        this.creature1.pv!=0;
-      }
       this.barreVie(); 
       this.afficheDegats(2, degats.degat2!);
     }
 
     if (this.creature2.pv! <= 0) {
-      this.creature2.pv=0;
       this.resultatCombat = this.creature1.nom!;
-      this.fin = true; 
+      this.creature2.pv =0;
+      this.barreVie(); 
       this.combattant1.gagnant = true;
       this.combattant2.gagnant = false;
 
       this.saveCombat();
 
       this.combatTermine = true;
-      this.barreVie();
    }
 
    if (this.creature1.pv! <= 0) {
-    this.creature1.pv=0; 
     this.resultatCombat = this.creature2.nom!;
-    this.fin = true;  
+    this.creature1.pv =0;
+    this.barreVie(); 
     this.combattant1.gagnant = false; 
     this.combattant2.gagnant = true;
     this.saveCombat();
     this.combatTermine = true;
-    this.barreVie();
     }
 
   }
@@ -227,15 +219,22 @@ constructor(private combatService: CombatService, private combattantService: Com
 
   barreVie() {
 
-    
+  
   if(this.combattant1.creature?.pv && this.creature1.pv)
   { this.vieRestant1=((this.creature1.pv)/(this.pvtoto1!))*100 ;
      console.log(this.creature1.pv);
      console.log(this.pvtoto1!);}
+  
   if(this.combattant2.creature?.pv && this.creature2.pv)
   { this.vieRestant2=((this.creature2.pv)/(this.pvtoto2!))*100 }  
   
+  if (this.vieRestant1<0){
+    this.vieRestant1 =0;
   }
 
+  if (this.vieRestant2<0){
+    this.vieRestant1 = 0;
+  }
+  }
  
 }
