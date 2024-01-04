@@ -1,4 +1,4 @@
-<p>statistique works!</p>
+<body>
 
 
 <h1>Statistiques de jeu</h1>
@@ -40,10 +40,10 @@
         </table>
     </div>
 </div>
-
-<div *ngIf="combattants">
+<div class="baspage">
+<div *ngIf="combattants" >
     <button (click)="stat()" >Mes Statistiques</button>
-    <p *ngIf="tauxVictoire">{{tauxVictoire | number: '1.2-2'}} %</p>
+    <p class="stat" *ngIf="tauxVictoire && changement">{{tauxVictoire | number: '1.2-2'}} % de victoires</p>
 </div>
 
 <div>
@@ -51,3 +51,5 @@
         <button type="button" class="button">Acceuil</button>
       </a>
 </div>
+</div>
+</body>

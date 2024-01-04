@@ -20,6 +20,7 @@ export class StatistiqueComponent implements OnInit{
   IAParties : boolean = false;
   id!:number;
   tauxVictoire? : number; 
+  changement: boolean = true;
   constructor(private combattantService: CombattantService, private compteService: CompteService, private authService: AuthService) {
   }
 
@@ -34,6 +35,7 @@ export class StatistiqueComponent implements OnInit{
   mesparties () {
     this.mesParties = true;
     this.IAParties = false;
+    this.changement=false; 
     this.combattantService.findByCompteId(this.compte.id).subscribe (resp =>{
       this.combattants = resp
     });
@@ -42,12 +44,14 @@ export class StatistiqueComponent implements OnInit{
   IAparties(){
     this.mesParties = false;
     this.IAParties = true;
+    this.changement=false;
     this.combattantService.findByCompteId(this.compteIA.id).subscribe (resp =>{
       this.combattants = resp
     });
   }
   
   stat(){
+    this.changement=true;
   let v: number = 0; 
   let d: number = 0; 
     this.combattants.forEach((c : Combattant) => {

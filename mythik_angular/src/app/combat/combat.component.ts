@@ -233,7 +233,7 @@ constructor(private combatService: CombatService, private combattantService: Com
   }
 
   if (this.vieRestant2<0){
-    this.vieRestant1 = 0;
+    this.vieRestant2 = 0;
   }
   }
  
