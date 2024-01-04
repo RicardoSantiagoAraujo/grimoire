@@ -15,7 +15,7 @@ import { Observable } from 'rxjs';
 export class StatistiqueComponent implements OnInit{
   compte! : any; 
   combattants! : Combattant [];
-  mesParties : boolean = false;
+  mesParties : boolean = true;
   IAParties : boolean = false;
   id!:number;
 
@@ -24,15 +24,17 @@ export class StatistiqueComponent implements OnInit{
 
   ngOnInit(): void {
     this.compte = this.authService.getCompte();
+    console.log(this.compte.id);
     this.combattantService.findByCompteId(this.compte.id).subscribe (resp =>{
       this.combattants = resp
     });
-    console.log(this.combattants)
+   console.log(this.combattants)
   }
 
   mesparties () {
     this.mesParties = true;
     this.IAParties = false;
+   
   }
 
   IAparties(){

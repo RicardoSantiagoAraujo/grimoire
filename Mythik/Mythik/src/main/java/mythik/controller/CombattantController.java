@@ -52,7 +52,7 @@ public class CombattantController {
 	}
 	
 	@GetMapping("/statistique/{id}")
-	public List<Combattant> findByCompte(@PathVariable Integer id)
+	public List<Combattant> findByCompteId(@PathVariable Integer id)
 	{	
 		List<Combattant> combattantsJoueur = daoCombattant.findByCompteId(id);	
 		return combattantsJoueur;
