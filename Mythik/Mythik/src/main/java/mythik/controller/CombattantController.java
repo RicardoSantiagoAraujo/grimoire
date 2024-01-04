@@ -19,9 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import mythik.controller.dto.CombattantResponse;
 import mythik.dao.IDAOCombattant;
 import mythik.model.Combattant;
-import quest.controller.dto.FiliereRequest;
-import quest.model.Filiere;
-import quest.model.Stagiaire;
+import mythik.model.Compte;
 
 
 @RestController
@@ -56,29 +54,25 @@ public class CombattantController {
 		return daoCombattant.save(combattant);
 	}
 	
-//	@GetMapping("/statistique/{id}")
-//	public List<CombattantResponse> findByCompte(@PathVariable Integer id)
-//	{	
-//		List<CombattantResponse> combattantsResponse = new ArrayList();
-//
-//		
-//		List<Combattant> combattantsJoueur = daoCombattant.findByCompte(id);
-//		
-//		
+	@GetMapping("/statistique")
+	public List<Combattant> findByCompte(Compte compte)
+	{	List<Combattant> combattantsJoueur = daoCombattant.findByCompte(compte);
+		
+		
 //		BeanUtils.copyProperties(combattantsJoueur, combattantsResponse);
+		
+//		for (CombattantResponse combattantResponse : combattantsResponse) {
+//
+//	        // Copiez les propriétés de combattant à combattantResponse
+//	        combattantResponse.setCreature(mapCreatureResponse(combattant.getCreature()));
+//	        combattantResponse.setCombat(mapCombatResponse(combattant.getCombat()));
+//	        combattantResponse.setGagnant(combattant.isGagnant());
+//
+//	        // Ajoutez combattantResponse à la liste
+//	        combattantsResponse.add(combattantResponse);
 //		
-////		for (CombattantResponse combattantResponse : combattantsResponse) {
-////
-////	        // Copiez les propriétés de combattant à combattantResponse
-////	        combattantResponse.setCreature(mapCreatureResponse(combattant.getCreature()));
-////	        combattantResponse.setCombat(mapCombatResponse(combattant.getCombat()));
-////	        combattantResponse.setGagnant(combattant.isGagnant());
-////
-////	        // Ajoutez combattantResponse à la liste
-////	        combattantsResponse.add(combattantResponse);
-////		
-//		return combattantsResponse;
-//	}
+		return combattantsJoueur;
+	}
 	
 	
 	@PutMapping("/{id}")

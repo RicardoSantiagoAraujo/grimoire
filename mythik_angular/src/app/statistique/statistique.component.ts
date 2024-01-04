@@ -15,7 +15,7 @@ import { Observable } from 'rxjs';
 export class StatistiqueComponent implements OnInit{
   compte! : any; 
   combattants! : Observable <Combattant []>;
-  mesParties : boolean = true;
+  mesParties : boolean = false;
   IAParties : boolean = false;
   id!:number;
 
@@ -25,8 +25,7 @@ export class StatistiqueComponent implements OnInit{
   ngOnInit(): void {
    
     this.compte = this.authService.getCompte();
-    this.id= this.compte.id;
-    console.log(this.id)
+    
   }
 
   mesparties () {
@@ -40,12 +39,13 @@ export class StatistiqueComponent implements OnInit{
   }
 
   getStatJoueur () {
-    this.compte = this.authService.getCompte();{
-    return this.combattantService.findByCompte(this.compte.id)};
+    this.combattants = this.combattantService.findByCompte(this.authService.getCompte());
+    console.log(this.combattants)
+    return this.combattants
   }
 
   getStatIA () {
     this.compte = this.compteService.findIA();
-    return this.combattantService.findByCompte(this.compte.id);
+    return this.combattantService.findByCompte();
   }
 }
