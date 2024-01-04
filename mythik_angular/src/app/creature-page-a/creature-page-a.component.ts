@@ -36,15 +36,15 @@ i:number=1;
   }
 
   previous(): void {
-    if (this.num < this.creatureList.length - 1) {
-      this.num = this.creatureList.indexOf(this.selectedCreature);
+    if (this.num >0) {
+      this.num = this.creatureList.indexOf(this.selectedCreature)-1;
       this.selectedCreature = this.loadCreature();
     }
   }
 
   next(): void {
     
-    if (this.num < this.creatureList.length - 1) {
+    if (this.num < this.creatureList.length -1) {
       this.num = this.creatureList.indexOf(this.selectedCreature)+1;
       this.selectedCreature = this.loadCreature();
     }

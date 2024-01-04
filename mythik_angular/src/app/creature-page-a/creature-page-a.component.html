@@ -20,6 +20,11 @@
                     <ul>Niveau d'attaque : {{selectedCreature.attaque}}</ul>
                 </div>
             </div>
+
+        <div>
+            <button *ngIf="this.num > 0" (click)="previous()">Precedent</button>
+            <button *ngIf="this.num < this.creatureList.length -1" (click)="next()">Suivant</button>
+        </div>
         </div>
     </div>
     <div>
