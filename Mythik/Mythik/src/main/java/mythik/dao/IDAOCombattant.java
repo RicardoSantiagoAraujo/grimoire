@@ -17,5 +17,4 @@ public interface IDAOCombattant extends JpaRepository<Combattant,Integer> {
 //	List<Combattant> findByCompte(@Param("compte") Compte compte);
 	
 	List<Combattant> findByCompteId(@Param("id") Integer id);
-	
 }

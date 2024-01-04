@@ -29,6 +29,14 @@
                     <td>{{c.gagnant}}</td>
                 </tr>
             </tbody>
+            <tbody *ngIf="mesParties==false && IAParties==true">
+                <tr *ngFor="let c of this.combattants">
+                    <td>{{c.creature?.nom}}</td>
+                    <td>{{c.creature?.typeElement}}</td>
+                    <td>{{c.combat?.dateCombat}} {{c.combat?.heureCombat}}</td>
+                    <td>{{c.gagnant}}</td>
+                </tr>
+            </tbody>
         </table>
     </div>
 </div>

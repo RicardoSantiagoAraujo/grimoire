@@ -26,6 +26,7 @@ body {
     background: url("../../assets/images/combat.avif");
     background-blend-mode: multiply;
     background-size: cover;
+    overflow: auto;
     width: 100vw;  /* 50% de la largeur de la fenêtre */
     height: 100vh;
     cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
