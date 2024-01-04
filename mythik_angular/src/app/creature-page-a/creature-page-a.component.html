@@ -1,24 +1,26 @@
-<div *ngIf="creature" class="creature">
+    <div >
+        <label for="creatureSelector">Choisir une créature :</label>
+        <select id="creatureSelector" [(ngModel)]="selectedCreature">
+            <option *ngFor="let c of creatureList" [ngValue]="c">{{c.nom}}</option>
+        </select>
 
-    <div id="creature_contents">
-        <div id="pageLeft">
-            <div class="nom">{{creature.nom}}</div>
-            <div>{{creature.description}}</div>
-        </div>
-        <div id="pageRight">
-
-        <div class="image"><img width="30px" height="30px" [src]="creature.image"/></div>
-            <div class="memo">Memo
-                <ul>Domaine mythologique : {{creature.mythologie}}</ul>
-                <ul>Type d'éléments : {{creature.typeElement}}</ul>
-                <ul>Niveau d'attaque : {{creature.attaque}}</ul>
+        <div id="creature_contents">
+            <div id="pageLeft">
+                <div class="nom">{{selectedCreature.nom}}</div>
+                <div>{{selectedCreature.description}}</div>
+            </div>
+            <div id="pageRight">
+                <div class="image"><img width="30px" height="30px" [src]="selectedCreature.image" /></div>
+                <div class="memo">Memo
+                    <ul>Domaine mythologique : {{selectedCreature.mythologie}}</ul>
+                    <ul>Type d'éléments : {{selectedCreature.typeElement}}</ul>
+                    <ul>Niveau d'attaque : {{selectedCreature.attaque}}</ul>
+                </div>
             </div>
         </div>
     </div>
-
-
-    <div id="pageControls">
-        <button *ngIf="num>0" (click)="previous()">Precedent</button>
-        <button *ngIf="num<creatureList.length-1"(click)="next()">Suivant</button>
+    <div>
+        <ul>
+            {{num+1}} / {{creatureList.length}}
+        </ul>
     </div>
-</div>
