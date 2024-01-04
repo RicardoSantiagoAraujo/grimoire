@@ -8,6 +8,9 @@
             <div id="pageLeft">
                 <div class="nom">{{selectedCreature.nom}}</div>
                 <div>{{selectedCreature.description}}</div>
+                <div class="numeroPageLeft">
+                    <ul>{{creatureList.indexOf(this.selectedCreature)+1}} / {{creatureList.length}}</ul>
+                </div>
             </div>
             <div id="pageRight">
                 <div class="image"><img width="30px" height="30px" [src]="selectedCreature.image" /></div>
@@ -20,7 +23,5 @@
         </div>
     </div>
     <div>
-        <ul>
-            {{num+1}} / {{creatureList.length}}
-        </ul>
+        
     </div>

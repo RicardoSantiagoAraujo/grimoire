@@ -331,7 +331,7 @@ flipbook-page .page{
 	background-image: url("../../assets/flipbook-textures/page_decoration2.png");
 	background-size: contain;
 	background-repeat: no-repeat;
-	overflow: hidden;
+	// overflow: hidden;
 	img{
 		width: 80%;
 		opacity: 0.9;

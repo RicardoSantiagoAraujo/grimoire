@@ -46,7 +46,10 @@ body{
 
 @keyframes firelight_effect {
 	0%{
-		background-color: rgba(255, 0, 0, 0.1);
+		background-color: rgba(255, 0, 0, 0.00);
+	}
+	10%{
+		background-color: rgba(255, 0, 0, 0.001);
 	}
 	20%{
 		background-color:  rgba(205, 133, 0, 0.01);
@@ -281,6 +284,8 @@ body #firewall{
 	animation: booksAppear 1s ease-in;
 	opacity: 0;
 	animation-fill-mode: forwards;
+	user-select: none;
+	pointer-events: none;
 }
 
 @for $i from 1 through 5 {
