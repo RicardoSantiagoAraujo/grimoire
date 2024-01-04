@@ -22,7 +22,9 @@ import { CreaturePageBComponent } from './creature-page-b/creature-page-b.compon
 import { DesktopComponent } from './desktop/desktop.component';
 import { StatistiqueComponent } from './statistique/statistique.component';
 import { FlipBookModule } from '@labsforge/flipbook';
-import { ChainsComponent } from './chains/chains.component'
+import { ChainsComponent } from './chains/chains.component';
+import { ElementPipe } from './element.pipe';
+import { MythologiePipe } from './mythologie.pipe'
 
 
 @NgModule({
@@ -43,6 +45,8 @@ import { ChainsComponent } from './chains/chains.component'
     DieuPipe,
     StatistiqueComponent,
     ChainsComponent,
+    ElementPipe,
+    MythologiePipe,
   ],
   imports: [
     BrowserModule,

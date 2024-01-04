@@ -73,11 +73,11 @@ body {
    
     flex-wrap: wrap;
     margin-top: 100px;
-    color: white; 
+    
     font-size: 30px;
     font-family: "lugrasimo";
     text-align: center;
-  
+    font-weight: bold;
    
 }
 .item{
@@ -106,6 +106,7 @@ h1 {
   border-radius: 10px;
   padding: 5px;
   margin: 0px 100px;
+  
 }
 
 .button {

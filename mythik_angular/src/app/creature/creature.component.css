@@ -49,6 +49,7 @@
     width: 100vw;  /* 50% de la largeur de la fenêtre */
     height: 300vh;
     cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
+    overflow: auto;
   }
   
   .container {
