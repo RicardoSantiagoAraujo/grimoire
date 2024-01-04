@@ -218,7 +218,8 @@ flipbook-page .page {
 }
 
 .creature_pages {
-  height: 100%;
+  pointer-events: none;
+  height: 105%;
   width: 960px;
   display: flex;
   display: none;
@@ -233,8 +234,8 @@ flipbook-page .page {
 .creature_pages .creature_page_a {
   position: relative;
   background-color: rgba(255, 0, 0, 0.1);
-  width: 90%;
-  height: 90%;
+  width: 95%;
+  height: 100%;
 }
 .creature_pages .creature_page_b {
   position: relative;

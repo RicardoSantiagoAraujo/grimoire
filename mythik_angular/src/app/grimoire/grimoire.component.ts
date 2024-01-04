@@ -281,7 +281,7 @@ setTimeout(()=>{
       document.querySelector<HTMLElement>(".creature_pages")!.style.display = "none";
     };
   }
-  setInterval(ouvrirSectionGrimoire, 1000)
+  setInterval(ouvrirSectionGrimoire, 100)
 
 
 }, 0 )

@@ -1,8 +1,10 @@
-    <div >
-        <label for="creatureSelector">Choisir une créature :</label>
-        <select id="creatureSelector" [(ngModel)]="selectedCreature">
-            <option *ngFor="let c of creatureList" [ngValue]="c">{{c.nom}}</option>
-        </select>
+    <div id="creature_general_container">
+        <div id="creature_selection_menu">
+            <label for="creatureSelector">Choisir une créature :</label>
+            <select id="creatureSelector" [(ngModel)]="selectedCreature">
+                    <option *ngFor="let c of creatureList" [ngValue]="c">{{c.nom}}</option>
+            </select>
+        </div>
 
         <div id="creature_contents">
             <div id="pageLeft">
@@ -28,5 +30,5 @@
         </div>
     </div>
     <div>
-        
+
     </div>
