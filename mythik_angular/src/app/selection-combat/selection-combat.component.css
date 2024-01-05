@@ -1,53 +1,53 @@
+@charset "UTF-8";
 @font-face {
-    font-family: "bronzion";
-    font-style: normal;
-    font-weight: normal;
-    src: url("../../assets/fonts/bronzion_deco/BronzionDeco_PERSONAL_USE_ONLY.otf");
-  }
- @font-face {
-    font-family: "Stempel-Garamond-W01-Roman";
-    font-style: normal;
-    font-weight: normal;
-    src: url("../../assets/fonts/Stempel-Garamond-W01-Roman.woff");
-  }
-  @font-face {
-    font-family: "Lugrasimo";
-    font-style: normal;
-    font-weight: normal;
-    src: url("../../assets/fonts/Lugrasimo/Lugrasimo-Regular.ttf");
-  }
-
-  body, html {
-    height: 100%;
-    overflow: hidden;
-  }
+  font-family: "bronzion";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../../assets/fonts/bronzion_deco/BronzionDeco_PERSONAL_USE_ONLY.otf");
+}
+@font-face {
+  font-family: "Stempel-Garamond-W01-Roman";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../../assets/fonts/Stempel-Garamond-W01-Roman.woff");
+}
+@font-face {
+  font-family: "Lugrasimo";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../../assets/fonts/Lugrasimo/Lugrasimo-Regular.ttf");
+}
+body, html {
+  height: 100%;
+  overflow: hidden;
+}
 
 body {
-    background: url("../../assets/images/combat.avif");
-    background-blend-mode: multiply;
-    background-size: cover;
-    overflow: auto;
-    width: 100vw;  /* 50% de la largeur de la fenêtre */
-    height: 100vh;
-    cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
-    /* display: flex;
-    flex-direction: column;
-    align-items: center; */
-  }
-  #map img {
-    display: flex;
-    position: absolute;
-    box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.501);
-    top: -250px;
-    right: 700px;
-    height: 60%;
-    transform: rotate(30deg);
-    z-index: 0;
-    filter: brightness(0.7);
-  }
+  background: url("../../assets/images/combat.avif");
+  background-blend-mode: multiply;
+  background-size: cover;
+  overflow: auto;
+  width: 100vw; /* 50% de la largeur de la fenêtre */
+  height: 100vh;
+  cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
+}
 
- 
-.titre{
+#map img {
+  display: flex;
+  position: absolute;
+  box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.501);
+  top: -250px;
+  right: 700px;
+  height: 60%;
+  transform: rotate(30deg);
+  z-index: 0;
+  filter: brightness(0.7);
+}
+
+.titre {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,61 +55,80 @@ body {
   text-align: center;
   width: 300px;
   height: 100px;
-  border: 5px solid darkred; 
+  border: 5px solid darkred;
   border-radius: 10%;
   position: relative;
-  background-color:rgba(245, 245, 220, 0.555);
+  background-color: rgba(245, 245, 220, 0.555);
   font-size: 40px;
-  
   font-family: bronzion;
   color: darkred;
-
- } 
-
-
-
-.selectionCrea{
-
-    display: flex;
-   
-    flex-wrap: wrap;
-    margin-top: 100px;
-    
-    font-size: 30px;
-    font-family: "lugrasimo";
-    text-align: center;
-    font-weight: bold;
-   
-}
-.item{
-width: 12%;
-
-
 }
 
+.selectionCrea {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 100px;
+  font-size: 30px;
+  font-family: "lugrasimo";
+  text-align: center;
+  font-weight: bold;
+}
 
-.creationCombattant{
+.item {
+  width: 12%;
+}
 
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 100px;
-    color: white; 
-    font-size: 30px;
-    font-family: "lugrasimo";
-    text-align: center;
+.creationCombattant {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 100px;
+  color: white;
+  font-size: 30px;
+  font-family: "lugrasimo";
+  text-align: center;
+}
+
+.player, .adv {
+  width: 300px;
+}
+.player img, .adv img {
+  animation: creatureAppear 1s;
 }
 
 h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: "bronzion";
   font-size: 36px;
   text-align: center;
-  background-color:rgba(245, 245, 220, 0.555);
+  background-color: rgba(245, 245, 220, 0.555);
   border-radius: 10px;
   padding: 5px;
-  margin: 0px 100px;
-  
+  margin: 30px 100px;
+  background: url(../../assets/flipbook-textures/scroll_combat.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 300px;
+  animation: scrollAppear 1s;
+}
+h1 span {
+  color: red;
+  font-size: 60px;
 }
 
+@keyframes scrollAppear {
+  0% {
+    transform: scaleX(0.7);
+  }
+  80% {
+    transform: scaleX(1.1);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
 .button {
   display: inline-block;
   padding: 10px 20px;
@@ -126,3 +145,447 @@ h1 {
   transition: background-color 0.3s ease, color 0.3s ease;
   cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
 }
+
+.item {
+  cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
+  background-image: url(../../assets/flipbook-textures/old-paper-texture_alt.png);
+  background-size: 100% 100%;
+  animation: creatureAppear 1s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+.item img {
+  transition: 0.2s;
+  filter: grayscale(0.5);
+}
+.item img:hover {
+  transform: scale(1.3);
+  filter: grayscale(0) saturate(1.5);
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.567);
+}
+.item .name {
+  background: url(../../assets/flipbook-textures/fantasy-button.png);
+  background-position: center;
+  background-size: contain;
+  font-size: normal;
+  margin-top: 20px;
+}
+.item:hover .name {
+  transform: scale(1.1);
+  color: rgb(255, 227, 71) !important;
+}
+.item:active .name {
+  transform: scale(1.7);
+  color: gold !important;
+  text-shadow: 0px 0px 30px black;
+}
+
+@keyframes creatureAppear {
+  from {
+    transform: scale(2);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.item:nth-child(1) {
+  animation-delay: calc(1 * 0.1s);
+}
+
+.item:nth-child(2) {
+  animation-delay: calc(2 * 0.1s);
+}
+
+.item:nth-child(3) {
+  animation-delay: calc(3 * 0.1s);
+}
+
+.item:nth-child(4) {
+  animation-delay: calc(4 * 0.1s);
+}
+
+.item:nth-child(5) {
+  animation-delay: calc(5 * 0.1s);
+}
+
+.item:nth-child(6) {
+  animation-delay: calc(6 * 0.1s);
+}
+
+.item:nth-child(7) {
+  animation-delay: calc(7 * 0.1s);
+}
+
+.item:nth-child(8) {
+  animation-delay: calc(8 * 0.1s);
+}
+
+.item:nth-child(9) {
+  animation-delay: calc(9 * 0.1s);
+}
+
+.item:nth-child(10) {
+  animation-delay: calc(10 * 0.1s);
+}
+
+.item:nth-child(11) {
+  animation-delay: calc(11 * 0.1s);
+}
+
+.item:nth-child(12) {
+  animation-delay: calc(12 * 0.1s);
+}
+
+.item:nth-child(13) {
+  animation-delay: calc(13 * 0.1s);
+}
+
+.item:nth-child(14) {
+  animation-delay: calc(14 * 0.1s);
+}
+
+.item:nth-child(15) {
+  animation-delay: calc(15 * 0.1s);
+}
+
+.item:nth-child(16) {
+  animation-delay: calc(16 * 0.1s);
+}
+
+.item:nth-child(17) {
+  animation-delay: calc(17 * 0.1s);
+}
+
+.item:nth-child(18) {
+  animation-delay: calc(18 * 0.1s);
+}
+
+.item:nth-child(19) {
+  animation-delay: calc(19 * 0.1s);
+}
+
+.item:nth-child(20) {
+  animation-delay: calc(20 * 0.1s);
+}
+
+.item:nth-child(21) {
+  animation-delay: calc(21 * 0.1s);
+}
+
+.item:nth-child(22) {
+  animation-delay: calc(22 * 0.1s);
+}
+
+.item:nth-child(23) {
+  animation-delay: calc(23 * 0.1s);
+}
+
+.item:nth-child(24) {
+  animation-delay: calc(24 * 0.1s);
+}
+
+.item:nth-child(25) {
+  animation-delay: calc(25 * 0.1s);
+}
+
+.item:nth-child(26) {
+  animation-delay: calc(26 * 0.1s);
+}
+
+.item:nth-child(27) {
+  animation-delay: calc(27 * 0.1s);
+}
+
+.item:nth-child(28) {
+  animation-delay: calc(28 * 0.1s);
+}
+
+.item:nth-child(29) {
+  animation-delay: calc(29 * 0.1s);
+}
+
+.item:nth-child(30) {
+  animation-delay: calc(30 * 0.1s);
+}
+
+.item:nth-child(31) {
+  animation-delay: calc(31 * 0.1s);
+}
+
+.item:nth-child(32) {
+  animation-delay: calc(32 * 0.1s);
+}
+
+.item:nth-child(33) {
+  animation-delay: calc(33 * 0.1s);
+}
+
+.item:nth-child(34) {
+  animation-delay: calc(34 * 0.1s);
+}
+
+.item:nth-child(35) {
+  animation-delay: calc(35 * 0.1s);
+}
+
+.item:nth-child(36) {
+  animation-delay: calc(36 * 0.1s);
+}
+
+.item:nth-child(37) {
+  animation-delay: calc(37 * 0.1s);
+}
+
+.item:nth-child(38) {
+  animation-delay: calc(38 * 0.1s);
+}
+
+.item:nth-child(39) {
+  animation-delay: calc(39 * 0.1s);
+}
+
+.item:nth-child(40) {
+  animation-delay: calc(40 * 0.1s);
+}
+
+.item:nth-child(41) {
+  animation-delay: calc(41 * 0.1s);
+}
+
+.item:nth-child(42) {
+  animation-delay: calc(42 * 0.1s);
+}
+
+.item:nth-child(43) {
+  animation-delay: calc(43 * 0.1s);
+}
+
+.item:nth-child(44) {
+  animation-delay: calc(44 * 0.1s);
+}
+
+.item:nth-child(45) {
+  animation-delay: calc(45 * 0.1s);
+}
+
+.item:nth-child(46) {
+  animation-delay: calc(46 * 0.1s);
+}
+
+.item:nth-child(47) {
+  animation-delay: calc(47 * 0.1s);
+}
+
+.item:nth-child(48) {
+  animation-delay: calc(48 * 0.1s);
+}
+
+.item:nth-child(49) {
+  animation-delay: calc(49 * 0.1s);
+}
+
+.item:nth-child(50) {
+  animation-delay: calc(50 * 0.1s);
+}
+
+.item:nth-child(51) {
+  animation-delay: calc(51 * 0.1s);
+}
+
+.item:nth-child(52) {
+  animation-delay: calc(52 * 0.1s);
+}
+
+.item:nth-child(53) {
+  animation-delay: calc(53 * 0.1s);
+}
+
+.item:nth-child(54) {
+  animation-delay: calc(54 * 0.1s);
+}
+
+.item:nth-child(55) {
+  animation-delay: calc(55 * 0.1s);
+}
+
+.item:nth-child(56) {
+  animation-delay: calc(56 * 0.1s);
+}
+
+.item:nth-child(57) {
+  animation-delay: calc(57 * 0.1s);
+}
+
+.item:nth-child(58) {
+  animation-delay: calc(58 * 0.1s);
+}
+
+.item:nth-child(59) {
+  animation-delay: calc(59 * 0.1s);
+}
+
+.item:nth-child(60) {
+  animation-delay: calc(60 * 0.1s);
+}
+
+.item:nth-child(61) {
+  animation-delay: calc(61 * 0.1s);
+}
+
+.item:nth-child(62) {
+  animation-delay: calc(62 * 0.1s);
+}
+
+.item:nth-child(63) {
+  animation-delay: calc(63 * 0.1s);
+}
+
+.item:nth-child(64) {
+  animation-delay: calc(64 * 0.1s);
+}
+
+.item:nth-child(65) {
+  animation-delay: calc(65 * 0.1s);
+}
+
+.item:nth-child(66) {
+  animation-delay: calc(66 * 0.1s);
+}
+
+.item:nth-child(67) {
+  animation-delay: calc(67 * 0.1s);
+}
+
+.item:nth-child(68) {
+  animation-delay: calc(68 * 0.1s);
+}
+
+.item:nth-child(69) {
+  animation-delay: calc(69 * 0.1s);
+}
+
+.item:nth-child(70) {
+  animation-delay: calc(70 * 0.1s);
+}
+
+.item:nth-child(71) {
+  animation-delay: calc(71 * 0.1s);
+}
+
+.item:nth-child(72) {
+  animation-delay: calc(72 * 0.1s);
+}
+
+.item:nth-child(73) {
+  animation-delay: calc(73 * 0.1s);
+}
+
+.item:nth-child(74) {
+  animation-delay: calc(74 * 0.1s);
+}
+
+.item:nth-child(75) {
+  animation-delay: calc(75 * 0.1s);
+}
+
+.item:nth-child(76) {
+  animation-delay: calc(76 * 0.1s);
+}
+
+.item:nth-child(77) {
+  animation-delay: calc(77 * 0.1s);
+}
+
+.item:nth-child(78) {
+  animation-delay: calc(78 * 0.1s);
+}
+
+.item:nth-child(79) {
+  animation-delay: calc(79 * 0.1s);
+}
+
+.item:nth-child(80) {
+  animation-delay: calc(80 * 0.1s);
+}
+
+.item:nth-child(81) {
+  animation-delay: calc(81 * 0.1s);
+}
+
+.item:nth-child(82) {
+  animation-delay: calc(82 * 0.1s);
+}
+
+.item:nth-child(83) {
+  animation-delay: calc(83 * 0.1s);
+}
+
+.item:nth-child(84) {
+  animation-delay: calc(84 * 0.1s);
+}
+
+.item:nth-child(85) {
+  animation-delay: calc(85 * 0.1s);
+}
+
+.item:nth-child(86) {
+  animation-delay: calc(86 * 0.1s);
+}
+
+.item:nth-child(87) {
+  animation-delay: calc(87 * 0.1s);
+}
+
+.item:nth-child(88) {
+  animation-delay: calc(88 * 0.1s);
+}
+
+.item:nth-child(89) {
+  animation-delay: calc(89 * 0.1s);
+}
+
+.item:nth-child(90) {
+  animation-delay: calc(90 * 0.1s);
+}
+
+.item:nth-child(91) {
+  animation-delay: calc(91 * 0.1s);
+}
+
+.item:nth-child(92) {
+  animation-delay: calc(92 * 0.1s);
+}
+
+.item:nth-child(93) {
+  animation-delay: calc(93 * 0.1s);
+}
+
+.item:nth-child(94) {
+  animation-delay: calc(94 * 0.1s);
+}
+
+.item:nth-child(95) {
+  animation-delay: calc(95 * 0.1s);
+}
+
+.item:nth-child(96) {
+  animation-delay: calc(96 * 0.1s);
+}
+
+.item:nth-child(97) {
+  animation-delay: calc(97 * 0.1s);
+}
+
+.item:nth-child(98) {
+  animation-delay: calc(98 * 0.1s);
+}
+
+.item:nth-child(99) {
+  animation-delay: calc(99 * 0.1s);
+}
+
+.item:nth-child(100) {
+  animation-delay: calc(100 * 0.1s);
+}/*# sourceMappingURL=selection-combat.component.css.map */

@@ -5,8 +5,8 @@
     <div class="titre">
         Inscription
     </div>
-    <div class="formulaire"> 
-        <div >
+    <div class="formulaire">
+        <div style="display: none">
             <label for="id" class="form-label">Identifiant:</label>
             <input type="number" class="form-control" id="id" name="id" readonly formControlName="id">
         </div>
@@ -26,7 +26,7 @@
         </div>
     </div>
     <div >
-       
+
         <button type="submit" [disabled]="inscriptionForm.invalid">Valider</button>
         <a  [routerLink]="['/menu']" routerLinkActive="active"><button type="button" class="button">Retour</button></a>
     </div>

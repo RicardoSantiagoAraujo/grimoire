@@ -1,72 +1,72 @@
 <div>
     <h1>Combat de Créatures</h1>
-    
-   
+
+
 
         <div class="combattants">
 
             <div class="combattant">
                 <div>
-                    <p><img width="300px"  [src]="combattant1.creature?.image"/></p>
+                    <p><img class=creature_img width="300px"  [src]="combattant1.creature?.image"/></p>
                      <p>{{ creature1.nom }} - {{combattant1.compte?.login}} </p>
                  </div>
                 <div class="barre-vie">
                     <div class="vie-restante" style="width: 100%;" *ngIf="debut"></div>
-                    
+
                     <div  class="vie-restante" [style.width]="vieRestant1 + '%'"></div>
-                    
+
                 </div>
                 <div style="margin-top: 20px;">Points de vie : {{ creature1.pv }}</div>
-                
-                
+
+
             </div>
-                
+
 
              <div *ngIf="!combatTermine">
-        
+
                     <div *ngIf="!result">
                         <button (click)="combattre('pierre')">Pierre</button>
                         <button (click)="combattre('feuille')">Feuille</button>
                         <button (click)="combattre('ciseaux')">Ciseaux</button>
                         <p>L'ordinateur a choisi: {{ choixOrdi }}</p>
                     </div>
-                        
-           
+
+
 
 
                    <div *ngIf="result">
-        
+
                         <p *ngIf="result === 0">Match nul !</p>
                         <p *ngIf="result === 1">{{ creature1.nom }} gagne la manche !</p>
                         <p *ngIf="result === 2">{{ creature2.nom }} gagne la manche !</p>
-        
+
                         <button (click)="mancheSuivante()">Manche suivante</button>
                    </div>
              </div>
-                
-                
+
+
             <div class="combattant">
                 <div><p><img width="300px"  [src]="combattant2.creature?.image"/></p>
                 <p>{{ creature2.nom }} - {{combattant2.compte?.login}} </p></div>
                 <div class="barre-vie">
                     <div class="vie-restante" style="width: 100%;" *ngIf="debut"></div>
-                   
+
                     <div class="vie-restante" [style.width]="vieRestant2 + '%'"></div>
-                    
+
                 </div>
                 <div style="margin-top: 20px;">Points de vie: {{ creature2.pv }}</div>
-              
-            </div> 
-        
-        </div> 
+
+            </div>
+
+        </div>
     <div class="conteneur">
         <div *ngIf="!combatTermine" class="suiviCombat" >
             <p [style.color]="resultat">{{affichage}}</p>
 
         </div>
     </div>
-    
-    
+
+
         <div *ngIf="combatTermine" class="resultat">
             <h2>Résultat du combat</h2>
             <p>{{ resultatCombat }} remporte le combat !</p>
@@ -75,7 +75,7 @@
 
             <button (click)="nouvellePartie()">Nouvelle Partie</button>
             <button (click)="statistiques()">Récapitulatif des combats</button>
-            <button (click)="retour()">Acceuil</button>
+            <button (click)="retour()">Accueil</button>
         </div>
-    
+
 </div>

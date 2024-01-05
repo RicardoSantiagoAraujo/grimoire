@@ -3,42 +3,40 @@
 
 <div *ngIf="creationCombattant">
 
-   <h1>selection Creatures</h1>
+   <h1>Selection <span>C</span>reatures</h1>
 
 
 <div class="selectionCrea">
-    
+
     <div  *ngFor="let c of list() |async" class="item">
-        <p (click)="creationCombattant1(c)" [style.color] = "c.typeElement! | element">{{c.nom}}</p>
+        <p class="name" (click)="creationCombattant1(c)" [style.color] = "c.typeElement! | element">{{c.nom}}</p>
         <p (click)="creationCombattant1(c)"><img width="100px"  [src]="c.image"/></p>
     </div>
 </div>
 
 
-
-
 <div class="creationCombattant">
 
-    <div *ngIf="combattant1">
+    <div class="player" *ngIf="combattant1">
         <p><img width="300px"  [src]="combattant1.creature?.image"/></p>
         <p>{{combattant1.creature?.nom}}</p>
         <p>{{combattant1.compte?.login}}</p>
     </div>
-     <div> 
+     <div>
         <div *ngIf="cb1 && cb2"><a  (click)="goCombat()"><button type="button" class="button">Combat</button></a></div>
       <a (click)="creationCombattant2()"><button type="button" class="button">Trouver un adversaire</button></a><br/>
       <a  [routerLink]="['/accueil']" routerLinkActive="active">
         <button type="button" class="button">Retour</button>
       </a>
     </div>
-    <div *ngIf="combattant2">
+    <div class="adv" *ngIf="combattant2">
         <p><img width="300px"  [src]="combattant2.creature?.image"/></p>
         <p>{{combattant2.creature?.nom}}</p>
         <p>{{combattant2.compte?.login}}</p>
-    </div> 
+    </div>
 
 
-</div> 
+</div>
 
 
 </div>
