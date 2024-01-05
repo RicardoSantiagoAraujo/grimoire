@@ -176,6 +176,8 @@ flipbook-page .page {
   justify-content: center;
   align-items: center;
   margin: 50px 0px;
+  animation: flipbookAppear 2s ease-in-out;
+  opacity: 0;
   animation-delay: 2s;
   animation-fill-mode: forwards;
 }
@@ -227,11 +229,9 @@ flipbook-page .page {
   align-items: center;
   z-index: 10;
   position: absolute;
-  background-color: rgba(255, 255, 0, 0.1);
 }
 .creature_pages .creature_page_a {
   position: relative;
-  background-color: rgba(255, 0, 0, 0.1);
   width: 95%;
   height: 100%;
 }

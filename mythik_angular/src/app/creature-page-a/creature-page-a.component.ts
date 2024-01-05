@@ -61,6 +61,7 @@ function AdjCreatureDisplay(selectedCreature: any){
   let element = creature.typeElement
   let mythology = creature.mythologie
   let pv = creature.pv
+  let god = creature.dieu
 
   let colorScheme: string;
   switch (element) {
@@ -100,18 +101,33 @@ function AdjCreatureDisplay(selectedCreature: any){
       ;
   }
 
+  let fontStyle: string;
+  if (god){
+    fontStyle="rgb(153,101,21)"; // golden brown
+  } else {
+    fontStyle="black";
+  }
+
 
 
   let pages  = document.querySelectorAll<HTMLElement>(".creaturePage");
   pages.forEach(page => {
-    page.style.background = (pageFrame);
+    page.style.background = pageFrame;
     page.style.backgroundPosition = "center";
     page.style.backgroundRepeat = "no-repeat";
     page.style.backgroundSize = "100% 100%";
-
-
+    page.classList.add("pageAnimation");
+    setTimeout( // remove animation after X milisec. Suboptimal solution.
+      function(){
+      page.classList.remove("pageAnimation");
+    }, 700);
     console.log(page);
-    console.log(page.querySelector<HTMLElement>("div"));
   })
+
   document.querySelector<HTMLElement>(".memo .element")!.style.color=colorScheme;
+
+  // if god
+  console.log(god);
+  console.log(fontStyle);
+  document.querySelector<HTMLElement>(".nom")!.style.color=fontStyle;
 }
