@@ -403,4 +403,43 @@ flipbook-page .page {
   100% {
     filter: blur(0px) hue-rotate(-90deg) brightness(0.1);
   }
+}
+.magic_effect {
+  width: 100%;
+  height: 100%;
+}
+.magic_effect::after {
+  content: "";
+  background-image: url("../../assets/flipbook-textures/celtic_knot.png");
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0.1;
+  background-size: 300px 300px;
+  background-repeat: no-repeat;
+  background-position: center;
+  animation: rotateRing 10s infinite linear;
+  transform-origin: center;
+}
+
+@keyframes rotateRing {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.fadeRing {
+  animation: fadeRing 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeRing {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }/*# sourceMappingURL=grimoire.component.css.map */

@@ -108,9 +108,17 @@ app-creature-page-a{
     .image{
         height: 40%;
         img{
+            border-image: url('/media/examples/border-diamonds.png') 30 / 19px round;
             width: 100%;
             height: 100%;
             object-fit: contain;
+            filter: saturate(0.5)sepia(0.2);
+            transition: 0.2s;
+            pointer-events:all;
+            &:hover{
+                transform: scale(1.05);
+                filter: saturate(1);
+            }
         }
     }
     .memo{
@@ -120,13 +128,22 @@ app-creature-page-a{
             font-weight: bold;
         }
         ul{
-            span{
-                color: red;
+            .element{
+                color: blue;
+                animation: elementGlow 0.6s infinite alternate;
             }
         }
     }
 }
 
+@keyframes elementGlow {
+    from{
+        text-shadow: 0 0 10px rgb(0, 0, 0);
+    }
+    to{
+        text-shadow: 0 0 8px rgba(0, 0, 0, 0.919);
+    }
+}
 
 #creature_selection_menu{
     position: absolute;

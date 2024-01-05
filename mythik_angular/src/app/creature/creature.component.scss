@@ -1,147 +1,266 @@
 @font-face {
-    font-family: "Stempel-Garamond-W01-Roman";
-    font-style: normal;
-    font-weight: normal;
-    src: url("../../assets/fonts/Stempel-Garamond-W01-Roman.woff");
-  }
-  @font-face {
-    font-family: "Lugrasimo";
-    font-style: normal;
-    font-weight: normal;
-    src: url("../../assets/fonts/Lugrasimo/Lugrasimo-Regular.ttf");
-  }
-  @font-face {
-    font-family: "bronzion";
-    font-style: normal;
-    font-weight: normal;
-    src: url("../../assets/fonts/bronzion_deco/BronzionDeco_PERSONAL_USE_ONLY.otf");
-  }
-  @font-face {
-    font-family: "eb_garamond";
-    font-style: normal;
-    font-weight: normal;
-    src: url("../../assets/fonts/EB_Garamond/EBGaramond-Italic-VariableFont_wght.ttf");
-  }
-  @font-face {
-    font-family: "grandiflora";
-    font-style: normal;
-    font-weight: normal;
-    src: url("../../assets/fonts/Grandiflora_One/GrandifloraOne-Regular.ttf");
-  }
-  @font-face {
-    font-family: "notoserif_jp";
-    font-style: normal;
-    font-weight: normal;
-    src: url("../../assets/fonts/Noto_Serif_JP/NotoSerifJP-Regular.otf");
-  }
-  @font-face {
-    font-family: "notoserif_tc";
-    font-style: normal;
-    font-weight: normal;
-    src: url("../../assets/fonts/Noto_Serif_TC/NotoSerifTC-Regular.otf");
-  }
+  font-family: "Stempel-Garamond-W01-Roman";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../../assets/fonts/Stempel-Garamond-W01-Roman.woff");
+}
+@font-face {
+  font-family: "Lugrasimo";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../../assets/fonts/Lugrasimo/Lugrasimo-Regular.ttf");
+}
+@font-face {
+  font-family: "bronzion";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../../assets/fonts/bronzion_deco/BronzionDeco_PERSONAL_USE_ONLY.otf");
+}
+@font-face {
+  font-family: "eb_garamond";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../../assets/fonts/EB_Garamond/EBGaramond-Italic-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: "grandiflora";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../../assets/fonts/Grandiflora_One/GrandifloraOne-Regular.ttf");
+}
+@font-face {
+  font-family: "notoserif_jp";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../../assets/fonts/Noto_Serif_JP/NotoSerifJP-Regular.otf");
+}
+@font-face {
+  font-family: "notoserif_tc";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../../assets/fonts/Noto_Serif_TC/NotoSerifTC-Regular.otf");
+}
 
 
-  body {
-    background: url("../../assets/flipbook-textures/wood-texture.jpeg"), radial-gradient(#e6b664, #000325);
-    background-blend-mode: multiply;
-    background-size: cover;
-    background-attachment: fixed ;
-    width: 100vw;  /* 50% de la largeur de la fenêtre */
-    height: 100%;
-    cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
-    font-family: "Lugrasimo";
-    overflow: auto;
+body {
+  background: url("../../assets/flipbook-textures/wood-texture.jpeg"), radial-gradient(#e6b664, #000325);
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-attachment: fixed ;
+  width: 100vw;  /* 50% de la largeur de la fenêtre */
+  height: 100%;
+  cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
+  font-family: "Lugrasimo";
+  overflow: auto;
+}
+
+header{
+  position: relative;
+  padding-top: 30px;
+
+}
+
+h1 {
+  font-family: "bronzion";
+  font-size: 36px;
+  text-align: center;
+  background: url(../../assets/flipbook-textures/scroll2.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 10px;
+  padding: 145px;
+  margin: auto;
+  width: fit-content;
+  &::first-letter{
+    color: rgb(103, 0, 0);
+    font-size: 70px
   }
-
-  header{
-    position: relative;
-    padding-top: 30px;
-  }
-
-  h1 {
-    font-family: "bronzion";
-    font-size: 36px;
-    text-align: center;
-    background: url(../../assets/flipbook-textures/scroll2.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 10px;
-    padding: 145px;
-    margin: auto;
-    width: fit-content;
-    &::first-letter{
-      color: rgb(103, 0, 0);
-      font-size: 70px
-    }
-    animation: scrollAppear 1s ease-out;
-  }
+  animation: scrollAppear 1s ease-out;
+}
 
 
 
- @keyframes scrollAppear {
-  from{
-    transform: scale(0.5,0.75);
+@keyframes scrollAppear {
+from{
+  transform: scale(0.5,0.75);
 
-  }
-  to{
-    transform: scale(1,1);
-  }
- }
+}
+to{
+  transform: scale(1,1);
+}
+}
 
 
- h2 {
+.creature_list_header {
+color: rgba(119, 0, 0, 0.68);
+display: flex;
+align-items: end;
+justify-content: center;
+font-family: "Lugrasimo";
+background: url(../../assets/flipbook-textures/infiniteScroll/top.png);
+background-repeat: no-repeat;
+background-position: bottom;
+background-size: contain;
+width: 100%;
+height: 275px;
+font-size: 30px;
+text-align: center;
+padding: 0px;
+margin-bottom: 0px;
+border: 0px;
+span{
+  font-family: "bronzion";
+  color: rgba(1, 79, 37, 0.668);
+  font-size: 75px
+}
+}
+
+.creature_list {
+
+background-color: rgba(0, 0, 0, 0);
+border: 1px solid #00000000;
+border-radius: 10px;
+padding: 20px;
+margin: 30px 10px;
+}
+
+.creature_list_body{
+background: url(../../assets/flipbook-textures/infiniteScroll/middle.png);
+background-size: contain;
+background-repeat: repeat;
+background-position: top;
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+border: 0px;
+}
+
+.creature_list_footer{
   color: rgba(119, 0, 0, 0.68);
   display: flex;
-  align-items: end;
+  align-items: start;
   justify-content: center;
+  gap: 30px;
   font-family: "Lugrasimo";
-  background: url(../../assets/flipbook-textures/infiniteScroll/top.png);
+  background: url(../../assets/flipbook-textures/infiniteScroll/bottom.png);
   background-repeat: no-repeat;
-  background-position: bottom;
+  background-position: top;
   background-size: contain;
   width: 100%;
-  height: 275px;
+  height: 299px;
   font-size: 30px;
   text-align: center;
   padding: 0px;
   margin-bottom: 0px;
-  span{
-    font-family: "bronzion";
-    color: rgba(1, 79, 37, 0.668);
-    font-size: 75px
+  border: 0px;
+  .btn{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    i {
+      position: absolute;
+      font-size: 40px;
+      bottom:50%;
+      left: 50%;
+      transform: translate(-50%,50%);
+      color: rgba(81, 0, 0, 0.792);
+      text-align: center;
+    }
+    &:nth-child(1):after{
+      position: absolute;
+      bottom:0px;
+      transform: translateX(-50%);
+      content: "Ajouter";
+    }
+    &:nth-child(2):after{
+      position: absolute;
+      bottom:0px;
+      transform: translateX(-50%);
+      content: "Retour";
+    }
   }
-}
-
-.card {
-
-  background-color: rgba(0, 0, 0, 0);
-  border: 1px solid #00000000;
-  border-radius: 10px;
-  padding: 20px;
-  margin: 30px 10px;
-}
-
-.card-body{
-  background: url(../../assets/flipbook-textures/infiniteScroll/middle.png);
-  background-size: contain;
-  background-repeat: repeat;
-  background-position: top;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 
 table{
-  width: 80%;
+width: 80%;
 }
 
 
 thead{
+position: static;
+top:0px;
+background: url(../../assets/flipbook-textures/frieze.png), rgba(202, 84, 0, 0.911);
+background-blend-mode:soft-light;
+background-size: contain;
+background-position: top;
+height: 100px;
+color: white;
+th{
+  text-align: center;
+}
+}
+
+
+
+.btn {
+  display: inline-block;
+  //padding: 10px 20px;
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+  cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
+  border: 1px solid #29138b83;
+  box-shadow: 5px 5px 5px rgba(62, 0, 0, 0.488);
+  border-radius: 50% !important;
+  width: fit-content;
+  height: fit-content;
+  color: #fff;
+  background: url(../../assets/flipbook-textures/coin.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: 0.2s;
+  &:hover{
+    transform: scale(1.1);
+  }
+}
+
+
+
+table td {
+  align-items: center;
+  border: 2px dashed rgba(132, 8, 8, 0.501);
+  padding: 10px;
+  text-align: center;
+  min-width: 70px;
+}
+
+.td_nom{
+  font-weight: bolder;
+}
+
+
+.btn-group{
+  display: flex;
+  flex-direction: column;
+  gap:3px;
+}
+
+.creature_img{
+  width: 150px;
+  transition: 1s ease-in-out;
+  &:hover{
+    transform: scale(1.5);
+    box-shadow: 10px 10px 10px rgba(69, 1, 1, 0.589);
+  }
+}
+
+thead{
   position: sticky;
+  text-transform: capitalize;
   top:0px;
   background: url(../../assets/flipbook-textures/frieze.png), rgba(202, 84, 0, 0.911);
   background-blend-mode:soft-light;
@@ -152,35 +271,76 @@ thead{
   th{
     text-align: center;
   }
-}
-
-
-
-  .btn {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 18px;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    border: 1px solid #8b4513;
-    border-radius: 5px;
-    color: #fff;
-    background-color: #8b4513;
   }
 
 
-
-  table td {
-    align-items: center;
-    border: 1px solid #8b4513;
-    padding: 10px;
-    text-align: center;
-    min-width: 70px;
-  }
-
-
-  .btn-group{
-    display: flex;
-    flex-direction: column;
+  .creature_edit{
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url(../../assets/flipbook-textures/old-paper-texture_alt.png);
+    background-repeat: no-repeat;
+    background-size:contain;
+    background-position: center;
+    .card-header{
+      text-align: center;
+      font-size: 60px;
+      padding-top: 150px;
+      &::first-letter{
+        font-family: "bronzion";
+        color: rgba(1, 79, 37, 0.668);
+        font-size: 100px;
+      }
+    }
+    .form_item{
+      padding-top:15px;
+      width: 50%;
+      align-items: center;
+      margin: auto;
+      label, span{
+        text-align: center;
+        width: 100%;
+        color: rgba(79, 0, 0, 0.644);
+        display: flex;
+        justify-content: center;
+        }
+      input[type='checkbox']{
+          margin-left: 10px;
+        }
+      input,select{
+          background-color: rgba(172, 233, 237, 0.392);
+          border: 1px solid rgba(121, 1, 1, 0.5);
+      }
+    }
+    .card-footer{
+      display: flex;
+      width: 100%;
+      justify-content: space-evenly;
+      .btn{
+        width: 1000px; // stupid hack to center
+        height: 100px;
+        position: relative;
+        border: none;
+        box-shadow: none;
+        i {
+          position: absolute;
+          font-size: 40px;
+          bottom:50%;
+          left: 50%;
+          transform: translate(-50%,50%);
+          color: rgba(81, 0, 0, 0.792);
+          text-align: center;
+        }
+        &:nth-child(1):after{
+          position: absolute;
+          bottom:0px;
+          transform: translateX(-50%);
+          content: "Ajouter";
+        }
+        &:nth-child(2):after{
+          position: absolute;
+          bottom:0px;
+          transform: translateX(-50%);
+          content: "Fermer";
+        }
+      }
+    }
   }

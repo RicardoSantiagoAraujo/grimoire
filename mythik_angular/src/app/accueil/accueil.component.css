@@ -11,18 +11,16 @@
   font-weight: normal;
   src: url("../../assets/fonts/Lugrasimo/Lugrasimo-Regular.ttf");
 }
-:root {
+app-accueil :root {
   --glowColor1: #016ada;
   --glowColor2: #00d8db;
 }
-
-body, html {
+app-accueil body, app-accueil html {
   height: 100%;
   overflow: hidden;
   font-family: "Lugrasimo";
 }
-
-body {
+app-accueil body {
   background: url("../../assets/flipbook-textures/wood-texture.jpeg"), radial-gradient(#e6b664, #000325);
   background-blend-mode: multiply;
   background-size: cover;
@@ -30,14 +28,12 @@ body {
   height: 100vh;
   cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
 }
-
-.section {
+app-accueil .section {
   opacity: 0;
   animation: accueilAppear 1s;
   animation-fill-mode: forwards;
   animation-delay: 3s;
 }
-
 @keyframes accueilAppear {
   from {
     opacity: 0;
@@ -46,7 +42,7 @@ body {
     opacity: 1;
   }
 }
-.boutons {
+app-accueil .boutons {
   position: absolute;
   display: flex;
   width: 100vw;
@@ -56,13 +52,12 @@ body {
   animation-fill-mode: forwards;
   animation-delay: 3s;
 }
-.boutons .button {
+app-accueil .boutons .button {
   cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
   font-size: small;
   min-width: 200px;
   margin: 0px 10px;
 }
-
 @keyframes boutonsAppear {
   from {
     margin-top: -300px;
@@ -71,7 +66,7 @@ body {
     margin-top: -20px;
   }
 }
-.button {
+app-accueil .button {
   display: inline-block;
   padding: 50px 20px 10px;
   height: 150px;
@@ -90,12 +85,11 @@ body {
   transform-origin: top;
   transition: 0.3s;
 }
-.button:hover {
+app-accueil .button:hover {
   color: white;
   text-shadow: 1px 1px 2px rgba(255, 0, 0, 0.764), 0 0 1em blue, 0 0 0.2em blue;
   animation: swing 1s infinite ease-in-out;
 }
-
 @keyframes swing {
   0% {
     transform: rotate(0deg);
@@ -113,7 +107,7 @@ body {
     transform: rotate(0deg);
   }
 }
-.titre {
+app-accueil .titre {
   margin-top: 100px;
   opacity: 0;
   background-image: url(../../assets/thunder2.gif);
@@ -130,10 +124,9 @@ body {
   animation: name duration timing-function delay iteration-count direction fill-mode;
   transition: 2s;
 }
-.titre:hover {
+app-accueil .titre:hover {
   filter: brightness(2);
 }
-
 @keyframes glowText {
   from {
     text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--glowColor1), 0 0 40px var(--glowColor1), 0 0 50px var(--glowColor1), 0 0 60px var(--glowColor1), 0 0 70px var(--glowColor1);
@@ -154,7 +147,7 @@ body {
     transform: scale(1);
   }
 }
-.accueil {
+app-accueil .accueil {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -162,8 +155,7 @@ body {
   height: 100%;
   cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
 }
-
-.section {
+app-accueil .section {
   top: 150px;
   display: flex;
   align-items: center;
@@ -182,7 +174,7 @@ body {
   transition: 0.1s ease-in-out;
   transition-delay: 0s;
 }
-.section a {
+app-accueil .section a {
   z-index: 100;
   display: flex;
   align-items: center;
@@ -196,7 +188,7 @@ body {
   transition: 2s;
   text-decoration: none;
 }
-.section:after {
+app-accueil .section:after {
   position: absolute;
   content: "";
   top: 50%;
@@ -209,33 +201,31 @@ body {
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
-.section:hover {
+app-accueil .section:hover {
   transform: scale(1.05);
 }
-.section:hover a {
+app-accueil .section:hover a {
   text-shadow: #FC0 1px 0 10px;
   background: radial-gradient(red, blue);
   box-shadow: 0px 0px 350px blue;
 }
-
-.sec_grimoire {
+app-accueil .sec_grimoire {
   background: url("../../assets/flipbook-textures/grimoire-cover2.jpeg"), radial-gradient(purple, black);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
-.sec_grimoire #letterG {
+app-accueil .sec_grimoire #letterG {
   font-family: "bronzion";
   font-size: 50px;
 }
-.sec_grimoire:hover #grimoire_deco {
+app-accueil .sec_grimoire:hover #grimoire_deco {
   transform: scale(1.3) translate(0px, -60px);
 }
-.sec_grimoire a {
+app-accueil .sec_grimoire a {
   cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
 }
-
-#grimoire_deco {
+app-accueil #grimoire_deco {
   pointer-events: none;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -249,96 +239,84 @@ body {
   justify-content: center;
   transform: scale(0);
 }
-#grimoire_deco img {
+app-accueil #grimoire_deco img {
   position: absolute;
   height: 300px;
   transform-origin: bottom;
 }
-
-#grimoire_deco img:nth-child(1) {
+app-accueil #grimoire_deco img:nth-child(1) {
   bottom: calc(1 * -10px);
   right: calc(1 * -15px + 0px);
   padding-bottom: calc(1 * 5px + 40px);
   transform: rotate(calc(1 * 23deg)) scale(-1);
 }
-
-#grimoire_deco img:nth-child(2) {
+app-accueil #grimoire_deco img:nth-child(2) {
   bottom: calc(2 * -10px);
   right: calc(2 * -15px + 0px);
   padding-bottom: calc(2 * 5px + 40px);
   transform: rotate(calc(2 * 23deg)) scale(-1);
 }
-
-#grimoire_deco img:nth-child(3) {
+app-accueil #grimoire_deco img:nth-child(3) {
   bottom: calc(3 * -10px);
   right: calc(3 * -15px + 0px);
   padding-bottom: calc(3 * 5px + 40px);
   transform: rotate(calc(3 * 23deg)) scale(-1);
 }
-
-#grimoire_deco img:nth-child(4) {
+app-accueil #grimoire_deco img:nth-child(4) {
   bottom: calc(4 * -10px);
   right: calc(4 * -15px + 0px);
   padding-bottom: calc(4 * 5px + 40px);
   transform: rotate(calc(4 * 23deg)) scale(-1);
 }
-
-#grimoire_deco img:nth-child(5) {
+app-accueil #grimoire_deco img:nth-child(5) {
   bottom: calc(5 * -10px);
   right: calc(5 * -15px + 0px);
   padding-bottom: calc(5 * 5px + 40px);
   transform: rotate(calc(5 * 23deg)) scale(-1);
 }
-
-#grimoire_deco img:nth-child(6) {
+app-accueil #grimoire_deco img:nth-child(6) {
   bottom: calc(6 * -10px);
   right: calc(6 * -15px + 0px);
   padding-bottom: calc(6 * 5px + 40px);
   transform: rotate(calc(6 * 23deg)) scale(-1);
 }
-
-#grimoire_deco img:nth-child(7) {
+app-accueil #grimoire_deco img:nth-child(7) {
   bottom: calc(7 * -10px);
   right: calc(7 * -15px + 0px);
   padding-bottom: calc(7 * 5px + 40px);
   transform: rotate(calc(7 * 23deg)) scale(-1);
 }
-
-#grimoire_deco img:nth-child(8) {
+app-accueil #grimoire_deco img:nth-child(8) {
   bottom: calc(8 * -10px);
   right: calc(8 * -15px + 0px);
   padding-bottom: calc(8 * 5px + 40px);
   transform: rotate(calc(8 * 23deg)) scale(-1);
 }
-
-#grimoire_deco img:nth-child(9) {
+app-accueil #grimoire_deco img:nth-child(9) {
   bottom: calc(9 * -10px);
   right: calc(9 * -15px + 0px);
   padding-bottom: calc(9 * 5px + 40px);
   transform: rotate(calc(9 * 23deg)) scale(-1);
 }
-
-#grimoire_deco img:nth-child(10) {
+app-accueil #grimoire_deco img:nth-child(10) {
   bottom: calc(10 * -10px);
   right: calc(10 * -15px + 0px);
   padding-bottom: calc(10 * 5px + 40px);
   transform: rotate(calc(10 * 23deg)) scale(-1);
 }
-
-.sec_combat {
+app-accueil .sec_combat {
   background: url("../../assets/flipbook-textures/cockatrice.png"), radial-gradient(red, black);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
-.sec_combat:hover #combat_deco {
+app-accueil .sec_combat:hover #combat_deco {
   transform: scale(1) translate(-50px, -300px);
 }
-.sec_combat a {
+app-accueil .sec_combat a {
   cursor: url("../../assets/cursors/sword.cur"), pointer;
 }
-
-#combat_deco {
+app-accueil #combat_deco {
   pointer-events: none;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -351,123 +329,106 @@ body {
   justify-content: center;
   transform: scale(0);
 }
-#combat_deco img {
+app-accueil #combat_deco img {
   position: absolute;
   height: 300px;
   transform-origin: bottom;
 }
-
-#combat_deco img:nth-child(1) {
+app-accueil #combat_deco img:nth-child(1) {
   top: calc(1 * 10px);
   left: calc(1 * 15px);
   padding-bottom: calc(1 * 5px);
   transform: rotate(calc(1 * 20deg));
 }
-
-#combat_deco img:nth-child(2) {
+app-accueil #combat_deco img:nth-child(2) {
   top: calc(2 * 10px);
   left: calc(2 * 15px);
   padding-bottom: calc(2 * 5px);
   transform: rotate(calc(2 * 20deg));
 }
-
-#combat_deco img:nth-child(3) {
+app-accueil #combat_deco img:nth-child(3) {
   top: calc(3 * 10px);
   left: calc(3 * 15px);
   padding-bottom: calc(3 * 5px);
   transform: rotate(calc(3 * 20deg));
 }
-
-#combat_deco img:nth-child(4) {
+app-accueil #combat_deco img:nth-child(4) {
   top: calc(4 * 10px);
   left: calc(4 * 15px);
   padding-bottom: calc(4 * 5px);
   transform: rotate(calc(4 * 20deg));
 }
-
-#combat_deco img:nth-child(5) {
+app-accueil #combat_deco img:nth-child(5) {
   top: calc(5 * 10px);
   left: calc(5 * 15px);
   padding-bottom: calc(5 * 5px);
   transform: rotate(calc(5 * 20deg));
 }
-
-#combat_deco img:nth-child(6) {
+app-accueil #combat_deco img:nth-child(6) {
   top: calc(6 * 10px);
   left: calc(6 * 15px);
   padding-bottom: calc(6 * 5px);
   transform: rotate(calc(6 * 20deg));
 }
-
-#combat_deco img:nth-child(7) {
+app-accueil #combat_deco img:nth-child(7) {
   top: calc(7 * 10px);
   left: calc(7 * 15px);
   padding-bottom: calc(7 * 5px);
   transform: rotate(calc(7 * 20deg));
 }
-
-#combat_deco img:nth-child(8) {
+app-accueil #combat_deco img:nth-child(8) {
   top: calc(8 * 10px);
   left: calc(8 * 15px);
   padding-bottom: calc(8 * 5px);
   transform: rotate(calc(8 * 20deg));
 }
-
-#combat_deco img:nth-child(9) {
+app-accueil #combat_deco img:nth-child(9) {
   top: calc(9 * 10px);
   left: calc(9 * 15px);
   padding-bottom: calc(9 * 5px);
   transform: rotate(calc(9 * 20deg));
 }
-
-#combat_deco img:nth-child(10) {
+app-accueil #combat_deco img:nth-child(10) {
   top: calc(10 * 10px);
   left: calc(10 * 15px);
   padding-bottom: calc(10 * 5px);
   transform: rotate(calc(10 * 20deg));
 }
-
-#combat_deco img:nth-child(11) {
+app-accueil #combat_deco img:nth-child(11) {
   top: calc(11 * 10px);
   left: calc(11 * 15px);
   padding-bottom: calc(11 * 5px);
   transform: rotate(calc(11 * 20deg));
 }
-
-#combat_deco img:nth-child(12) {
+app-accueil #combat_deco img:nth-child(12) {
   top: calc(12 * 10px);
   left: calc(12 * 15px);
   padding-bottom: calc(12 * 5px);
   transform: rotate(calc(12 * 20deg));
 }
-
-#combat_deco img:nth-child(13) {
+app-accueil #combat_deco img:nth-child(13) {
   top: calc(13 * 10px);
   left: calc(13 * 15px);
   padding-bottom: calc(13 * 5px);
   transform: rotate(calc(13 * 20deg));
 }
-
-#combat_deco img:nth-child(14) {
+app-accueil #combat_deco img:nth-child(14) {
   top: calc(14 * 10px);
   left: calc(14 * 15px);
   padding-bottom: calc(14 * 5px);
   transform: rotate(calc(14 * 20deg));
 }
-
-#combat_deco img:nth-child(15) {
+app-accueil #combat_deco img:nth-child(15) {
   top: calc(15 * 10px);
   left: calc(15 * 15px);
   padding-bottom: calc(15 * 5px);
   transform: rotate(calc(15 * 20deg));
 }
-
-.chain_dissolve .chain {
+app-accueil .chain_dissolve .chain {
   animation: chainBreak 10s;
   animation-fill-mode: forwards;
   animation-delay: 0s;
 }
-
 @keyframes chainBreak {
   0% {
     opacity: 1;

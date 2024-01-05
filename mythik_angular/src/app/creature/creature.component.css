@@ -86,7 +86,7 @@ h1::first-letter {
     transform: scale(1, 1);
   }
 }
-h2 {
+.creature_list_header {
   color: rgba(119, 0, 0, 0.68);
   display: flex;
   align-items: end;
@@ -102,14 +102,15 @@ h2 {
   text-align: center;
   padding: 0px;
   margin-bottom: 0px;
+  border: 0px;
 }
-h2 span {
+.creature_list_header span {
   font-family: "bronzion";
   color: rgba(1, 79, 37, 0.668);
   font-size: 75px;
 }
 
-.card {
+.creature_list {
   background-color: rgba(0, 0, 0, 0);
   border: 1px solid rgba(0, 0, 0, 0);
   border-radius: 10px;
@@ -117,7 +118,7 @@ h2 span {
   margin: 30px 10px;
 }
 
-.card-body {
+.creature_list_body {
   background: url(../../assets/flipbook-textures/infiniteScroll/middle.png);
   background-size: contain;
   background-repeat: repeat;
@@ -126,6 +127,53 @@ h2 span {
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 0px;
+}
+
+.creature_list_footer {
+  color: rgba(119, 0, 0, 0.68);
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  gap: 30px;
+  font-family: "Lugrasimo";
+  background: url(../../assets/flipbook-textures/infiniteScroll/bottom.png);
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: contain;
+  width: 100%;
+  height: 299px;
+  font-size: 30px;
+  text-align: center;
+  padding: 0px;
+  margin-bottom: 0px;
+  border: 0px;
+}
+.creature_list_footer .btn {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+.creature_list_footer .btn i {
+  position: absolute;
+  font-size: 40px;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  color: rgba(81, 0, 0, 0.792);
+  text-align: center;
+}
+.creature_list_footer .btn:nth-child(1):after {
+  position: absolute;
+  bottom: 0px;
+  transform: translateX(-50%);
+  content: "Ajouter";
+}
+.creature_list_footer .btn:nth-child(2):after {
+  position: absolute;
+  bottom: 0px;
+  transform: translateX(-50%);
+  content: "Retour";
 }
 
 table {
@@ -133,7 +181,7 @@ table {
 }
 
 thead {
-  position: sticky;
+  position: static;
   top: 0px;
   background: url(../../assets/flipbook-textures/frieze.png), rgba(202, 84, 0, 0.911);
   background-blend-mode: soft-light;
@@ -148,26 +196,137 @@ thead th {
 
 .btn {
   display: inline-block;
-  padding: 10px 20px;
   font-size: 18px;
   text-align: center;
   text-decoration: none;
-  cursor: pointer;
-  border: 1px solid #8b4513;
-  border-radius: 5px;
+  cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
+  border: 1px solid rgba(41, 19, 139, 0.5137254902);
+  box-shadow: 5px 5px 5px rgba(62, 0, 0, 0.488);
+  border-radius: 50% !important;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   color: #fff;
-  background-color: #8b4513;
+  background: url(../../assets/flipbook-textures/coin.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: 0.2s;
+}
+.btn:hover {
+  transform: scale(1.1);
 }
 
 table td {
   align-items: center;
-  border: 1px solid #8b4513;
+  border: 2px dashed rgba(132, 8, 8, 0.501);
   padding: 10px;
   text-align: center;
   min-width: 70px;
 }
 
+.td_nom {
+  font-weight: bolder;
+}
+
 .btn-group {
   display: flex;
   flex-direction: column;
+  gap: 3px;
+}
+
+.creature_img {
+  width: 150px;
+  transition: 1s ease-in-out;
+}
+.creature_img:hover {
+  transform: scale(1.5);
+  box-shadow: 10px 10px 10px rgba(69, 1, 1, 0.589);
+}
+
+thead {
+  position: sticky;
+  text-transform: capitalize;
+  top: 0px;
+  background: url(../../assets/flipbook-textures/frieze.png), rgba(202, 84, 0, 0.911);
+  background-blend-mode: soft-light;
+  background-size: contain;
+  background-position: top;
+  height: 100px;
+  color: white;
+}
+thead th {
+  text-align: center;
+}
+
+.creature_edit {
+  background-color: rgba(0, 0, 0, 0);
+  background-image: url(../../assets/flipbook-textures/old-paper-texture_alt.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.creature_edit .card-header {
+  text-align: center;
+  font-size: 60px;
+  padding-top: 150px;
+}
+.creature_edit .card-header::first-letter {
+  font-family: "bronzion";
+  color: rgba(1, 79, 37, 0.668);
+  font-size: 100px;
+}
+.creature_edit .form_item {
+  padding-top: 15px;
+  width: 50%;
+  align-items: center;
+  margin: auto;
+}
+.creature_edit .form_item label, .creature_edit .form_item span {
+  text-align: center;
+  width: 100%;
+  color: rgba(79, 0, 0, 0.644);
+  display: flex;
+  justify-content: center;
+}
+.creature_edit .form_item input[type=checkbox] {
+  margin-left: 10px;
+}
+.creature_edit .form_item input, .creature_edit .form_item select {
+  background-color: rgba(172, 233, 237, 0.392);
+  border: 1px solid rgba(121, 1, 1, 0.5);
+}
+.creature_edit .card-footer {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+.creature_edit .card-footer .btn {
+  width: 1000px;
+  height: 100px;
+  position: relative;
+  border: none;
+  box-shadow: none;
+}
+.creature_edit .card-footer .btn i {
+  position: absolute;
+  font-size: 40px;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  color: rgba(81, 0, 0, 0.792);
+  text-align: center;
+}
+.creature_edit .card-footer .btn:nth-child(1):after {
+  position: absolute;
+  bottom: 0px;
+  transform: translateX(-50%);
+  content: "Ajouter";
+}
+.creature_edit .card-footer .btn:nth-child(2):after {
+  position: absolute;
+  bottom: 0px;
+  transform: translateX(-50%);
+  content: "Fermer";
 }/*# sourceMappingURL=creature.component.css.map */
