@@ -128,13 +128,22 @@ app-creature-page-a{
             font-weight: bold;
         }
         ul{
-            span{
-                color: red;
+            .element{
+                color: blue;
+                animation: elementGlow 0.6s infinite alternate;
             }
         }
     }
 }
 
+@keyframes elementGlow {
+    from{
+        text-shadow: 0 0 10px rgb(0, 0, 0);
+    }
+    to{
+        text-shadow: 0 0 8px rgba(0, 0, 0, 0.919);
+    }
+}
 
 #creature_selection_menu{
     position: absolute;

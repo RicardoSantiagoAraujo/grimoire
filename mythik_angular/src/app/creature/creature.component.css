@@ -290,6 +290,13 @@ thead th {
   display: flex;
   justify-content: center;
 }
+.creature_edit .form_item input[type=checkbox] {
+  margin-left: 10px;
+}
+.creature_edit .form_item input, .creature_edit .form_item select {
+  background-color: rgba(172, 233, 237, 0.392);
+  border: 1px solid rgba(121, 1, 1, 0.5);
+}
 .creature_edit .card-footer {
   display: flex;
   width: 100%;

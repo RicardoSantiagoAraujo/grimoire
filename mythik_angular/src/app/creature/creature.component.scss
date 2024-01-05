@@ -301,6 +301,13 @@ thead{
         color: rgba(79, 0, 0, 0.644);
         display: flex;
         justify-content: center;
+        }
+      input[type='checkbox']{
+          margin-left: 10px;
+        }
+      input,select{
+          background-color: rgba(172, 233, 237, 0.392);
+          border: 1px solid rgba(121, 1, 1, 0.5);
       }
     }
     .card-footer{

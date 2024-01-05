@@ -21,7 +21,7 @@
                 <div class="memo">
                     <h6>Memo</h6>
                     <ul id="mytho">Domaine mythologique : <span>{{selectedCreature.mythologie}}</span> </ul>
-                    <ul id="element">Type d'éléments : <span>{{selectedCreature.typeElement}}</span> </ul>
+                    <ul id="element">Type d'éléments : <span class="element">{{selectedCreature.typeElement}}</span> </ul>
                     <ul id="attack">Niveau d'attaque : <span>{{selectedCreature.attaque}}</span> </ul>
                 </div>
                 <button class="pageControlBtn" *ngIf="this.num < this.creatureList.length -1" (click)="next()">Suivant</button>
