@@ -95,7 +95,7 @@ to{
 .creature_list_header {
 color: rgba(119, 0, 0, 0.68);
 display: flex;
-align-items: end;
+align-items: flex-end;
 justify-content: center;
 font-family: "Lugrasimo";
 background: url(../../assets/flipbook-textures/infiniteScroll/top.png);
@@ -140,7 +140,7 @@ border: 0px;
 .creature_list_footer{
   color: rgba(119, 0, 0, 0.68);
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   justify-content: center;
   gap: 30px;
   font-family: "Lugrasimo";
