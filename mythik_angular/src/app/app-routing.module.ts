@@ -17,6 +17,7 @@ import { CombatComponent } from './combat/combat.component';
 import { DesktopComponent } from './desktop/desktop.component';
 import { StatistiqueComponent } from './statistique/statistique.component';
 import { CreaturePageAComponent } from './creature-page-a/creature-page-a.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [{path: "menu", component: MenuComponent},
   {path: "compte", component: CompteComponent,},
@@ -33,7 +34,10 @@ const routes: Routes = [{path: "menu", component: MenuComponent},
   {path: "combat", component: SelectionCombatComponent},
   {path: "creaturea", component: CreaturePageAComponent},
   {path: "statistique", component: StatistiqueComponent},
-  {path: "", pathMatch: "full", redirectTo: "menu"}];
+  {path: "", pathMatch: "full", redirectTo: "menu"},
+  { path: '**', component: PageNotFoundComponent} //wildcard route
+];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

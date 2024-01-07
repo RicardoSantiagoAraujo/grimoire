@@ -25,7 +25,9 @@ import { FlipBookModule } from '@labsforge/flipbook';
 import { ChainsComponent } from './chains/chains.component';
 import { ElementPipe } from './element.pipe';
 import { MythologiePipe } from './mythologie.pipe';
-import { GagnantPipe } from './gagnant.pipe'
+import { GagnantPipe } from './gagnant.pipe';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
 
 
 @NgModule({
@@ -49,6 +51,7 @@ import { GagnantPipe } from './gagnant.pipe'
     ElementPipe,
     MythologiePipe,
     GagnantPipe,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
