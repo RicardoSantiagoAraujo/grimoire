@@ -1,5 +1,5 @@
-
 // chains in the bg
+
 @for $i from 1 through 3 {
     .chain:nth-child(#{$i}) {
       pointer-events: none;
@@ -7,14 +7,18 @@
       content: "ffffff";
       position: absolute;
       width: 13%;
-      height: 3000px;
-      top: -200%;
+      height: 200vmax;
+      top: 50%;
       left:50%;
       background: url(../../assets/flipbook-textures/chain_repeat.png), linear-gradient(0.25turn, rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.51),rgba(0, 0, 0, 0));
       background-blend-mode: lighten;
+      background-position: center;
+      background-size: contain;
+      background-repeat: repeat-y;
       filter:brightness(0.6);
       // background-color: red;
-      transform: rotate( calc(-40deg * #{$i}) );
-      background-position: center;
+      // transform: rotate( calc(-40deg * #{$i}) );
+      transform: translate(-50%,-50%)rotate( calc(-40deg * #{$i}));
+      transform-origin: center;
     }
   }

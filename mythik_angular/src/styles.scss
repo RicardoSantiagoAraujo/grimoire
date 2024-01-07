@@ -1,0 +1,67 @@
+// ============ FONTS
+
+@font-face {
+    font-family: "bronzion";
+    font-style: normal;
+    font-weight: normal;
+    src: url("assets/fonts/bronzion_deco/BronzionDeco_PERSONAL_USE_ONLY.otf");
+}
+
+@font-face {
+    font-family: 'Lugrasimo';
+    font-style: normal;
+    font-weight: normal;
+    src: url('assets/fonts/Lugrasimo/Lugrasimo-Regular.ttf');
+}
+
+// ============ GLOBAL CSS VARIABLES
+:root {
+    --text-color: rgb(71, 0, 0);
+    --title-color-pri: rgb(193, 0, 0);
+    --title-color-sec: rgb(0, 100, 0);
+    --paper-color-l: rgb(255, 251, 212);
+    --paper-color-d: rgb(100, 79, 30);
+    --paper-texture: url("assets/flipbook-textures/natural-paper.png");
+    /* --paper-texture: url(../pics/black-paper.png); */
+    /* --paper-texture: url(../pics/old-paper-texture.webp); */
+    /* Candlelight effect */
+    --color-overlay-l: #ffd58d;
+    --color-overlay-d: #00021e;
+    --blur-overlay-l: 60%;
+    --fire_light_effect-radial: radial-gradient(var(--color-overlay-l) var(--blur-overlay-l), var(--color-overlay-d) 75%);
+    --fire_light_effect-linear: linear-gradient(var(--color-overlay-l) var(--blur-overlay-l) 90%, var(--color-overlay-d) 100%);
+    --fire_light_effect-uniform: var(--color-overlay-l);
+    --fire_light_effect-pages: radial-gradient(var(--color-overlay-l) var(--blur-overlay-l), rgba(0, 0, 0, 0) 75%);
+}
+
+
+// ============ GLOBAL SCSS
+
+body,
+html {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    // GENERAL BACKGROUBD
+    background: url("assets/flipbook-textures/wood-texture.jpeg"), radial-gradient(#e6b664, #000325);
+    background-size: cover;
+    background-blend-mode: multiply;
+
+    // GENERAL POINTER
+    cursor: url("assets/cursors/middle-ages-cursor-32x32.png"), pointer;
+    // GENERAL SCREEN DIMENSIONS
+    width: 100vw;
+    height: 100vh;
+
+    * {
+        // GENERAL FONT
+        font-family: 'Lugrasimo';
+        font-size: 3vmin;
+    }
+}
+
+button {
+    cursor: url("assets/cursors/middle-ages-pointer-32x32.png"), pointer;
+}

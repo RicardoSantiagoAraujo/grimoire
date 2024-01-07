@@ -7,7 +7,7 @@ import { Creature } from '../model';
   selector: 'app-grimoire',
   templateUrl: './grimoire.component.html',
   styleUrls: ['./grimoire.component.css'],
-  encapsulation: ViewEncapsulation.None, // Use None to disable encapsulation and be able to style generated elements
+  // encapsulation: ViewEncapsulation.None, // Use None to disable encapsulation and be able to style generated elements
 })
 export class GrimoireComponent {
 creatures?: Creature[];

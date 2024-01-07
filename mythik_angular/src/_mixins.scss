@@ -1,0 +1,8 @@
+// ============ SCSS MIXINS
+// In SCSS (Sassy CSS), a mixin is a way to group and reuse a set of CSS declarations. It allows you to define a block of styles and then include those styles in other parts of your stylesheet. Mixins help to keep your code DRY (Don't Repeat Yourself) by promoting code reusability.
+
+@mixin bg-single-contain-center {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
