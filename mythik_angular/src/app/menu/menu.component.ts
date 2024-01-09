@@ -12,8 +12,11 @@ export class MenuComponent implements OnInit{
 
   ngOnInit(): void {
     this.authService.logout();
-
   }
 
-
+  // add class to trigger exit animation on click
+  exitAnimation(){
+    document.querySelector(".container")?.classList.add("exitAnimation");
+    console.log(document.querySelector(".container"));
+  }
 }

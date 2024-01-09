@@ -132,6 +132,9 @@ h1 {
       text-shadow: #342101 1px 1px 10px;
       transform: scale(1.1);
     }
+    &:active {
+      color: white;
+    }
   }
 
   // &:last-child{
@@ -200,4 +203,21 @@ h1 {
   100% {
     filter: brightness(1.2);
   }
+}
+
+.exitAnimation{
+  animation: exitAnimation 1s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes exitAnimation {
+  from{
+    opacity: 1;
+    transform: scale(1);
+  }
+  to{
+    opacity: 0;
+    transform: scale(0);
+  }
+
 }

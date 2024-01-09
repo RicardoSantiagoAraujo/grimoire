@@ -3,11 +3,12 @@
     <h1>Mythik</h1>
     <img src="../../assets/flipbook-textures/fantasy-break.png"/>
     <div class="connect">
-      <a class="nav-link" [routerLink]="['/connexion']" routerLinkActive="active"><button type="button">Se connecter</button></a>
+      <a class="nav-link" [routerLink]="['/connexion']" routerLinkActive="active"><button type="button"
+        (click)="exitAnimation()">Se connecter</button></a>
       <img id="key"/>
     </div>
     <div class="inscript">
-    <a class="nav-link" [routerLink]="['/inscription']" routerLinkActive="active"><button type="button">S'inscrire</button></a>
+    <a class="nav-link" [routerLink]="['/inscription']" routerLinkActive="active"><button type="button"  (click)="exitAnimation()">S'inscrire</button></a>
     <img id="feather"/>
     </div>
   </div>

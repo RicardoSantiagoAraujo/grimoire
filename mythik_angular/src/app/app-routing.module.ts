@@ -18,24 +18,80 @@ import { DesktopComponent } from './desktop/desktop.component';
 import { StatistiqueComponent } from './statistique/statistique.component';
 import { CreaturePageAComponent } from './creature-page-a/creature-page-a.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { delayPageResolver } from './delay-page.resolver';
 
-const routes: Routes = [{path: "menu", component: MenuComponent},
-  {path: "compte", component: CompteComponent,},
-  {path: "admin", component: AdminComponent},
-  {path: "humain", component: HumainComponent},
-  {path: "ia", component: IAComponent},
-  {path: "joueur", component: JoueurComponent},
-  {path: "connexion", component: ConnexionComponent},
-  {path: "inscription", component: InscriptionComponent},
-  {path: "creature", component: CreatureComponent},
-  {path: "accueil", component: AccueilComponent},
-  {path: "menu", component: MenuComponent},
-  {path: "grimoire", component: DesktopComponent},
-  {path: "combat", component: SelectionCombatComponent},
-  {path: "creaturea", component: CreaturePageAComponent},
-  {path: "statistique", component: StatistiqueComponent},
-  {path: "", pathMatch: "full", redirectTo: "menu"},
-  { path: '**', component: PageNotFoundComponent} //wildcard route
+const routes: Routes = [
+  {
+    path: "menu",
+    title: "Landing page",
+    component: MenuComponent
+  },
+  {
+    path: "compte",
+    component: CompteComponent,
+  },
+  {
+    path: "admin",
+    component: AdminComponent
+  },
+  {
+    path: "humain",
+    component: HumainComponent
+  },
+  {
+    path: "ia",
+    component: IAComponent
+  },
+  {
+    path: "joueur",
+    component: JoueurComponent
+  },
+  {
+    path: "connexion",
+    title: "Page de connexion",
+    component: ConnexionComponent,
+    resolve: [delayPageResolver]
+  },
+  {
+    path: "inscription",
+    component: InscriptionComponent
+  },
+  {
+    path: "creature",
+    component: CreatureComponent
+  },
+  {
+    path: "accueil",
+    title: "Main hub",
+    component: AccueilComponent
+  },
+  {
+    path: "grimoire",
+    title: "Page flipbook grimoire mythologique",
+    component: DesktopComponent
+  },
+  {
+    path: "combat",
+    component: SelectionCombatComponent
+  },
+  {
+    path: "creaturea",
+    component: CreaturePageAComponent
+  },
+  {
+    path: "statistique",
+    title: "Statistique de combar",
+    component: StatistiqueComponent
+  },
+  { // redirect route
+    path: "", pathMatch:
+      "full", redirectTo: "menu"
+  },
+  {
+    path: '**',
+    title: "Page error 404",
+    component: PageNotFoundComponent
+  } //wildcard route
 ];
 
 
