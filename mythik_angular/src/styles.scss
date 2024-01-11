@@ -65,3 +65,23 @@ body {
 button {
     cursor: url("assets/cursors/middle-ages-pointer-32x32.png"), pointer;
 }
+
+
+// exit animation(s)
+.exitAnimation{
+    animation: exitAnimation 1s ease-in-out;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes exitAnimation {
+    0%{
+      opacity: 1;
+      transform: scale(1);
+    }
+    50%{
+      opacity: 0;
+    }
+    100%{
+      transform: scale(0);
+    }
+  }

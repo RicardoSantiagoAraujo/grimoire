@@ -39,4 +39,10 @@ export class ConnexionComponent implements OnInit  {
   cancel() {
     this.loginCtrl.reset();
   }
+
+  // add class to trigger exit animation on click
+  exitAnimation(){
+    document.querySelector(".formulaire")?.classList.add("exitAnimation");
+    console.log(document.querySelector(".formulaire"));
+  }
 }

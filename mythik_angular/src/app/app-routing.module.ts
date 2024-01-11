@@ -24,7 +24,8 @@ const routes: Routes = [
   {
     path: "menu",
     title: "Landing page",
-    component: MenuComponent
+    component: MenuComponent,
+    resolve: [delayPageResolver]
   },
   {
     path: "compte",
@@ -54,7 +55,8 @@ const routes: Routes = [
   },
   {
     path: "inscription",
-    component: InscriptionComponent
+    component: InscriptionComponent,
+    resolve: [delayPageResolver]
   },
   {
     path: "creature",
@@ -63,12 +65,14 @@ const routes: Routes = [
   {
     path: "accueil",
     title: "Main hub",
-    component: AccueilComponent
+    component: AccueilComponent,
+    resolve: [delayPageResolver]
   },
   {
     path: "grimoire",
     title: "Page flipbook grimoire mythologique",
-    component: DesktopComponent
+    component: DesktopComponent,
+    resolve: [delayPageResolver]
   },
   {
     path: "combat",

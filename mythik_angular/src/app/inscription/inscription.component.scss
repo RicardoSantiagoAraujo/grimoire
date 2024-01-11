@@ -1,5 +1,6 @@
-@charset "UTF-8";
-.formulaire {
+@use '../../mixins' as *;
+
+.formulaire{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,82 +13,93 @@
   z-index: 1;
   width: 90%;
   height: 90%;
-  margin: auto;
+  margin:auto;
   color: white;
   animation: scrollAppear 1s ease-out;
   transition: 1s ease-in-out;
-}
-.formulaire:hover {
-  transform: scale(1.05);
-}
-.formulaire:hover .prop {
-  transform: rotate(0deg) scale(1.1);
-}
+  &:hover{
+    transform: scale(1.05);
+    .prop{
+      transform: rotate(0deg)scale(1.1);
+    }
+  }
+ }
 
-#bg_img {
+ #bg_img{
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
   z-index: -1;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
+  object-fit: cover;
+ }
 
-@keyframes scrollAppear {
-  from {
-    transform: scale(0, 0.5);
+ @keyframes scrollAppear {
+  from{
+    transform: scale(0,0.5);
+
   }
-  to {
-    transform: scale(1, 1);
+  to{
+    transform: scale(1,1);
   }
-}
-.container, .button_group, .titre, .prop {
+ }
+
+
+ // animate contents (exclude warning texts and img)
+ .container, .button_group, .titre, .prop{
   opacity: 0;
   animation: contentAppear 1s ease-in;
   animation-delay: 0.7s;
   animation-fill-mode: forwards;
-}
+ }
 
-@keyframes contentAppear {
-  from {
+
+ @keyframes contentAppear {
+  from{
     opacity: 0;
+
   }
-  to {
+  to{
     opacity: 1;
   }
-}
-.titre {
+ }
+
+
+ .titre{
   display: flex;
-  align-items: center;
-  justify-content: center;
+    align-items: center;
+    justify-content: center;
   text-align: center;
   width: 50%;
   margin: auto;
   padding: 0px 20vmin;
   position: relative;
   border: 2vmin double rgba(0, 255, 0, 0.1);
-  -o-border-image: url(../../assets/flipbook-textures/nail.png);
-     border-image: url(../../assets/flipbook-textures/nail.png);
+  // border-radius: 1% 1% 50% 50%;
+  border-image: url(../../assets/flipbook-textures/nail.png);
   font-size: 8vmin;
-  background: url(../../assets/flipbook-textures/scroll_paper.png);
+  // background:url(../../assets/flipbook-textures/black-paper.png) rgba(223, 220, 245, 0.215) ;
+  background:url(../../assets/flipbook-textures/scroll_paper.png);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 120% 140%;
-  background-blend-mode: soft-light;
+  background-size:120% 140%;
+  background-blend-mode:soft-light;
+
   font-family: bronzion;
   color: var(--title-color-pri);
   text-shadow: 1px 1px 1px rgba(0, 128, 0, 0.501);
-}
 
-label {
+ }
+
+
+ label{
   width: 100%;
   color: rgba(67, 2, 2, 0.824);
   text-align: center;
-}
+ }
 
-/* Appliquer des styles généraux aux champs de texte */
+ /* Appliquer des styles généraux aux champs de texte */
 input {
   width: 50vh;
   height: 3vh;
@@ -96,9 +108,9 @@ input {
   border: 1px dashed #ccc;
   border-radius: 4px;
   box-sizing: border-box;
-  background: url(../../assets/flipbook-textures/linen.png), rgba(248, 237, 219, 0.4196078431);
+  background: url(../../assets/flipbook-textures/linen.png),  #f8eddb6b;
   background-size: contain;
-  cursor: url("../../assets/cursors/feather.png"), pointer;
+  cursor: url("../../assets/cursors/feather.png"), pointer ;
 }
 
 /* Appliquer des styles spécifiques au survol du champ de texte */
@@ -115,45 +127,47 @@ input:focus {
   animation: inputFocus 1s infinite alternate;
 }
 
-.button_group {
+
+.button_group{
   display: flex;
   justify-content: center;
   gap: 1vmin;
   padding-bottom: 20px;
-}
-.button_group > * {
-  min-width: 45%;
-  height: 50px;
-  padding: 0;
-  margin-top: 1vmin;
-  border: none;
-  background: url("../../assets/flipbook-textures/fantasy-button.png");
-  background-blend-mode: multiply;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  font-weight: bold;
-  font-size: 3vmin;
-  text-align: center;
-  text-decoration: none;
-  transition: 0.1s;
-  cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
-}
-.button_group > *:hover {
-  filter: hue-rotate(50deg);
-  text-shadow: #342101 1px 1px 10px;
-  transform: scale(1.1);
-}
-.button_group a button {
-  background: none;
-  padding: none;
-  border: none;
-  height: 100%;
-  cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
-  box-shadow: none;
+
+  > *{
+    min-width: 45%;
+    height: 50px;
+    padding: 0;
+    margin-top: 1vmin;
+    border: none;
+    background: url("../../assets/flipbook-textures/fantasy-button.png");
+    background-blend-mode: multiply;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-weight: bold;
+    font-size: 3vmin;
+    text-align: center;
+    text-decoration: none;
+    transition: 0.1s;
+    &:hover{
+      filter: hue-rotate(50deg);
+      text-shadow: #342101 1px 1px 10px;
+      transform: scale(1.1);
+    }
+    cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer ;
+  }
+  a button{
+    background: none;
+    padding: none;
+    border: none;
+    height: 100%;
+    cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer ;
+    box-shadow: none;
+  }
 }
 
-.prop {
+.prop{
   pointer-events: none;
   display: flex;
   align-items: center;
@@ -165,74 +179,83 @@ input:focus {
   color: var(--title-color-pri);
   width: 50%;
   height: 50%;
-  top: 0px;
+  top:0px;
   background: url(../../assets/flipbook-textures/helmet.png), radial-gradient(black, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   position: absolute;
-  right: -7vw;
+  right:-7vw;
   transform: rotate(10deg);
+  span{
+    font-size: 8vmin;
+    font-weight: bold;
+    color: rgb(84, 87, 255);
+    transform: translateY(1vmin);
+  }
   transition: 1s;
 }
-.prop span {
-  font-size: 8vmin;
-  font-weight: bold;
-  color: rgb(84, 87, 255);
-  transform: translateY(1vmin);
-}
 
-.danger_group {
+
+.danger_group{
   position: absolute;
-  bottom: 0px;
+  bottom:0px;
   right: 50%;
   width: 100%;
   text-align: center;
   transform: translateX(50%);
-}
-.danger_group .danger {
-  color: rgb(216, 0, 93);
-  animation: dangerAppear 0.3s ease-in, dangerAnimate 0.3s ease-in-out infinite alternate;
-}
-.danger_group .danger.pass_mandatory {
-  bottom: 0vmin;
-}
-.danger_group .danger.pass_min_length {
-  bottom: 2vmin;
-}
-.danger_group .danger.user.login_mandatory {
-  bottom: 4vmin;
+  .danger{
+    color:rgb(216, 0, 93);
+    animation: dangerAppear 0.3s ease-in, dangerAnimate 0.3s ease-in-out infinite alternate;
+    &.pass_mandatory{
+      bottom:0vmin;
+    }
+    &.pass_min_length{
+      bottom:2vmin;
+    }
+    &.user.login_mandatory{
+      bottom:4vmin;
+    }
+  }
 }
 
 @keyframes dangerAppear {
-  from {
+  from{
     opacity: 0;
   }
-  to {
+
+  to{
     opacity: 1;
   }
 }
-@keyframes dangerAnimate {
-  0% {
+
+@keyframes dangerAnimate{
+  0%{
     text-shadow: 0 0 8px rgba(0, 0, 255, 0.503);
   }
-  50% {
+
+  50%{
     text-shadow: 0 0 12px rgba(85, 0, 255, 0.484);
   }
-  100% {
+
+  100%{
     text-shadow: 0 0 5px rgba(0, 183, 255, 0.598);
   }
 }
-.exitAnimation {
+
+// exit animation(s)
+.exitAnimation{
   animation: exitAnimation 1s ease-in-out;
   animation-fill-mode: forwards;
 }
 
 @keyframes exitAnimation {
-  0% {
+  0%{
     opacity: 1;
   }
-  50% {
+  50%{
     opacity: 0;
   }
-}/*# sourceMappingURL=inscription.component.css.map */
+  100%{
+  }
+}

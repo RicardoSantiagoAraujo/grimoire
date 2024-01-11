@@ -1,35 +1,58 @@
-
-<body>
-<div *ngIf="showForm">
+<div class="formulaire" *ngIf="showForm">
     <form (ngSubmit)="inscription()" [formGroup]="inscriptionForm">
-    <div class="titre">
-        Inscription
-    </div>
-    <div class="formulaire">
-        <div style="display: none">
-            <label for="id" class="form-label">Identifiant:</label>
-            <input type="number" class="form-control" id="id" name="id" readonly formControlName="id">
-        </div>
-        <div >
-            <label for="email" class="form-label">Email:</label>
-            <input type="email" class="form-control" id="email" name="email" formControlName="email">
-        </div>
-        <div >
-            <label for="login" class="form-label">Login:</label>
-            <input type="text" class="form-control" id="login" name="login" formControlName="login">
-            <span class="text-danger" *ngIf="inscriptionForm.get('login')?.dirty && inscriptionForm.get('login')?.hasError('required')">Le login est obligatoire</span>
-        </div>
-        <div >
-            <label for="password" class="form-label">Mot de passe:</label>
-            <input type="text" class="form-control" id="password" name="password" formControlName="password">
-            <span class="text-danger" *ngIf="inscriptionForm.get('password')?.dirty && inscriptionForm.get('password')?.hasError('required')">Le mot de passe est obligatoire</span>
-        </div>
-    </div>
-    <div >
 
-        <button type="submit" [disabled]="inscriptionForm.invalid">Valider</button>
-        <a  [routerLink]="['/menu']" routerLinkActive="active"><button type="button" class="button">Retour</button></a>
-    </div>
+            <div class="titre">
+                Inscription
+            </div>
+            <img id="bg_img" src="../../assets/flipbook-textures/dialog_scroll.png" />
+
+            <div class="container">
+                <div style="display: none">
+                    <label for="id" class="form-label">Identifiant:</label>
+                    <input type="number" class="form-control" id="id" name="id" readonly formControlName="id">
+                </div>
+                <div>
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" formControlName="email">
+                </div>
+                <div>
+                    <label for="login" class="form-label">Login:</label>
+                    <input type="text" class="form-control" id="login" name="login" formControlName="login">
+                </div>
+
+                <div>
+                    <label for="password" class="form-label">Mot de passe:</label>
+                    <input type="text" class="form-control" id="password" name="password" formControlName="password">
+                </div>
+            </div>
+
+
+        <div class="button_group">
+            <button type="submit" [disabled]="inscriptionForm.invalid" (click)="exitAnimation()">
+                Valider
+            </button>
+            <a [routerLink]="['/menu']" routerLinkActive="active" (click)="exitAnimation()">
+                <button type="button"
+                    class="button">
+                    Retour
+                </button>
+            </a>
+        </div>
+
+
+        <div class="danger_group">
+            <p class="danger login_mandatory"
+            *ngIf="inscriptionForm.get('login')?.dirty && inscriptionForm.get('login')?.hasError('required')">
+            Le login est obligatoire</p>
+
+            <p class="danger pass_mandatory"
+            *ngIf="inscriptionForm.get('password')?.dirty && inscriptionForm.get('password')?.hasError('required')">
+            Le mot de passe est obligatoire</p>
+        </div>
+
     </form>
+    <div class="prop">
+        <!-- <span>M</span>ythik -->
+    </div>
 </div>
-</body>
+<app-chains></app-chains>

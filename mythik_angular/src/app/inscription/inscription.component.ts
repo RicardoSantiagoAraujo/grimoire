@@ -47,10 +47,15 @@ export class InscriptionComponent {
       this.compteService.save(newCompte).subscribe(resp => {
         this.inscriptionForm.patchValue(resp);
         })
-       
+
     }
 
       this.router.navigate(['/connexion']);
   }
-}
 
+  // add class to trigger exit animation on click
+  exitAnimation(){
+    document.querySelector(".formulaire")?.classList.add("exitAnimation");
+    console.log(document.querySelector(".container"));
+  }
+}
