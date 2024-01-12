@@ -69,6 +69,13 @@ const routes: Routes = [
     resolve: [delayPageResolver]
   },
   {
+    path: "accueil/intro", // accueil screen reserved for connection transition
+    title: "Main hub",
+    component: AccueilComponent,
+    resolve: [delayPageResolver],
+    data: { delay: '1000'}
+  },
+  {
     path: "grimoire",
     title: "Page flipbook grimoire mythologique",
     component: DesktopComponent,

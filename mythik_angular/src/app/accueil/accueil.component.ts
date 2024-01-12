@@ -5,7 +5,7 @@ import { AuthService } from '../auth.service';
   selector: 'app-accueil',
   templateUrl: './accueil.component.html',
   styleUrls: ['./accueil.component.css'],
-  encapsulation: ViewEncapsulation.None, // Use None to disable encapsulation and be able to style generated elements
+  // encapsulation: ViewEncapsulation.None, // Use None to disable encapsulation and be able to style generated elements
 })
 export class AccueilComponent {
 Admin: boolean = false;

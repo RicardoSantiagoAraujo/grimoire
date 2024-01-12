@@ -43,6 +43,8 @@ export class ConnexionComponent implements OnInit  {
   // add class to trigger exit animation on click
   exitAnimation(){
     document.querySelector(".formulaire")?.classList.add("exitAnimation");
-    console.log(document.querySelector(".formulaire"));
+  }
+  breakChainsAnimation(){
+    document.querySelector("app-chains")?.classList.add("chain_dissolve");
   }
 }

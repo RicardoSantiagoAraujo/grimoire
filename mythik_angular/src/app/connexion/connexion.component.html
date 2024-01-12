@@ -20,7 +20,7 @@
         </div>
     </div>
     <div class="button_group">
-        <button type="submit" [disabled]="connexionForm.invalid" (click)="exitAnimation()">
+        <button type="submit" [disabled]="connexionForm.invalid" (click)="exitAnimation(); breakChainsAnimation();">
             Se connecter
         </button>
         <a  [routerLink]="['/menu']" routerLinkActive="active" (click)="exitAnimation()">
@@ -40,4 +40,5 @@
     </form>
     <div class="prop"><span>M</span>ythik</div>
 </div>
+
 <app-chains></app-chains>
