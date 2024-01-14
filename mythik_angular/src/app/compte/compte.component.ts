@@ -56,12 +56,12 @@ export class CompteComponent {
   }
 
   edit(id?: number) {
-    
+
     this.compteService.findById(id).subscribe(resp => {
       this.compteForm.patchValue(resp);
       this.showForm = true;
     });
-    
+
   }
 
   save() {
@@ -87,9 +87,15 @@ export class CompteComponent {
     this.showForm = false;
     this.compteForm.reset();
   }
+
   retour(){
     this.router.navigate(['/accueil']);
+    this.exitAnimation()
 
   }
-}
 
+    // add class to trigger exit animation on click
+    exitAnimation(){
+      document.querySelector("section")?.classList.add("exitAnimation");
+    }
+}

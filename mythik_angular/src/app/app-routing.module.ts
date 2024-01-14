@@ -30,6 +30,8 @@ const routes: Routes = [
   {
     path: "compte",
     component: CompteComponent,
+    resolve: [delayPageResolver],
+    data: { delay: '500'}
   },
   {
     path: "admin",
@@ -68,7 +70,8 @@ const routes: Routes = [
     path: "accueil",
     title: "Main hub",
     component: AccueilComponent,
-    resolve: [delayPageResolver]
+    resolve: [delayPageResolver],
+    data: { delay: '500'}
   },
   {
     path: "accueil/intro", // accueil screen reserved for connection transition

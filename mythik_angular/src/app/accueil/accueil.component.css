@@ -24,6 +24,9 @@
   animation-fill-mode: forwards;
   animation-delay: 3s;
 }
+.boutons a {
+  text-decoration: none;
+}
 
 @keyframes boutonsAppear {
   from {

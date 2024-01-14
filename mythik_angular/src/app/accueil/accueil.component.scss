@@ -26,6 +26,10 @@
     animation:  boutonsAppear 1s;
     animation-fill-mode: forwards;
     animation-delay: 3s;
+    a{
+      text-decoration: none;
+    }
+
   }
 
   @keyframes boutonsAppear{
@@ -36,6 +40,8 @@
       margin-top: 5vh;
     }
   }
+
+
 
   .button {
       font-size: small;
@@ -110,6 +116,7 @@
         }
       }
     }
+
 
 
 

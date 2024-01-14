@@ -554,6 +554,7 @@ td.type_element {
   font-size: 2vw !important;
   text-shadow: 0 0 5px purple;
   position: relative;
+  z-index: 1;
 }
 
 tr.feu td:not(.id, .btn_td) {
@@ -565,6 +566,7 @@ tr.feu td:not(.id, .btn_td).type_element {
 tr.feu td:not(.id, .btn_td).type_element:after {
   content: "";
   position: absolute;
+  z-index: -10;
   width: 100%;
   height: 100%;
   top: 0px;
@@ -585,6 +587,7 @@ tr.eau td:not(.id, .btn_td).type_element {
 tr.eau td:not(.id, .btn_td).type_element:after {
   content: "";
   position: absolute;
+  z-index: -10;
   width: 100%;
   height: 100%;
   top: 0px;
@@ -605,6 +608,7 @@ tr.terre td:not(.id, .btn_td).type_element {
 tr.terre td:not(.id, .btn_td).type_element:after {
   content: "";
   position: absolute;
+  z-index: -10;
   width: 100%;
   height: 100%;
   top: 0px;
@@ -625,6 +629,7 @@ tr.air td:not(.id, .btn_td).type_element {
 tr.air td:not(.id, .btn_td).type_element:after {
   content: "";
   position: absolute;
+  z-index: -10;
   width: 100%;
   height: 100%;
   top: 0px;
@@ -645,7 +650,8 @@ tr.dieu:not(.id, .btn_td) td.id {
 tr.dieu:not(.id, .btn_td) td.dieu {
   position: relative;
   color: goldenrod;
-  text-shadow: 0 0 10px black;
+  text-shadow: 0 0 7px #000000, 0 0 10px #000000, 0 0 21px #000000;
+  text-transform: capitalize;
 }
 tr.dieu:not(.id, .btn_td) td.dieu:after {
   content: "";
@@ -659,8 +665,17 @@ tr.dieu:not(.id, .btn_td) td.dieu:after {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  animation: godGlow 0.3s alternate infinite;
 }
 
+@keyframes godGlow {
+  from {
+    opacity: 0.1;
+  }
+  to {
+    opacity: 0.3;
+  }
+}
 td.mythologie {
   text-shadow: 0 0 10px white;
   text-transform: capitalize;
@@ -732,4 +747,21 @@ tr.nordique .mythologie:after {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.exitAnimation {
+  animation: exitAnimation 1s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes exitAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
 }/*# sourceMappingURL=creature.component.css.map */

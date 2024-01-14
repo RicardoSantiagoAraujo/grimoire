@@ -57,10 +57,10 @@ h1 {
     animation: Rotate 50s infinite linear;
     transform-origin: center;
     // background image
-    background: url(../../assets/flipbook-textures/oroboros.png), rgb(173, 0, 0);
+    background: url(../../assets/flipbook-textures/celtic_knot.png), rgb(0, 26, 173);
     background-blend-mode: lighten;
     // mask with image to exclude transparent pixels
-    mask-image: url(../../assets/flipbook-textures/oroboros.png);
+    mask-image: url(../../assets/flipbook-textures/celtic_knot.png);
     mask-mode: alpha;
     mask-size: $bg_size;
     mask-position: center;
@@ -114,7 +114,7 @@ h1 {
   }
 }
 
-.creature_list_header {
+.compte_list_header {
   position: relative;
   color: rgba(119, 0, 0, 0.68);
   display: flex;
@@ -153,7 +153,7 @@ h1 {
   }
 }
 
-.creature_list {
+.compte_list {
 
   background-color: rgba(0, 0, 0, 0);
   border: 0px solid #000000;
@@ -161,7 +161,7 @@ h1 {
   padding: 0px;
 }
 
-.creature_list_body {
+.compte_list_body {
   background: url(../../assets/flipbook-textures/infiniteScroll/middle_mirrored.png);
   background-size: contain;
   background-repeat: repeat;
@@ -173,7 +173,7 @@ h1 {
   border: 0px;
 }
 
-.creature_list_footer {
+.compte_list_footer {
   color: rgba(119, 0, 0, 0.68);
   display: flex;
   align-items: center;
@@ -280,9 +280,10 @@ table {
 }
 
 tbody tr {
-  .id{
+  .id {
     transition: 0.2s;
   }
+
   &:hover td:not(.id, .btn_td) {
     $alpha_bg : 0.5;
     background: linear-gradient(rgba(0, 0, 0, $alpha_bg), rgba(255, 255, 255, $alpha_bg), rgba(0, 0, 0, $alpha_bg));
@@ -408,27 +409,6 @@ table td:not(.id, .btn_td) {
 }
 
 
-.creature_img {
-  width: 8vw;
-  transition: 0.5s ease-in-out;
-  filter: sepia(0.5)brightness(0.75);
-  position: relative;
-  z-index: 1;
-
-  &:hover {
-    transform: scale(1.5);
-    box-shadow: 10px 10px 10px rgba(69, 1, 1, 0.589);
-    z-index: 10;
-    filter: sepia(0)brightness(1);
-  }
-
-  border: 10px solid transparent;
-  padding: 1px;
-  border-image-source: url(../../assets/flipbook-textures/ruby.png);
-  border-image-repeat: round;
-  border-image-slice: 1000;
-}
-
 thead {
   position: sticky;
   z-index: 11;
@@ -441,9 +421,9 @@ thead {
   // background-size: contain;
   // background-position: top;
 
-  //// Heropattern aztec:
-  background-color: #48342eaa;
-  background-image: url("data:image/svg+xml,%3Csvg width='32' height='64' viewBox='0 0 32 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 28h20V16h-4v8H4V4h28v28h-4V8H8v12h4v-8h12v20H0v-4zm12 8h20v4H16v24H0v-4h12V36zm16 12h-4v12h8v4H20V44h12v12h-4v-8zM0 36h8v20H0v-4h4V40H0v-4z' fill='%23ab0b0b' fill-opacity='0.46' fill-rule='evenodd'/%3E%3C/svg%3E");
+  //// Heropattern endless clouds:
+  background-color: #dbdce57d;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 28' width='56' height='28'%3E%3Cpath fill='%2392acac' fill-opacity='0.74' d='M56 26v2h-7.75c2.3-1.27 4.94-2 7.75-2zm-26 2a2 2 0 1 0-4 0h-4.09A25.98 25.98 0 0 0 0 16v-2c.67 0 1.34.02 2 .07V14a2 2 0 0 0-2-2v-2a4 4 0 0 1 3.98 3.6 28.09 28.09 0 0 1 2.8-3.86A8 8 0 0 0 0 6V4a9.99 9.99 0 0 1 8.17 4.23c.94-.95 1.96-1.83 3.03-2.63A13.98 13.98 0 0 0 0 0h7.75c2 1.1 3.73 2.63 5.1 4.45 1.12-.72 2.3-1.37 3.53-1.93A20.1 20.1 0 0 0 14.28 0h2.7c.45.56.88 1.14 1.29 1.74 1.3-.48 2.63-.87 4-1.15-.11-.2-.23-.4-.36-.59H26v.07a28.4 28.4 0 0 1 4 0V0h4.09l-.37.59c1.38.28 2.72.67 4.01 1.15.4-.6.84-1.18 1.3-1.74h2.69a20.1 20.1 0 0 0-2.1 2.52c1.23.56 2.41 1.2 3.54 1.93A16.08 16.08 0 0 1 48.25 0H56c-4.58 0-8.65 2.2-11.2 5.6 1.07.8 2.09 1.68 3.03 2.63A9.99 9.99 0 0 1 56 4v2a8 8 0 0 0-6.77 3.74c1.03 1.2 1.97 2.5 2.79 3.86A4 4 0 0 1 56 10v2a2 2 0 0 0-2 2.07 28.4 28.4 0 0 1 2-.07v2c-9.2 0-17.3 4.78-21.91 12H30zM7.75 28H0v-2c2.81 0 5.46.73 7.75 2zM56 20v2c-5.6 0-10.65 2.3-14.28 6h-2.7c4.04-4.89 10.15-8 16.98-8zm-39.03 8h-2.69C10.65 24.3 5.6 22 0 22v-2c6.83 0 12.94 3.11 16.97 8zm15.01-.4a28.09 28.09 0 0 1 2.8-3.86 8 8 0 0 0-13.55 0c1.03 1.2 1.97 2.5 2.79 3.86a4 4 0 0 1 7.96 0zm14.29-11.86c1.3-.48 2.63-.87 4-1.15a25.99 25.99 0 0 0-44.55 0c1.38.28 2.72.67 4.01 1.15a21.98 21.98 0 0 1 36.54 0zm-5.43 2.71c1.13-.72 2.3-1.37 3.54-1.93a19.98 19.98 0 0 0-32.76 0c1.23.56 2.41 1.2 3.54 1.93a15.98 15.98 0 0 1 25.68 0zm-4.67 3.78c.94-.95 1.96-1.83 3.03-2.63a13.98 13.98 0 0 0-22.4 0c1.07.8 2.09 1.68 3.03 2.63a9.99 9.99 0 0 1 16.34 0z'%3E%3C/path%3E%3C/svg%3E");
 
   height: 100px;
   color: white;
@@ -465,7 +445,7 @@ thead {
 
 
 
-.creature_edit {
+.compte_edit {
   background-color: rgba(0, 0, 0, 0);
   background-image: url(../../assets/flipbook-textures/scroll3.png);
   background-repeat: no-repeat;
@@ -473,6 +453,7 @@ thead {
   background-position: center;
   margin-bottom: 20vh;
   animation: contentAppear 1s;
+  padding: 10%;
 
   .card-header {
     position: relative;
@@ -642,225 +623,141 @@ thead {
 
 
 
-td.type_element {
+td.type {
   font-size: 2vw !important;
   text-shadow: 0 0 5px purple;
   position: relative;
   z-index: 1;
 }
 
-// fire
-tr.feu td:not(.id, .btn_td) {
-  background-color: rgba(255, 81, 0, 0.05);
+// admin
+tr.admin {
+  td:not(.id, .btn_td) {
+    background-color: rgba(145, 255, 0, 0.05);
 
-  &.type_element {
-    color: red;
-
-    &:after {
-      content: "";
-      position: absolute;
-      z-index: -10;
-      width: 100%;
-      height: 100%;
-      top: 0px;
-      left: 0px;
-      background-image: url(../../assets/flipbook-textures/element_fire.png);
-      opacity: 0.3;
-      @include bg-single-contain-center
-    }
-  }
-}
-
-// water
-tr.eau td:not(.id, .btn_td) {
-  background-color: rgba(21, 0, 255, 0.05);
-
-  &.type_element {
-    color: blue;
-
-    &:after {
-      content: "";
-      position: absolute;
-      z-index: -10;
-      width: 100%;
-      height: 100%;
-      top: 0px;
-      left: 0px;
-      background-image: url(../../assets/flipbook-textures/element_water.png);
-      opacity: 0.3;
-      @include bg-single-contain-center
-    }
-  }
-}
-
-// earth
-tr.terre td:not(.id, .btn_td) {
-  background-color: rgba(166, 255, 0, 0.05);
-
-  &.type_element {
-    color: brown;
-
-    &:after {
-      content: "";
-      position: absolute;
-      z-index: -10;
-      width: 100%;
-      height: 100%;
-      top: 0px;
-      left: 0px;
-      background-image: url(../../assets/flipbook-textures/element_earth.png);
-      opacity: 0.3;
-      @include bg-single-contain-center
-    }
-  }
-}
-
-
-// air
-tr.air td:not(.id, .btn_td) {
-  background-color: rgba(0, 229, 255, 0.05);
-
-  &.type_element {
-    color: cyan;
-
-    &:after {
-      content: "";
-      position: absolute;
-      z-index: -10;
-      width: 100%;
-      height: 100%;
-      top: 0px;
-      left: 0px;
-      background-image: url(../../assets/flipbook-textures/element_air.png);
-      opacity: 0.3;
-      @include bg-single-contain-center
-    }
-  }
-}
-
-
-// GODS
-
-tr.dieu:not(.id, .btn_td) {
-  td.id{
-    background: url(../../assets/flipbook-textures/shield3.png);
-    @include bg-single-contain-center;
-  }
-  //td.nom,
-  td.dieu {
-    position: relative;
-    color: goldenrod;
-    text-shadow: 0 0 7px #000000,
-      0 0 10px #000000,
-       0 0 21px #000000;
-    text-transform: capitalize;
+    &.type {
+      color: rgb(152, 110, 3);
 
       &:after {
         content: "";
         position: absolute;
+        z-index: -10;
         width: 100%;
         height: 100%;
         top: 0px;
         left: 0px;
-        background-image: url(../../assets/flipbook-textures/god_bg.png);
+        background-image: url(../../assets/flipbook-textures/crown.png);
         opacity: 0.3;
-        @include bg-single-contain-center;
-        animation: godGlow 0.3s alternate infinite;
+        @include bg-single-contain-center
       }
+    }
+  }
+  td.id {
+    background: url(../../assets/flipbook-textures/shield3.png);
+    @include bg-single-contain-center;
+  }
+  td.login {
+    position: relative;
+    color: goldenrod;
+    text-shadow: 0 0 7px #000000,
+      0 0 10px #000000,
+      0 0 21px #000000;
+    text-transform: capitalize;
+
+    &:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0px;
+      left: 0px;
+      background-image: url(../../assets/flipbook-textures/god_bg.png);
+      opacity: 0.3;
+      @include bg-single-contain-center;
+      animation: godGlow 0.3s alternate infinite;
+    }
   }
 }
 
+// humain
+tr.humain {
+  td:not(.id, .btn_td) {
+    background-color: rgba(255, 81, 0, 0.05);
+
+    &.type {
+      color: rgb(98, 0, 0);
+
+      &:after {
+        content: "";
+        position: absolute;
+        z-index: -10;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        left: 0px;
+        background-image: url(../../assets/flipbook-textures/skull.png);
+        opacity: 0.3;
+        @include bg-single-contain-center;
+      }
+    }
+  }
+}
+
+// ia
+tr.ia {
+  td:not(.id, .btn_td) {
+    background-color: rgba(149, 0, 255, 0.05);
+
+    &.type {
+      color: rgb(78, 0, 98);
+
+      &:after {
+        content: "";
+        position: absolute;
+        z-index: -10;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        left: 0px;
+        background-image: url(../../assets/flipbook-textures/cogwheel.png);
+        opacity: 0.3;
+        @include bg-single-contain-center
+      }
+    }
+  }
+}
+
+
 @keyframes godGlow {
-  from{opacity: 0.1}
-  to{opacity: 0.3}
+  from {
+    opacity: 0.1
+  }
+
+  to {
+    opacity: 0.3
+  }
 }
 
-// Mythology
 
-td.mythologie {
-  text-shadow: 0 0 10px white;
-  text-transform: capitalize;
-}
-
-// greek
-tr.grec .mythologie {
-  position: relative;
-    &:after {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0px;
-      left: 0px;
-      background-image: url(../../assets/flipbook-textures/symbol_greek.png);
-      opacity: 0.2;
-      @include bg-single-contain-center
-    }
-}
-// chinese
-tr.chinoise .mythologie {
-  position: relative;
-    &:after {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0px;
-      left: 0px;
-      background-image: url(../../assets/flipbook-textures/symbol_chinese.png);
-      opacity: 0.2;
-      @include bg-single-contain-center
-    }
-}
-
-// egyptian
-tr.egyptienne .mythologie {
-  position: relative;
-    &:after {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0px;
-      left: 0px;
-      background-image: url(../../assets/flipbook-textures/symbol_egyptian.png);
-      opacity: 0.2;
-      @include bg-single-contain-center
-    }
-}
-
-// norse
-tr.nordique .mythologie {
-  position: relative;
-    &:after {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0px;
-      left: 0px;
-      background-image: url(../../assets/flipbook-textures/symbol_nordic.png);
-      opacity: 0.2;
-      @include bg-single-contain-center
-    }
-}
 
 
 
 // exit animation(s)
-.exitAnimation{
+.exitAnimation {
   animation: exitAnimation 1s ease-in-out;
   animation-fill-mode: forwards;
 }
 
 @keyframes exitAnimation {
-  0%{
+  0% {
     opacity: 1;
   }
-  50%{
+
+  50% {
     opacity: 0;
   }
-  100%{
+
+  100% {
     opacity: 0;
   }
 }
