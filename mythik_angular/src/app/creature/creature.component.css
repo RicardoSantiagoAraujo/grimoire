@@ -87,7 +87,7 @@ h1:after {
   text-decoration: none;
   cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
   border: 1px solid rgba(41, 19, 139, 0.5137254902);
-  box-shadow: 5px 5px 5px rgba(62, 0, 0, 0.488);
+  box-shadow: 5px 5px 5px rgba(62, 0, 0, 0.488) !important;
   border-radius: 50% !important;
   width: -moz-fit-content;
   width: fit-content;
@@ -155,6 +155,7 @@ h1:after {
   background-position: top;
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   border: 0px;
@@ -457,6 +458,7 @@ thead th:first-letter {
   text-align: center;
   font-size: 3vw;
   padding-top: 13vw;
+  color: var(--text-color);
 }
 .creature_edit .card-header::first-letter {
   font-family: "bronzion";
@@ -813,4 +815,8 @@ tr.nordique .mythologie:after {
   100% {
     opacity: 0;
   }
+}
+.text_intro {
+  color: var(--text-color) !important;
+  width: 60%;
 }/*# sourceMappingURL=creature.component.css.map */

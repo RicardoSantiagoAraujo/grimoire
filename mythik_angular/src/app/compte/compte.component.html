@@ -3,18 +3,25 @@
 
 <div class="card compte_list">
     <div class="card-header compte_list_header">
-        <div><span>L</span>iste des comptes</div>
+        <div>
+            <span>L</span>iste des comptes
+        </div>
     </div>
     <div class="card-body compte_list_body">
+
+        <p class="text_intro">
+            Appuyez sur l'un des titres de colonne pour réorganiser les entrées en fonction de celui-ci.
+        </p>
+
         <table id="table_compte">
             <thead>
                 <tr>
-                    <th class="id" (click)="sortTable(0)">id</th>
-                    <th class="login" (click)="sortTable(1)">Login</th>
-                    <th class="password" (click)="sortTable(2)" >Mot de passe</th>
-                    <th class="email" (click)="sortTable(3)">E-mail</th>
-                    <th class="type" (click)="sortTable(4)">Role</th>
-                    <th class="btn_td" (click)="sortTable(5)"></th>
+                    <th class="id" (click)="sortTable(0, 'number')">id</th>
+                    <th class="login" (click)="sortTable(1, 'string')">Login</th>
+                    <th class="password" (click)="sortTable(2, 'string')" >Mot de passe</th>
+                    <th class="email" (click)="sortTable(3, 'string')">E-mail</th>
+                    <th class="type" (click)="sortTable(4, 'string')">Role</th>
+                    <th class="btn_td"></th>
                 </tr>
             </thead>
             <tbody>

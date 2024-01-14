@@ -101,7 +101,7 @@ export class CompteComponent {
 
 
   // Function to sort table by column
-  sortTable(n: number) {
+  sortTable(n: number, type: string) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById("table_compte")! as HTMLTableElement;
     switching = true;
@@ -125,13 +125,19 @@ export class CompteComponent {
         /*check if the two rows should switch place,
         based on the direction, asc or desc:*/
         if (dir == "asc") {
-          if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          if ((type == "string" && x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) // if string
+          ||
+              (type == "number" && Number(x.innerHTML) > Number(y.innerHTML))) // if numbers
+          {
             //if so, mark as a switch and break the loop:
             shouldSwitch = true;
             break;
           }
         } else if (dir == "desc") {
-          if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          if ((type == "string" && x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) // if string
+          ||
+              (type == "number" && Number(x.innerHTML) < Number(y.innerHTML))) // if numbers
+          {
             //if so, mark as a switch and break the loop:
             shouldSwitch = true;
             break;
