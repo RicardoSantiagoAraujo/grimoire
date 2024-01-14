@@ -51,7 +51,8 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: top;
-  color: rgba(13, 1, 1, 0.6705882353); /* Couleur du texte */
+  color: rgba(13, 1, 1, 0.6705882353);
+  /* Couleur du texte */
   border: none;
   transition: background-color 0.3s ease, color 0.3s ease;
   cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
@@ -84,6 +85,7 @@
   background-repeat: no-repeat;
   background-size: contain;
   background-position: bottom;
+  transition: 0.2s;
 }
 .button:hover {
   color: white;
@@ -101,7 +103,7 @@
   transform-origin: center;
 }
 .button:focus::before {
-  content: none;
+  opacity: 0;
 }
 
 @keyframes swing {
@@ -216,6 +218,27 @@
   transition: 2s;
   text-decoration: none;
 }
+.section a:focus {
+  outline: none;
+  filter: brightness(10) blur(100px);
+  transform: scale(2);
+}
+.section a:focus + .deco {
+  animation: chooseMode alternate 0.5s 2;
+}
+.section a:focus + .deco::before {
+  content: "test";
+  position: absolute;
+  top: -100vh;
+  height: 200vh;
+  width: 200vw;
+  animation: chooseBg alternate 0.5s 2;
+}
+.section a:focus + .deco img {
+  transition: 0.5s !important;
+  transition-delay: 0s !important;
+  opacity: 0 !important;
+}
 .section:after {
   position: absolute;
   content: "";
@@ -247,6 +270,22 @@
   height: 200vh;
 }
 
+@keyframes chooseMode {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(2) rotate(15deg);
+  }
+}
+@keyframes chooseBg {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    background-color: black;
+  }
+}
 .sec_grimoire {
   background: url("../../assets/flipbook-textures/grimoire-cover2.jpeg"), radial-gradient(purple, black);
   background-size: contain;

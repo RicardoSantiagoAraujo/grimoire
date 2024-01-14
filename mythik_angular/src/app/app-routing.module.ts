@@ -84,11 +84,14 @@ const routes: Routes = [
     path: "grimoire",
     title: "Page flipbook grimoire mythologique",
     component: DesktopComponent,
-    resolve: [delayPageResolver]
+    resolve: [delayPageResolver],
+    data: { delay: '500'}
   },
   {
     path: "combat",
-    component: SelectionCombatComponent
+    component: SelectionCombatComponent,
+    resolve: [delayPageResolver],
+    data: { delay: '500'}
   },
   {
     path: "creaturea",
