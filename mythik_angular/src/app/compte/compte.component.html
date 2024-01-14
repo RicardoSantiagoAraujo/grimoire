@@ -6,15 +6,15 @@
         <div><span>L</span>iste des comptes</div>
     </div>
     <div class="card-body compte_list_body">
-        <table>
+        <table id="table_compte">
             <thead>
                 <tr>
-                    <th class="id">id</th>
-                    <th class="login">Login</th>
-                    <th class="password">Mot de passe</th>
-                    <th class="email">E-mail</th>
-                    <th class="type">Role</th>
-                    <th class="btn_td"></th>
+                    <th class="id" (click)="sortTable(0)">id</th>
+                    <th class="login" (click)="sortTable(1)">Login</th>
+                    <th class="password" (click)="sortTable(2)" >Mot de passe</th>
+                    <th class="email" (click)="sortTable(3)">E-mail</th>
+                    <th class="type" (click)="sortTable(4)">Role</th>
+                    <th class="btn_td" (click)="sortTable(5)"></th>
                 </tr>
             </thead>
             <tbody>

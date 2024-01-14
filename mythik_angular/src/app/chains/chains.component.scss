@@ -29,7 +29,7 @@
 @for $i from 1 through 3 {
   :host.chain_create .chain:nth-child(#{$i}) {
     opacity: 0;
-    animation: chainForm 3s;
+    animation: chainForm 2s;
     animation-fill-mode: forwards;
     animation-delay: calc(0.3s * #{$i});
   }

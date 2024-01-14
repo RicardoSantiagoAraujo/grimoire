@@ -369,12 +369,36 @@ thead th {
   text-shadow: 1px 1px 1px var(--text-color);
   font-size: 1.3vw;
   padding: 1vw;
+  cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
+  transition: 0.1s;
+  position: relative;
+}
+thead th:hover {
+  transform: scale(1.1);
+  background-color: rgba(13, 107, 13, 0.35);
+}
+thead th:hover::after {
+  font-size: small;
+  position: absolute;
+  bottom: 0.25vw;
+  right: 0px;
+  width: 100%;
+  content: "▼";
+  animation: listOrderPulse 0.3s alternate infinite;
 }
 thead th:first-letter {
   color: var(--title-color-pri);
   font-size: 1.75vw;
 }
 
+@keyframes listOrderPulse {
+  from {
+    transform: scale(1.3);
+  }
+  to {
+    transform: scale(1);
+  }
+}
 .compte_edit {
   background-color: rgba(0, 0, 0, 0);
   background-image: url(../../assets/flipbook-textures/scroll3.png);

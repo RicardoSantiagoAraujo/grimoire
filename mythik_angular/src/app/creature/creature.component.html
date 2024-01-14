@@ -7,20 +7,20 @@
             <div><span>L</span>iste des creatures</div>
         </h2>
         <div class="card-body creature_list_body">
-            <table>
+            <table id="table_creature">
                 <thead>
                     <tr>
 
-                        <th class="id">id</th>
-                        <th class="nom">nom</th>
-                        <th class="description">description</th>
-                        <th class="dieu">dieu</th>
-                        <th class="attaque">attaque</th>
-                        <th class="pv">pv</th>
-                        <th class="image">image</th>
-                        <th class="mythologie">mythologie</th>
-                        <th class="type_element">element</th>
-                        <th class="btn_td"></th>
+                        <th class="id" (click)="sortTable(0)">id</th>
+                        <th class="nom" (click)="sortTable(1)">nom</th>
+                        <th class="description" (click)="sortTable(2)">description</th>
+                        <th class="dieu" (click)="sortTable(3)">dieu</th>
+                        <th class="attaque" (click)="sortTable(4)">attaque</th>
+                        <th class="pv" (click)="sortTable(5)">pv</th>
+                        <th class="image" (click)="sortTable(6)">image</th>
+                        <th class="mythologie" (click)="sortTable(7)">mythologie</th>
+                        <th class="type_element" (click)="sortTable(8)">element</th>
+                        <th class="btn_td" (click)="sortTable(9)"></th>
                     </tr>
                 </thead>
                 <tbody>
