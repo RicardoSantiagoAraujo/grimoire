@@ -60,7 +60,9 @@ const routes: Routes = [
   },
   {
     path: "creature",
-    component: CreatureComponent
+    component: CreatureComponent,
+    resolve: [delayPageResolver],
+    data: { delay: '500'}
   },
   {
     path: "accueil",

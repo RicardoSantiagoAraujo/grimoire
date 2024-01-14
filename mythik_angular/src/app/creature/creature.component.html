@@ -1,121 +1,122 @@
-<body>
+<section>
 
-<header>
-<h1>Gestion des créatures</h1>
-</header>
+    <h1>Gestion des créatures</h1>
 
-<div class="card creature_list mt-3">
-    <h2 class="card-header creature_list_header">
-        <div><span>L</span>iste des creatures</div>
-    </h2>
-    <div class="card-body creature_list_body">
-        <table>
-            <thead>
-                <tr>
-                    <th>id</th>
-                    <th>nom</th>
-                    <th>description</th>
-                    <th>dieu</th>
-                    <th>attaque</th>
-                    <th>pv</th>
-                    <th>image</th>
-                    <th>mythologie</th>
-                    <th>type_element</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let c of list() | async">
-                    <td>{{c.id}}</td>
-                    <td class="td_nom">{{c.nom}}</td>
-                    <td>{{c.description}}</td>
-                    <td>{{c.dieu! | dieu}} </td>
-                    <td>{{c.attaque}}</td>
-                    <td>{{c.pv}}</td>
-                    <!--<td>{{c.image}}</td>-->
-                    <td><img class="creature_img" [src]="c.image"/></td>
-                    <td>{{c.mythologie}}</td>
-                    <td>{{c.typeElement}}</td>
-                    <td><div class="btn-group">
-                        <a (click)="edit(c.id)" class="btn"><i class="bi bi-feather"></i></a>
-                        <a (click)="remove(c.id)" class="btn">
-                            <!-- <i class="bi bi-trash"></i> -->
-                            <img src="../../assets/icons/skull-solid.svg"></a>
-                      </div></td>
-                </tr>
+    <div class="card creature_list mt-3">
+        <h2 class="card-header creature_list_header">
+            <div><span>L</span>iste des creatures</div>
+        </h2>
+        <div class="card-body creature_list_body">
+            <table>
+                <thead>
+                    <tr>
 
-            </tbody>
+                        <th class="id">id</th>
+                        <th class="nom">nom</th>
+                        <th class="description">description</th>
+                        <th class="dieu">dieu</th>
+                        <th class="attaque">attaque</th>
+                        <th class="pv">pv</th>
+                        <th class="image">image</th>
+                        <th class="mythologie">mythologie</th>
+                        <th class="type_element">element</th>
+                        <th class="btn_td"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let c of list() | async" [class]="c.mythologie + ' ' + c.typeElement + ' ' + (c.dieu!| dieu)">
+                        <td class="id">{{c.id}}</td>
+                        <td class="nom">{{c.nom}}</td>
+                        <td class="description">{{c.description}}</td>
+                        <td class="dieu">{{c.dieu! | dieu}} </td>
+                        <td class="attaque">{{c.attaque}}</td>
+                        <td class="pv">{{c.pv}}</td>
+                        <!--<td>{{c.image}}</td>-->
+                        <td class="image"><img class="creature_img" [src]="c.image"/></td>
+                        <td class="mythologie">{{c.mythologie}}</td>
+                        <td class="type_element">{{c.typeElement}}</td>
+                        <td class="btn_td">
+                            <div class="btn-group">
+                                <a (click)="edit(c.id)" class="btn"><i class="bi bi-feather"></i></a>
+                                <a (click)="remove(c.id)" class="btn">
+                                    <!-- <i class="bi bi-trash"></i> -->
+                                    <img src="../../assets/icons/skull-solid.svg"></a>
+                            </div>
+                        </td>
+                    </tr>
 
-        </table>
+                </tbody>
 
-
-    </div>
-    <div class="card-footer creature_list_footer">
-        <a (click)="add()" class="btn btn-success btn-lg"><i class="bi bi-plus-lg"></i></a>
-        <a (click)="retour()" class="btn btn-warning btn-lg mx-2"><i class="bi bi-backspace"></i></a>
-    </div>
-</div>
+            </table>
 
 
- <div class="creature_edit card mt-3" *ngIf="showForm">
-    <form (ngSubmit)="save()" [formGroup]="creatureForm">
-    <div class="card-header">
-        Edition d'une creature
-    </div>
-    <div class="card-body">
-        <div class="mb-3 form_item mt-3">
-            <label for="id" class="form-label">Id</label>
-            <input type="number" class="form-control" id="id" name="id" readonly formControlName="id">
         </div>
-        <div class="mb-3 form_item">
-            <label for="nom" class="form-label">Nom:</label>
-            <input type="text" class="form-control" id="nom" name="nom" formControlName="nom">
-        </div>
-        <div class="mb-3 form_item">
-            <label for="description" class="form-label">Description:</label>
-            <input type="text" class="form-control" id="description" name="description" formControlName="description">
-        </div>
-        <div class="mb-3 form_item">
-           <span> Dieu :  <input type="checkbox" class="form-check-input" name="dieu" formControlName="dieu"> </span>
-        </div>
-        <div class="mb-3 form_item">
-            <label for="attaque" class="form-label">Attaque:</label>
-            <input type="number" class="form-control" id="attaque" name="attaque" formControlName="attaque">
-        </div>
-        <div class="mb-3 form_item">
-            <label for="pv" class="form-label">Pv:</label>
-            <input type="number" class="form-control" id="pv" name="pv" formControlName="pv">
-        </div>
-        <div class="mb-3 form_item">
-            <label for="image" class="form-label">Image:</label>
-            <input type="text" class="form-control" id="image" name="image" formControlName="image">
-        </div>
-        <div class="mb-3 form_item">
-            <label for="mythologie" class="form-label">Mythologie:</label>
-            <select class="form-control" id="image" name="mythologie" formControlName="mythologie">
-                <option></option>
-                <option value="grec">Grec</option>
-                <option value="egyptienne">Egyptienne</option>
-                <option value="chinoise">Chinoise</option>
-                <option value="nordique">Nordique</option>
-            </select>
-        </div>
-        <div class="mb-3 form_item">
-            <label for="typeElement" class="form-label">Type_Element:</label>
-            <select class="form-control" id="typeElement" name="typeElement" formControlName="typeElement">
-                <option></option>
-                <option value="feu">Feu</option>
-                <option value="air">Air</option>
-                <option value="eau">Eau</option>
-                <option value="terre">Terre</option>
-            </select>
+        <div class="card-footer creature_list_footer">
+            <a (click)="add()" class="btn btn-success btn-lg"><i class="bi bi-plus-lg"></i></a>
+            <a (click)="retour()" class="btn btn-warning btn-lg mx-2"><i class="bi bi-backspace"></i></a>
         </div>
     </div>
 
-    <div class="card-footer d-flex justify-content-end">
-        <button type="submit" [disabled]="creatureForm.invalid" class="btn btn-success btn-lg"><i class="bi bi-check-lg"></i></button>
-        <a (click)="cancel()" class="btn btn-warning btn-lg mx-2"><i class="bi bi-backspace"></i></a>
+
+    <div class="creature_edit" *ngIf="showForm">
+        <form (ngSubmit)="save()" [formGroup]="creatureForm">
+        <div class="card-header">
+            Edition d'une creature
+        </div>
+        <div class="card-body">
+            <div class=" form_item">
+                <label for="id" class="form-label">Id</label>
+                <input type="number" class="form-control" id="id" name="id" readonly formControlName="id">
+            </div>
+            <div class=" form_item">
+                <label for="nom" class="form-label">Nom:</label>
+                <input type="text" class="form-control" id="nom" name="nom" formControlName="nom">
+            </div>
+            <div class=" form_item">
+                <label for="description" class="form-label">Description:</label>
+                <input type="text" class="form-control" id="description" name="description" formControlName="description">
+            </div>
+            <div class=" form_item">
+            <span> Dieu :  <input type="checkbox" class="form-check-input" name="dieu" formControlName="dieu"> </span>
+            </div>
+            <div class=" form_item">
+                <label for="attaque" class="form-label">Attaque:</label>
+                <input type="number" class="form-control" id="attaque" name="attaque" formControlName="attaque">
+            </div>
+            <div class=" form_item">
+                <label for="pv" class="form-label">Pv:</label>
+                <input type="number" class="form-control" id="pv" name="pv" formControlName="pv">
+            </div>
+            <div class=" form_item">
+                <label for="image" class="form-label">Image:</label>
+                <input type="text" class="form-control" id="image" name="image" formControlName="image">
+            </div>
+            <div class=" form_item">
+                <label for="mythologie" class="form-label">Mythologie:</label>
+                <select class="form-control" id="image" name="mythologie" formControlName="mythologie">
+                    <option></option>
+                    <option value="grec">Grec</option>
+                    <option value="egyptienne">Egyptienne</option>
+                    <option value="chinoise">Chinoise</option>
+                    <option value="nordique">Nordique</option>
+                </select>
+            </div>
+            <div class=" form_item">
+                <label for="typeElement" class="form-label">Type_Element:</label>
+                <select class="form-control" id="typeElement" name="typeElement" formControlName="typeElement">
+                    <option></option>
+                    <option value="feu">Feu</option>
+                    <option value="air">Air</option>
+                    <option value="eau">Eau</option>
+                    <option value="terre">Terre</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="card-footer d-flex">
+            <button type="submit" [disabled]="creatureForm.invalid" class="btn btn-success btn-lg"><i class="bi bi-check-lg"></i></button>
+            <a (click)="cancel()" class="btn btn-warning btn-lg mx-2"><i class="bi bi-backspace"></i></a>
+        </div>
+        </form>
     </div>
-    </form>
-</div>
-</body>
+</section>

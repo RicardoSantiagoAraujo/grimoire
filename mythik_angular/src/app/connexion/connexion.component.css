@@ -115,6 +115,14 @@ input:focus {
   animation: inputFocus 1s infinite alternate;
 }
 
+@keyframes inputFocus {
+  from {
+    box-shadow: 0 0 5px var(--title-color-pri);
+  }
+  to {
+    box-shadow: 0 0 4px var(--title-color-sec);
+  }
+}
 .button_group {
   display: flex;
   justify-content: center;

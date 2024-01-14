@@ -13,22 +13,22 @@ import { Router } from '@angular/router';
 export class CreatureComponent {
 
 creatures$!: Observable<Creature[]>;
-showForm: boolean = false; 
+showForm: boolean = false;
 creatureForm!: FormGroup;
 idCtrl!: FormControl;
-nomCtrl!: FormControl; 
-descriptionCtrl!: FormControl; 
-dieuCtrl!: FormControl; 
-attaqueCtrl!: FormControl; 
-pvCtrl!: FormControl; 
-imageCtrl!: FormControl; 
-mythologieCtrl!: FormControl; 
-typeElementCtrl!: FormControl; 
-  
+nomCtrl!: FormControl;
+descriptionCtrl!: FormControl;
+dieuCtrl!: FormControl;
+attaqueCtrl!: FormControl;
+pvCtrl!: FormControl;
+imageCtrl!: FormControl;
+mythologieCtrl!: FormControl;
+typeElementCtrl!: FormControl;
+
 
 
   constructor(private creatureService: CreatureService, private formBuilder: FormBuilder, private router: Router){
-    this.load(); 
+    this.load();
   }
 
   ngOnInit(): void {
@@ -50,10 +50,10 @@ typeElementCtrl!: FormControl;
       attaque: this.attaqueCtrl,
       pv: this.pvCtrl,
       image: this.imageCtrl,
-      mythologie: this.mythologieCtrl, 
+      mythologie: this.mythologieCtrl,
       typeElement: this.typeElementCtrl,
     });}
-    
+
   load() {
     this.creatures$ = this.creatureService.findAll();
   }
@@ -91,12 +91,12 @@ typeElementCtrl!: FormControl;
       this.creatureService.create(this.creatureForm.value).subscribe(resp => {this.load()})
     }
 
-      this.cancel(); 
+      this.cancel();
   }
 
   retour(){
     this.router.navigate(['/accueil']);
 
   }
-  
+
 }
