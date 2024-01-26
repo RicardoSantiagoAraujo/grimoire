@@ -23,10 +23,10 @@ import { DesktopComponent } from './desktop/desktop.component';
 import { StatistiqueComponent } from './statistique/statistique.component';
 import { FlipBookModule } from '@labsforge/flipbook';
 import { ChainsComponent } from './chains/chains.component';
-import { ElementPipe } from './element.pipe';
 import { MythologiePipe } from './mythologie.pipe';
 import { GagnantPipe } from './gagnant.pipe';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { CreatureDataPipe } from './creature-data.pipe';
 
 
 
@@ -48,10 +48,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     DieuPipe,
     StatistiqueComponent,
     ChainsComponent,
-    ElementPipe,
     MythologiePipe,
     GagnantPipe,
     PageNotFoundComponent,
+    CreatureDataPipe,
   ],
   imports: [
     BrowserModule,

@@ -23,12 +23,13 @@ import { delayPageResolver } from './delay-page.resolver';
 const routes: Routes = [
   {
     path: "menu",
-    title: "Landing page",
+    title: "Connexion / Inscription",
     component: MenuComponent,
     resolve: [delayPageResolver]
   },
   {
     path: "compte",
+    title: "Gestion de comptes",
     component: CompteComponent,
     resolve: [delayPageResolver],
     data: { delay: '500'}
@@ -57,38 +58,41 @@ const routes: Routes = [
   },
   {
     path: "inscription",
+    title: "Page de inscription",
     component: InscriptionComponent,
     resolve: [delayPageResolver]
   },
   {
     path: "creature",
+    title: "Gestion de creatures",
     component: CreatureComponent,
     resolve: [delayPageResolver],
     data: { delay: '500'}
   },
   {
     path: "accueil",
-    title: "Main hub",
+    title: "Accueil Mythik",
     component: AccueilComponent,
     resolve: [delayPageResolver],
     data: { delay: '500'}
   },
   {
     path: "accueil/intro", // accueil screen reserved for connection transition
-    title: "Main hub",
+    title: "Accueil Mythik",
     component: AccueilComponent,
     resolve: [delayPageResolver],
     data: { delay: '1000'}
   },
   {
     path: "grimoire",
-    title: "Page flipbook grimoire mythologique",
+    title: "Grimoire mythologique",
     component: DesktopComponent,
     resolve: [delayPageResolver],
     data: { delay: '500'}
   },
   {
     path: "combat",
+    title: "Combat",
     component: SelectionCombatComponent,
     resolve: [delayPageResolver],
     data: { delay: '500'}
@@ -99,7 +103,7 @@ const routes: Routes = [
   },
   {
     path: "statistique",
-    title: "Statistique de combar",
+    title: "Statistique de combat",
     component: StatistiqueComponent
   },
   { // redirect route

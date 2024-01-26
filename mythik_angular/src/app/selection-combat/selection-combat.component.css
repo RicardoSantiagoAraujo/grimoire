@@ -1,106 +1,29 @@
 @charset "UTF-8";
-@font-face {
-  font-family: "bronzion";
-  font-style: normal;
-  font-weight: normal;
-  src: url("../../assets/fonts/bronzion_deco/BronzionDeco_PERSONAL_USE_ONLY.otf");
-}
-@font-face {
-  font-family: "Stempel-Garamond-W01-Roman";
-  font-style: normal;
-  font-weight: normal;
-  src: url("../../assets/fonts/Stempel-Garamond-W01-Roman.woff");
-}
-@font-face {
-  font-family: "Lugrasimo";
-  font-style: normal;
-  font-weight: normal;
-  src: url("../../assets/fonts/Lugrasimo/Lugrasimo-Regular.ttf");
-}
-body, html {
-  height: 100%;
-  overflow: hidden;
-}
-
-body {
-  background: url("../../assets/images/combat.avif");
-  background-blend-mode: multiply;
-  background-size: cover;
+section {
   overflow: auto;
-  width: 100vw; /* 50% de la largeur de la fenêtre */
+  width: 100vw;
+  /* 50% de la largeur de la fenêtre */
   height: 100vh;
   cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
   /* display: flex;
-  flex-direction: column;
-  align-items: center; */
+    flex-direction: column;
+    align-items: center; */
+  animation: sectionAppear 5s;
 }
 
-#map img {
-  display: flex;
-  position: absolute;
-  box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.501);
-  top: -250px;
-  right: 700px;
-  height: 60%;
-  transform: rotate(30deg);
-  z-index: 0;
-  filter: brightness(0.7);
+@keyframes sectionAppear {
+  from {
+    background-color: black;
+  }
+  to {
+    background-color: transparent;
+  }
 }
-
-.titre {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  text-align: center;
-  width: 300px;
-  height: 100px;
-  border: 5px solid darkred;
-  border-radius: 10%;
-  position: relative;
-  background-color: rgba(245, 245, 220, 0.555);
-  font-size: 40px;
-  font-family: bronzion;
-  color: darkred;
-}
-
-.selectionCrea {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 100px;
-  font-size: 30px;
-  font-family: "lugrasimo";
-  text-align: center;
-  font-weight: bold;
-}
-
-.item {
-  width: 12%;
-}
-
-.creationCombattant {
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 100px;
-  color: white;
-  font-size: 30px;
-  font-family: "lugrasimo";
-  text-align: center;
-}
-
-.player, .adv {
-  width: 300px;
-}
-.player img, .adv img {
-  animation: creatureAppear 1s;
-}
-
 h1 {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: "bronzion";
-  font-size: 36px;
   text-align: center;
   background-color: rgba(245, 245, 220, 0.555);
   border-radius: 10px;
@@ -111,481 +34,3077 @@ h1 {
   background-repeat: no-repeat;
   background-position: center;
   height: 300px;
+  position: relative;
   animation: scrollAppear 1s;
 }
-h1 span {
-  color: red;
+h1 * {
+  font-size: 36px;
+  font-family: "bronzion";
+  z-index: 1;
+  color: rgb(71, 0, 0);
+}
+h1 span:nth-child(2) {
+  display: block;
+}
+h1 span:nth-child(2)::first-letter {
+  color: blue;
   font-size: 60px;
+}
+h1::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  height: 65%;
+  background: url(../../assets/flipbook-textures/creature_fight.png), rgb(193, 0, 0);
+  background-blend-mode: lighten;
+  transform: scaleX(-1);
+  opacity: 0.5;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-mask-image: url(../../assets/flipbook-textures/creature_fight.png);
+          mask-image: url(../../assets/flipbook-textures/creature_fight.png);
+  -webkit-mask-size: contain;
+          mask-size: contain;
+  mask-mode: alpha;
+  -webkit-mask-position: center;
+          mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
 }
 
 @keyframes scrollAppear {
   0% {
     transform: scaleX(0.7);
+    opacity: 0;
   }
   80% {
     transform: scaleX(1.1);
   }
-  to {
+  100% {
     transform: scaleX(1);
+    opacity: 1;
   }
 }
-.button {
-  display: inline-block;
-  padding: 10px 20px;
-  margin: 10px;
-  font-size: 18px;
-  font-weight: bold;
+.selectionCreatureContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 3vmin;
+  gap: 3vmin;
+  font-family: "lugrasimo";
   text-align: center;
-  text-decoration: none;
-  background-color: #573d26; /* Couleur de fond avec une teinte terreux */
-  color: #fff; /* Couleur du texte */
-  border: 2px solid #8b735b; /* Bordure */
-  border-radius: 8px; /* Coins arrondis */
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Ombre légère */
-  transition: background-color 0.3s ease, color 0.3s ease;
-  cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
+  font-weight: bold;
 }
-
-.item {
+.selectionCreatureContainer .item {
+  height: 50vh;
+  aspect-ratio: 2.1/3;
   cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
-  background-image: url(../../assets/flipbook-textures/old-paper-texture_alt.png);
-  background-size: 100% 100%;
+  background-size: contain;
   animation: creatureAppear 1s;
   opacity: 0;
   animation-fill-mode: forwards;
+  position: relative;
+  z-index: 1;
 }
-.item img {
-  transition: 0.2s;
-  filter: grayscale(0.5);
+.selectionCreatureContainer .item.feu {
+  background: url(../../assets/elements/fire_ring.gif);
 }
-.item img:hover {
-  transform: scale(1.3);
-  filter: grayscale(0) saturate(1.5);
-  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.567);
+.selectionCreatureContainer .item.eau {
+  background: url(../../assets/elements/water_ring.gif);
 }
-.item .name {
-  background: url(../../assets/flipbook-textures/fantasy-button.png);
+.selectionCreatureContainer .item.terre {
+  background: url(../../assets/elements/earth_ring.gif);
+}
+.selectionCreatureContainer .item.air {
+  background: url(../../assets/elements/air_ring.gif);
+}
+.selectionCreatureContainer .item.feu, .selectionCreatureContainer .item.eau, .selectionCreatureContainer .item.terre, .selectionCreatureContainer .item.air {
+  padding: 1%;
+  background-size: 0% 0%;
+  background-repeat: no-repeat;
   background-position: center;
+  transition: background-size 3s;
+}
+.selectionCreatureContainer .item:active {
+  background-size: 100% 90%;
+  transition: 0.1s;
+  z-index: 1000;
+}
+.selectionCreatureContainer .item .creature_card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  width: 100%;
+  transition: 1s;
+  position: relative;
+  z-index: 1;
+}
+.selectionCreatureContainer .item .creature_card:hover {
+  transform: scale(1.02);
+}
+.selectionCreatureContainer .item .creature_card:hover img {
+  transform: scale(1.05);
+  filter: saturate(1.1);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+.selectionCreatureContainer .item::before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  inset: -5px;
+  /* control the spread */
+  transform: translate(0.5vw, 0.5vh);
+  /* control the offsets */
+  z-index: -100;
+  /* place the element behind */
+  background: radial-gradient(black, transparent);
+  filter: blur(10px);
+  /* control the blur */
+}
+.selectionCreatureContainer .item img {
+  max-width: 75%;
+  max-height: 50%;
+  transition: 0.5s;
+  filter: sepia(0.75);
+}
+.selectionCreatureContainer .item img.grec {
+  -o-border-image: url(../../assets/flipbook-textures/symbol_greek.png) 100% 100%/2vmin 2vmin/2vmin round;
+     border-image: url(../../assets/flipbook-textures/symbol_greek.png) 100% 100%/2vmin 2vmin/2vmin round;
+}
+.selectionCreatureContainer .item img.chinoise {
+  -o-border-image: url(../../assets/flipbook-textures/symbol_chinese.png) 100% 100%/2vmin 2vmin/2vmin round;
+     border-image: url(../../assets/flipbook-textures/symbol_chinese.png) 100% 100%/2vmin 2vmin/2vmin round;
+}
+.selectionCreatureContainer .item img.nordique {
+  -o-border-image: url(../../assets/flipbook-textures/symbol_nordic.png) 100% 100%/2vmin 2vmin/2vmin round;
+     border-image: url(../../assets/flipbook-textures/symbol_nordic.png) 100% 100%/2vmin 2vmin/2vmin round;
+}
+.selectionCreatureContainer .item img.egyptienne {
+  -o-border-image: url(../../assets/flipbook-textures/symbol_egyptian.png) 100% 100%/2vmin 2vmin/2vmin round;
+     border-image: url(../../assets/flipbook-textures/symbol_egyptian.png) 100% 100%/2vmin 2vmin/2vmin round;
+}
+.selectionCreatureContainer .item .name {
+  background: url(../../assets/flipbook-textures/fantasy-button.png);
   background-size: contain;
-  font-size: normal;
-  margin-top: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 3vmin;
+  margin-top: 2vmin;
+  width: 70%;
+  height: 20%;
+  line-height: 100%;
+  display: grid;
+  align-items: center;
+  transition: 0.2s;
 }
-.item:hover .name {
+.selectionCreatureContainer .item .name.feu {
+  color: red;
+}
+.selectionCreatureContainer .item .name.eau {
+  color: blue;
+}
+.selectionCreatureContainer .item .name.terre {
+  color: green;
+}
+.selectionCreatureContainer .item .name.air {
+  color: yellow;
+}
+.selectionCreatureContainer .item .name.dieu {
+  -o-border-image: url(../../assets/flipbook-textures/laurel.png) 0% 55%/0 40%/2vmin round;
+     border-image: url(../../assets/flipbook-textures/laurel.png) 0% 55%/0 40%/2vmin round;
+}
+.selectionCreatureContainer .item .name span.chinoise {
+  -o-border-image: url(../../assets/chinese/pattern_border.png) 50% 50%/3vmin 3vmin/1vmin round;
+     border-image: url(../../assets/chinese/pattern_border.png) 50% 50%/3vmin 3vmin/1vmin round;
+}
+.selectionCreatureContainer .item .name span.grec {
+  -o-border-image: url(../../assets/greek/caryatid_frame.png) 50% 50%/3vmin 2vmin/1vmin round;
+     border-image: url(../../assets/greek/caryatid_frame.png) 50% 50%/3vmin 2vmin/1vmin round;
+}
+.selectionCreatureContainer .item .name span.egyptienne {
+  -o-border-image: url(../../assets/egyptian/egyptian_pattern_filled.png) 50% 50%/3vmin 4vmin/1vmin round;
+     border-image: url(../../assets/egyptian/egyptian_pattern_filled.png) 50% 50%/3vmin 4vmin/1vmin round;
+}
+.selectionCreatureContainer .item .name span.nordique {
+  -o-border-image: url(../../assets/norse/celtic-knot.png) 50% 50%/3vmin 4vmin/1vmin round;
+     border-image: url(../../assets/norse/celtic-knot.png) 50% 50%/3vmin 4vmin/1vmin round;
+}
+.selectionCreatureContainer .item .name span:first-letter {
+  display: block;
+  font-family: bronzion;
+  color: rgb(193, 0, 0);
+  font-size: 4vmin;
+}
+.selectionCreatureContainer .item .name span.dieu:first-letter {
+  text-shadow: 0 0 1px white, 0 0 1px white, 0 0 5px gold, 0 0 10px black, 0 0 10px black;
+}
+.selectionCreatureContainer .item ul {
+  width: 80%;
+  padding: 0 0.25vw;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+  margin-bottom: 2vh;
+  border: 0.1px dotted rgba(86, 41, 41, 0.333);
+  background-color: rgba(255, 255, 255, 0.333);
+  transition: 0.3s;
+}
+.selectionCreatureContainer .item ul li {
+  transition: 0.3s;
+}
+.selectionCreatureContainer .item ul li span {
+  color: rgba(255, 217, 0, 0.805);
+  text-shadow: 0 0 1px black, 0 0 10px black, 0 0 10px black, 0 0 10px black;
+}
+.selectionCreatureContainer .item ul:hover {
+  transform: scale(1.4);
+  background-color: white;
+}
+.selectionCreatureContainer .item ul.feu, .selectionCreatureContainer .item ul.air, .selectionCreatureContainer .item ul.terre, .selectionCreatureContainer .item ul.eau {
+  background-blend-mode: darken;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.selectionCreatureContainer .item ul.feu {
+  background-image: linear-gradient(0.25turn, transparent 40%, red, transparent 60%), url(../../assets/elements/element_fire.png);
+}
+.selectionCreatureContainer .item ul.eau {
+  background-image: linear-gradient(0.25turn, transparent 40%, blue, transparent 60%), url(../../assets/elements/element_water.png);
+}
+.selectionCreatureContainer .item ul.terre {
+  background-image: linear-gradient(0.25turn, transparent 40%, green, transparent 60%), url(../../assets/elements/element_earth.png);
+}
+.selectionCreatureContainer .item ul.air {
+  background-image: linear-gradient(0.25turn, transparent 40%, yellow, transparent 60%), url(../../assets/elements/element_air.png);
+}
+.selectionCreatureContainer .item ul * {
+  font-size: xx-small;
+}
+.selectionCreatureContainer .item ul span {
+  color: rgb(71, 0, 0);
+}
+.selectionCreatureContainer .item:hover .name {
   transform: scale(1.1);
-  color: rgb(255, 227, 71) !important;
+  color: rgb(255, 236, 128) !important;
+  text-shadow: 0 0 10px black, 0 0 15px rgb(0, 100, 0), 0 0 10px black;
 }
-.item:active .name {
-  transform: scale(1.7);
+.selectionCreatureContainer .item:hover ul li {
+  color: rgb(193, 0, 0);
+}
+.selectionCreatureContainer .item:hover.nordique {
+  -o-border-image: url(../../assets/norse/runes2.png) 40% 40%/8vmin 8vmin/2vmin round repeat;
+     border-image: url(../../assets/norse/runes2.png) 40% 40%/8vmin 8vmin/2vmin round repeat;
+}
+.selectionCreatureContainer .item:hover.chinoise {
+  -o-border-image: url(../../assets/chinese/papercut3.png) 29% 30.1%/8vmin 8vmin/2vmin round repeat;
+     border-image: url(../../assets/chinese/papercut3.png) 29% 30.1%/8vmin 8vmin/2vmin round repeat;
+}
+.selectionCreatureContainer .item:hover.grec {
+  -o-border-image: url(../../assets/greek/temple2.png) 25% 25%/8vmin 8vmin/2vmin round repeat;
+     border-image: url(../../assets/greek/temple2.png) 25% 25%/8vmin 8vmin/2vmin round repeat;
+}
+.selectionCreatureContainer .item:hover.egyptienne {
+  -o-border-image: url(../../assets/egyptian/hieroglyphs.png) 25% 25%/8vmin 8vmin/2vmin round repeat;
+     border-image: url(../../assets/egyptian/hieroglyphs.png) 25% 25%/8vmin 8vmin/2vmin round repeat;
+}
+.selectionCreatureContainer .item:active .name {
+  transform: scale(1.2);
   color: gold !important;
   text-shadow: 0px 0px 30px black;
+  text-shadow: 0 0 10px black, 0 0 15px rgb(0, 100, 0), 0 0 15px rgb(0, 100, 0), 0 0 10px black;
+}
+.selectionCreatureContainer .item:active img {
+  filter: brightness(1.2) !important;
+  position: relative;
 }
 
 @keyframes creatureAppear {
   from {
-    transform: scale(2);
+    transform: scale(2) rotate(25deg) translateY(100%);
     opacity: 0;
+    pointer-events: none;
   }
   to {
     transform: scale(1);
     opacity: 1;
+    pointer-events: all;
   }
 }
 .item:nth-child(1) {
-  animation-delay: calc(1 * 0.1s);
+  animation-delay: calc(1 * 0.2s + 1s) !important;
+}
+.item:nth-child(1) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_2.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(-1);
+  filter: hue-rotate(-7deg) brightness(1.09);
 }
 
 .item:nth-child(2) {
-  animation-delay: calc(2 * 0.1s);
+  animation-delay: calc(2 * 0.2s + 1s) !important;
+}
+.item:nth-child(2) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_8.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-2deg) brightness(0.91);
 }
 
 .item:nth-child(3) {
-  animation-delay: calc(3 * 0.1s);
+  animation-delay: calc(3 * 0.2s + 1s) !important;
+}
+.item:nth-child(3) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_1.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(-1);
+  filter: hue-rotate(-19deg) brightness(1);
 }
 
 .item:nth-child(4) {
-  animation-delay: calc(4 * 0.1s);
+  animation-delay: calc(4 * 0.2s + 1s) !important;
+}
+.item:nth-child(4) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_5.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(-1);
+  filter: hue-rotate(-8deg) brightness(1.08);
 }
 
 .item:nth-child(5) {
-  animation-delay: calc(5 * 0.1s);
+  animation-delay: calc(5 * 0.2s + 1s) !important;
+}
+.item:nth-child(5) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_5.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-15deg) brightness(0.97);
 }
 
 .item:nth-child(6) {
-  animation-delay: calc(6 * 0.1s);
+  animation-delay: calc(6 * 0.2s + 1s) !important;
+}
+.item:nth-child(6) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_7.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-11deg) brightness(1.1);
 }
 
 .item:nth-child(7) {
-  animation-delay: calc(7 * 0.1s);
+  animation-delay: calc(7 * 0.2s + 1s) !important;
+}
+.item:nth-child(7) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_9.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(-1);
+  filter: hue-rotate(-2deg) brightness(0.94);
 }
 
 .item:nth-child(8) {
-  animation-delay: calc(8 * 0.1s);
+  animation-delay: calc(8 * 0.2s + 1s) !important;
+}
+.item:nth-child(8) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_5.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(-1);
+  filter: hue-rotate(-1deg) brightness(1);
 }
 
 .item:nth-child(9) {
-  animation-delay: calc(9 * 0.1s);
+  animation-delay: calc(9 * 0.2s + 1s) !important;
+}
+.item:nth-child(9) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_6.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(-1);
+  filter: hue-rotate(-10deg) brightness(0.92);
 }
 
 .item:nth-child(10) {
-  animation-delay: calc(10 * 0.1s);
+  animation-delay: calc(10 * 0.2s + 1s) !important;
+}
+.item:nth-child(10) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_7.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-8deg) brightness(1.03);
 }
 
 .item:nth-child(11) {
-  animation-delay: calc(11 * 0.1s);
+  animation-delay: calc(11 * 0.2s + 1s) !important;
+}
+.item:nth-child(11) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_11.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-5deg) brightness(0.99);
 }
 
 .item:nth-child(12) {
-  animation-delay: calc(12 * 0.1s);
+  animation-delay: calc(12 * 0.2s + 1s) !important;
+}
+.item:nth-child(12) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_3.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(-1);
+  filter: hue-rotate(-2deg) brightness(1.02);
 }
 
 .item:nth-child(13) {
-  animation-delay: calc(13 * 0.1s);
+  animation-delay: calc(13 * 0.2s + 1s) !important;
+}
+.item:nth-child(13) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_8.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(-1);
+  filter: hue-rotate(-10deg) brightness(0.97);
 }
 
 .item:nth-child(14) {
-  animation-delay: calc(14 * 0.1s);
+  animation-delay: calc(14 * 0.2s + 1s) !important;
+}
+.item:nth-child(14) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_1.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-8deg) brightness(0.96);
 }
 
 .item:nth-child(15) {
-  animation-delay: calc(15 * 0.1s);
+  animation-delay: calc(15 * 0.2s + 1s) !important;
+}
+.item:nth-child(15) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_4.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(1);
+  filter: hue-rotate(-7deg) brightness(0.96);
 }
 
 .item:nth-child(16) {
-  animation-delay: calc(16 * 0.1s);
+  animation-delay: calc(16 * 0.2s + 1s) !important;
+}
+.item:nth-child(16) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_2.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-14deg) brightness(1.03);
 }
 
 .item:nth-child(17) {
-  animation-delay: calc(17 * 0.1s);
+  animation-delay: calc(17 * 0.2s + 1s) !important;
+}
+.item:nth-child(17) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_10.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-15deg) brightness(0.96);
 }
 
 .item:nth-child(18) {
-  animation-delay: calc(18 * 0.1s);
+  animation-delay: calc(18 * 0.2s + 1s) !important;
+}
+.item:nth-child(18) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_9.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-4deg) brightness(1.06);
 }
 
 .item:nth-child(19) {
-  animation-delay: calc(19 * 0.1s);
+  animation-delay: calc(19 * 0.2s + 1s) !important;
+}
+.item:nth-child(19) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_5.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-15deg) brightness(1.05);
 }
 
 .item:nth-child(20) {
-  animation-delay: calc(20 * 0.1s);
+  animation-delay: calc(20 * 0.2s + 1s) !important;
+}
+.item:nth-child(20) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_3.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(-1);
+  filter: hue-rotate(-15deg) brightness(0.95);
 }
 
 .item:nth-child(21) {
-  animation-delay: calc(21 * 0.1s);
+  animation-delay: calc(21 * 0.2s + 1s) !important;
+}
+.item:nth-child(21) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_2.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(1);
+  filter: hue-rotate(-2deg) brightness(0.91);
 }
 
 .item:nth-child(22) {
-  animation-delay: calc(22 * 0.1s);
+  animation-delay: calc(22 * 0.2s + 1s) !important;
+}
+.item:nth-child(22) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_10.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-6deg) brightness(1.01);
 }
 
 .item:nth-child(23) {
-  animation-delay: calc(23 * 0.1s);
+  animation-delay: calc(23 * 0.2s + 1s) !important;
+}
+.item:nth-child(23) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_4.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(1);
+  filter: hue-rotate(0deg) brightness(0.91);
 }
 
 .item:nth-child(24) {
-  animation-delay: calc(24 * 0.1s);
+  animation-delay: calc(24 * 0.2s + 1s) !important;
+}
+.item:nth-child(24) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_10.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(1);
+  filter: hue-rotate(-13deg) brightness(1.06);
 }
 
 .item:nth-child(25) {
-  animation-delay: calc(25 * 0.1s);
+  animation-delay: calc(25 * 0.2s + 1s) !important;
+}
+.item:nth-child(25) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_4.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(1);
+  filter: hue-rotate(-5deg) brightness(1.01);
 }
 
 .item:nth-child(26) {
-  animation-delay: calc(26 * 0.1s);
+  animation-delay: calc(26 * 0.2s + 1s) !important;
+}
+.item:nth-child(26) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_4.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-12deg) brightness(1.05);
 }
 
 .item:nth-child(27) {
-  animation-delay: calc(27 * 0.1s);
+  animation-delay: calc(27 * 0.2s + 1s) !important;
+}
+.item:nth-child(27) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_1.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-6deg) brightness(0.95);
 }
 
 .item:nth-child(28) {
-  animation-delay: calc(28 * 0.1s);
+  animation-delay: calc(28 * 0.2s + 1s) !important;
+}
+.item:nth-child(28) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_11.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-15deg) brightness(0.98);
 }
 
 .item:nth-child(29) {
-  animation-delay: calc(29 * 0.1s);
+  animation-delay: calc(29 * 0.2s + 1s) !important;
+}
+.item:nth-child(29) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_7.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(-1);
+  filter: hue-rotate(-5deg) brightness(1.05);
 }
 
 .item:nth-child(30) {
-  animation-delay: calc(30 * 0.1s);
+  animation-delay: calc(30 * 0.2s + 1s) !important;
+}
+.item:nth-child(30) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_11.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-11deg) brightness(1.04);
 }
 
 .item:nth-child(31) {
-  animation-delay: calc(31 * 0.1s);
+  animation-delay: calc(31 * 0.2s + 1s) !important;
+}
+.item:nth-child(31) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_2.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(-1);
+  filter: hue-rotate(-1deg) brightness(1.03);
 }
 
 .item:nth-child(32) {
-  animation-delay: calc(32 * 0.1s);
+  animation-delay: calc(32 * 0.2s + 1s) !important;
+}
+.item:nth-child(32) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_4.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-7deg) brightness(0.91);
 }
 
 .item:nth-child(33) {
-  animation-delay: calc(33 * 0.1s);
+  animation-delay: calc(33 * 0.2s + 1s) !important;
+}
+.item:nth-child(33) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_8.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-10deg) brightness(0.99);
 }
 
 .item:nth-child(34) {
-  animation-delay: calc(34 * 0.1s);
+  animation-delay: calc(34 * 0.2s + 1s) !important;
+}
+.item:nth-child(34) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_10.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(-1);
+  filter: hue-rotate(-10deg) brightness(1.09);
 }
 
 .item:nth-child(35) {
-  animation-delay: calc(35 * 0.1s);
+  animation-delay: calc(35 * 0.2s + 1s) !important;
+}
+.item:nth-child(35) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_2.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-14deg) brightness(0.95);
 }
 
 .item:nth-child(36) {
-  animation-delay: calc(36 * 0.1s);
+  animation-delay: calc(36 * 0.2s + 1s) !important;
+}
+.item:nth-child(36) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_5.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-14deg) brightness(0.97);
 }
 
 .item:nth-child(37) {
-  animation-delay: calc(37 * 0.1s);
+  animation-delay: calc(37 * 0.2s + 1s) !important;
+}
+.item:nth-child(37) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_7.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(1);
+  filter: hue-rotate(-12deg) brightness(0.91);
 }
 
 .item:nth-child(38) {
-  animation-delay: calc(38 * 0.1s);
+  animation-delay: calc(38 * 0.2s + 1s) !important;
+}
+.item:nth-child(38) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_7.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-17deg) brightness(0.97);
 }
 
 .item:nth-child(39) {
-  animation-delay: calc(39 * 0.1s);
+  animation-delay: calc(39 * 0.2s + 1s) !important;
+}
+.item:nth-child(39) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_4.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-4deg) brightness(0.98);
 }
 
 .item:nth-child(40) {
-  animation-delay: calc(40 * 0.1s);
+  animation-delay: calc(40 * 0.2s + 1s) !important;
+}
+.item:nth-child(40) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_7.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-6deg) brightness(0.94);
 }
 
 .item:nth-child(41) {
-  animation-delay: calc(41 * 0.1s);
+  animation-delay: calc(41 * 0.2s + 1s) !important;
+}
+.item:nth-child(41) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_2.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-14deg) brightness(1.06);
 }
 
 .item:nth-child(42) {
-  animation-delay: calc(42 * 0.1s);
+  animation-delay: calc(42 * 0.2s + 1s) !important;
+}
+.item:nth-child(42) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_3.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(1);
+  filter: hue-rotate(-17deg) brightness(1.04);
 }
 
 .item:nth-child(43) {
-  animation-delay: calc(43 * 0.1s);
+  animation-delay: calc(43 * 0.2s + 1s) !important;
+}
+.item:nth-child(43) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_1.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(-1);
+  filter: hue-rotate(-1deg) brightness(1.09);
 }
 
 .item:nth-child(44) {
-  animation-delay: calc(44 * 0.1s);
+  animation-delay: calc(44 * 0.2s + 1s) !important;
+}
+.item:nth-child(44) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_2.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(-1);
+  filter: hue-rotate(-13deg) brightness(0.91);
 }
 
 .item:nth-child(45) {
-  animation-delay: calc(45 * 0.1s);
+  animation-delay: calc(45 * 0.2s + 1s) !important;
+}
+.item:nth-child(45) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_4.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(-1);
+  filter: hue-rotate(-10deg) brightness(1.08);
 }
 
 .item:nth-child(46) {
-  animation-delay: calc(46 * 0.1s);
+  animation-delay: calc(46 * 0.2s + 1s) !important;
+}
+.item:nth-child(46) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_11.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(1);
+  filter: hue-rotate(-16deg) brightness(0.95);
 }
 
 .item:nth-child(47) {
-  animation-delay: calc(47 * 0.1s);
+  animation-delay: calc(47 * 0.2s + 1s) !important;
+}
+.item:nth-child(47) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_1.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(-1);
+  filter: hue-rotate(-15deg) brightness(0.99);
 }
 
 .item:nth-child(48) {
-  animation-delay: calc(48 * 0.1s);
+  animation-delay: calc(48 * 0.2s + 1s) !important;
+}
+.item:nth-child(48) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_4.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-6deg) brightness(0.95);
 }
 
 .item:nth-child(49) {
-  animation-delay: calc(49 * 0.1s);
+  animation-delay: calc(49 * 0.2s + 1s) !important;
+}
+.item:nth-child(49) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_5.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(-1);
+  filter: hue-rotate(-15deg) brightness(0.91);
 }
 
 .item:nth-child(50) {
-  animation-delay: calc(50 * 0.1s);
+  animation-delay: calc(50 * 0.2s + 1s) !important;
+}
+.item:nth-child(50) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_2.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-1deg) brightness(0.99);
 }
 
 .item:nth-child(51) {
-  animation-delay: calc(51 * 0.1s);
+  animation-delay: calc(51 * 0.2s + 1s) !important;
+}
+.item:nth-child(51) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_5.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-2deg) brightness(1.06);
 }
 
 .item:nth-child(52) {
-  animation-delay: calc(52 * 0.1s);
+  animation-delay: calc(52 * 0.2s + 1s) !important;
+}
+.item:nth-child(52) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_4.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-10deg) brightness(1.06);
 }
 
 .item:nth-child(53) {
-  animation-delay: calc(53 * 0.1s);
+  animation-delay: calc(53 * 0.2s + 1s) !important;
+}
+.item:nth-child(53) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_9.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-8deg) brightness(1.04);
 }
 
 .item:nth-child(54) {
-  animation-delay: calc(54 * 0.1s);
+  animation-delay: calc(54 * 0.2s + 1s) !important;
+}
+.item:nth-child(54) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_7.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(1);
+  filter: hue-rotate(-8deg) brightness(1.04);
 }
 
 .item:nth-child(55) {
-  animation-delay: calc(55 * 0.1s);
+  animation-delay: calc(55 * 0.2s + 1s) !important;
+}
+.item:nth-child(55) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_2.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(-1);
+  filter: hue-rotate(-19deg) brightness(0.91);
 }
 
 .item:nth-child(56) {
-  animation-delay: calc(56 * 0.1s);
+  animation-delay: calc(56 * 0.2s + 1s) !important;
+}
+.item:nth-child(56) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_9.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-7deg) brightness(0.97);
 }
 
 .item:nth-child(57) {
-  animation-delay: calc(57 * 0.1s);
+  animation-delay: calc(57 * 0.2s + 1s) !important;
+}
+.item:nth-child(57) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_7.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(-1);
+  filter: hue-rotate(-11deg) brightness(1.08);
 }
 
 .item:nth-child(58) {
-  animation-delay: calc(58 * 0.1s);
+  animation-delay: calc(58 * 0.2s + 1s) !important;
+}
+.item:nth-child(58) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_11.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(-1);
+  filter: hue-rotate(-4deg) brightness(1.03);
 }
 
 .item:nth-child(59) {
-  animation-delay: calc(59 * 0.1s);
+  animation-delay: calc(59 * 0.2s + 1s) !important;
+}
+.item:nth-child(59) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_6.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(-1);
+  filter: hue-rotate(-11deg) brightness(0.91);
 }
 
 .item:nth-child(60) {
-  animation-delay: calc(60 * 0.1s);
+  animation-delay: calc(60 * 0.2s + 1s) !important;
+}
+.item:nth-child(60) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_11.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(-1);
+  filter: hue-rotate(-7deg) brightness(1.09);
 }
 
 .item:nth-child(61) {
-  animation-delay: calc(61 * 0.1s);
+  animation-delay: calc(61 * 0.2s + 1s) !important;
+}
+.item:nth-child(61) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_5.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-6deg) brightness(0.94);
 }
 
 .item:nth-child(62) {
-  animation-delay: calc(62 * 0.1s);
+  animation-delay: calc(62 * 0.2s + 1s) !important;
+}
+.item:nth-child(62) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_3.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(1);
+  filter: hue-rotate(-12deg) brightness(1.1);
 }
 
 .item:nth-child(63) {
-  animation-delay: calc(63 * 0.1s);
+  animation-delay: calc(63 * 0.2s + 1s) !important;
+}
+.item:nth-child(63) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_7.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(-1);
+  filter: hue-rotate(-1deg) brightness(1.09);
 }
 
 .item:nth-child(64) {
-  animation-delay: calc(64 * 0.1s);
+  animation-delay: calc(64 * 0.2s + 1s) !important;
+}
+.item:nth-child(64) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_10.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(1);
+  filter: hue-rotate(-1deg) brightness(1.1);
 }
 
 .item:nth-child(65) {
-  animation-delay: calc(65 * 0.1s);
+  animation-delay: calc(65 * 0.2s + 1s) !important;
+}
+.item:nth-child(65) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_5.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(1);
+  filter: hue-rotate(-5deg) brightness(0.97);
 }
 
 .item:nth-child(66) {
-  animation-delay: calc(66 * 0.1s);
+  animation-delay: calc(66 * 0.2s + 1s) !important;
+}
+.item:nth-child(66) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_6.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(1);
+  filter: hue-rotate(0deg) brightness(1.09);
 }
 
 .item:nth-child(67) {
-  animation-delay: calc(67 * 0.1s);
+  animation-delay: calc(67 * 0.2s + 1s) !important;
+}
+.item:nth-child(67) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_7.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(-1);
+  filter: hue-rotate(-4deg) brightness(0.96);
 }
 
 .item:nth-child(68) {
-  animation-delay: calc(68 * 0.1s);
+  animation-delay: calc(68 * 0.2s + 1s) !important;
+}
+.item:nth-child(68) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_11.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-5deg) brightness(0.91);
 }
 
 .item:nth-child(69) {
-  animation-delay: calc(69 * 0.1s);
+  animation-delay: calc(69 * 0.2s + 1s) !important;
+}
+.item:nth-child(69) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_7.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(1);
+  filter: hue-rotate(0deg) brightness(0.91);
 }
 
 .item:nth-child(70) {
-  animation-delay: calc(70 * 0.1s);
+  animation-delay: calc(70 * 0.2s + 1s) !important;
+}
+.item:nth-child(70) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_2.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(-1);
+  filter: hue-rotate(-1deg) brightness(0.94);
 }
 
 .item:nth-child(71) {
-  animation-delay: calc(71 * 0.1s);
+  animation-delay: calc(71 * 0.2s + 1s) !important;
+}
+.item:nth-child(71) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_2.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-10deg) brightness(1.05);
 }
 
 .item:nth-child(72) {
-  animation-delay: calc(72 * 0.1s);
+  animation-delay: calc(72 * 0.2s + 1s) !important;
+}
+.item:nth-child(72) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_1.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(1);
+  filter: hue-rotate(-11deg) brightness(1.06);
 }
 
 .item:nth-child(73) {
-  animation-delay: calc(73 * 0.1s);
+  animation-delay: calc(73 * 0.2s + 1s) !important;
+}
+.item:nth-child(73) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_3.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-8deg) brightness(1.05);
 }
 
 .item:nth-child(74) {
-  animation-delay: calc(74 * 0.1s);
+  animation-delay: calc(74 * 0.2s + 1s) !important;
+}
+.item:nth-child(74) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_4.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(1);
+  filter: hue-rotate(-16deg) brightness(1.07);
 }
 
 .item:nth-child(75) {
-  animation-delay: calc(75 * 0.1s);
+  animation-delay: calc(75 * 0.2s + 1s) !important;
+}
+.item:nth-child(75) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_9.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-11deg) brightness(1);
 }
 
 .item:nth-child(76) {
-  animation-delay: calc(76 * 0.1s);
+  animation-delay: calc(76 * 0.2s + 1s) !important;
+}
+.item:nth-child(76) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_8.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(1);
+  filter: hue-rotate(-13deg) brightness(0.97);
 }
 
 .item:nth-child(77) {
-  animation-delay: calc(77 * 0.1s);
+  animation-delay: calc(77 * 0.2s + 1s) !important;
+}
+.item:nth-child(77) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_9.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(1);
+  filter: hue-rotate(-10deg) brightness(0.91);
 }
 
 .item:nth-child(78) {
-  animation-delay: calc(78 * 0.1s);
+  animation-delay: calc(78 * 0.2s + 1s) !important;
+}
+.item:nth-child(78) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_4.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(-1);
+  filter: hue-rotate(-7deg) brightness(1.1);
 }
 
 .item:nth-child(79) {
-  animation-delay: calc(79 * 0.1s);
+  animation-delay: calc(79 * 0.2s + 1s) !important;
+}
+.item:nth-child(79) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_1.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(1);
+  filter: hue-rotate(0deg) brightness(0.96);
 }
 
 .item:nth-child(80) {
-  animation-delay: calc(80 * 0.1s);
+  animation-delay: calc(80 * 0.2s + 1s) !important;
+}
+.item:nth-child(80) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_4.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-4deg) brightness(1.05);
 }
 
 .item:nth-child(81) {
-  animation-delay: calc(81 * 0.1s);
+  animation-delay: calc(81 * 0.2s + 1s) !important;
+}
+.item:nth-child(81) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_4.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(1);
+  filter: hue-rotate(0deg) brightness(0.96);
 }
 
 .item:nth-child(82) {
-  animation-delay: calc(82 * 0.1s);
+  animation-delay: calc(82 * 0.2s + 1s) !important;
+}
+.item:nth-child(82) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_6.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(-1);
+  filter: hue-rotate(-14deg) brightness(0.99);
 }
 
 .item:nth-child(83) {
-  animation-delay: calc(83 * 0.1s);
+  animation-delay: calc(83 * 0.2s + 1s) !important;
+}
+.item:nth-child(83) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_9.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(0deg) brightness(0.94);
 }
 
 .item:nth-child(84) {
-  animation-delay: calc(84 * 0.1s);
+  animation-delay: calc(84 * 0.2s + 1s) !important;
+}
+.item:nth-child(84) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_4.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(1);
+  filter: hue-rotate(-17deg) brightness(1.1);
 }
 
 .item:nth-child(85) {
-  animation-delay: calc(85 * 0.1s);
+  animation-delay: calc(85 * 0.2s + 1s) !important;
+}
+.item:nth-child(85) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_6.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-14deg) brightness(1.08);
 }
 
 .item:nth-child(86) {
-  animation-delay: calc(86 * 0.1s);
+  animation-delay: calc(86 * 0.2s + 1s) !important;
+}
+.item:nth-child(86) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_2.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(1);
+  filter: hue-rotate(-17deg) brightness(1.05);
 }
 
 .item:nth-child(87) {
-  animation-delay: calc(87 * 0.1s);
+  animation-delay: calc(87 * 0.2s + 1s) !important;
+}
+.item:nth-child(87) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_8.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-10deg) brightness(0.99);
 }
 
 .item:nth-child(88) {
-  animation-delay: calc(88 * 0.1s);
+  animation-delay: calc(88 * 0.2s + 1s) !important;
+}
+.item:nth-child(88) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_4.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-15deg) brightness(1.08);
 }
 
 .item:nth-child(89) {
-  animation-delay: calc(89 * 0.1s);
+  animation-delay: calc(89 * 0.2s + 1s) !important;
+}
+.item:nth-child(89) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_5.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-15deg) brightness(0.92);
 }
 
 .item:nth-child(90) {
-  animation-delay: calc(90 * 0.1s);
+  animation-delay: calc(90 * 0.2s + 1s) !important;
+}
+.item:nth-child(90) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_7.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-19deg) brightness(1.06);
 }
 
 .item:nth-child(91) {
-  animation-delay: calc(91 * 0.1s);
+  animation-delay: calc(91 * 0.2s + 1s) !important;
+}
+.item:nth-child(91) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_5.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(-1);
+  filter: hue-rotate(-17deg) brightness(0.97);
 }
 
 .item:nth-child(92) {
-  animation-delay: calc(92 * 0.1s);
+  animation-delay: calc(92 * 0.2s + 1s) !important;
+}
+.item:nth-child(92) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_6.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(-1);
+  filter: hue-rotate(-4deg) brightness(1.09);
 }
 
 .item:nth-child(93) {
-  animation-delay: calc(93 * 0.1s);
+  animation-delay: calc(93 * 0.2s + 1s) !important;
+}
+.item:nth-child(93) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_1.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(-1);
+  filter: hue-rotate(-13deg) brightness(0.98);
 }
 
 .item:nth-child(94) {
-  animation-delay: calc(94 * 0.1s);
+  animation-delay: calc(94 * 0.2s + 1s) !important;
+}
+.item:nth-child(94) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_8.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-16deg) brightness(1.04);
 }
 
 .item:nth-child(95) {
-  animation-delay: calc(95 * 0.1s);
+  animation-delay: calc(95 * 0.2s + 1s) !important;
+}
+.item:nth-child(95) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_4.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-1deg) brightness(1.06);
 }
 
 .item:nth-child(96) {
-  animation-delay: calc(96 * 0.1s);
+  animation-delay: calc(96 * 0.2s + 1s) !important;
+}
+.item:nth-child(96) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_1.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(1);
+  filter: hue-rotate(-14deg) brightness(1.02);
 }
 
 .item:nth-child(97) {
-  animation-delay: calc(97 * 0.1s);
+  animation-delay: calc(97 * 0.2s + 1s) !important;
+}
+.item:nth-child(97) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_9.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(1);
+  filter: hue-rotate(-11deg) brightness(1.08);
 }
 
 .item:nth-child(98) {
-  animation-delay: calc(98 * 0.1s);
+  animation-delay: calc(98 * 0.2s + 1s) !important;
+}
+.item:nth-child(98) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_1.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1) scaleY(1);
+  filter: hue-rotate(-12deg) brightness(0.95);
 }
 
 .item:nth-child(99) {
-  animation-delay: calc(99 * 0.1s);
+  animation-delay: calc(99 * 0.2s + 1s) !important;
+}
+.item:nth-child(99) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_2.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(1);
+  filter: hue-rotate(-4deg) brightness(0.97);
 }
 
 .item:nth-child(100) {
-  animation-delay: calc(100 * 0.1s);
+  animation-delay: calc(100 * 0.2s + 1s) !important;
+}
+.item:nth-child(100) .creature_card:after {
+  content: "";
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url("../../assets/creature_cards/card_9.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(1) scaleY(-1);
+  filter: hue-rotate(-13deg) brightness(1.03);
+}
+
+.creationCombattant {
+  margin-top: 50vh;
+  margin-bottom: 50vh;
+  opacity: 0;
+  animation: combattantsSubsectionAppear 1s forwards 1s;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  position: relative;
+  z-index: 0;
+}
+
+#battle_book {
+  width: 100%;
+}
+#battle_book::after {
+  content: "";
+  width: 20%;
+  height: 100%;
+  background: radial-gradient(ellipse closest-side, black, transparent);
+  position: absolute;
+  opacity: 0.1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+#battle_book img {
+  width: 100%;
+  opacity: 1;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center;
+}
+#battle_book #book_deco {
+  display: block;
+  width: 30%;
+  height: 0;
+  padding-bottom: 30%;
+  margin: auto;
+  opacity: 0.75;
+  background: url(../../assets/flipbook-textures/zodiac_arena.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+#battle_book #book_deco.activeBookSecond {
+  background: url(../../assets/flipbook-textures/zodiac_arena.png), radial-gradient(circle closest-side, rgb(255, 235, 120) 3%, gold, white 95%, transparent), url(../../assets/elements/earth_ring.gif);
+  background-blend-mode: multiply;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+#battle_book #book_deco #magic_ring {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse closest-side, black, transparent), url(../../assets/flipbook-textures/zodiac_ring.png);
+  border-radius: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.2;
+  transform: scale(1.3);
+  animation: magicRing1 60s infinite linear;
+  transform-origin: center;
+}
+#battle_book #book_deco.activeBookFirst #magic_ring {
+  animation: magicRing2 6s infinite linear;
+}
+#battle_book #book_deco.activeBookSecond #magic_ring {
+  animation-duration: 3s;
+}
+#battle_book #book_deco #magic_vortex {
+  background-color: red;
+  width: 100%;
+  height: 100%;
+  background: url(../../assets/flipbook-textures/vortex.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: magicVortex 3s infinite linear;
+  z-index: -1;
+  opacity: 0;
+  transition: 0.5s;
+}
+#battle_book #book_deco.activeBookSecond #magic_vortex {
+  opacity: 1;
+}
+#battle_book #book_deco.activeBookGo {
+  filter: blur(10px) contrast(2) brightness(5);
+}
+#battle_book #book_deco.activeBookGo #magic_vortex {
+  animation-duration: 1s;
+}
+#battle_book #book_deco.activeBookGo #magic_ring {
+  animation-duration: 2s;
+}
+
+@keyframes magicRing1 {
+  0% {
+    transform: rotate(0deg) scale(1.3);
+  }
+  100% {
+    transform: rotate(360deg) scale(1.3);
+  }
+}
+@keyframes magicRing2 {
+  0% {
+    transform: rotate(0deg) scale(1.3);
+    filter: blur(3px) brightness(0.3) drop-shadow(0px 0px 20px rgb(60, 0, 255));
+    box-shadow: 1px 1px 1px green, 1px 1px 5px green;
+  }
+  50% {
+    transform: rotate(180deg) scale(1.2, 1.4);
+    filter: blur(1px) brightness(10) drop-shadow(0px 0px 20px red) contrast(100);
+    box-shadow: 0px 0px 1px blue, 0px 0px 5px blue;
+  }
+  100% {
+    transform: rotate(360deg) scale(1.3);
+    filter: blur(3px) brightness(0.3) drop-shadow(0px 0px 20px rgb(17, 255, 0));
+    box-shadow: -1px -1px 1px red, -1px -1px 5px red;
+  }
+}
+@keyframes magicVortex {
+  0% {
+    transform: rotate(0deg) scale(0.25, 0.3);
+    filter: blur(10px) brightness(0.3) drop-shadow(0px 0px 20px rgb(60, 0, 255));
+  }
+  50% {
+    transform: rotate(180deg) scale(0.3, 0.25);
+    filter: blur(5px) brightness(10) drop-shadow(0px 0px 20px red);
+  }
+  100% {
+    transform: rotate(360deg) scale(0.25, 0.3);
+    filter: blur(10px) brightness(0.3) drop-shadow(0px 0px 20px rgb(17, 255, 0));
+  }
+}
+.creationCombattantInnerContainer {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 5%;
+  align-content: center;
+  color: white;
+  font-size: 30px;
+  font-family: "lugrasimo";
+  text-align: center;
+  opacity: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  width: 90%;
+  aspect-ratio: 2/1.1;
+}
+.creationCombattantInnerContainer .undefined {
+  background-image: url(../../assets/flipbook-textures/question_mark.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 33% auto;
+  opacity: 0.33;
+  position: relative;
+}
+.creationCombattantInnerContainer .undefined * {
+  visibility: hidden;
+}
+.creationCombattantInnerContainer .undefined::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-image-source: url(../../assets/flipbook-textures/fantasy_border3.png);
+  border-image-slice: 45% 41%;
+  border-image-outset: 0vmin;
+  border-image-repeat: round;
+  border-image-width: 20vmin 20vmin 12vmin 0vmin;
+}
+.creationCombattantInnerContainer .undefined.player::after {
+  border-image-width: 12vmin 0vmin 12vmin 20vmin;
+}
+.creationCombattantInnerContainer .undefined.adv::after {
+  border-image-width: 12vmin 20vmin 12vmin 0vmin;
+}
+.creationCombattantInnerContainer .player,
+.creationCombattantInnerContainer .adv {
+  height: 100%;
+  width: 45%;
+  margin: 0% 0%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-between;
+  color: rgb(71, 0, 0);
+  position: relative;
+}
+.creationCombattantInnerContainer .player.feu,
+.creationCombattantInnerContainer .adv.feu {
+  border: 10px double rgba(255, 0, 0, 0.2);
+}
+.creationCombattantInnerContainer .player.eau,
+.creationCombattantInnerContainer .adv.eau {
+  border: 10px inset rgba(0, 0, 255, 0.2);
+}
+.creationCombattantInnerContainer .player.terre,
+.creationCombattantInnerContainer .adv.terre {
+  border: 10px dashed rgba(0, 128, 0, 0.2);
+}
+.creationCombattantInnerContainer .player.air,
+.creationCombattantInnerContainer .adv.air {
+  border: 10px groove rgba(255, 255, 0, 0.2);
+}
+.creationCombattantInnerContainer .player.player,
+.creationCombattantInnerContainer .adv.player {
+  border-right-width: 0vmin;
+}
+.creationCombattantInnerContainer .player.adv,
+.creationCombattantInnerContainer .adv.adv {
+  border-left-width: 0vmin;
+}
+.creationCombattantInnerContainer .player .nom,
+.creationCombattantInnerContainer .adv .nom {
+  font-family: bronzion;
+  font-size: 2.5vw;
+  color: rgb(0, 100, 0);
+  padding: 0 7.5vw;
+  position: relative;
+  width: auto;
+  min-width: 33.3%;
+  margin: 0 auto;
+}
+.creationCombattantInnerContainer .player .nom.dieu,
+.creationCombattantInnerContainer .adv .nom.dieu {
+  -o-border-image: url(../../assets/flipbook-textures/acanthus.png) 50% 50%/10vmin 15vmin/0 round;
+     border-image: url(../../assets/flipbook-textures/acanthus.png) 50% 50%/10vmin 15vmin/0 round;
+}
+.creationCombattantInnerContainer .player .nom::first-letter,
+.creationCombattantInnerContainer .adv .nom::first-letter {
+  font-size: 5vw;
+  color: rgb(193, 0, 0);
+  position: relative;
+}
+.creationCombattantInnerContainer .player.dieu .nom:first-letter,
+.creationCombattantInnerContainer .adv.dieu .nom:first-letter {
+  text-shadow: 0 0 1px white, 0 0 1px white, 0 0 5px gold, 0 0 10px black, 0 0 10px black, 0 0 5px gold, 0 0 10px black, 0 0 10px black;
+}
+.creationCombattantInnerContainer .player.dieu .nom::after,
+.creationCombattantInnerContainer .adv.dieu .nom::after {
+  content: "";
+  position: absolute;
+  height: 50%;
+  width: 100%;
+  top: -25%;
+  left: 0;
+  background: url(../../assets/flipbook-textures/crown2.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  opacity: 1;
+  z-index: 2;
+  animation: itemGlow 0.3s alternate infinite;
+}
+.creationCombattantInnerContainer .player.creature::after, .creationCombattantInnerContainer .player.creature::before, .creationCombattantInnerContainer .player.dieu::after, .creationCombattantInnerContainer .player.dieu::before,
+.creationCombattantInnerContainer .adv.creature::after,
+.creationCombattantInnerContainer .adv.creature::before,
+.creationCombattantInnerContainer .adv.dieu::after,
+.creationCombattantInnerContainer .adv.dieu::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+  pointer-events: none;
+}
+.creationCombattantInnerContainer .player.creature:before,
+.creationCombattantInnerContainer .adv.creature:before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+  pointer-events: none;
+  background: url(../../assets/flipbook-textures/frame_black.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.creationCombattantInnerContainer .player.creature:after,
+.creationCombattantInnerContainer .adv.creature:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -5%;
+  width: 100%;
+  height: 5%;
+  background: url(../../assets/flipbook-textures/spacer.png);
+  background-position: bottom;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.7;
+  z-index: 1;
+}
+.creationCombattantInnerContainer .player.dieu::before,
+.creationCombattantInnerContainer .adv.dieu::before {
+  background: url(../../assets/flipbook-textures/frame_golden.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.creationCombattantInnerContainer .player.dieu::after,
+.creationCombattantInnerContainer .adv.dieu::after {
+  background: url(../../assets/flipbook-textures/sun.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: 10s rotateElementGod infinite linear;
+}
+.creationCombattantInnerContainer .player .login,
+.creationCombattantInnerContainer .adv .login {
+  width: auto;
+  text-shadow: 0 0 1px black, 0 0 10px white;
+  font-size: 1.5vw;
+  max-width: 100%;
+  margin: auto;
+  padding: 1% 5%;
+  position: relative;
+  margin-bottom: 2.5vw;
+}
+.creationCombattantInnerContainer .player .login:after,
+.creationCombattantInnerContainer .adv .login:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: url(../../assets/flipbook-textures/plants_textbox.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  opacity: 0.6;
+  border-radius: 100%;
+  overflow: hidden;
+}
+.creationCombattantInnerContainer .player .illustration,
+.creationCombattantInnerContainer .adv .illustration {
+  width: 66%;
+  height: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  z-index: 100;
+}
+.creationCombattantInnerContainer .player .illustration:hover::after,
+.creationCombattantInnerContainer .adv .illustration:hover::after {
+  opacity: 0.5;
+}
+.creationCombattantInnerContainer .player .illustration::after,
+.creationCombattantInnerContainer .adv .illustration::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  bottom: 0px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  transition: 1s;
+}
+.creationCombattantInnerContainer .player .illustration.feu::after,
+.creationCombattantInnerContainer .adv .illustration.feu::after {
+  background-image: url(../../assets/elements/fire.gif), url(../../assets/elements/fire2.gif);
+}
+.creationCombattantInnerContainer .player .illustration.eau::after,
+.creationCombattantInnerContainer .adv .illustration.eau::after {
+  background: url(../../assets/elements/rain.gif), url(../../assets/elements/water2.gif), url(../../assets/elements/tttt.gif);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.creationCombattantInnerContainer .player .illustration.air::after,
+.creationCombattantInnerContainer .adv .illustration.air::after {
+  background-image: radial-gradient(closest-side, rgba(0, 0, 0, 0.92), transparent), url(../../assets/elements/air.gif), url(../../assets/elements/storm.gif), url(../../assets/elements/storm3.gif), url(../../assets/elements/storm4.gif), url(../../assets/elements/storm5.gif);
+  background-size: 100% 100%;
+}
+.creationCombattantInnerContainer .player .illustration.terre::after,
+.creationCombattantInnerContainer .adv .illustration.terre::after {
+  background-image: url(../../assets/elements/earth.gif), url(../../assets/elements/earth2.gif), url(../../assets/elements/earth3.gif);
+}
+.creationCombattantInnerContainer .player .illustration img,
+.creationCombattantInnerContainer .adv .illustration img {
+  height: 80%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  transition: 1s;
+  transform-origin: center !important;
+  opacity: 0.3;
+  filter: brightness(1) contrast(1) sepia(0.9);
+  position: relative;
+  z-index: 1;
+}
+.creationCombattantInnerContainer .player .illustration img:hover,
+.creationCombattantInnerContainer .adv .illustration img:hover {
+  filter: brightness(1.2) contrast(1.1) sepia(0);
+}
+.creationCombattantInnerContainer .player .illustration::before,
+.creationCombattantInnerContainer .adv .illustration::before {
+  content: "";
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+  z-index: -1;
+}
+.creationCombattantInnerContainer .player .illustration.nordique::before,
+.creationCombattantInnerContainer .adv .illustration.nordique::before {
+  background: url(../../assets/norse/script.png);
+  background-size: 33.3%;
+  -o-border-image: url(../../assets/norse/celtic_frame.png) 20% 20%/3vmin 3vmin/3vmin round;
+     border-image: url(../../assets/norse/celtic_frame.png) 20% 20%/3vmin 3vmin/3vmin round;
+}
+.creationCombattantInnerContainer .player .illustration.grec::before,
+.creationCombattantInnerContainer .adv .illustration.grec::before {
+  background: url(../../assets/greek/script.png);
+  -o-border-image: url(../../assets/greek/pattern_border.png) 25% 25%/3vmin 3vmin/3vmin round;
+     border-image: url(../../assets/greek/pattern_border.png) 25% 25%/3vmin 3vmin/3vmin round;
+  background-size: 33.3%;
+}
+.creationCombattantInnerContainer .player .illustration.chinoise::before,
+.creationCombattantInnerContainer .adv .illustration.chinoise::before {
+  background: url(../../assets/chinese/script.png);
+  -o-border-image: url(../../assets/chinese/border.png) 20% 20%/3vmin 3vmin/3vmin round;
+     border-image: url(../../assets/chinese/border.png) 20% 20%/3vmin 3vmin/3vmin round;
+  background-size: 33.3%;
+}
+.creationCombattantInnerContainer .player .illustration.egyptienne::before,
+.creationCombattantInnerContainer .adv .illustration.egyptienne::before {
+  background: url(../../assets/egyptian/script.png);
+  -o-border-image: url(../../assets/egyptian/motifs.png) 25% 0%/3vmin 3vmin/3vmin round;
+     border-image: url(../../assets/egyptian/motifs.png) 25% 0%/3vmin 3vmin/3vmin round;
+  background-size: 33.3%;
+}
+.creationCombattantInnerContainer .player.player .illustration::before,
+.creationCombattantInnerContainer .adv.player .illustration::before {
+  border-image-width: 3vmin 0vmin 3vmin 3vmin;
+}
+.creationCombattantInnerContainer .player.adv .illustration::before,
+.creationCombattantInnerContainer .adv.adv .illustration::before {
+  border-image-width: 3vmin 3vmin 3vmin 0vmin;
+}
+.creationCombattantInnerContainer .player .creature_info,
+.creationCombattantInnerContainer .adv .creature_info {
+  margin-top: 2.5vw;
+}
+.creationCombattantInnerContainer .player .creature_info *,
+.creationCombattantInnerContainer .adv .creature_info * {
+  font-size: 1.5vw;
+}
+.creationCombattantInnerContainer .player .creature_info .description,
+.creationCombattantInnerContainer .adv .creature_info .description {
+  display: none;
+}
+.creationCombattantInnerContainer .player .creature_info .mythologie_element_group,
+.creationCombattantInnerContainer .adv .creature_info .mythologie_element_group {
+  display: flex;
+  justify-content: space-evenly;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.creationCombattantInnerContainer .player .creature_info .mythologie_element_group *,
+.creationCombattantInnerContainer .adv .creature_info .mythologie_element_group * {
+  visibility: hidden;
+}
+.creationCombattantInnerContainer .player .creature_info .mythologie_element_group.nordique,
+.creationCombattantInnerContainer .adv .creature_info .mythologie_element_group.nordique {
+  background-image: url(../../assets/norse/symbol_nordic.png);
+}
+.creationCombattantInnerContainer .player .creature_info .mythologie_element_group.chinoise,
+.creationCombattantInnerContainer .adv .creature_info .mythologie_element_group.chinoise {
+  background-image: url(../../assets/chinese/symbol_chinese.png);
+}
+.creationCombattantInnerContainer .player .creature_info .mythologie_element_group.grec,
+.creationCombattantInnerContainer .adv .creature_info .mythologie_element_group.grec {
+  background-image: url(../../assets/greek/symbol_greek.png);
+}
+.creationCombattantInnerContainer .player .creature_info .mythologie_element_group.egyptienne,
+.creationCombattantInnerContainer .adv .creature_info .mythologie_element_group.egyptienne {
+  background-image: url(../../assets/egyptian/symbol_egyptian.png);
+}
+.creationCombattantInnerContainer .player .creature_info .mythologie_element_group span,
+.creationCombattantInnerContainer .adv .creature_info .mythologie_element_group span {
+  color: rgb(193, 0, 0);
+  text-transform: capitalize;
+}
+.creationCombattantInnerContainer .player .creature_info ul,
+.creationCombattantInnerContainer .adv .creature_info ul {
+  width: 80%;
+  padding: 0 0.25vw;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+  margin-bottom: 2vh;
+  border: 0.1px dotted rgba(86, 41, 41, 0.333);
+  background-color: rgba(255, 255, 255, 0.333);
+  transition: 0.3s;
+  position: relative;
+}
+.creationCombattantInnerContainer .player .creature_info ul li,
+.creationCombattantInnerContainer .adv .creature_info ul li {
+  transition: 0.3s;
+}
+.creationCombattantInnerContainer .player .creature_info ul li span,
+.creationCombattantInnerContainer .adv .creature_info ul li span {
+  color: rgba(255, 217, 0, 0.805);
+  text-shadow: 0 0 1px black, 0 0 10px black, 0 0 10px black, 0 0 10px black;
+}
+.creationCombattantInnerContainer .player .creature_info ul.feu, .creationCombattantInnerContainer .player .creature_info ul.air, .creationCombattantInnerContainer .player .creature_info ul.terre, .creationCombattantInnerContainer .player .creature_info ul.eau,
+.creationCombattantInnerContainer .adv .creature_info ul.feu,
+.creationCombattantInnerContainer .adv .creature_info ul.air,
+.creationCombattantInnerContainer .adv .creature_info ul.terre,
+.creationCombattantInnerContainer .adv .creature_info ul.eau {
+  background-blend-mode: darken;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.creationCombattantInnerContainer .player .creature_info ul.feu,
+.creationCombattantInnerContainer .adv .creature_info ul.feu {
+  background-image: linear-gradient(0.25turn, transparent 40%, red, transparent 60%), url(../../assets/elements/element_fire.png);
+}
+.creationCombattantInnerContainer .player .creature_info ul.eau,
+.creationCombattantInnerContainer .adv .creature_info ul.eau {
+  background-image: linear-gradient(0.25turn, transparent 40%, blue, transparent 60%), url(../../assets/elements/element_water.png);
+}
+.creationCombattantInnerContainer .player .creature_info ul.terre,
+.creationCombattantInnerContainer .adv .creature_info ul.terre {
+  background-image: linear-gradient(0.25turn, transparent 40%, green, transparent 60%), url(../../assets/elements/element_earth.png);
+}
+.creationCombattantInnerContainer .player .creature_info ul.air,
+.creationCombattantInnerContainer .adv .creature_info ul.air {
+  background-image: linear-gradient(0.25turn, transparent 40%, yellow, transparent 60%), url(../../assets/elements/element_air.png);
+}
+.creationCombattantInnerContainer .player .creature_info ul :after,
+.creationCombattantInnerContainer .adv .creature_info ul :after {
+  content: "";
+  width: 100%;
+  height: 150%;
+  position: absolute;
+  bottom: -150%;
+  left: 0px;
+  opacity: 0.7;
+  background: url(../../assets/flipbook-textures/divider.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.creationCombattantInnerContainer .buttons {
+  position: absolute;
+  display: flex;
+  width: 20%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+.creationCombattantInnerContainer .buttons button {
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: 2vmin;
+  cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
+}
+.creationCombattantInnerContainer .buttons #adv_btn {
+  height: 30vh;
+  width: 30vw;
+  text-align: bottom;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-end;
+  position: relative;
+  transition: 0.2s;
+  background: url(../../assets/elements/fire_ring.gif);
+  transform: translateY(-50%);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.creationCombattantInnerContainer .buttons #adv_btn:after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  transform: scale(0.7);
+  transform-origin: center;
+  top: 0;
+  left: 0;
+  background: url(../../assets/flipbook-textures/knight_helmet.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0.1);
+  position: relative;
+  z-index: 1;
+  transition: 0.2s;
+}
+.creationCombattantInnerContainer .buttons #adv_btn button {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  width: 200%;
+  height: 40%;
+  background: url(../../assets/flipbook-textures/sword.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: rotate(10deg);
+  transition: 0.2s;
+  animation: itemGlow 0.5s alternate infinite;
+}
+.creationCombattantInnerContainer .buttons #adv_btn:hover {
+  transform: translateY(-50%) scale(1.2);
+}
+.creationCombattantInnerContainer .buttons #adv_btn:hover button {
+  color: white;
+  transform: rotate(0deg);
+  animation: itemHover 0.3s alternate infinite;
+}
+.creationCombattantInnerContainer .buttons #adv_btn:hover::after {
+  filter: brightness(1);
+}
+.creationCombattantInnerContainer .buttons #adv_btn:active {
+  transform: scale(1.3);
+}
+.creationCombattantInnerContainer .buttons #adv_btn:active button {
+  transform: translateY(-40%) rotate(-5deg) scale(1.1);
+}
+.creationCombattantInnerContainer .buttons #retour_btn {
+  height: 30vh;
+  width: 30vw;
+  text-align: bottom;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-end;
+  position: relative;
+  transition: 0.2s;
+  background: url(../../assets/elements/water_ring.gif);
+  transform: translateY(50%);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.creationCombattantInnerContainer .buttons #retour_btn:after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  transform: scale(0.7);
+  transform-origin: center;
+  top: 0;
+  left: 0;
+  background: url(../../assets/flipbook-textures/knight_helmet2.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0.1);
+  position: relative;
+  z-index: 1;
+  transition: 0.2s;
+}
+.creationCombattantInnerContainer .buttons #retour_btn button {
+  position: absolute;
+  z-index: 2;
+  top: 20%;
+  left: 20%;
+  width: 50%;
+  height: 100%;
+  background: url(../../assets/flipbook-textures/shield4.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: rotate(10deg);
+  transition: 0.2s;
+  animation: itemGlow 0.5s alternate infinite;
+}
+.creationCombattantInnerContainer .buttons #retour_btn:hover {
+  transform: translateY(50%) scale(1.2);
+}
+.creationCombattantInnerContainer .buttons #retour_btn:hover button {
+  top: 50%;
+  color: white;
+  transform: rotate(0deg);
+  animation: itemHover 0.3s alternate infinite;
+}
+.creationCombattantInnerContainer .buttons #retour_btn:hover::after {
+  filter: brightness(1);
+}
+.creationCombattantInnerContainer .buttons #retour_btn:active {
+  transform: scale(1.3);
+}
+.creationCombattantInnerContainer .buttons #retour_btn:active button {
+  transform: translateY(40%) rotate(-5deg) scale(1.1);
+}
+.creationCombattantInnerContainer .buttons #combat_btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 20vmin;
+  pointer-events: none;
+  transition: 5s;
+}
+.creationCombattantInnerContainer .buttons #combat_btn button {
+  color: white;
+  position: relative;
+  z-index: 99999999999;
+  pointer-events: all;
+  transition: 0.3s;
+}
+.creationCombattantInnerContainer .buttons #combat_btn::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: url(../../assets/flipbook-textures/vortex.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: FlipH;
+  opacity: 0.5;
+  animation: magicVortex 1s reverse infinite linear;
+  transition: 5s;
+}
+.creationCombattantInnerContainer .buttons #combat_btn:hover {
+  padding: 200vmin;
+  transition: 0.3s;
+}
+.creationCombattantInnerContainer .buttons #combat_btn:hover button {
+  text-shadow: 0 0 1px black, 0 0 10px rgb(193, 0, 0), 0 0 5px rgb(0, 100, 0);
+  font-size: 4vmin;
+  transition: 0.1s;
+}
+.creationCombattantInnerContainer .buttons #combat_btn:hover::after {
+  opacity: 1;
+  transition: 5s;
+}
+.creationCombattantInnerContainer .buttons #combat_btn:before {
+  content: "";
+  height: 200vh;
+  width: 200vw;
+  background: radial-gradient(red, black 25%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: 10s;
+}
+.creationCombattantInnerContainer .buttons #combat_btn:active {
+  transform: translateY(-50%) scale(2);
+  z-index: 99999999;
+  transition: 0.1s;
+}
+.creationCombattantInnerContainer .buttons #combat_btn:active button {
+  text-shadow: 0 0 1px black, 0 0 10px red, 0 0 10px red;
+  text-transform: uppercase;
+}
+.creationCombattantInnerContainer .buttons #combat_btn:active:before {
+  opacity: 1;
+  transition: 0.1s;
+}
+.creationCombattantInnerContainer .buttons #combat_btn:active:after {
+  opacity: 1;
+  transition: 0.1s;
+}
+
+@keyframes itemGlow {
+  from {
+    filter: brightness(0.7);
+  }
+  to {
+    filter: brightness(1.3);
+  }
+}
+@keyframes itemHover {
+  from {
+    text-shadow: 0 0 10px black, 0 0 5px black;
+  }
+  to {
+    text-shadow: 0 0 11px black, 0 0 6px black, 0 0 11px black;
+  }
+}
+.combattantAppear {
+  animation: combattantAppear 0.5s forwards;
+}
+
+@keyframes combattantAppear {
+  from {
+    opacity: 0;
+    transform: scale(2);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes combattantsSubsectionAppear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes rotateElementGod {
+  0% {
+    transform: rotate(0deg);
+    filter: blur(10px) brightness(1.5);
+  }
+  50% {
+    transform: rotate(180deg);
+    filter: blur(5px) brightness(5.5);
+  }
+  100% {
+    transform: rotate(360deg);
+    filter: blur(10px) brightness(1.5);
+  }
 }/*# sourceMappingURL=selection-combat.component.css.map */

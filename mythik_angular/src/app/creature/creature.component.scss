@@ -1,4 +1,5 @@
 @use '../../mixins' as *;
+@use '../../variables' as *;
 
 section {
   width: 100vw;
@@ -61,8 +62,8 @@ h1 {
     background-blend-mode: lighten;
     // mask with image to exclude transparent pixels
     mask-image: url(../../assets/flipbook-textures/oroboros.png);
-    mask-mode: alpha;
     mask-size: $bg_size;
+    mask-mode: alpha;
     mask-position: center;
     mask-repeat: no-repeat;
   }
@@ -112,6 +113,11 @@ h1 {
     transform: scale(1.1)rotate(360deg);
     transition: 0.9s;
   }
+  &:active{
+    transform: scale(1.2)rotate(350deg);
+    transition: 0.1s;
+    color: $title-color-sec;
+  }
 }
 
 .creature_list_header {
@@ -155,7 +161,7 @@ h1 {
 
 .creature_list {
 
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
   border: 0px solid #000000;
   border-radius: 10px;
   padding: 0px;
@@ -233,7 +239,7 @@ h1 {
     height: $coinsize;
     position: relative;
     font-size: 3vw;
-    text-shadow: 1px 1px var(--text-color);
+    text-shadow: 1px 1px $text-color;
 
     i {
       position: absolute;
@@ -291,7 +297,7 @@ tbody tr {
 
   &:hover .id {
     transform: scale(1.1);
-    color: var(--title-color-sec);
+    color: $title-color-sec;
   }
 
   td:not(.id, .btn_td) {
@@ -434,7 +440,7 @@ table td:not(.id, .btn_td) {
 
 .nom {
   &::first-letter {
-    color: var(--title-color-pri);
+    color: $title-color-pri;
   }
 
   font-weight: bolder;
@@ -482,7 +488,7 @@ thead {
 
   th {
     text-align: center;
-    text-shadow: 1px 1px 1px var(--text-color);
+    text-shadow: 1px 1px 1px $text-color;
     font-size: 1.3vw;
     padding: 1vw;
     cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
@@ -503,7 +509,7 @@ thead {
     }
 
     &:first-letter {
-      color: var(--title-color-pri);
+      color: $title-color-pri;
       font-size: 1.75vw;
     }
   }
@@ -517,7 +523,7 @@ thead {
 
 
 .creature_edit {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
   background-image: url(../../assets/flipbook-textures/scroll3.png);
   background-repeat: no-repeat;
   background-size: contain;
@@ -530,7 +536,7 @@ thead {
     text-align: center;
     font-size: 3vw;
     padding-top: 13vw;
-    color: var(--text-color);
+    color: $text-color;
 
     &::first-letter {
       font-family: "bronzion";
@@ -609,7 +615,7 @@ thead {
 
       &:focus {
         outline: none;
-        border-color: var(--title-color-pri);
+        border-color: $title-color-pri;
         box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
         background-color: rgba(255, 128, 0, 0.1);
         animation: inputFocus 1s infinite alternate;
@@ -684,11 +690,11 @@ thead {
 
 @keyframes inputFocus {
   from {
-    box-shadow: 0 0 5px var(--title-color-pri);
+    box-shadow: 0 0 5px $title-color-pri;
   }
 
   to {
-    box-shadow: 0 0 4px var(--title-color-sec);
+    box-shadow: 0 0 4px $title-color-sec;
   }
 }
 
@@ -919,6 +925,6 @@ tr.nordique .mythologie {
 
 
 .text_intro{
-  color: var(--text-color) !important;
+  color: $text-color !important;
   width: 60%;
 }

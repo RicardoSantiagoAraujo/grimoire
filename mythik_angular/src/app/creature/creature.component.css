@@ -55,9 +55,9 @@ h1:after {
   background-blend-mode: lighten;
   -webkit-mask-image: url(../../assets/flipbook-textures/oroboros.png);
           mask-image: url(../../assets/flipbook-textures/oroboros.png);
-  mask-mode: alpha;
   -webkit-mask-size: 30%;
           mask-size: 30%;
+  mask-mode: alpha;
   -webkit-mask-position: center;
           mask-position: center;
   -webkit-mask-repeat: no-repeat;
@@ -103,6 +103,11 @@ h1:after {
   transform: scale(1.1) rotate(360deg);
   transition: 0.9s;
 }
+.btn:active {
+  transform: scale(1.2) rotate(350deg);
+  transition: 0.1s;
+  color: rgb(0, 100, 0);
+}
 
 .creature_list_header {
   position: relative;
@@ -142,7 +147,7 @@ h1:after {
 }
 
 .creature_list {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
   border: 0px solid #000000;
   border-radius: 10px;
   padding: 0px;
@@ -213,7 +218,7 @@ h1:after {
   height: 10vw;
   position: relative;
   font-size: 3vw;
-  text-shadow: 1px 1px var(--text-color);
+  text-shadow: 1px 1px rgb(71, 0, 0);
 }
 .creature_list_footer .btn i {
   position: absolute;
@@ -259,7 +264,7 @@ tbody tr:hover td:not(.id, .btn_td) {
 }
 tbody tr:hover .id {
   transform: scale(1.1);
-  color: var(--title-color-sec);
+  color: rgb(0, 100, 0);
 }
 tbody tr td:not(.id, .btn_td) {
   transition: 0.1s;
@@ -378,7 +383,7 @@ table td:not(.id, .btn_td) {
   font-weight: bolder;
 }
 .nom::first-letter {
-  color: var(--title-color-pri);
+  color: rgb(193, 0, 0);
 }
 
 .creature_img {
@@ -411,7 +416,7 @@ thead {
 }
 thead th {
   text-align: center;
-  text-shadow: 1px 1px 1px var(--text-color);
+  text-shadow: 1px 1px 1px rgb(71, 0, 0);
   font-size: 1.3vw;
   padding: 1vw;
   cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
@@ -432,7 +437,7 @@ thead th:hover::after {
   animation: listOrderPulse 0.3s alternate infinite;
 }
 thead th:first-letter {
-  color: var(--title-color-pri);
+  color: rgb(193, 0, 0);
   font-size: 1.75vw;
 }
 
@@ -445,7 +450,7 @@ thead th:first-letter {
   }
 }
 .creature_edit {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
   background-image: url(../../assets/flipbook-textures/scroll3.png);
   background-repeat: no-repeat;
   background-size: contain;
@@ -458,7 +463,7 @@ thead th:first-letter {
   text-align: center;
   font-size: 3vw;
   padding-top: 13vw;
-  color: var(--text-color);
+  color: rgb(71, 0, 0);
 }
 .creature_edit .card-header::first-letter {
   font-family: "bronzion";
@@ -532,7 +537,7 @@ thead th:first-letter {
 .creature_edit .form_item input:focus,
 .creature_edit .form_item select:focus {
   outline: none;
-  border-color: var(--title-color-pri);
+  border-color: rgb(193, 0, 0);
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
   background-color: rgba(255, 128, 0, 0.1);
   animation: inputFocus 1s infinite alternate;
@@ -595,10 +600,10 @@ thead th:first-letter {
 
 @keyframes inputFocus {
   from {
-    box-shadow: 0 0 5px var(--title-color-pri);
+    box-shadow: 0 0 5px rgb(193, 0, 0);
   }
   to {
-    box-shadow: 0 0 4px var(--title-color-sec);
+    box-shadow: 0 0 4px rgb(0, 100, 0);
   }
 }
 td.type_element {
@@ -817,6 +822,6 @@ tr.nordique .mythologie:after {
   }
 }
 .text_intro {
-  color: var(--text-color) !important;
+  color: rgb(71, 0, 0) !important;
   width: 60%;
 }/*# sourceMappingURL=creature.component.css.map */

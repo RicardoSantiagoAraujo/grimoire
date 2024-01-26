@@ -212,7 +212,7 @@ app-creature-page-a {
   text-align: center;
   margin: auto;
   text-align: center;
-  background: url(../../assets/flipbook-textures/fantasy-button.png), radial-gradient(rgba(172, 255, 47, 0.37), rgba(0, 0, 0, 0) 50%);
+  background: url(../../assets/flipbook-textures/fantasy-button.png), radial-gradient(rgba(172, 255, 47, 0.37), transparent 50%);
   cursor: url(../../assets/cursors/middle-ages-pointer-32x32.png), pointer;
   padding: 50px 25px;
   background-size: contain;

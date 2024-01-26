@@ -47,7 +47,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  background: url(../../assets/wooden_sign_botton.png), radial-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0) 85%);
+  background: url(../../assets/wooden_sign_botton.png), radial-gradient(rgb(0, 0, 0), transparent 85%);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: top;
@@ -265,7 +265,7 @@
   content: "";
   position: absolute;
   pointer-events: none;
-  background: radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75) 75%);
+  background: radial-gradient(transparent, rgba(0, 0, 0, 0.75) 75%);
   width: 200vw;
   height: 200vh;
 }
@@ -280,7 +280,7 @@
 }
 @keyframes chooseBg {
   from {
-    background-color: rgba(0, 0, 0, 0);
+    background-color: transparent;
   }
   to {
     background-color: black;

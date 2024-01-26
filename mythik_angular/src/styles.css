@@ -11,12 +11,6 @@
   src: url("assets/fonts/Lugrasimo/Lugrasimo-Regular.ttf");
 }
 :root {
-  --text-color: rgb(71, 0, 0);
-  --title-color-pri: rgb(193, 0, 0);
-  --title-color-sec: rgb(0, 100, 0);
-  --paper-color-l: rgb(255, 251, 212);
-  --paper-color-d: rgb(100, 79, 30);
-  --paper-texture: url("assets/flipbook-textures/natural-paper.png");
   /* --paper-texture: url(../pics/black-paper.png); */
   /* --paper-texture: url(../pics/old-paper-texture.webp); */
   /* Candlelight effect */
@@ -26,7 +20,7 @@
   --fire_light_effect-radial: radial-gradient(var(--color-overlay-l) var(--blur-overlay-l), var(--color-overlay-d) 75%);
   --fire_light_effect-linear: linear-gradient(var(--color-overlay-l) var(--blur-overlay-l) 90%, var(--color-overlay-d) 100%);
   --fire_light_effect-uniform: var(--color-overlay-l);
-  --fire_light_effect-pages: radial-gradient(var(--color-overlay-l) var(--blur-overlay-l), rgba(0, 0, 0, 0) 75%);
+  --fire_light_effect-pages: radial-gradient(var(--color-overlay-l) var(--blur-overlay-l), transparent 75%);
 }
 
 body,

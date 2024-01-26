@@ -77,7 +77,7 @@
   background-size: 120% 140%;
   background-blend-mode: soft-light;
   font-family: bronzion;
-  color: var(--title-color-pri);
+  color: rgb(193, 0, 0);
   text-shadow: 1px 1px 1px rgba(0, 128, 0, 0.501);
 }
 
@@ -87,6 +87,39 @@ label {
   text-align: center;
 }
 
+.container .input-div {
+  position: relative;
+}
+.container .input-div:after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 15%;
+  height: 100%;
+  opacity: 0;
+  transition: 0.2s;
+  background-image: url(../../assets/flipbook-textures/bow.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+.container .input-div:hover:after {
+  opacity: 0.3;
+  animation: arrowInput 0.2s alternate infinite;
+}
+
+@keyframes arrowInput {
+  from {
+    opacity: 0.1;
+    transform: translateX(-0.5vw);
+  }
+  to {
+    opacity: 0.3;
+    transform: translateX(0vw);
+  }
+}
 /* Appliquer des styles généraux aux champs de texte */
 input {
   width: 50vh;
@@ -109,7 +142,7 @@ input:hover {
 /* Appliquer des styles spécifiques au focus sur le champ de texte */
 input:focus {
   outline: none;
-  border-color: var(--title-color-pri);
+  border-color: rgb(193, 0, 0);
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
   background-color: rgba(255, 128, 0, 0.1);
   animation: inputFocus 1s infinite alternate;
@@ -144,6 +177,12 @@ input:focus {
   text-shadow: #342101 1px 1px 10px;
   transform: scale(1.1);
 }
+.button_group > *:active {
+  transform: scale(1.2);
+}
+.button_group > *:active button {
+  color: white;
+}
 .button_group a button {
   background: none;
   padding: none;
@@ -162,11 +201,11 @@ input:focus {
   font-family: bronzion;
   writing-mode: vertical-rl;
   text-orientation: upright;
-  color: var(--title-color-pri);
+  color: rgb(193, 0, 0);
   width: 50%;
   height: 50%;
   top: 0px;
-  background: url(../../assets/flipbook-textures/helmet.png), radial-gradient(black, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+  background: url(../../assets/flipbook-textures/helmet.png), radial-gradient(black, transparent, transparent);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

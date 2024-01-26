@@ -1,47 +1,119 @@
+<section>
 
-<body>
+    <div *ngIf="creationCombattant">
 
-<div *ngIf="creationCombattant">
+        <h1>
+            <span>Selection</span>
+            <span>Creatures</span>
+        </h1>
 
-   <h1>Selection <span>C</span>reatures</h1>
+
+        <div class="selectionCreatureContainer">
+
+            <div *ngFor="let c of list() |async" [class]="'item ' + (c | creatureData)">
+                <div [class]="'creature_card ' + (c | creatureData)" (click)="creationCombattant1(c)">
+                    <div [class]="'name ' + (c | creatureData)">
+                        <!-- <span>{{c.nom}}</span> -->
+                        <span [class]="(c | creatureData)">{{c.nom}}</span>
+                    </div>
+                    <img [src]="c.image" [class]="'img ' + (c | creatureData)">
+                    <ul [class]="(c | creatureData)">
+                        <li class="pv"> pv: <span>{{c.pv}}</span> </li>
+                        <li class="attaque"> pa: <span>{{c.attaque}}</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
 
-<div class="selectionCrea">
+        <div class="creationCombattant">
+            <!-- ========================== -->
+            <div id="battle_book">
+                <img src="../../assets/flipbook-textures/book_open.png" />
+                <div id="book_deco">
+                    <div id="magic_ring"></div>
+                    <div id="magic_vortex"></div>
+                </div>
 
-    <div  *ngFor="let c of list() |async" class="item">
-        <p class="name" (click)="creationCombattant1(c)" [style.color] = "c.typeElement! | element">{{c.nom}}</p>
-        <p (click)="creationCombattant1(c)"><img width="100px"  [src]="c.image"/></p>
+                <div class="creationCombattantInnerContainer">
+
+                    <div [class]="'player ' + (combattant1.creature! | creatureData)" *ngIf="combattant1">
+                        <div [class]="'nom ' + (combattant1.creature! | creatureData)">
+                            {{combattant1.creature?.nom}}
+                        </div>
+                        <div class="login">{{combattant1.compte?.login}}</div>
+                        <div [class]="'illustration ' + (combattant1.creature! | creatureData)">
+                            <img [src]="combattant1.creature?.image" />
+                        </div>
+                        <div class="creature_info">
+                            <div class="description"> Description: <span>{{combattant1.creature?.description}}</span>
+                            </div>
+                            <div [class]="'mythologie_element_group ' + (combattant1.creature! | creatureData)">
+                                <div class="mythologie"> Mythologie: <span>{{combattant1.creature?.mythologie}}</span>
+                                </div>
+                                <div class="element"> Element: <span>{{combattant1.creature?.typeElement}}</span></div>
+                            </div>
+                            <ul [class]="(combattant1.creature! | creatureData)">
+                                <li class="pv"> pv: <span>{{combattant1.creature?.pv}}</span> </li>
+                                <li class="attaque"> pa: <span>{{combattant1.creature?.attaque}}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- ========================== -->
+                    <div class="buttons">
+                        <a (click)="creationCombattant2()" id="adv_btn">
+                            <button type="button" class="button">
+                                Trouver un adversaire
+                            </button>
+                        </a>
+                        <div *ngIf="cb1 && cb2" id="combat_btn">
+                            <a (click)="goCombat()">
+                                <button type="button" class="button">
+                                    Combat
+
+                                </button>
+                            </a>
+                        </div>
+                        <a [routerLink]="['/accueil']" routerLinkActive="active" id="retour_btn">
+                            <button type="button" class="button">
+                                Retour
+                            </button>
+                        </a>
+                    </div>
+                    <!-- ========================== -->
+                    <div [class]="'adv ' + (combattant2.creature! | creatureData)" *ngIf="combattant2">
+
+                        <div [class]="'nom ' + (combattant2.creature! | creatureData)">
+                            {{combattant2.creature?.nom}}
+                        </div>
+                        <div class="login">{{combattant2.compte?.login}}</div>
+                        <div [class]="'illustration ' + (combattant2.creature! | creatureData)">
+                            <img [src]="combattant2.creature?.image" />
+                        </div>
+                        <div class="creature_info">
+                            <div class="description"> Description: <span>{{combattant2.creature?.description}}</span>
+                            </div>
+                            <div [class]="'mythologie_element_group ' + (combattant2.creature! | creatureData)">
+                                <div class="mythologie"> Mythologie: <span>{{combattant2.creature?.mythologie}}</span>
+                                </div>
+                                <div class="element"> Element: <span>{{combattant2.creature?.typeElement}}</span></div>
+                            </div>
+                            <ul [class]="(combattant2.creature! | creatureData)">
+                                <li class="pv"> pv: <span>{{combattant2.creature?.pv}}</span> </li>
+                                <li class="attaque"> pa: <span>{{combattant2.creature?.attaque}}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
     </div>
-</div>
 
-
-<div class="creationCombattant">
-
-    <div class="player" *ngIf="combattant1">
-        <p><img width="300px"  [src]="combattant1.creature?.image"/></p>
-        <p>{{combattant1.creature?.nom}}</p>
-        <p>{{combattant1.compte?.login}}</p>
+    <div *ngIf="ready">
+        <app-combat [combattant1]="combattant1" [combattant2]="combattant2"></app-combat>
     </div>
-     <div>
-        <div *ngIf="cb1 && cb2"><a  (click)="goCombat()"><button type="button" class="button">Combat</button></a></div>
-      <a (click)="creationCombattant2()"><button type="button" class="button">Trouver un adversaire</button></a><br/>
-      <a  [routerLink]="['/accueil']" routerLinkActive="active">
-        <button type="button" class="button">Retour</button>
-      </a>
-    </div>
-    <div class="adv" *ngIf="combattant2">
-        <p><img width="300px"  [src]="combattant2.creature?.image"/></p>
-        <p>{{combattant2.creature?.nom}}</p>
-        <p>{{combattant2.compte?.login}}</p>
-    </div>
-
-
-</div>
-
-
-</div>
-
-<div *ngIf="ready">
-<app-combat [combattant1]="combattant1" [combattant2]="combattant2" ></app-combat>
-</div>
-</body>
+</section>
