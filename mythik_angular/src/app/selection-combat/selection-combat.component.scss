@@ -919,9 +919,24 @@ h1 {
       margin: auto;
       z-index: 100;
 
-      &:hover {
+      &:hover{
         &::after {
           opacity: 0.5;
+        }
+      }
+
+      &.activeBookSecond{
+        img{
+          filter: brightness(1.1)contrast(1.0)sepia(0);
+        }
+        &::after {
+          opacity: 0.25;
+        }
+        &:hover{
+          filter: brightness(1.2)contrast(1.2)sepia(0);
+          &::after {
+            opacity: 0.75;
+          }
         }
       }
 
@@ -1246,6 +1261,7 @@ h1 {
       background: url(../../assets/elements/water_ring.gif);
       transform: translateY(50%);
       @include bg-single-contain-center;
+      cursor: url(../../assets/cursors/middle-ages-cursor-32x32.png), pointer;
 
       &:after {
         content: "";
@@ -1316,6 +1332,7 @@ h1 {
         z-index: 99999999999;
         pointer-events: all;
         transition: 0.3s;
+        cursor: url(../../assets/cursors/sword.cur), pointer;
       }
 
       &::after {

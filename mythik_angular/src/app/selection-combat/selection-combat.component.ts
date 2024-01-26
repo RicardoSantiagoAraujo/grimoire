@@ -89,6 +89,10 @@ export class SelectionCombatComponent {
     if(this.combattant1.creature != null && this.combattant2.creature != null){
     let book = document.querySelector<HTMLBodyElement>("#book_deco");
     book?.classList.add("activeBookSecond");
+    let player = document.querySelector<HTMLBodyElement>(".player .illustration");
+    let adv = document.querySelector<HTMLBodyElement>(".adv .illustration");
+    player?.classList.add("activeBookSecond");
+    adv?.classList.add("activeBookSecond");
     }
   }
 
