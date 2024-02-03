@@ -9,7 +9,7 @@ export class CreatureDataPipe implements PipeTransform {
   transform(value: Creature | null, // might return a creature, or might return null
      ...args: unknown[]): unknown {
 
-    console.log(typeof(value))
+    // console.log(typeof(value))
 
     if (value != null){
     let mythology =  value.mythologie ;

@@ -27,7 +27,7 @@ section {
 }
 
 
-h1 {
+h1.selection_title {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,7 +55,7 @@ h1 {
     display: block; // force line break
 
     &::first-letter {
-      color: blue;
+      color: $title-color-sec;
       font-size: 60px;
     }
   }
@@ -66,13 +66,13 @@ h1 {
     z-index: 0;
     width: 100%;
     height: 65%;
-    background: url(../../assets/flipbook-textures/creature_fight.png), $title-color-pri;
+    background: url(../../assets/flipbook-textures/knight_horse.png), $title-color-pri;
     background-blend-mode: lighten;
-    transform: scaleX(-1);
+    transform: scaleX(1);
     opacity: 0.5;
     @include bg-single-contain-center;
     // mask with image to exclude transparent pixels
-    mask-image: url(../../assets/flipbook-textures/creature_fight.png);
+    mask-image: url(../../assets/flipbook-textures/knight_horse.png);
     mask-size: contain;
     mask-mode: alpha;
     mask-position: center;
@@ -494,8 +494,11 @@ h1 {
         @else {
           $random-y: -1;
         }
+        // random rotation
+        $rot_max:10;
+        $random-rot: random($rot_max)-$rot_max/2;
 
-        transform: scaleX(#{$random-x})scaleY(#{$random-y});
+        transform: scaleX(#{$random-x})scaleY(#{$random-y})rotate(#{$random-rot} + deg);
         //filter: hue-rotate(calc(#{random(200)} - 10)deg);
         $hue-range: 20;
         $random-hue: random($hue-range) - $hue-range;
@@ -548,6 +551,10 @@ h1 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+      // flip adversary image horizontally so it faces the player
+    &.adv_img{
+    transform: scaleX(-1)translate(50%,-50%);
+  }
     transform-origin: center;
   }
 
@@ -735,6 +742,8 @@ h1 {
       border-image-width: 12vmin 20vmin 12vmin 0vmin;
     }
   }
+
+
 
   .player,
   .adv {
@@ -1163,6 +1172,9 @@ h1 {
 
   }
 
+
+
+
   .buttons {
     position: absolute;
     display: flex;
@@ -1459,5 +1471,32 @@ h1 {
   100% {
     transform: rotate(360deg);
     filter: blur(10px)brightness(1.5);
+  }
+}
+
+#skip_btn{
+  width: 100%;
+  button{
+    display: block;
+    margin: 0 auto;
+    background: url(../../assets/flipbook-textures/button.png);
+    color: lighten($title-color-pri, 50);
+    text-shadow: 0 0 1px darken($title-color-sec, 50), 0 0 5px darken($title-color-sec, 70);
+    @include bg-single-contain-center;
+    padding: 3vh 4vw;
+    border: none;
+    box-shadow: none;
+    transition: 0.3s;
+    span{
+      display: block; // force line break
+      color: lighten($title-color-sec, 50);
+    }
+    &:hover{
+      transform: scale(1.1);
+    }
+    &:active{
+      transform: scale(0.9);
+      filter: brightness(2);
+    }
   }
 }

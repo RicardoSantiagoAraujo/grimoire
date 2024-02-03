@@ -12,7 +12,7 @@ import { format } from 'date-fns';
   styleUrls: ['./combat.component.css']
 })
 export class CombatComponent implements OnInit{
-  
+
   id! : number;
   combat$!: Observable<Combat[]>;
   combattants!: Combattant[];
@@ -23,48 +23,48 @@ export class CombatComponent implements OnInit{
   result: number | null = null;
   choixJoueur!: string;
   choixOrdi!: string;
-  debut:boolean = true; 
- 
+  debut:boolean = true;
 
-  @Input("combattant1") combattant1!: Combattant; 
-  @Input("combattant2") combattant2!: Combattant; 
+
+  @Input("combattant1") combattant1!: Combattant;
+  @Input("combattant2") combattant2!: Combattant;
   vieRestant1!: number;
   vieRestant2!: number;
   pvtoto1? : number ;
   pvtoto2? : number ;
-  affichage? : string; 
-  resultat?: string; 
+  affichage? : string[];
+  resultat?: string;
 
-constructor(private combatService: CombatService, private combattantService: CombattantService, private router: Router) { 
+constructor(private combatService: CombatService, private combattantService: CombattantService, private router: Router) {
 
-  
+
 }
 
   ngOnInit(): void {
     this.creature1 = this.combattant1.creature!;
     this.creature2 = this.combattant2.creature!;
-    
-  
-    
+
+
+
   }
 
   ngAfterViewInit(){
 
     this.pvtoto1 = this.combattant1.creature!.pv;
     this.pvtoto2 = this.combattant2.creature!.pv;
-    this.debut=false; 
-     
+    this.debut=false;
+
   }
   ngAfterContentInit() {
     this.barreVie();
   }
-  
+
 
   saveCombat() {
   const currentDate = new Date();
   const formattedDate = format(currentDate, 'yyyy-MM-dd'); // Format ISO 8601
   const formattedTime = format(currentDate, 'HH:mm:ss'); // Format 24 heures
-  
+
   const combat: Combat = {
     dateCombat: formattedDate,
     heureCombat: formattedTime,
@@ -94,7 +94,7 @@ constructor(private combatService: CombatService, private combattantService: Com
     }
   );
 }
-    
+
 
   choixOrdinateur(): string {
     const choixPossibles = ['pierre', 'feuille', 'ciseaux'];
@@ -105,64 +105,122 @@ constructor(private combatService: CombatService, private combattantService: Com
   jeu(choixJoueur:string):Number{
     this.choixOrdi = this.choixOrdinateur();
     console.log(this.choixOrdi);
-    
-    if (choixJoueur === this.choixOrdi) {
+
+    if (choixJoueur === this.choixOrdi) { // 0 if round is a tie
       this.afficheDegats(0, 0);
       return 0;
-        
-      } 
-      
+      }
+
     else if (
         (choixJoueur === 'pierre' && this.choixOrdi === 'ciseaux') ||
         (choixJoueur === 'feuille' && this.choixOrdi === 'pierre') ||
         (choixJoueur === 'ciseaux' && this.choixOrdi === 'feuille')
       ) {
-        return 1;
+        return 1; // 1 if player wins round
       } else {
-        return 2;
+        return 2; // 2 if player loses round
       }
   }
-  
-  degats (creature1: Creature, creature2: Creature) {
 
-    let degat1 = creature1.attaque;
-    let degat2 = creature2.attaque;
-  
+  degats (creature1: Creature, creature2: Creature) {
+    let dmg_multiplier = 1;
+
+    let degat1 = creature1.attaque! * dmg_multiplier;
+    let degat2 = creature2.attaque! * dmg_multiplier;
+
     if (creature1.typeElement === "eau" && creature2.typeElement === "feu" || creature1.typeElement === "feu" && creature2.typeElement === "air" || creature1.typeElement === "air" && creature2.typeElement === "terre" || creature1.typeElement === "terre" && creature2.typeElement === "eau") {
       degat1! *= 1.2;
       degat2! *= 0.85;
     }
-  
+
     if (creature1.typeElement === "feu" && creature2.typeElement === "Eau"|| creature1.typeElement === "air" && creature2.typeElement === "feu" || creature1.typeElement === "terre" && creature2.typeElement === "air" || creature1.typeElement === "eau" && creature2.typeElement === "terre") {
       degat2! *= 1.2;
       degat1! *= 0.85;
     }
-    
+
     return { degat1, degat2 };
 }
+  setChoices(choixJoueur: string){
+    document.querySelector("#player_choice span")!.innerHTML = choixJoueur;
+    document.querySelector("#adv_choice span")!.innerHTML = this.choixOrdi;
+
+    document.querySelectorAll<HTMLBodyElement>(".choice").forEach(
+      (choice)=> {
+        choice.classList.remove("choiceAnimation");
+        setTimeout(() => {
+          choice.classList.add('choiceAnimation');
+        }, 0);
+        })
+
+    let suiviCombat = document.querySelector<HTMLBodyElement>(".suivi_conteneur")!;
+    suiviCombat.classList.remove("suiviAnimation");
+    setTimeout(() => {
+    suiviCombat.classList.add('suiviAnimation');
+        }, 0);
+
+  }
+
+
+  setRoundResults(result: Number){
+    if (result == 1){ // if player wins round
+      let player = document.querySelector<HTMLBodyElement>(".player")!;
+      let adv = document.querySelector<HTMLBodyElement>(".adv")!;
+      player.classList.remove("round_winner", "round_loser", "round_tie");
+      adv.classList.remove("round_winner", "round_loser", "round_tie");
+      setTimeout(() => {
+        player.classList.add('round_winner');
+        adv.classList.add('round_loser');
+          }, 0);
+    }
+
+    if (result == 2){ // if player loses round
+      let player = document.querySelector<HTMLBodyElement>(".player")!;
+      let adv = document.querySelector<HTMLBodyElement>(".adv")!;
+      player.classList.remove("round_winner", "round_loser", "round_tie");
+      adv.classList.remove("round_winner", "round_loser", "round_tie");
+      setTimeout(() => {
+        player.classList.add('round_loser');
+        adv.classList.add('round_winner');
+          }, 0);
+    }
+
+    if (result == 0){ // if round is a tie
+      let player = document.querySelector<HTMLBodyElement>(".player")!;
+      let adv = document.querySelector<HTMLBodyElement>(".adv")!;
+      player.classList.remove("round_winner", "round_loser", "round_tie");
+      adv.classList.remove("round_winner", "round_loser", "round_tie");
+      setTimeout(() => {
+        player.classList.add('round_tie');
+        adv.classList.add('round_tie');
+          }, 0);
+    }
+  }
 
   combattre(choixJoueur: string) {
 
     const result = this.jeu(choixJoueur);
+    this.setChoices(choixJoueur);
+
+    this.setRoundResults(result);
 
     if (result === 1) {
       const degats = this.degats(this.creature1, this.creature2);
       this.creature2.pv! -= degats.degat1!;
-      this.barreVie(); 
+      this.barreVie();
       this.afficheDegats(1, degats.degat1!);
-    } 
-    
+    }
+
     if (result === 2) {
       const degats = this.degats(this.creature1, this.creature2);
       this.creature1.pv! -= degats.degat2!;
-      this.barreVie(); 
+      this.barreVie();
       this.afficheDegats(2, degats.degat2!);
     }
 
     if (this.creature2.pv! <= 0) {
       this.resultatCombat = this.creature1.nom!;
       this.creature2.pv =0;
-      this.barreVie(); 
+      this.barreVie();
       this.combattant1.gagnant = true;
       this.combattant2.gagnant = false;
 
@@ -174,34 +232,52 @@ constructor(private combatService: CombatService, private combattantService: Com
    if (this.creature1.pv! <= 0) {
     this.resultatCombat = this.creature2.nom!;
     this.creature1.pv =0;
-    this.barreVie(); 
-    this.combattant1.gagnant = false; 
+    this.barreVie();
+    this.combattant1.gagnant = false;
     this.combattant2.gagnant = true;
     this.saveCombat();
     this.combatTermine = true;
     }
 
   }
+
   afficheDegats (result : number, degat : number) {
-    if (result==1){
-      this.resultat = "darkgreen";
-      this.affichage = this.creature1.nom +" inflige " + degat + " points de dégats à " + this.creature2.nom; 
+    let victim;
+    let attacker;
+    if (result==1){ // if player wins round
+      this.resultat = "round_success";
+      victim = this.creature2.nom;
+      attacker = this.creature1.nom;
+      // this.affichage = this.creature1.nom +" inflige " + degat + " points de dégats à " + this.creature2.nom;
       }
-      
-    else if (result==2){
-        this.resultat = "darkred";
-        this.affichage = this.creature2.nom +" inflige " + degat + " points de dégats à " + this.creature1.nom; 
+
+    else if (result==2){ // if adversary wins round
+        this.resultat = "round_failure";
+        victim = this.creature1.nom;
+        attacker = this.creature2.nom;
+        // this.affichage = this.creature2.nom +" inflige " + degat + " points de dégats à " + this.creature1.nom;
       }
-    else{
-      this.resultat = "black";
-      this.affichage =  "égalité";}
+
+    if (victim != null){ // if round has a winner
+      this.affichage =
+      [
+        `${attacker} inflige `,
+       `${degat}`,
+       ` points de dégats à ${victim}`
+      ]
+    }
+    else{ // if round is a draw
+      this.resultat = "round_tie";
+      this.affichage =  ["Égalité","","Pas de dégâts pris ou infligés"];
+    }
+    console.log(this.affichage)
     }
 
   mancheSuivante() {
     this.result = null;
     this.choixJoueur = '';
     this.choixOrdi = '';
-    
+
   }
 
   nouvellePartie() {
@@ -219,15 +295,18 @@ constructor(private combatService: CombatService, private combattantService: Com
 
   barreVie() {
 
-  
   if(this.combattant1.creature?.pv && this.creature1.pv)
-  { this.vieRestant1=((this.creature1.pv)/(this.pvtoto1!))*100 ;
+  {
+    this.vieRestant1=((this.creature1.pv)/(this.pvtoto1!))*100 ;
      console.log(this.creature1.pv);
-     console.log(this.pvtoto1!);}
-  
+     console.log(this.pvtoto1!);
+    }
+
   if(this.combattant2.creature?.pv && this.creature2.pv)
-  { this.vieRestant2=((this.creature2.pv)/(this.pvtoto2!))*100 }  
-  
+  {
+    this.vieRestant2=((this.creature2.pv)/(this.pvtoto2!))*100;
+  }
+
   if (this.vieRestant1<0){
     this.vieRestant1 =0;
   }
@@ -235,6 +314,13 @@ constructor(private combatService: CombatService, private combattantService: Com
   if (this.vieRestant2<0){
     this.vieRestant2 = 0;
   }
+
+  // pv bar animations
+  setTimeout(()=>{
+    // change color from green to red;
+    document.querySelector<HTMLBodyElement>(".player .vie-restante")!.style.backgroundColor= `color-mix(in srgb, green ${this.vieRestant1}%, darkred)`;
+    document.querySelector<HTMLBodyElement>(".adv .vie-restante")!.style.backgroundColor= `color-mix(in srgb, green ${this.vieRestant2}%, darkred)`;
+  },0);
+
   }
- 
 }

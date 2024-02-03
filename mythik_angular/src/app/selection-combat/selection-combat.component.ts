@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CreatureService } from '../creature/creature.service';
 import { Combattant, Compte, Creature} from '../model';
 import { Observable } from 'rxjs';
@@ -12,7 +12,7 @@ import { CompteService } from '../compte/compte.service';
   templateUrl: './selection-combat.component.html',
   styleUrls: ['./selection-combat.component.css']
 })
-export class SelectionCombatComponent {
+export class SelectionCombatComponent implements OnInit {
 
   creatures$!: Observable<Creature[]>;
   creatures?: Creature[];
@@ -38,7 +38,6 @@ export class SelectionCombatComponent {
     this.creatures$.subscribe(resp => {this.creatures=resp})
     this.Ia$ = this.compteService.findIA();
     this.Ia$.subscribe(resp => {this.Ia=resp});
-
   }
 
   list() {
@@ -60,8 +59,37 @@ export class SelectionCombatComponent {
     this.activateBook()
   }
 
-  creationCombattant2(){
+  // function to skip selection in order to reach combat faster
+  public creationCombattants_skip(){
+    let c_length = this.creatures!.length;
+    // let c_length = 10;
+    let nb1 = Math.floor(Math.random() * c_length);
+    let nb2;
+    do{
+      nb2 = Math.floor(Math.random() * c_length);
+    }
+    while(nb2 == nb1) // ensure that player and adv creatures are different
 
+    this.combattant1.compte = this.authService.getCompte();
+    this.combattant1.creature = this.creatures![nb1];
+    this.cb1 = true;
+    this.combattant2.compte = this.Ia;
+    this.combattant2.creature = this.creatures![nb2];
+    this.cb2 = true;
+    console.log(this.combattant1);
+    console.log(this.combattant2);
+    this.goCombat();
+  }
+
+  // trigger skip automatically on init
+  ngOnInit(): void{
+    console.log("skipping selection step on component init");
+    setTimeout(() => { //timeout required for everything to load before triggering
+      this.creationCombattants_skip();
+    }, 250);
+  }
+
+  creationCombattant2(){
     let nb = Math.floor(Math.random() * (this.creatures!.length))
     this.combattant2!.creature = this.creatures![nb];
     this.combattant2!.compte = this.Ia;

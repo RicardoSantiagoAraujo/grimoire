@@ -1,12 +1,17 @@
 <section>
 
-    <div *ngIf="creationCombattant">
+    <div id="creation_combattant_screen" *ngIf="creationCombattant">
 
-        <h1>
+        <h1 class="selection_title">
             <span>Selection</span>
             <span>Creatures</span>
         </h1>
 
+        <a (click)="creationCombattants_skip()" id="skip_btn">
+            <button type="button" class="button">
+                SKIP SELECTION <span>(randomize)</span>
+            </button>
+        </a>
 
         <div class="selectionCreatureContainer">
 
@@ -70,7 +75,6 @@
                             <a (click)="goCombat()">
                                 <button type="button" class="button">
                                     Combat
-
                                 </button>
                             </a>
                         </div>
@@ -88,7 +92,7 @@
                         </div>
                         <div class="login">{{combattant2.compte?.login}}</div>
                         <div [class]="'illustration ' + (combattant2.creature! | creatureData)">
-                            <img [src]="combattant2.creature?.image" />
+                            <img class="adv_img" [src]="combattant2.creature?.image" />
                         </div>
                         <div class="creature_info">
                             <div class="description"> Description: <span>{{combattant2.creature?.description}}</span>

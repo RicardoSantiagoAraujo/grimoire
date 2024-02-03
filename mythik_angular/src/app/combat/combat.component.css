@@ -1,89 +1,1112 @@
 @charset "UTF-8";
-.combattants {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-top: 100px;
-  color: white;
-  font-size: 30px;
-  font-family: "lugrasimo";
-  text-align: center;
+#combat_container {
+  background: url(../../assets/arena/combat.avif);
+  background-blend-mode: multiply;
+  background-size: cover;
+  overflow: auto;
+  width: 100vw;
+  /* 50% de la largeur de la fenêtre */
+  height: 100vh;
+  cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
+  /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+  animation: sectionAppear 5s;
 }
 
-.combattant {
+@keyframes sectionAppear {
+  from {
+    background-color: black;
+  }
+  to {
+    background-color: transparent;
+  }
+}
+h1.combat_title {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-}
-
-.conteneur {
-  display: flex;
   justify-content: center;
-  align-items: center;
-}
-
-.suiviCombat {
-  border: 2px solid black;
-  border-radius: 5%;
-  background-color: rgba(255, 255, 255, 0.44);
-  height: 200px;
-  width: 300px;
-  overflow: auto;
-  font-size: 30px;
-  font-weight: bold;
-  text-align: center;
-  color: darkred;
-}
-
-h1 {
-  font-family: "bronzion";
-  font-size: 36px;
   text-align: center;
   background-color: rgba(245, 245, 220, 0.555);
   border-radius: 10px;
   padding: 5px;
-  margin: 0px 100px;
+  margin: 10px 100px;
+  background: url(../../assets/flipbook-textures/scroll_combat.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 200px;
+  position: relative;
+  animation: scrollDisappear 3s forwards;
+}
+h1.combat_title * {
+  font-size: 25px;
+  font-family: "bronzion";
+  z-index: 1;
+  color: rgb(71, 0, 0);
+}
+h1.combat_title span:nth-child(2) {
+  display: block;
+}
+h1.combat_title span:nth-child(2)::first-letter {
+  color: rgb(193, 0, 0);
+  font-size: 50px;
+}
+h1.combat_title::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  height: 65%;
+  background: url(../../assets/flipbook-textures/creature_fight.png), rgb(0, 100, 0);
+  background-blend-mode: lighten;
+  transform: scaleX(-1);
+  opacity: 0.5;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-mask-image: url(../../assets/flipbook-textures/creature_fight.png);
+          mask-image: url(../../assets/flipbook-textures/creature_fight.png);
+  -webkit-mask-size: contain;
+          mask-size: contain;
+  mask-mode: alpha;
+  -webkit-mask-position: center;
+          mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
 }
 
-.resultat {
-  text-align: center;
-  margin-top: 100px;
+@keyframes scrollDisappear {
+  0% {
+    transform: scale(2) translateY(50%);
+    opacity: 1;
+  }
+  80% {
+    transform: scaleX(1.1);
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 0;
+  }
+}
+#combat_elements {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  animation: combatAppear 2s forwards;
+  opacity: 0;
+  animation-delay: 1s;
+}
+
+@keyframes combatAppear {
+  0% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.combattants {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
   color: white;
   font-size: 30px;
   font-family: "lugrasimo";
   text-align: center;
 }
+.combattants .combattant {
+  display: flex;
+  width: 33%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.combattants .combattant .creature_img {
+  width: 50%;
+  min-height: 50vh;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.combattants .combattant .creature_img.adv_img {
+  transform: scaleX(-1);
+}
+.combattants .combattant .nom_login {
+  background: url(../../assets/flipbook-textures/long_scroll.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: -moz-fit-content;
+  width: fit-content;
+  min-width: 25vw;
+  height: 7vw;
+  padding: 2% 5%;
+  justify-content: space-around;
+  align-content: center;
+}
+.combattants .combattant .nom_login .nom_login_divider {
+  position: relative;
+  width: 2vw;
+  height: 100%;
+  opacity: 0.5;
+}
+.combattants .combattant .nom_login.feu .nom_login_divider {
+  background: url(../../assets/elements/element_fire.png), radial-gradient(circle closest-side, red, transparent);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.combattants .combattant .nom_login.eau .nom_login_divider {
+  background: url(../../assets/elements/element_water.png), radial-gradient(circle closest-side, blue, transparent);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.combattants .combattant .nom_login.air .nom_login_divider {
+  background: url(../../assets/elements/element_air.png), radial-gradient(circle closest-side, yellow, transparent);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.combattants .combattant .nom_login.terre .nom_login_divider {
+  background: url(../../assets/elements/element_earth.png), radial-gradient(circle closest-side, green, transparent);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.combattants .combattant .nom_login.grec {
+  -o-border-image: url(../../assets/greek/symbol_greek.png) 0% 100%/0vw 5vw/0vw 3vw space;
+     border-image: url(../../assets/greek/symbol_greek.png) 0% 100%/0vw 5vw/0vw 3vw space;
+}
+.combattants .combattant .nom_login.nordique {
+  -o-border-image: url(../../assets/norse/symbol_nordic.png) 0% 100%/0vw 5vw/0vw 3vw space;
+     border-image: url(../../assets/norse/symbol_nordic.png) 0% 100%/0vw 5vw/0vw 3vw space;
+}
+.combattants .combattant .nom_login.egyptienne {
+  -o-border-image: url(../../assets/egyptian/symbol_egyptian.png) 0% 100%/0vw 6vw/0vw 3vw space;
+     border-image: url(../../assets/egyptian/symbol_egyptian.png) 0% 100%/0vw 6vw/0vw 3vw space;
+}
+.combattants .combattant .nom_login.chinoise {
+  -o-border-image: url(../../assets/chinese/symbol_chinese.png) 0% 100%/0vw 5vw/0vw 3vw space;
+     border-image: url(../../assets/chinese/symbol_chinese.png) 0% 100%/0vw 5vw/0vw 3vw space;
+}
+.combattants .combattant .nom_login .nom, .combattants .combattant .nom_login .login {
+  position: relative;
+  white-space: nowrap;
+  color: rgb(71, 0, 0);
+  font-size: 1vw;
+  height: 100%;
+  line-height: 7vw;
+  vertical-align: middle;
+}
+.combattants .combattant .nom_login .nom::first-letter, .combattants .combattant .nom_login .login::first-letter {
+  text-transform: capitalize;
+  font-size: 3vw;
+  font-family: "bronzion";
+}
+.combattants .combattant .nom_login .nom::first-letter {
+  color: rgb(193, 0, 0);
+}
+.combattants .combattant .nom_login.dieu .nom:first-letter {
+  text-shadow: 0 0 1px white, 0 0 1px white, 0 0 5px gold, 0 0 10px black, 0 0 10px black, 0 0 5px gold, 0 0 10px black, 0 0 10px black;
+}
+.combattants .combattant .nom_login.dieu .nom::after {
+  content: "";
+  position: absolute;
+  height: 50%;
+  width: 100%;
+  top: -10%;
+  left: 0;
+  background: url(../../assets/flipbook-textures/crown2.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  opacity: 1;
+  z-index: 2;
+  animation: itemGlow 1s alternate infinite;
+}
+.combattants .combattant .nom_login .login::first-letter {
+  color: rgb(0, 100, 0);
+}
+.combattants .combattant .barre-vie_container {
+  width: 30vw;
+  height: 3vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../../assets/flipbook-textures/bubbles2.gif);
+  background-size: contain;
+  background-repeat: repeat-x;
+  background-position: center;
+  padding: 0.75vw;
+  border-radius: 15%;
+}
+.combattants .combattant .barre-vie_container.creature {
+  background-color: rgba(255, 0, 0, 0.387);
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.422);
+}
+.combattants .combattant .barre-vie_container.dieu {
+  background-color: rgba(210, 179, 0, 0.444);
+  box-shadow: 0px 0px 5px rgba(255, 221, 0, 0.422), 0px 0px 10px rgba(255, 255, 255, 0.92);
+}
+.combattants .combattant .barre-vie {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(128, 128, 128, 0.176);
+  border: 1px solid #ccc;
+  overflow: hidden;
+  border-radius: 30%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.729), 0px 0px 5px rgb(193, 0, 0);
+  position: relative;
+  -o-border-image: url(../../assets/flipbook-textures/healthbar.png) 50% 25%/2vw 3vw/1vw 2vw round;
+     border-image: url(../../assets/flipbook-textures/healthbar.png) 50% 25%/2vw 3vw/1vw 2vw round;
+}
+.combattants .combattant .barre-vie:after {
+  content: "";
+  position: absolute;
+  height: 30%;
+  width: 95%;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.158);
+  border-radius: 100% 100% 25% 25%;
+}
+.combattants .combattant .barre-vie .vie-restante {
+  transition: 0.5s;
+  width: 100%;
+  height: 100%;
+  background-color: color-mix(in srgb, green 100%, darkred);
+  box-shadow: 0 0 10px rgb(193, 0, 0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url(../../assets/flipbook-textures/bubbles.gif);
+  background-size: contain;
+  background-repeat: repeat-x;
+  background-position: center;
+}
+.combattants .combattant .pv_remaining {
+  margin-top: 2.5vw !important;
+  -o-border-image: url(../../assets/flipbook-textures/battle_frame.png) 50% 0%/3vw 1vw/2vw 0vw space;
+     border-image: url(../../assets/flipbook-textures/battle_frame.png) 50% 0%/3vw 1vw/2vw 0vw space;
+  background: radial-gradient(closest-side, rgba(0, 0, 0, 0.565) 80%, transparent);
+  padding: 0 10%;
+}
+.combattants .combattant .pv_remaining span {
+  color: goldenrod;
+  text-shadow: 0 0 5px black;
+}
 
-button {
-  display: inline-block;
-  padding: 10px 20px;
-  margin: 10px;
+#combat_btns {
+  display: block;
+  width: 30%;
+  height: 30%;
+  margin: auto;
+  opacity: 0.75;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+#combat_btns .btn_wrapper {
+  position: absolute;
+  background: radial-gradient(ellipse closest-side, green, transparent);
+  bottom: 50%;
+  left: 50%;
+  transform-origin: bottom;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+#combat_btns .btn_wrapper button {
+  position: relative;
+  width: 5vw;
+  height: 5vw;
+  border-radius: 100%;
+  padding: 0px;
+  line-height: 0px;
+  aspect-ratio: 1/1;
   font-size: 18px;
   font-weight: bold;
   text-align: center;
   text-decoration: none;
-  background-color: #573d26; /* Couleur de fond avec une teinte terreux */
-  color: #fff; /* Couleur du texte */
-  border: 2px solid #8b735b; /* Bordure */
-  border-radius: 8px; /* Coins arrondis */
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Ombre légère */
+  background-color: rgb(116, 83, 83);
+  /* Couleur de fond avec une teinte terreux */
+  color: #fff;
+  /* Couleur du texte */
+  border: none;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  /* Ombre légère */
   transition: background-color 0.3s ease, color 0.3s ease;
-  cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
+  cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
+  transition: 0.2s;
 }
-
-.barre-vie {
-  width: 200px;
-  height: 20px;
-  background-color: #eee;
-  border: 1px solid #ccc;
+#combat_btns .btn_wrapper button:active {
+  filter: brightness(2) drop-shadow(0 0 10px rgb(193, 0, 0));
+  text-shadow: 0 0 1px black, 0 0 10px blue, 0 0 5px green;
+}
+#combat_btns .btn_wrapper button:hover {
+  color: rgb(193, 0, 0);
+  text-shadow: 0 0 1px black;
+  background: none;
+  background-color: white;
+  opacity: 1;
+  border: 0.5px solid rgb(193, 0, 0);
   position: relative;
 }
+#combat_btns .btn_wrapper button:hover:after {
+  opacity: 1;
+}
+#combat_btns .btn_wrapper button:after {
+  content: "";
+  width: 115%;
+  height: 115%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: url(../../assets/elements/fire_ring.gif);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 100%;
+  filter: brightness(0);
+  opacity: 0;
+}
 
-.vie-restante {
+.pierre_wrapper {
+  transform: translate(-50%, 0%) rotate(65deg);
+  padding-bottom: 16.05%;
+}
+
+.feuille_wrapper {
+  transform: translate(-50%, 0%) rotate(180deg);
+  padding-bottom: 13.5%;
+}
+
+.ciseaux_wrapper {
+  transform: translate(-50%, 0%) rotate(-66deg);
+  padding-bottom: 16.05%;
+}
+
+#pierre_btn {
+  transform: rotate(-65deg);
+  background: url(../../assets/rock_paper_scissors/rock.png);
+  cursor: url(../../assets/rock_paper_scissors/rock-cursor_min.png), pointer !important;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+#pierre_btn:hover {
+  transform: rotate(-65deg) scale(1.1);
+}
+
+#feuille_btn {
+  transform: rotate(-180deg);
+  background: url(../../assets/rock_paper_scissors/paper.png);
+  cursor: url(../../assets/rock_paper_scissors/paper-cursor_min.png), pointer !important;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+#feuille_btn:hover {
+  transform: rotate(-180deg) scale(1.1);
+}
+
+#ciseaux_btn {
+  transform: rotate(66deg);
+  background: url(../../assets/rock_paper_scissors/scissors.png);
+  cursor: url(../../assets/rock_paper_scissors/scissors-cursor_min.png), pointer !important;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+#ciseaux_btn:hover {
+  transform: rotate(66deg) scale(1.1);
+}
+
+#combat_btns:before {
+  content: "";
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  top: 50%;
+  bottom: 50%;
+  transform: translate(-50%, -50%);
+  background: url(../../assets/elements/fire_ring.gif);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.1;
+  transition: 0.3s;
+  pointer-events: all;
+}
+
+#combat_btns.feu:before {
+  background: url(../../assets/elements/fire_ring.gif);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#combat_btns.eau:before {
+  background: url(../../assets/elements/water_ring.gif);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#combat_btns.terre:before {
+  background: url(../../assets/elements/earth_ring.gif);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#combat_btns.air:before {
+  background: url(../../assets/elements/air_ring.gif);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#combat_btns:hover:before {
+  opacity: 1;
+}
+
+.choice {
+  opacity: 0;
+  width: 100%;
+}
+.choice span {
+  text-shadow: 0 0 3px black, 0 0 3px black;
+}
+
+.combattant.feu .choice {
+  background: radial-gradient(closest-side ellipse, red, transparent);
+}
+
+.combattant.eau .choice {
+  background: radial-gradient(closest-side ellipse, blue, transparent);
+}
+
+.combattant.air .choice {
+  background: radial-gradient(closest-side ellipse, yellow, transparent);
+}
+
+.combattant.terre .choice {
+  background: radial-gradient(closest-side ellipse, green, transparent);
+}
+
+.choiceAnimation {
+  animation-fill-mode: forwards;
+  animation-duration: 0.2s;
+  animation-name: choiceAnimation;
+}
+
+@keyframes choiceAnimation {
+  from {
+    opacity: 0;
+    transform: scale(2);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+#book_deco {
+  display: block;
+  width: 30%;
+  height: 0;
+  padding-bottom: 30%;
+  margin: auto;
+  opacity: 1;
+  background: url(../../assets/flipbook-textures/zodiac_arena.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+#book_deco.activeBookSecond {
+  background: url(../../assets/flipbook-textures/zodiac_arena.png), radial-gradient(circle closest-side, rgb(255, 235, 120) 3%, gold, white 95%, transparent), url(../../assets/elements/earth_ring.gif);
+  background-blend-mode: multiply;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+#book_deco #dialog_banner {
+  width: 150%;
   height: 100%;
-  background-color: forestgreen;
+  position: absolute;
+  top: -30%;
+  left: 50%;
+  z-index: 11;
+  opacity: 1;
+  transform: translateX(-50%);
+  background: url(../../assets/flipbook-textures/curved_ribbon_filled.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+#book_deco #dialog_banner .suivi_conteneur .suiviCombat {
+  position: absolute;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  top: 2vw;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  height: -moz-fit-content;
+  height: fit-content;
+  font-weight: bold;
+  text-align: center;
+  color: rgb(71, 0, 0);
+  width: 60%;
+  z-index: 66666666666666;
+  animation: itemGlow 2s infinite alternate;
+}
+#book_deco #dialog_banner .suivi_conteneur .suiviCombat * {
+  overflow: visible;
+}
+#book_deco #dialog_banner .suivi_conteneur .suiviCombat .start_banner {
+  font-size: 50% !important;
+  font-family: bronzion;
+  fill: black;
+  text-shadow: 0 0 10px rgb(0, 100, 0);
+  opacity: 0.5;
+}
+#book_deco #dialog_banner .suivi_conteneur .suiviCombat .round_success {
+  fill: rgba(0, 100, 0, 0.818);
+  text-shadow: 0 0 10px rgb(255, 255, 255);
+}
+#book_deco #dialog_banner .suivi_conteneur .suiviCombat .round_failure {
+  fill: rgba(139, 0, 0, 0.778);
+  text-shadow: 0 0 10px rgb(255, 255, 255);
+}
+#book_deco #dialog_banner .suivi_conteneur .suiviCombat .round_tie {
+  fill: rgb(71, 0, 0);
+  text-shadow: 0 0 10px rgb(255, 255, 255);
+}
+#book_deco #dialog_banner .suivi_conteneur .suiviCombat textPath tspan {
+  font-size: 25%;
+}
+#book_deco #dialog_banner .suivi_conteneur .suiviCombat textPath tspan.degat {
+  fill: white;
+  text-shadow: 0 0 3px black, 0 0 5px black, 0 0 10px black;
+}
+#book_deco #magic_ring {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse closest-side, black, transparent), url(../../assets/flipbook-textures/zodiac_ring.png);
+  border-radius: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   position: absolute;
   top: 0;
   left: 0;
+  z-index: -1;
+  opacity: 0.2;
+  transform: scale(1.3);
+  animation: magicRing2 3s infinite linear;
+  transform-origin: center;
+}
+#book_deco #magic_vortex {
+  background-color: red;
+  width: 100%;
+  height: 100%;
+  background: url(../../assets/flipbook-textures/vortex.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: magicVortex 3s infinite linear;
+  z-index: -1;
+  opacity: 1;
+  transition: 0.5s;
+}
+#book_deco.activeBookSecond #magic_vortex {
+  opacity: 1;
+}
+#book_deco.activeBookGo {
+  filter: blur(10px) contrast(2) brightness(5);
+}
+#book_deco.activeBookGo #magic_vortex {
+  animation-duration: 1s;
+}
+#book_deco.activeBookGo #magic_ring {
+  animation-duration: 2s;
+}
+
+@keyframes magicRing1 {
+  0% {
+    transform: rotate(0deg) scale(1.3);
+  }
+  100% {
+    transform: rotate(360deg) scale(1.3);
+  }
+}
+@keyframes magicRing2 {
+  0% {
+    transform: rotate(0deg) scale(1.3);
+    filter: blur(3px) brightness(0.3) drop-shadow(0px 0px 20px rgb(60, 0, 255));
+    box-shadow: 1px 1px 1px green, 1px 1px 5px green;
+  }
+  50% {
+    transform: rotate(180deg) scale(1.2, 1.4);
+    filter: blur(1px) brightness(10) drop-shadow(0px 0px 20px red) contrast(100);
+    box-shadow: 0px 0px 1px blue, 0px 0px 5px blue;
+  }
+  100% {
+    transform: rotate(360deg) scale(1.3);
+    filter: blur(3px) brightness(0.3) drop-shadow(0px 0px 20px rgb(17, 255, 0));
+    box-shadow: -1px -1px 1px red, -1px -1px 5px red;
+  }
+}
+@keyframes magicVortex {
+  0% {
+    transform: rotate(0deg) scale(0.25, 0.3);
+    filter: blur(10px) brightness(0.3) drop-shadow(0px 0px 20px rgb(60, 0, 255));
+  }
+  50% {
+    transform: rotate(180deg) scale(0.3, 0.25);
+    filter: blur(5px) brightness(10) drop-shadow(0px 0px 20px red);
+  }
+  100% {
+    transform: rotate(360deg) scale(0.25, 0.3);
+    filter: blur(10px) brightness(0.3) drop-shadow(0px 0px 20px rgb(17, 255, 0));
+  }
+}
+.suiviAnimation {
+  animation: suiviAnimation 0.5s forwards, suiviShake 0.5s;
+}
+
+@keyframes suiviAnimation {
+  from {
+    opacity: 1;
+    filter: blur(10px) drop-shadow(0 0 10px red);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0px) drop-shadow(0 0 0 black);
+  }
+}
+@keyframes suiviShake {
+  0% {
+    transform: translateX(16px);
+  }
+  10% {
+    transform: translateX(-16px);
+  }
+  20% {
+    transform: translateX(8px);
+  }
+  30% {
+    transform: translateX(-8px);
+  }
+  40% {
+    transform: translateX(4px);
+  }
+  50% {
+    transform: translateX(-4px);
+  }
+  60% {
+    transform: translateX(2px);
+  }
+  70% {
+    transform: translateX(-2px);
+  }
+  80% {
+    transform: translateX(1px);
+  }
+  90% {
+    transform: translateX(-1px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+#spinner_container {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  padding-bottom: 50%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  transform-origin: bottom;
+  animation: spinSpinner 20s linear infinite;
+}
+#spinner_container #combat_spinner {
+  background: url(../../assets/weapons/weapons1.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  left: 50%;
+  transform: translateX(-50%) rotate(0deg);
+}
+#spinner_container #combat_spinner::after {
+  content: "";
+  position: absolute;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 1vw 3vw 1vw;
+  border-color: transparent transparent gold transparent;
+  opacity: 0.75;
+}
+
+@keyframes spinSpinner {
+  from {
+    transform: translate(-50%, 0) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, 0) rotate(360deg);
+  }
+}
+svg#spinner_target {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow: visible;
+}
+svg#spinner_target circle {
+  fill: transparent;
+  stroke: rgba(255, 0, 0, 0.5);
+  stroke-width: 3vw;
+  stroke-dasharray: 100vw;
+  stroke-dashoffset: 95vw;
+}
+
+@keyframes rotate {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes itemGlow {
+  from {
+    filter: brightness(0.7);
+  }
+  to {
+    filter: brightness(1.3);
+  }
+}
+.round_winner .img_wrapper {
+  position: relative;
+}
+.round_winner .img_wrapper.img_player {
+  animation: roundWinner_player 1s;
+}
+.round_winner .img_wrapper.img_adv {
+  animation: roundWinner_adv 1s;
+}
+.round_winner .img_wrapper.img_player:after, .round_winner .img_wrapper.img_adv:after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  opacity: 0;
+  transform-origin: center;
+  z-index: 9999999999;
+  background-blend-mode: multiply;
+}
+.round_winner .img_wrapper.feu:after {
+  background: url(../../assets/flipbook-textures/elemental_attack.png), radial-gradient(circle closest-side, red 70%, transparent);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.round_winner .img_wrapper.eau:after {
+  background: url(../../assets/flipbook-textures/elemental_attack.png), radial-gradient(circle closest-side, blue 70%, transparent);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.round_winner .img_wrapper.terre:after {
+  background: url(../../assets/flipbook-textures/elemental_attack.png), radial-gradient(circle closest-side, green 70%, transparent);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.round_winner .img_wrapper.air:after {
+  background: url(../../assets/flipbook-textures/elemental_attack.png), radial-gradient(circle closest-side, yellow 70%, transparent);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.round_winner .img_wrapper.img_player:after {
+  animation: attackAnimation_player 0.5s ease-in;
+}
+.round_winner .img_wrapper.img_adv:after {
+  animation: attackAnimation_adv 0.5s ease-in;
+}
+
+@keyframes attackAnimation_player {
+  0% {
+    transform: translateX(0) scale(1) rotate(0deg);
+    opacity: 0;
+    filter: brightness(0.1);
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(90vw) scale(3) rotate(360deg);
+    opacity: 1;
+    filter: brightness(3);
+  }
+}
+@keyframes attackAnimation_adv {
+  0% {
+    transform: translateX(0) scale(1) rotate(0);
+    opacity: 0;
+    filter: brightness(0.1);
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-90vw) scale(3) rotate(-360deg);
+    opacity: 1;
+    filter: brightness(3);
+  }
+}
+@keyframes roundWinner_player {
+  50% {
+    transform: scale(1.3) rotate(5deg) translateX(5vw);
+    filter: brightness(2);
+  }
+}
+@keyframes roundWinner_adv {
+  50% {
+    transform: scale(1.3) rotate(-5deg) translateX(-5vw);
+    filter: brightness(2);
+  }
+}
+.round_loser {
+  animation: suiviShake 0.5s;
+  animation-delay: 0.4s;
+}
+
+.round_loser .img_wrapper.img_player {
+  animation: roundLoser_player 1s;
+}
+.round_loser .img_wrapper.img_adv {
+  animation: roundLoser_adv 1s;
+}
+.round_loser .img_wrapper.img_player, .round_loser .img_wrapper.img_adv {
+  animation-delay: 0.4s;
+}
+
+@keyframes roundLoser_player {
+  50% {
+    transform: scale(0.8) rotate(-10deg) translatex(-5vw);
+    filter: grayscale(0.8) blur(5px);
+  }
+}
+@keyframes roundLoser_adv {
+  50% {
+    transform: scale(0.8) rotate(10deg) translatex(5vw);
+    filter: grayscale(0.8) blur(5px);
+  }
+}
+.round_tie .img_wrapper {
+  animation: suiviShake 0.5s;
+}
+
+.resultat_container {
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  color: white;
+  font-size: 30px;
+  font-family: "lugrasimo";
+  text-align: center;
+  background-color: red;
+  background: url("../../assets/flipbook-textures/wood-texture.jpeg"), radial-gradient(#e6b664, #000325);
+  background-size: cover;
+  background-blend-mode: multiply;
+  animation: resultsReveal 1s;
+}
+.resultat_container .resultat {
+  display: block;
+  height: 150%;
+  width: 50%;
+  padding-top: 15%;
+  margin: auto;
+  background: url(../../assets/flipbook-textures/war_banner.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: bannerRaise 2s;
+  filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.958));
+  position: relative;
+}
+.resultat_container .resultat#victory::before, .resultat_container .resultat#defeat::before {
+  content: "";
+  top: -15%;
+  left: 0%;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+  position: absolute;
+  z-index: -1;
+  opacity: 0.8;
+  transform-origin: center;
+}
+.resultat_container .resultat#victory::before {
+  background: url(../../assets/flipbook-textures/god_bg_centered.png), radial-gradient(circle closest-side, yellow, transparent);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: resultsLightEffectVictory 1s linear infinite;
+}
+.resultat_container .resultat#defeat::before {
+  background: url(../../assets/flipbook-textures/vortex.png), radial-gradient(circle closest-side, blue, transparent);
+  filter: brightness(0.1);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: resultsLightEffectDefeat 10s linear infinite;
+}
+.resultat_container h2::first-letter {
+  font-family: bronzion;
+  font-size: 3vw;
+  color: rgb(0, 100, 0);
+}
+.resultat_container p {
+  color: rgb(71, 0, 0);
+  color: goldenrod;
+  width: 45%;
+  display: block;
+  margin: auto;
+}
+.resultat_container p#victory {
+  -o-border-image: url(../../assets/flipbook-textures/victory_symbol.png) 0% 50%/0vw 1vw/0vw 0vw space;
+     border-image: url(../../assets/flipbook-textures/victory_symbol.png) 0% 50%/0vw 1vw/0vw 0vw space;
+}
+.resultat_container p#defeat {
+  -o-border-image: url(../../assets/flipbook-textures/defeat_symbol.png) 0% 50%/0vw 1vw/0vw 1vw space;
+     border-image: url(../../assets/flipbook-textures/defeat_symbol.png) 0% 50%/0vw 1vw/0vw 1vw space;
+}
+.resultat_container .btn_group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 100000000000000000;
+  width: 30%;
+  margin: auto;
+}
+.resultat_container .btn_group#victory {
+  -o-border-image: url(../../assets/flipbook-textures/victory_border.png) 0% 50%/0vw 7vw/0vw 5vw space;
+     border-image: url(../../assets/flipbook-textures/victory_border.png) 0% 50%/0vw 7vw/0vw 5vw space;
+}
+.resultat_container .btn_group#defeat {
+  -o-border-image: url(../../assets/flipbook-textures/defeat_banner.png) 0% 50%/0vw 7vw/0vw 5vw space;
+     border-image: url(../../assets/flipbook-textures/defeat_banner.png) 0% 50%/0vw 7vw/0vw 5vw space;
+}
+.resultat_container .btn_group button {
+  min-width: 100%;
+  cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
+  border: none;
+  padding: 2vmin;
+  background: url("../../assets/flipbook-textures/fantasy-button.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: 0.1s;
+  color: rgb(71, 0, 0);
+  text-shadow: 0 0 3px white;
+}
+.resultat_container .btn_group button:hover {
+  filter: hue-rotate(50deg);
+  text-shadow: #342101 1px 1px 10px;
+  transform: scale(1.1);
+}
+.resultat_container .btn_group button:active {
+  color: white;
+  transform: scale(1.2);
+}
+
+@keyframes resultsReveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes bannerRaise {
+  0% {
+    transform: translateY(100vh) rotate(2deg);
+  }
+  95% {
+    transform: translateY(-1vh) rotate(-0.5deg);
+  }
+  100% {
+    transform: translateY(0vh) rotate(0deg);
+  }
+}
+@keyframes resultsLightEffectVictory {
+  0%, 100% {
+    opacity: 0.7;
+    filter: blur(1px);
+    transform: scale(1.05);
+  }
+  50% {
+    opacity: 0.8;
+    filter: blur(5px);
+    transform: scale(1);
+  }
+}
+@keyframes resultsLightEffectDefeat {
+  0% {
+    opacity: 0.7;
+    filter: blur(1px);
+    transform: scale(1.05) rotate(0deg);
+  }
+  50% {
+    opacity: 0.8;
+    filter: blur(5px);
+    transform: scale(1) rotate(-180deg);
+  }
+  100% {
+    opacity: 0.7;
+    filter: blur(1px);
+    transform: scale(1.05) rotate(-360deg);
+  }
 }/*# sourceMappingURL=combat.component.css.map */
