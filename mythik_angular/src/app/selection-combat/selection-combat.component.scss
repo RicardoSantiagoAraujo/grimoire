@@ -625,6 +625,8 @@ h1.selection_title {
     }
     &.activeBookGo{
       filter: blur(10px)contrast(2)brightness(5);
+      opacity: 0 !important;
+      transition: 0.5s !important;
       #magic_vortex{
       animation-duration: 1s;
       }
@@ -682,6 +684,7 @@ h1.selection_title {
     filter: blur(10px)brightness(0.3)drop-shadow(0px 0px 20px rgb(17, 255, 0));
   }
 }
+
 
 .creationCombattantInnerContainer {
   display: flex;
@@ -969,7 +972,7 @@ h1.selection_title {
       &.eau::after {
         background: url(../../assets/elements/rain.gif),
           url(../../assets/elements/water2.gif),
-          url(../../assets/elements/tttt.gif);
+          url(../../assets/elements/water.gif);
         @include bg-single-contain-center;
       }
 
@@ -1396,7 +1399,8 @@ h1.selection_title {
         transition:0.1s;
         button{
           text-shadow: 0 0 1px black, 0 0 10px red, 0 0 10px red;
-          text-transform: uppercase;
+          // text-transform: uppercase;
+          letter-spacing: 0.5vw;
         }
         &:before{
         opacity: 1;
@@ -1499,4 +1503,9 @@ h1.selection_title {
       filter: brightness(2);
     }
   }
+}
+
+.goBack{
+  opacity: 0 !important;
+  transition: opacity 0.2s ease-in !important;
 }

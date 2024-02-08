@@ -74,7 +74,7 @@ const routes: Routes = [
     title: "Accueil Mythik",
     component: AccueilComponent,
     resolve: [delayPageResolver],
-    data: { delay: '500'}
+    data: { delay: '250'}
   },
   {
     path: "accueil/intro", // accueil screen reserved for connection transition
@@ -96,6 +96,21 @@ const routes: Routes = [
     component: SelectionCombatComponent,
     resolve: [delayPageResolver],
     data: { delay: '500'}
+  },
+  {
+    path: "combat/new",
+    title: "Combat",
+    component: SelectionCombatComponent
+  },
+  {
+    path: "combat/new2",
+    title: "Combat",
+    component: SelectionCombatComponent
+  },
+  {
+    path: "combat/:combat_number",
+    title: "Combat",
+    component: SelectionCombatComponent
   },
   {
     path: "creaturea",

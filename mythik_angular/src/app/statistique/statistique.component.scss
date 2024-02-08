@@ -1,0 +1,108 @@
+
+
+  .container {
+    max-width: 800px;
+    margin: 50px auto;
+  }
+
+  h1 {
+    font-family: "bronzion";
+    font-size: 36px;
+    text-align: center;
+    background-color:rgba(245, 245, 220, 0.555);
+    border-radius: 10px;
+    padding: 5px;
+    margin: 0px 100px;
+  }
+
+  th {
+    font-family: "grandiflora";
+  }
+
+  tbody {
+    font-family: "notoserif_tc";
+  }
+
+  .card {
+
+    background-color: #d2b48c62;
+    border: 1px solid #8b4513;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 30px 10px;
+  }
+
+  .card-header {
+    font-family: "Lugrasimo";
+    background-color: #8b4513b3;
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid #8b4513;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #8b4513;
+  }
+
+  .btn:hover {
+    background-color: #654321;
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+
+  .table th, .table td {
+    border: 1px solid #8b4513;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .table th {
+    background-color: #654321;
+    color: #fff;
+  }
+
+  button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: #573d26; /* Couleur de fond avec une teinte terreux */
+    color: #fff; /* Couleur du texte */
+    border: 2px solid #8b735b; /* Bordure */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Ombre légère */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
+  }
+
+  .stat{
+
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: "lugrasimo";
+  }
+
+  .baspage{
+display: flex;
+align-items: center;
+flex-direction: column;
+  }

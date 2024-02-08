@@ -130,8 +130,11 @@ export class SelectionCombatComponent implements OnInit {
     setTimeout(() => {
     this.ready = true;
     this.creationCombattant = false;
-    }, 200);
-
+    }, 500);
   }
 
+  goBack(){
+    let creation_screen = document.querySelector<HTMLBodyElement>("#creation_combattant_screen");
+    creation_screen?.classList.add("goBack");
+  }
 }

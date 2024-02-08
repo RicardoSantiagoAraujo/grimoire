@@ -129,12 +129,14 @@ h1.combat_title::after {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  z-index: 10000000000000000000;
 }
 .combattants .combattant .creature_img {
   width: 50%;
   min-height: 50vh;
   -o-object-fit: contain;
      object-fit: contain;
+  pointer-events: none;
 }
 .combattants .combattant .creature_img.adv_img {
   transform: scaleX(-1);
@@ -202,7 +204,8 @@ h1.combat_title::after {
   -o-border-image: url(../../assets/chinese/symbol_chinese.png) 0% 100%/0vw 5vw/0vw 3vw space;
      border-image: url(../../assets/chinese/symbol_chinese.png) 0% 100%/0vw 5vw/0vw 3vw space;
 }
-.combattants .combattant .nom_login .nom, .combattants .combattant .nom_login .login {
+.combattants .combattant .nom_login .nom,
+.combattants .combattant .nom_login .login {
   position: relative;
   white-space: nowrap;
   color: rgb(71, 0, 0);
@@ -211,7 +214,8 @@ h1.combat_title::after {
   line-height: 7vw;
   vertical-align: middle;
 }
-.combattants .combattant .nom_login .nom::first-letter, .combattants .combattant .nom_login .login::first-letter {
+.combattants .combattant .nom_login .nom::first-letter,
+.combattants .combattant .nom_login .login::first-letter {
   text-transform: capitalize;
   font-size: 3vw;
   font-family: "bronzion";
@@ -311,6 +315,53 @@ h1.combat_title::after {
   text-shadow: 0 0 5px black;
 }
 
+.round_winner .img_wrapper::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  animation: winnerBgEffect 1s;
+  animation-fill-mode: forwards;
+}
+.round_winner .img_wrapper.feu::before {
+  background: url(../../assets/elements/fire.gif), radial-gradient(circle closest-side, red, transparent);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.round_winner .img_wrapper.eau::before {
+  background: url(../../assets/elements/water.gif), url(../../assets/elements/water2.gif), radial-gradient(circle closest-side, blue, transparent);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.round_winner .img_wrapper.air::before {
+  background: url(../../assets/elements/air.gif), url(../../assets/elements/storm.gif), radial-gradient(circle closest-side, yellow, transparent);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.round_winner .img_wrapper.terre::before {
+  background: url(../../assets/elements/earth.gif), url(../../assets/elements/earth2.gif), url(../../assets/elements/earth3.gif), radial-gradient(circle closest-side, green, transparent);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@keyframes winnerBgEffect {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 #combat_btns {
   display: block;
   width: 30%;
@@ -325,7 +376,7 @@ h1.combat_title::after {
 }
 #combat_btns .btn_wrapper {
   position: absolute;
-  background: radial-gradient(ellipse closest-side, green, transparent);
+  background: radial-gradient(ellipse closest-side, purple, transparent);
   bottom: 50%;
   left: 50%;
   transform-origin: bottom;
@@ -341,7 +392,7 @@ h1.combat_title::after {
   padding: 0px;
   line-height: 0px;
   aspect-ratio: 1/1;
-  font-size: 18px;
+  font-size: 1vw;
   font-weight: bold;
   text-align: center;
   text-decoration: none;
@@ -364,7 +415,7 @@ h1.combat_title::after {
   color: rgb(193, 0, 0);
   text-shadow: 0 0 1px black;
   background: none;
-  background-color: white;
+  background-color: rgba(228, 255, 228, 0.8);
   opacity: 1;
   border: 0.5px solid rgb(193, 0, 0);
   position: relative;
@@ -385,23 +436,23 @@ h1.combat_title::after {
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 100%;
-  filter: brightness(0);
+  filter: brightness(1) hue-rotate(240deg);
   opacity: 0;
 }
 
 .pierre_wrapper {
   transform: translate(-50%, 0%) rotate(65deg);
-  padding-bottom: 16.05%;
+  padding-bottom: 18.6%;
 }
 
 .feuille_wrapper {
   transform: translate(-50%, 0%) rotate(180deg);
-  padding-bottom: 13.5%;
+  padding-bottom: 15.6%;
 }
 
 .ciseaux_wrapper {
   transform: translate(-50%, 0%) rotate(-66deg);
-  padding-bottom: 16.05%;
+  padding-bottom: 18.6%;
 }
 
 #pierre_btn {
@@ -536,7 +587,7 @@ h1.combat_title::after {
   padding-bottom: 30%;
   margin: auto;
   opacity: 1;
-  background: url(../../assets/flipbook-textures/zodiac_arena.png);
+  background: url(../../assets/flipbook-textures/zodiac_arena.png), radial-gradient(circle closest-side, rgb(255, 235, 120) 3%, gold, rgba(255, 255, 255, 0.5) 96%, transparent);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -547,12 +598,19 @@ h1.combat_title::after {
   transform: translate(-50%, -50%);
   z-index: 1000;
 }
-#book_deco.activeBookSecond {
-  background: url(../../assets/flipbook-textures/zodiac_arena.png), radial-gradient(circle closest-side, rgb(255, 235, 120) 3%, gold, white 95%, transparent), url(../../assets/elements/earth_ring.gif);
+#book_deco.zodiacAttackEffect::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url(../../assets/flipbook-textures/zodiac_circle.png);
   background-blend-mode: multiply;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  animation: zodiacCircle 2s forwards;
 }
 #book_deco #dialog_banner {
   width: 150%;
@@ -661,12 +719,18 @@ h1.combat_title::after {
   animation-duration: 2s;
 }
 
-@keyframes magicRing1 {
+@keyframes zodiacCircle {
   0% {
-    transform: rotate(0deg) scale(1.3);
+    transform: rotate(0deg) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
   }
   100% {
-    transform: rotate(360deg) scale(1.3);
+    transform: rotate(360deg) scale(1.5);
+    filter: brightness(2) hue-rotate(45deg) blur(10px);
+    opacity: 0;
   }
 }
 @keyframes magicRing2 {
@@ -759,10 +823,9 @@ h1.combat_title::after {
   left: 50%;
   transform: translate(-50%, 0);
   transform-origin: bottom;
-  animation: spinSpinner 20s linear infinite;
+  animation: spinSpinner 60s linear infinite;
 }
 #spinner_container #combat_spinner {
-  background: url(../../assets/weapons/weapons1.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -775,13 +838,16 @@ h1.combat_title::after {
 #spinner_container #combat_spinner::after {
   content: "";
   position: absolute;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 1vw 3vw 1vw;
-  border-color: transparent transparent gold transparent;
-  opacity: 0.75;
+  opacity: 0.95;
+  width: 100%;
+  height: 50%;
+  top: 0;
+  left: 50%;
+  animation: spinSpinner 60s reverse linear infinite, sunAnimate 10s alternate infinite;
+  background: url(../../assets/flipbook-textures/sun_moon.png), radial-gradient(circle closest-side, goldenrod, transparent);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 @keyframes spinSpinner {
@@ -792,7 +858,22 @@ h1.combat_title::after {
     transform: translate(-50%, 0) rotate(360deg);
   }
 }
+@keyframes sunAnimate {
+  0% {
+    filter: brightness(1) drop-shadow(-10px -10px 2px cyan);
+    height: 45%;
+  }
+  50% {
+    filter: brightness(2) drop-shadow(0 0 5px purple);
+    height: 55%;
+  }
+  100% {
+    filter: brightness(2) drop-shadow(10px 10px 2px yellow);
+    height: 50%;
+  }
+}
 svg#spinner_target {
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -821,56 +902,61 @@ svg#spinner_target circle {
     filter: brightness(1.3);
   }
 }
+:root {
+  --time-to-impact: 0.5s;
+  --winner_color: black;
+}
+
 .round_winner .img_wrapper {
   position: relative;
+  z-index: 1000000000000000000000000;
 }
 .round_winner .img_wrapper.img_player {
-  animation: roundWinner_player 1s;
+  animation: roundWinner_player;
 }
 .round_winner .img_wrapper.img_adv {
-  animation: roundWinner_adv 1s;
+  animation: roundWinner_adv;
 }
-.round_winner .img_wrapper.img_player:after, .round_winner .img_wrapper.img_adv:after {
-  content: "";
+.round_winner .img_wrapper.img_player .attack, .round_winner .img_wrapper.img_adv .attack {
   height: 100%;
   width: 100%;
   top: 0;
   left: 0;
   position: absolute;
-  opacity: 0;
+  opacity: 1;
   transform-origin: center;
-  z-index: 9999999999;
   background-blend-mode: multiply;
+  pointer-events: none;
 }
-.round_winner .img_wrapper.feu:after {
+.round_winner .img_wrapper.feu .attack {
   background: url(../../assets/flipbook-textures/elemental_attack.png), radial-gradient(circle closest-side, red 70%, transparent);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
-.round_winner .img_wrapper.eau:after {
+.round_winner .img_wrapper.eau .attack {
   background: url(../../assets/flipbook-textures/elemental_attack.png), radial-gradient(circle closest-side, blue 70%, transparent);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
-.round_winner .img_wrapper.terre:after {
+.round_winner .img_wrapper.terre .attack {
   background: url(../../assets/flipbook-textures/elemental_attack.png), radial-gradient(circle closest-side, green 70%, transparent);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
-.round_winner .img_wrapper.air:after {
+.round_winner .img_wrapper.air .attack {
   background: url(../../assets/flipbook-textures/elemental_attack.png), radial-gradient(circle closest-side, yellow 70%, transparent);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
-.round_winner .img_wrapper.img_player:after {
-  animation: attackAnimation_player 0.5s ease-in;
+.round_winner .img_wrapper.img_player .attack {
+  animation: attackAnimation_player var(--time-to-impact) ease-in forwards;
 }
-.round_winner .img_wrapper.img_adv:after {
-  animation: attackAnimation_adv 0.5s ease-in;
+.round_winner .img_wrapper.img_adv .attack {
+  animation: attackAnimation_adv var(--time-to-impact) ease-in forwards;
 }
 
 @keyframes attackAnimation_player {
@@ -882,10 +968,13 @@ svg#spinner_target circle {
   10% {
     opacity: 1;
   }
-  100% {
+  99% {
     transform: translateX(90vw) scale(3) rotate(360deg);
     opacity: 1;
     filter: brightness(3);
+  }
+  100% {
+    opacity: 0;
   }
 }
 @keyframes attackAnimation_adv {
@@ -897,10 +986,13 @@ svg#spinner_target circle {
   10% {
     opacity: 1;
   }
-  100% {
+  99% {
     transform: translateX(-90vw) scale(3) rotate(-360deg);
     opacity: 1;
     filter: brightness(3);
+  }
+  100% {
+    opacity: 0;
   }
 }
 @keyframes roundWinner_player {
@@ -916,18 +1008,18 @@ svg#spinner_target circle {
   }
 }
 .round_loser {
-  animation: suiviShake 0.5s;
-  animation-delay: 0.4s;
+  animation: suiviShake var(--time-to-impact);
+  animation-delay: calc(var(--time-to-impact) * 0.8);
 }
 
 .round_loser .img_wrapper.img_player {
-  animation: roundLoser_player 1s;
+  animation: roundLoser_player var(--time-to-impact);
 }
 .round_loser .img_wrapper.img_adv {
-  animation: roundLoser_adv 1s;
+  animation: roundLoser_adv var(--time-to-impact);
 }
 .round_loser .img_wrapper.img_player, .round_loser .img_wrapper.img_adv {
-  animation-delay: 0.4s;
+  animation-delay: calc(var(--time-to-impact) * 0.8);
 }
 
 @keyframes roundLoser_player {
@@ -946,6 +1038,140 @@ svg#spinner_target circle {
   animation: suiviShake 0.5s;
 }
 
+#combat_winner {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+  z-index: 1000000000000000000000000000000000000000000;
+  pointer-events: none;
+}
+#combat_winner div {
+  transition: calc(var(--time-to-impact) * 3);
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  opacity: 0;
+}
+#combat_winner div::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background: radial-gradient(transparent, var(--winner_color));
+}
+
+.finishedCombat #combat_winner div {
+  opacity: 0;
+  animation: resultsReveal reverse var(--time-to-impact) forwards;
+  background-color: black;
+  animation-delay: 2s;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.finishedCombat #combat_winner div.combat_winner_animation {
+  animation: combat_winner_animation_player calc(var(--time-to-impact) * 1.5) forwards;
+}
+.finishedCombat #combat_winner div.combat_winner_animation.advWin {
+  animation: combat_winner_animation_adv calc(var(--time-to-impact) * 1.5) forwards;
+}
+.finishedCombat .round_loser, .finishedCombat .round_winner {
+  transition-duration: calc(var(--time-to-impact) / 1);
+  transition-delay: calc(var(--time-to-impact) / 1);
+  position: relative;
+}
+.finishedCombat .round_loser img, .finishedCombat .round_winner img {
+  transition: calc(var(--time-to-impact) / 2);
+}
+.finishedCombat .round_loser:after, .finishedCombat .round_winner:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0;
+  animation: resultsReveal 3s forwards;
+  animation-delay: calc(var(--time-to-impact) * 1.3);
+}
+.finishedCombat .round_loser img {
+  filter: sepia(0.9);
+}
+.finishedCombat .round_loser::after {
+  background: url(../../assets/flipbook-textures/crossed_bones.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.finishedCombat .round_winner img {
+  filter: brightness(1.2) saturate(1.2);
+}
+.finishedCombat .round_winner::after {
+  background: url(../../assets/flipbook-textures/laurel.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.finishedCombat #battle_arena {
+  transition: 2s;
+  transition-delay: 2s;
+  opacity: 0;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.finishedCombat #battle_arena::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--winner_color);
+  opacity: 1;
+  animation: finishMove 0.1s forwards;
+  animation-delay: calc(var(--time-to-impact) * 0.95);
+}
+
+@keyframes combat_winner_animation_player {
+  0% {
+    opacity: 0;
+    transform: translateX(-30vw) translateY(0vh) scale(1);
+  }
+  65% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(0vw) translateY(30vh) scale(2);
+  }
+}
+@keyframes combat_winner_animation_adv {
+  0% {
+    opacity: 0;
+    transform: translateX(30vw) translateY(0vh) scale(-1, 1);
+  }
+  65% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(0vw) translateY(30vh) scale(-2, 2);
+  }
+}
+@keyframes finishMove {
+  0% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .resultat_container {
   text-align: center;
   height: 100%;
@@ -958,7 +1184,9 @@ svg#spinner_target circle {
   background: url("../../assets/flipbook-textures/wood-texture.jpeg"), radial-gradient(#e6b664, #000325);
   background-size: cover;
   background-blend-mode: multiply;
-  animation: resultsReveal 1s;
+  opacity: 0;
+  animation-delay: 2s !important;
+  animation: resultsReveal var(--time-to-impact) forwards;
 }
 .resultat_container .resultat {
   display: block;
@@ -971,6 +1199,7 @@ svg#spinner_target circle {
   background-position: center;
   background-repeat: no-repeat;
   animation: bannerRaise 2s;
+  animation-delay: 2s;
   filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.958));
   position: relative;
 }
@@ -1007,17 +1236,18 @@ svg#spinner_target circle {
   color: rgb(0, 100, 0);
 }
 .resultat_container p {
-  color: rgb(71, 0, 0);
-  color: goldenrod;
   width: 45%;
   display: block;
   margin: auto;
 }
 .resultat_container p#victory {
+  color: darkred;
   -o-border-image: url(../../assets/flipbook-textures/victory_symbol.png) 0% 50%/0vw 1vw/0vw 0vw space;
      border-image: url(../../assets/flipbook-textures/victory_symbol.png) 0% 50%/0vw 1vw/0vw 0vw space;
 }
 .resultat_container p#defeat {
+  color: rgb(71, 0, 0);
+  color: goldenrod;
   -o-border-image: url(../../assets/flipbook-textures/defeat_symbol.png) 0% 50%/0vw 1vw/0vw 1vw space;
      border-image: url(../../assets/flipbook-textures/defeat_symbol.png) 0% 50%/0vw 1vw/0vw 1vw space;
 }
@@ -1054,7 +1284,7 @@ svg#spinner_target circle {
 }
 .resultat_container .btn_group button:hover {
   filter: hue-rotate(50deg);
-  text-shadow: #342101 1px 1px 10px;
+  text-shadow: 0 0 3px white, #ffbf51 1px 1px 10px;
   transform: scale(1.1);
 }
 .resultat_container .btn_group button:active {
@@ -1108,5 +1338,29 @@ svg#spinner_target circle {
     opacity: 0.7;
     filter: blur(1px);
     transform: scale(1.05) rotate(-360deg);
+  }
+}
+.combat_leave {
+  transition: opacity var(--combat-leave-duration);
+  opacity: 0;
+  background: black;
+}
+
+.combat_leave_blackout::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  animation: blackout 1s forwards;
+}
+
+@keyframes blackout {
+  from {
+    background-color: transparent;
+  }
+  to {
+    background-color: black;
   }
 }/*# sourceMappingURL=combat.component.css.map */
