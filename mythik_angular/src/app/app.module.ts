@@ -27,6 +27,7 @@ import { MythologiePipe } from './mythologie.pipe';
 import { GagnantPipe } from './gagnant.pipe';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CreatureDataPipe } from './creature-data.pipe';
+import { CombattanteDataPipe } from './combattant-data.pipe';
 
 
 
@@ -52,6 +53,7 @@ import { CreatureDataPipe } from './creature-data.pipe';
     GagnantPipe,
     PageNotFoundComponent,
     CreatureDataPipe,
+    CombattanteDataPipe
   ],
   imports: [
     BrowserModule,

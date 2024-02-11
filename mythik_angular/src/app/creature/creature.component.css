@@ -806,7 +806,7 @@ tr.nordique .mythologie:after {
 }
 
 .exitAnimation {
-  animation: exitAnimation 1s ease-in-out;
+  animation: exitAnimation 0.25s ease-in-out;
   animation-fill-mode: forwards;
 }
 
