@@ -1,33 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
-
-:root {
-	--text-color: rgb(71, 0, 0);
-	--paper-color-l: rgb(255, 251, 212);
-	--paper-color-d: rgb(100, 79, 30);
-	--paper-texture: url("../../assets/flipbook-textures/natural-paper.png");
-	/* --paper-texture: url(../pics/black-paper.png); */
-	/* --paper-texture: url(../pics/old-paper-texture.webp); */
-	/* Candlelight effect */
-	--color-overlay-l: #ffd58d;
-	--color-overlay-d: #00021e;
-	--blur-overlay-l: 60%;
-	--fire_light_effect-radial: radial-gradient(var(--color-overlay-l) var(--blur-overlay-l), var(--color-overlay-d) 75%);
-	--fire_light_effect-linear: linear-gradient(var(--color-overlay-l) var(--blur-overlay-l) 90%, var(--color-overlay-d) 100%);
-	--fire_light_effect-uniform: var(--color-overlay-l);
-	--fire_light_effect-pages: radial-gradient(var(--color-overlay-l) var(--blur-overlay-l), rgba(0,0,0,0) 75%);
-}
-
-body,html{
-	height: 100vh;
-	overflow: hidden;
-}
-
-body{
-	background: url("../../assets/flipbook-textures/wood-texture.jpeg"), radial-gradient(#e6b664, #000325);
-	background-blend-mode: multiply;
-	background-size: cover;
-	cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"),pointer;
-}
+@use '../../mixins' as *;
+@use '../../variables' as *;
 
 #firelight_effect {
 	content: '';
@@ -41,7 +13,7 @@ body{
 	z-index: 10;
 	pointer-events: none; // to be able to click-through
 	background: var(--fire_light_effect-radial);
-	// animation: firelight_effect 1s alternate infinite;
+	animation: firelight_effect 1s alternate infinite;
   }
 
 @keyframes firelight_effect {
@@ -128,40 +100,35 @@ body #firewall{
 }
 
 
+$propshadow: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.7));
 #map{
 	img{
 	display: flex;
-	// background-color: rgba(0, 0, 0, 0.501);
 	position: absolute;
-	// background-image: url(../../assets/flipbook-textures/oldbook.png);
-	// background-size: cover;
-	box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.501);
-	top:-250px;
-	right:700px;
-	height: 60%;
+	top:-40%;
+	left: -10%;
+	height: 60vmin;
 	// width: 100%;
 	transform:rotate(30deg);
 	z-index: 0;
-	filter:brightness(0.7);
+	filter:brightness(0.7) $propshadow;
 }
 }
 
 
 #zodiac{
 	width: fit-content;
-	height: 199px;
+	height: 50vmin;
 	background-image: url(../../assets/flipbook-textures/old-paper-texture_alt.png);
 	display: flex;
-	background-color: rgba(0, 0, 0, 0.168);
 	position: absolute;
-	box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.501);
-	bottom:-150px;
-	right:500px;
+	bottom:-10%;
+	left:40%;
 	height: 60%;
 	transform:rotate(50deg);
 	z-index: 0;
 	justify-content: center;
-	filter:brightness(0.7);
+	filter:brightness(0.7) $propshadow;
 	&:after{
 		content:"";
 		position: absolute;
@@ -181,37 +148,28 @@ body #firewall{
 #book_greek{
 	img{
 	display: flex;
-	// background-color: rgba(0, 0, 0, 0.501);
 	position: absolute;
-	// background-image: url(../src/assets/flipbook-textures/oldbook.png);
-	// background-size: cover;
-	box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.501);
-	top:50px;
-	left:-150px;
-	height: 70%;
+	top:10%;
+	left:-10%;
+	height: 70vmin;
 	// width: 100%;
 	transform:rotate(50deg);
-	filter:brightness(0.8);
+	filter:brightness(0.8) $propshadow;
 	z-index: 0;
-
 }
 }
 
 #book_japanese{
 	img{
 	display: flex;
-	background-color: rgba(0, 0, 0, 0.501);
 	position: absolute;
-	// background-image: url(../src/assets/flipbook-textures/oldbook.png);
-	// background-size: cover;
-	box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.501);
-	top:-50px;
-	right:-400px;
-	height: 60%;
+	top:-5%;
+	right:-20%;
+	height: 55vmin;
 	// width: 100%;
 	transform:rotate(-30deg);
 	z-index: 0;
-	filter:brightness(0.6);
+	filter:brightness(0.6) $propshadow;
 }
 }
 
@@ -269,13 +227,13 @@ body #firewall{
 
 @keyframes pulse {
 	0%{
-		filter:brightness(1);
+		filter:brightness(1) $propshadow;
 	}
 	50%{
-		filter:brightness(2);
+		filter:brightness(2) $propshadow;
 	}
 	100%{
-		filter:brightness(1);
+		filter:brightness(1) $propshadow;
 	}
 }
 
@@ -310,35 +268,49 @@ body #firewall{
 	align-items: center;
 	position: absolute;
 	//filter: brightness(0.8);
-	left: 40px;
-	bottom: 1vh;
+	left: 1vmin;
+	bottom: 1vmin;
 	//transform: rotate(-20deg);
 	font-family: "Lugrasimo";
 	button{
+		cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
+		transition: 0.1s;
+		font-size: 1.5vw;
 		z-index: 1000;
 		position: absolute;
 		opacity: 1;
-		color: rgba(98, 4, 4, 0.709);
-		top: 50px;
-		padding: 50px;
+		color: $text-color;
+		bottom: 1vw;
+		padding: 5vw;
 		background: none;
 		border: none;
-		background-image: url(../../assets/flipbook-textures/old-paper-texture_alt.png);
-		background-size: contain;
-		background-repeat: no-repeat;
-		background-position: center;
+		filter: $propshadow;
+		background: url(../../assets/flipbook-textures/old-paper-texture_alt.png);
+		@include bg-single-contain-center;
+		&:after{
+			content: "";
+			height: 70%;
+			width: 70%;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			background: url(../../assets/flipbook-textures/cyclops.png);
+			@include bg-single-contain-center;
+			opacity: 0.1;
+			transition: 0.3s;
+			z-index: -1;
+		}
 	}
+
 	#page_marker{
-		height: 250px;
+		height: 9vw;
+		width: 9vw;
 		position: relative;
-		top:80px;
-		width: 100px;
-		background:  url(../../assets/flipbook-textures/dagger.png), radial-gradient(#00000082, #00000000 50%);
-		border-radius: 50%;
-		// transform: rotate(100deg);
-		background-blend-mode: lighten;
-		background-size: contain;
-		background-repeat: no-repeat;
+		bottom:1vw;
+		left: 0vw;
+		background:  url(../../assets/flipbook-textures/dagger.png);
+		@include bg-single-contain-center;
 		animation: pulse 2s infinite;
 		transition: 1s;
 		z-index: 1000;
@@ -346,11 +318,44 @@ body #firewall{
 	}
 	&:hover {
 	button{
-		color:rgba(189, 4, 4, 0.657);
+		color: $title-color-pri;
+		&::after{
+			opacity: 0.5;
+		}
 	}
 	#page_marker{
 		transform: scale(1.3)rotate(80deg);
-		top:40px;
+		bottom:1vw;
+		left: 7vw;
 	}
 	}
+	&:active {
+		button{
+			text-shadow: 0 0 3px $title-color-sec;
+			transform: rotate(5deg)scale(1.1);
+			&:after{
+				filter: drop-shadow(0 0 10px $title-color-sec)
+			}
+		}
+		}
 }
+
+
+// exit animation(s)
+.exitAnimation{
+	animation: exitAnimation 0.5s ease-in-out;
+	animation-fill-mode: forwards;
+  }
+
+  @keyframes exitAnimation {
+	0%{
+	  opacity: 1;
+	//   transform: translateY(0);
+	}
+	50%{
+	}
+	100%{
+	  opacity: 0;
+	//   transform: translateY(-10vh);
+	}
+  }

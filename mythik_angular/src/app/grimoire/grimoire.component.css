@@ -1,45 +1,3 @@
-@font-face {
-  font-family: "Stempel-Garamond-W01-Roman";
-  font-style: normal;
-  font-weight: normal;
-  src: url("../../assets/fonts/Stempel-Garamond-W01-Roman.woff");
-}
-@font-face {
-  font-family: "Lugrasimo";
-  font-style: normal;
-  font-weight: normal;
-  src: url("../../assets/fonts/Lugrasimo/Lugrasimo-Regular.ttf");
-}
-@font-face {
-  font-family: "bronzion";
-  font-style: normal;
-  font-weight: normal;
-  src: url("../../assets/fonts/bronzion_deco/BronzionDeco_PERSONAL_USE_ONLY.otf");
-}
-@font-face {
-  font-family: "eb_garamond";
-  font-style: normal;
-  font-weight: normal;
-  src: url("../../assets/fonts/EB_Garamond/EBGaramond-Italic-VariableFont_wght.ttf");
-}
-@font-face {
-  font-family: "grandiflora";
-  font-style: normal;
-  font-weight: normal;
-  src: url("../../assets/fonts/Grandiflora_One/GrandifloraOne-Regular.ttf");
-}
-@font-face {
-  font-family: "notoserif_jp";
-  font-style: normal;
-  font-weight: normal;
-  src: url("../../assets/fonts/Noto_Serif_JP/NotoSerifJP-Regular.otf");
-}
-@font-face {
-  font-family: "notoserif_tc";
-  font-style: normal;
-  font-weight: normal;
-  src: url("../../assets/fonts/Noto_Serif_TC/NotoSerifTC-Regular.otf");
-}
 :root {
   --glowColor1: #f2e4ff;
   --glowColor2: #000000;
@@ -51,9 +9,34 @@
   justify-content: center;
   align-items: center;
   z-index: 2;
+  position: relative;
+  margin: 50px 0px;
+  animation: flipbookAppear 2s ease-in-out;
+  opacity: 0;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
 }
-
-flipbook .cover:first-of-type:before {
+@media (max-width: 1050px) {
+  .flipbook_container flipbook {
+    transform: scale(0.85);
+  }
+}
+@media (max-width: 920px) {
+  .flipbook_container flipbook {
+    transform: scale(0.65);
+  }
+}
+@media (max-width: 800px) {
+  .flipbook_container flipbook {
+    transform: scale(0.6) translateX(-25%);
+  }
+}
+@media (max-width: 630px) {
+  .flipbook_container flipbook {
+    transform: scale(0.4) translateX(-25%);
+  }
+}
+.flipbook_container flipbook .cover:first-of-type:before {
   content: "Mythik";
   font-family: bronzion;
   display: flex;
@@ -69,7 +52,7 @@ flipbook .cover:first-of-type:before {
   height: 100%;
   background: var(--fire_light_effect-uniform) !important;
 }
-flipbook .cover:first-of-type:after {
+.flipbook_container flipbook .cover:first-of-type:after {
   content: "Grimoire";
   opacity: 0.7;
   font-family: bronzion;
@@ -85,15 +68,15 @@ flipbook .cover:first-of-type:after {
   width: 100%;
   height: 100%;
 }
-
-flipbook .cover:first-of-type, flipbook .cover:last-of-type {
+.flipbook_container flipbook .cover:first-of-type,
+.flipbook_container flipbook .cover:last-of-type {
   transition: 0.1s;
 }
-flipbook .cover:first-of-type:hover, flipbook .cover:last-of-type:hover {
+.flipbook_container flipbook .cover:first-of-type:hover,
+.flipbook_container flipbook .cover:last-of-type:hover {
   filter: saturate(2);
 }
-
-.sj-book .capital:first-letter {
+.flipbook_container .sj-book .capital:first-letter {
   display: block;
   float: left;
   font-size: 300%;
@@ -102,8 +85,7 @@ flipbook .cover:first-of-type:hover, flipbook .cover:last-of-type:hover {
   margin-top: 7px;
   margin-left: 18px;
 }
-
-flipbook:after {
+.flipbook_container flipbook:after {
   content: "";
   position: absolute;
   left: 50%;
@@ -118,22 +100,21 @@ flipbook:after {
   height: 70%;
   width: 2%;
 }
-
-flipbook-page .page:not(.cover) {
+.flipbook_container flipbook-page .page:not(.cover) {
   background-size: 10%;
   transform: scaleX(-1);
   background-size: cover !important;
   background-position-x: left;
   opacity: 1;
 }
-flipbook-page .page:not(.cover):after {
+.flipbook_container flipbook-page .page:not(.cover):after {
   display: flex;
   content: "";
   background: linear-gradient(0.25turn, rgba(255, 255, 255, 0) 95%, rgba(45, 25, 0, 0.26) 99.9%, rgba(45, 25, 0, 0.916) 100%);
   height: 100%;
   width: 100%;
 }
-flipbook-page .page:not(.cover):before {
+.flipbook_container flipbook-page .page:not(.cover):before {
   content: "";
   display: block;
   position: absolute;
@@ -144,22 +125,19 @@ flipbook-page .page:not(.cover):before {
   opacity: 0.2;
   filter: blur() 10px;
 }
-
-flipbook-page .page {
+.flipbook_container flipbook-page .page {
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
   overflow: hidden;
   cursor: url(../../assets/cursors/middle-ages-pointer-32x32.png), pointer;
 }
-
-.stain {
+.flipbook_container .stain {
   display: flex;
   position: absolute;
   height: 100%;
   background-repeat: no-repeat;
   background-size: contain;
 }
-
-.page_content {
+.flipbook_container .page_content {
   color: green;
   display: block;
   position: absolute;
@@ -168,20 +146,6 @@ flipbook-page .page {
   width: 100%;
   background-color: red !important;
 }
-
-.flipbook_container {
-  position: relative;
-  height: 80vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 50px 0px;
-  animation: flipbookAppear 2s ease-in-out;
-  opacity: 0;
-  animation-delay: 2s;
-  animation-fill-mode: forwards;
-}
-
 @keyframes flipbookAppear {
   0% {
     opacity: 0;
@@ -200,7 +164,7 @@ flipbook-page .page {
     filter: brightness(1) blur(0px) drop-shadow(0 0 0px rgba(0, 0, 0, 0.1));
   }
 }
-.mocktext {
+.flipbook_container .mocktext {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -213,11 +177,10 @@ flipbook-page .page {
   overflow: hidden;
   opacity: 0.9;
 }
-.mocktext.side0 {
+.flipbook_container .mocktext.side0 {
   transform: scaleX(-1);
 }
-
-.creature_pages {
+.flipbook_container .creature_pages {
   pointer-events: none;
   height: 105%;
   width: 960px;
@@ -230,19 +193,18 @@ flipbook-page .page {
   z-index: 10;
   position: absolute;
 }
-.creature_pages .creature_page_a {
+.flipbook_container .creature_pages .creature_page_a {
   position: relative;
   width: 95%;
   height: 100%;
 }
-.creature_pages .creature_page_b {
+.flipbook_container .creature_pages .creature_page_b {
   position: relative;
   background-color: rgba(60, 255, 0, 0.1);
   width: 45%;
   height: 90%;
 }
-
-#firstPage {
+.flipbook_container #firstPage {
   margin: auto;
   margin-top: 7.5%;
   display: flex;
@@ -260,26 +222,25 @@ flipbook-page .page {
   background-repeat: no-repeat;
   overflow: hidden;
 }
-#firstPage h1 {
+.flipbook_container #firstPage h1 {
   color: rgba(194, 0, 0, 0.689);
   font-family: "bronzion";
   font-size: 100;
 }
-#firstPage h2 {
+.flipbook_container #firstPage h2 {
   font-size: x-large;
   padding-bottom: 50px;
 }
-#firstPage p {
+.flipbook_container #firstPage p {
   width: 50%;
   text-align: center;
   padding-bottom: 100px;
 }
-#firstPage img {
+.flipbook_container #firstPage img {
   width: 20%;
   opacity: 0.3;
 }
-
-#lastPage {
+.flipbook_container #lastPage {
   margin: auto;
   margin-top: 7.5%;
   display: flex;
@@ -295,13 +256,12 @@ flipbook-page .page {
   background-size: contain;
   background-repeat: no-repeat;
 }
-#lastPage img {
+.flipbook_container #lastPage img {
   width: 80%;
   opacity: 0.9;
   filter: sepia(1);
   animation: waggle 0.1s infinite ease-in-out alternate;
 }
-
 @keyframes waggle {
   from {
     transform: rotate(20px);
@@ -310,7 +270,7 @@ flipbook-page .page {
     transform: rotate(-2deg);
   }
 }
-#creaturesStart {
+.flipbook_container #creaturesStart {
   transform: scaleX(-1);
   display: flex;
   align-items: center;
@@ -324,7 +284,7 @@ flipbook-page .page {
   background: radial-gradient(#e66465, #9198e5, rgba(145, 152, 229, 0), rgba(145, 152, 229, 0));
   animation: glowBg 5s infinite alternate;
 }
-#creaturesStart::after {
+.flipbook_container #creaturesStart::after {
   content: "";
   background-image: url("../../assets/flipbook-textures/celtic_frame.png");
   position: absolute;
@@ -337,7 +297,7 @@ flipbook-page .page {
   background-size: contain;
   background-repeat: no-repeat;
 }
-#creaturesStart div {
+.flipbook_container #creaturesStart div {
   display: flex;
   position: relative;
   align-items: center;
@@ -347,7 +307,7 @@ flipbook-page .page {
   height: 50%;
   animation: glowText 0.4s ease-in-out infinite alternate;
 }
-#creaturesStart div::after {
+.flipbook_container #creaturesStart div::after {
   content: "";
   background-image: url("../../assets/flipbook-textures/celtic_knot.png");
   position: absolute;
@@ -361,7 +321,6 @@ flipbook-page .page {
   background-repeat: no-repeat;
   animation: glowDecoration 5s infinite linear;
 }
-
 @keyframes glowText {
   from {
     text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--glowColor1), 0 0 40px var(--glowColor1), 0 0 50px var(--glowColor1), 0 0 60px var(--glowColor1), 0 0 70px var(--glowColor1);
@@ -404,11 +363,11 @@ flipbook-page .page {
     filter: blur(0px) hue-rotate(-90deg) brightness(0.1);
   }
 }
-.magic_effect {
+.flipbook_container .magic_effect {
   width: 100%;
   height: 100%;
 }
-.magic_effect::after {
+.flipbook_container .magic_effect::after {
   content: "";
   background-image: url("../../assets/flipbook-textures/celtic_knot.png");
   position: absolute;
@@ -421,7 +380,6 @@ flipbook-page .page {
   animation: rotateRing 10s infinite linear;
   transform-origin: center;
 }
-
 @keyframes rotateRing {
   from {
     transform: rotate(0deg);
@@ -430,11 +388,10 @@ flipbook-page .page {
     transform: rotate(360deg);
   }
 }
-.fadeRing {
+.flipbook_container .fadeRing {
   animation: fadeRing 1s;
   animation-fill-mode: forwards;
 }
-
 @keyframes fadeRing {
   from {
     opacity: 1;

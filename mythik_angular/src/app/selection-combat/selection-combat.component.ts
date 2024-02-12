@@ -83,10 +83,10 @@ export class SelectionCombatComponent implements OnInit {
 
   // trigger skip automatically on init
   ngOnInit(): void{
-    console.log("skipping selection step on component init");
-    setTimeout(() => { //timeout required for everything to load before triggering
-      this.creationCombattants_skip();
-    }, 250);
+    // console.log("skipping selection step on component init");
+    // setTimeout(() => { //timeout required for everything to load before triggering
+    //   this.creationCombattants_skip();
+    // }, 250);
   }
 
   creationCombattant2(){

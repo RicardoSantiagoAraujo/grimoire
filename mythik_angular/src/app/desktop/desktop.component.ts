@@ -8,4 +8,10 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 
 export class DesktopComponent {
+
+
+  // add class to trigger exit animation on click
+  exitAnimation(){
+        document.querySelector("section")?.classList.add("exitAnimation");
+  }
 }

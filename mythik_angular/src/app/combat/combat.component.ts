@@ -123,7 +123,7 @@ constructor(private combatService: CombatService, private combattantService: Com
   }
 
   degats (creature1: Creature, creature2: Creature) {
-    let dmg_multiplier = 6665;
+    let dmg_multiplier = 1;
 
     let degat1 = creature1.attaque! * dmg_multiplier;
     let degat2 = creature2.attaque! * dmg_multiplier;

@@ -7,7 +7,7 @@ import { Creature } from '../model';
   selector: 'app-grimoire',
   templateUrl: './grimoire.component.html',
   styleUrls: ['./grimoire.component.css'],
-  // encapsulation: ViewEncapsulation.None, // Use None to disable encapsulation and be able to style generated elements
+  encapsulation: ViewEncapsulation.None, // Use None to disable encapsulation and be able to style generated elements
 })
 export class GrimoireComponent {
 creatures?: Creature[];
@@ -136,11 +136,13 @@ this.creatureService.findAll().subscribe(resp => {this.creatures = resp})
 
 
 //// ADDITIONAL CODE TO MANIPULATE DOM
+let timeOut = 2000; // timeout delay to ensure everything is loaded before running the script
 setTimeout(()=>{
   // ALL PAGES EXCEPT COVERS
   let pages = document.querySelectorAll<HTMLElement>("flipbook-page .page:not(.cover)") ;
   let sheets = document.querySelectorAll<HTMLElement>("flipbook-page") ;
-  for (let i = 1; i < pages.length-1; i=i+2){
+
+  for (let i = 1; i < pages.length-1; i=i+2){ // loop over pages to randomly add variety
     // console.log(i);
     let randomizer= 20
     let random_adjustment =  (randomizer - Math.floor(Math.random() * randomizer*2))
@@ -286,7 +288,7 @@ setTimeout(()=>{
   setInterval(ouvrirSectionGrimoire, 100)
 
 
-}, 0 )
+}, timeOut )
 
 var lorem_array = ["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id eu nisl nunc mi ipsum faucibus vitae aliquet nec. Volutpat lacus laoreet non curabitur. Nec dui nunc mattis enim. Nulla facilisi nullam vehicula ipsum a. Faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Eget egestas purus viverra accumsan in nisl nisi scelerisque. At consectetur lorem donec massa.",
  "Habitant morbi tristique senectus et netus. Ultrices in iaculis nunc sed augue lacus viverra. Auctor neque vitae tempus quam pellentesque. Enim blandit volutpat maecenas volutpat blandit aliquam etiam. Nisl purus in mollis nunc sed id semper. Varius sit amet mattis vulputate enim nulla aliquet. A diam maecenas sed enim ut sem. Leo duis ut diam quam. Tincidunt praesent semper feugiat nibh sed pulvinar proin. Ut faucibus pulvinar elementum integer enim neque volutpat. Cum sociis natoque penatibus et magnis dis parturient. Lacus vestibulum sed arcu non odio euismod lacinia./\n Sapien pellentesque habitant morbi tristique senectus et netus. Urna neque viverra justo nec ultrices dui sapien eget mi. Curabitur vitae nunc sed velit. Dignissim suspendisse in est ante in nibh mauris. Fringilla ut morbi tincidunt augue interdum velit. Ultrices in iaculis nunc sed augue lacus viverra vitae. Eu augue ut lectus arcu bibendum at varius. Venenatis lectus magna fringilla urna.",

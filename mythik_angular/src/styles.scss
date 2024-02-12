@@ -2,6 +2,7 @@
 @use './variables' as *;
 // ============ FONTS
 
+
 @font-face {
     font-family: "bronzion";
     font-style: normal;
@@ -15,6 +16,42 @@
     font-weight: normal;
     src: url('assets/fonts/Lugrasimo/Lugrasimo-Regular.ttf');
 }
+
+// @font-face {
+//     font-family: 'Stempel-Garamond-W01-Roman';
+//     font-style: normal;
+//     font-weight: normal;
+//     src: url('../../assets/fonts/Stempel-Garamond-W01-Roman.woff');
+//   }
+
+
+// @font-face {
+// 	font-family: 'eb_garamond';
+// 	font-style: normal;
+// 	font-weight: normal;
+// 	src: url('../../assets/fonts/EB_Garamond/EBGaramond-Italic-VariableFont_wght.ttf');
+// }
+
+// @font-face {
+// 	font-family: 'grandiflora';
+// 	font-style: normal;
+// 	font-weight: normal;
+// 	src: url('../../assets/fonts/Grandiflora_One/GrandifloraOne-Regular.ttf');
+// }
+
+// @font-face {
+// 	font-family: 'notoserif_jp';
+// 	font-style: normal;
+// 	font-weight: normal;
+// 	src: url('../../assets/fonts/Noto_Serif_JP/NotoSerifJP-Regular.otf') ;
+// }
+
+// @font-face {
+// 	font-family: 'notoserif_tc';
+// 	font-style: normal;
+// 	font-weight: normal;
+// 	src: url('../../assets/fonts/Noto_Serif_TC/NotoSerifTC-Regular.otf');
+// }
 
 // ============ GLOBAL CSS VARIABLES
 :root {
@@ -35,11 +72,6 @@
     --fire_light_effect-uniform: var(--color-overlay-l);
     --fire_light_effect-pages: radial-gradient(var(--color-overlay-l) var(--blur-overlay-l), transparent 75%);
 }
-$fire_color : red;
-$water_color : blue;
-$earth_color : green;
-$air_color: yellow;
-
 
 
 // ============ GLOBAL SCSS

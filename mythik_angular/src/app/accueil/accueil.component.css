@@ -149,6 +149,9 @@
   animation: glowText 2s ease-in-out infinite alternate, titreAppear 4s forwards;
   transition: 2s;
 }
+.titre, .titre * {
+  pointer-events: none;
+}
 .titre:hover {
   filter: brightness(2);
 }

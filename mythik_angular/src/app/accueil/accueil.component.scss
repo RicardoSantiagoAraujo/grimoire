@@ -1,3 +1,6 @@
+@use '../../mixins' as *;
+@use '../../variables' as *;
+
 .section {
   opacity: 0;
   animation: accueilAppear 1s;
@@ -186,6 +189,8 @@
   cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
   animation: glowText 2s ease-in-out infinite alternate, titreAppear 4s forwards;
   transition: 2s;
+  &,*{
+    pointer-events: none;}
 
   &:hover {
     filter: brightness(2);

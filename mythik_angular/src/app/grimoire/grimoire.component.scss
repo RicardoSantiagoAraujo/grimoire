@@ -1,500 +1,495 @@
-@font-face {
-    font-family: 'Stempel-Garamond-W01-Roman';
-    font-style: normal;
-    font-weight: normal;
-    src: url('../../assets/fonts/Stempel-Garamond-W01-Roman.woff');
-  }
+@use '../../mixins' as *;
+@use '../../variables' as *;
 
-@font-face {
-	font-family: 'Lugrasimo';
-	font-style: normal;
-	font-weight: normal;
-	src: url('../../assets/fonts/Lugrasimo/Lugrasimo-Regular.ttf');
-}
 
-@font-face {
-	font-family: 'bronzion';
-	font-style: normal;
-	font-weight: normal;
-	src: url('../../assets/fonts/bronzion_deco/BronzionDeco_PERSONAL_USE_ONLY.otf');
-}
-
-@font-face {
-	font-family: 'eb_garamond';
-	font-style: normal;
-	font-weight: normal;
-	src: url('../../assets/fonts/EB_Garamond/EBGaramond-Italic-VariableFont_wght.ttf');
-}
-
-@font-face {
-	font-family: 'grandiflora';
-	font-style: normal;
-	font-weight: normal;
-	src: url('../../assets/fonts/Grandiflora_One/GrandifloraOne-Regular.ttf');
-}
-
-@font-face {
-	font-family: 'notoserif_jp';
-	font-style: normal;
-	font-weight: normal;
-	src: url('../../assets/fonts/Noto_Serif_JP/NotoSerifJP-Regular.otf') ;
-}
-
-@font-face {
-	font-family: 'notoserif_tc';
-	font-style: normal;
-	font-weight: normal;
-	src: url('../../assets/fonts/Noto_Serif_TC/NotoSerifTC-Regular.otf');
-}
-
-:root{
+:root {
 	--glowColor1: #f2e4ff;
 	--glowColor2: #000000;
 }
 
-.flipbook_container{
-    height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items:center;
+.flipbook_container {
+	height: 80vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	z-index: 2;
-}
-
-// FRONT COVER
-flipbook .cover:first-of-type{
-    // filter:brightness(0.5) !important;
-	&:before{
-    content:"Mythik";
-	font-family: bronzion;
-	display: flex;
-	font-size: xx-large;
-	transform: scale(2)translate(0%,-5%);
-	color: rgb(11, 0, 0);
-	text-shadow: #14001b7c 1px 1px 4px;
-	align-items: center;
-	justify-content: center;
-	position: absolute;
-	z-index: 0;
-	width: 100%;
-	height: 100%;
-	background: var(--fire_light_effect-uniform) !important;
-	}
-	&:after{
-	content:"Grimoire";
-	opacity: 0.7;
-	font-family: bronzion;
-	display: flex;
-	font-size: xx-large;
-	transform: scale(1)translate(0%, 60px);
-	color: rgb(213, 210, 227);
-	text-shadow: #14001b7c 1px 1px 4px;
-	align-items: center;
-	justify-content: center;
-	position: absolute;
-	z-index: -1;
-	width: 100%;
-	height: 100%;
-	}
-}
-
-
-
-
-
-flipbook .cover:first-of-type, flipbook .cover:last-of-type{
-	transition: 0.1s;
-	&:hover{
-		filter:saturate(2)
-	}
-}
-
-
-
-.sj-book .capital:first-letter {
-    display:block;
-    float:left;
-    font-size: 300%;
-    line-height: 70%;
-	margin-right: 6px;
-	margin-top: 7px;
-	margin-left:18px;
-}
-
-flipbook:after{
-	content: "";
-	position: absolute;
-	left:50%;
-	top: 50%;
-	transform: translate(-50%,-50%);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	//background-color: red;
-	background: url(../../assets/flipbook-textures/ring.png);
-	filter: brightness(0.75);
-	background-size:contain;
-	// background-repeat: repeat;
-	height: 70%;
-	width: 2%;
-}
-
-
-// ALL PAGES EXCEPT COVERS
-flipbook-page .page:not(.cover){
-	background-size:10%;
-	transform: scaleX(-1);
-	background-size: cover !important;
-	background-position-x: left;
-	opacity: 1;
-	&:after{
-		display: flex;
-		content:"";
-		background: linear-gradient(0.25turn, rgba(255, 255, 255, 0) 95%, rgba(45, 25, 0, 0.26) 99.9%, rgba(45, 25, 0, 0.916) 100%);
-		height: 100%;
-		width: 100%;
-	}
-	&:before{
-		content:"";
-		display: block;
-		position: absolute;
-		height: 100%;
-		width: 100%;
-		top:0px !important;
-		background: var(--fire_light_effect-pages) !important;
-		opacity: 0.2;
-		filter:blur()10px;
-	}
-}
-
-// TARGET BACK OF COVER:
-flipbook-page .cover + .page{
-	// background-color: red !important;
-}
-
-
-flipbook-page .page{
-	box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
-	overflow: hidden;
-	cursor: url(../../assets/cursors/middle-ages-pointer-32x32.png),pointer;
-
-}
-
-
-.stain{
-	display: flex;
-	position: absolute;
-	height: 100%;
-	background-repeat: no-repeat;
-	background-size: contain;
-}
-
-.page_content{
-	color:green;
-	display: block;
-	position: absolute;
-	top:0;
-	height: 100%;
-	width: 100%;
-	background-color: red !important;
-}
-
-.flipbook_container{
 	position: relative;
-    height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items:center;
 	margin: 50px 0px;
-	animation:  flipbookAppear 2s ease-in-out;
+	animation: flipbookAppear 2s ease-in-out;
 	opacity: 0;
 	animation-delay: 2s;
 	animation-fill-mode: forwards;
-}
 
-@keyframes flipbookAppear {
-	0%{
-		opacity: 0;
-		filter: brightness(5)blur(0px)drop-shadow(0 0 0px rgb(255, 0, 0));
-	}
-	25%{
-		opacity: 0.9;
-		filter: brightness(10)blur(20px)drop-shadow(0 0 20px rgb(0, 195, 255));
-
-	}
-	50%{
-		opacity: 1;
-		filter: brightness(10)blur(10px)drop-shadow(0 0 15px rgb(255, 255, 0));
-
-	}
-	100%{
-		opacity: 1;
-		filter: brightness(1)blur(0px)drop-shadow(0 0 0px rgb(0,0,0,0.1));
+	flipbook{ // make flipbook size responsive
+		@media (max-width: 1050px) {
+			transform: scale(0.85);
+		 }
+		@media (max-width: 920px) {
+			transform: scale(0.65);
+		 }
+		@media (max-width: 800px) {
+			transform: scale(0.60)translateX(-25%);
+		 }
+		@media (max-width: 630px) {
+			transform: scale(0.40)translateX(-25%);
+		 }
 	}
 
-}
 
-.mocktext{
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	position:relative;
-	margin:50px 50px;
-	height: 80%;
-	width: 75%;
-	font-family: "Lugrasimo", "eb_garamond", "notoserif_tc", "notoserif_jp", "grandiflora";
-	color: rgba(78, 2, 2, 0.75);
-	overflow: hidden;
-	opacity: 0.9;
-	// filter: blur(1px);
-	&.side0{
-		transform:scaleX(-1);
-	}
-}
+	// FRONT COVER
+	flipbook .cover:first-of-type {
 
-.creature_pages{
-	pointer-events: none;
-	height: 105%;
-	width: 800px*1.2; // adjust according to book width in "test-flipbook.component.ts"
-    display: flex;
-	display: none;
-	flex-direction: row;
-    justify-content: space-around;
-	gap: 5px;
-    align-items:center;
-	z-index:10;
-	position:absolute;
-	// background-color: rgba(255, 255, 0, 0.1);
-	.creature_page_a{
-		position:relative;
-		// background-color: rgba(255, 0, 0, 0.1);
-		// width: 45%;
-		width: 95%;
-		height: 100%;
-	}
-	.creature_page_b{  // excluded
-		position:relative;
-		background-color: rgba(60, 255, 0, 0.1);
-		width: 45%;
-		height: 90%;
-	}
-}
+		// filter:brightness(0.5) !important;
+		&:before {
+			content: "Mythik";
+			font-family: bronzion;
+			display: flex;
+			font-size: xx-large;
+			transform: scale(2)translate(0%, -5%);
+			color: rgb(11, 0, 0);
+			text-shadow: #14001b7c 1px 1px 4px;
+			align-items: center;
+			justify-content: center;
+			position: absolute;
+			z-index: 0;
+			width: 100%;
+			height: 100%;
+			background: var(--fire_light_effect-uniform) !important;
+		}
 
-#firstPage{
-	margin: auto;
-	margin-top: 7.5%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	transform:scaleX(-1);
-	padding-top: 100px;
-	flex-direction: column;
-	color: rgba(41, 0, 0, 0.689);
-	font-family: "Lugrasimo";
-	height: 100%;
-	width: 90%;
-	background-image: url("../../assets/flipbook-textures/page_decoration1.png");
-	background-size: contain;
-	background-repeat: no-repeat;
-	overflow: hidden;
-	h1{
-		color: rgba(194, 0, 0, 0.689);
-		font-family: 'bronzion';
-		font-size: 100;
-	}
-	h2{
-		font-size: x-large;
-		padding-bottom: 50px;
-	}
-	p{
-		width: 50%;
-		text-align: center;
-		padding-bottom: 100px;
-	}
-	img{
-		width: 20%;
-		opacity: 0.3;
-	}
-
-}
-
-#lastPage{
-	margin: auto;
-	margin-top: 7.5%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding-top: 0px;
-	flex-direction: column;
-	color: rgba(41, 0, 0, 0.689);
-	font-family: "Lugrasimo";
-	height: 100%;
-	width: 90%;
-	background-image: url("../../assets/flipbook-textures/page_decoration2.png");
-	background-size: contain;
-	background-repeat: no-repeat;
-	// overflow: hidden;
-	img{
-		width: 80%;
-		opacity: 0.9;
-		filter: sepia(1);
-		animation: waggle 0.1s infinite ease-in-out alternate;
-	}
-}
-
-@keyframes waggle{
-	from{
-		transform:rotate(20px);
-	}
-	to{
-		transform:rotate(-2deg);
-	}
-}
-
-#creaturesStart{
-	transform:scaleX(-1);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	color: rgba(41, 0, 0, 0.689);
-	font-family:"Stempel-Garamond-W01-Roman", "bronzion";
-	color: rgba(6, 106, 38, 0.51);
-	font-size: 40px;
-	height: 100%;
-	width: 100%;
-	background: radial-gradient(#e66465, #9198e5,#9198e500, #9198e500);
-	animation: glowBg 5s infinite alternate;
-	&::after{
-		content: "";
-		background-image: url("../../assets/flipbook-textures/celtic_frame.png");
-		position:absolute;
-		top: 50%;
-		right:50%;
-		height: 80%;
-		width: 80%;
-		transform: translate(50%,-50%);
-		opacity: 0.1;
-		background-size:contain;
-		background-repeat: no-repeat;
-	}
-	div{
-		display: flex;
-		position: relative;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
-		width:100%;
-		height: 50%;
-		animation: glowText 0.4s ease-in-out infinite alternate;
-		&::after{
-			content: "";
-			background-image: url("../../assets/flipbook-textures/celtic_knot.png");
-			position:absolute;
-			top: 50%;
-			right:50%;
-			height: 300px;
-			width: 300px;
-			transform: translate(50%,-50%);
-			opacity: 0.1;
-			background-size:contain;
-			background-repeat: no-repeat;
-			animation: glowDecoration 5s  infinite linear ;
+		&:after {
+			content: "Grimoire";
+			opacity: 0.7;
+			font-family: bronzion;
+			display: flex;
+			font-size: xx-large;
+			transform: scale(1)translate(0%, 60px);
+			color: rgb(213, 210, 227);
+			text-shadow: #14001b7c 1px 1px 4px;
+			align-items: center;
+			justify-content: center;
+			position: absolute;
+			z-index: -1;
+			width: 100%;
+			height: 100%;
 		}
 	}
-}
-
-@keyframes glowText {
-	from {
-	  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--glowColor1), 0 0 40px var(--glowColor1), 0 0 50px var(--glowColor1), 0 0 60px var(--glowColor1), 0 0 70px var(--glowColor1);
-	  transform:translateX(0.5px);
-	}
-	to {
-	  text-shadow: 0 0 20px #fff, 0 0 30px var(--glowColor2), 0 0 40px var(--glowColor2), 0 0 50px var(--glowColor2), 0 0 60px var(--glowColor2), 0 0 70px var(--glowColor2), 0 0 80px var(--glowColor2);
-	  transform: skew(90deg 90deg);
-	  transform:translateX(-0.5px);
-	}
-  }
-
-  @keyframes glowDecoration {
-	0% {
-		opacity: 0.2;
-		transform: translate(50%,-50%)rotate(0deg)scale(0.9,0.7);
-		filter: hue-rotate(50deg)blur(3px);
-		background: radial-gradient(#e66465, #03030d,#9198e500, #9198e500);
-	}
-	50% {
-		opacity: 1;
-		transform: translate(50%,-50%)rotate(180deg)scale(1.1,0.9);
-		filter: hue-rotate(180deg)blur(0px);
-		background: radial-gradient(#2a0404, #ffffff,#9198e500, #9198e500);
-	}
-	100% {
-		opacity: 0.2;
-		transform: translate(50%,-50%)rotate(360deg)scale(0.9,0.7);
-		filter: hue-rotate(50deg)blur(3px);
-		background: radial-gradient(#e66465, #9198e5,#9198e500, #9198e500);
-	}
-  }
 
 
-  @keyframes glowBg {
-	0% {
-		// background: radial-gradient(#e66465, #9198e5,#9198e500, #9198e500);
-		filter: blur(0px)hue-rotate(90deg)brightness(2);
-	}
-	50%{
-		filter: blur(1px)hue-rotate(180deg);
-	}
-	100% {
-		// background: radial-gradient(#9198e5, #e66465,#9198e500, #9198e500);
-		filter: blur(0px)hue-rotate(-90deg)brightness(0.1);
-	}
-  }
 
 
-  .magic_effect{
-	width: 100%;
-	height: 100%;
-	// background: radial-gradient(black, transparent 30%);
-	&::after{
+
+	flipbook .cover:first-of-type,
+	flipbook .cover:last-of-type {
+		transition: 0.1s;
+
+		&:hover {
+			filter: saturate(2)
+		}
+	}
+
+
+
+	.sj-book .capital:first-letter {
+		display: block;
+		float: left;
+		font-size: 300%;
+		line-height: 70%;
+		margin-right: 6px;
+		margin-top: 7px;
+		margin-left: 18px;
+	}
+
+	flipbook:after {
 		content: "";
-		background-image: url("../../assets/flipbook-textures/celtic_knot.png");
-		position:absolute;
-		// top: 50%;
-		// right:50%;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		//background-color: red;
+		background: url(../../assets/flipbook-textures/ring.png);
+		filter: brightness(0.75);
+		background-size: contain;
+		// background-repeat: repeat;
+		height: 70%;
+		width: 2%;
+	}
+
+
+	// ALL PAGES EXCEPT COVERS
+	flipbook-page .page:not(.cover) {
+		background-size: 10%;
+		transform: scaleX(-1);
+		background-size: cover !important;
+		background-position-x: left;
+		opacity: 1;
+
+		&:after {
+			display: flex;
+			content: "";
+			background: linear-gradient(0.25turn, rgba(255, 255, 255, 0) 95%, rgba(45, 25, 0, 0.26) 99.9%, rgba(45, 25, 0, 0.916) 100%);
+			height: 100%;
+			width: 100%;
+		}
+
+		&:before {
+			content: "";
+			display: block;
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			top: 0px !important;
+			background: var(--fire_light_effect-pages) !important;
+			opacity: 0.2;
+			filter: blur()10px;
+		}
+	}
+
+	// TARGET BACK OF COVER:
+	flipbook-page .cover+.page {
+		// background-color: red !important;
+	}
+
+
+	flipbook-page .page {
+		box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
+		overflow: hidden;
+		cursor: url(../../assets/cursors/middle-ages-pointer-32x32.png), pointer;
+
+	}
+
+
+	.stain {
+		display: flex;
+		position: absolute;
+		height: 100%;
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+
+	.page_content {
+		color: green;
+		display: block;
+		position: absolute;
+		top: 0;
 		height: 100%;
 		width: 100%;
-		// transform: translate(50%,-50%);
-		opacity: 0.1;
-		background-size:300px 300px;
+		background-color: red !important;
+	}
+
+	@keyframes flipbookAppear {
+		0% {
+			opacity: 0;
+			filter: brightness(5)blur(0px)drop-shadow(0 0 0px rgb(255, 0, 0));
+		}
+
+		25% {
+			opacity: 0.9;
+			filter: brightness(10)blur(20px)drop-shadow(0 0 20px rgb(0, 195, 255));
+
+		}
+
+		50% {
+			opacity: 1;
+			filter: brightness(10)blur(10px)drop-shadow(0 0 15px rgb(255, 255, 0));
+
+		}
+
+		100% {
+			opacity: 1;
+			filter: brightness(1)blur(0px)drop-shadow(0 0 0px rgb(0, 0, 0, 0.1));
+		}
+
+	}
+
+	.mocktext {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		margin: 50px 50px;
+		height: 80%;
+		width: 75%;
+		font-family: "Lugrasimo", "eb_garamond", "notoserif_tc", "notoserif_jp", "grandiflora";
+		color: rgba(78, 2, 2, 0.75);
+		overflow: hidden;
+		opacity: 0.9;
+
+		// filter: blur(1px);
+		&.side0 {
+			transform: scaleX(-1);
+		}
+	}
+
+	.creature_pages {
+		pointer-events: none;
+		height: 105%;
+		width: 800px*1.2; // adjust according to book width in "test-flipbook.component.ts"
+		display: flex;
+		display: none;
+		flex-direction: row;
+		justify-content: space-around;
+		gap: 5px;
+		align-items: center;
+		z-index: 10;
+		position: absolute;
+
+		// background-color: rgba(255, 255, 0, 0.1);
+		.creature_page_a {
+			position: relative;
+			// background-color: rgba(255, 0, 0, 0.1);
+			// width: 45%;
+			width: 95%;
+			height: 100%;
+		}
+
+		.creature_page_b {
+			// excluded
+			position: relative;
+			background-color: rgba(60, 255, 0, 0.1);
+			width: 45%;
+			height: 90%;
+		}
+	}
+
+	#firstPage {
+		margin: auto;
+		margin-top: 7.5%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transform: scaleX(-1);
+		padding-top: 100px;
+		flex-direction: column;
+		color: rgba(41, 0, 0, 0.689);
+		font-family: "Lugrasimo";
+		height: 100%;
+		width: 90%;
+		background-image: url("../../assets/flipbook-textures/page_decoration1.png");
+		background-size: contain;
 		background-repeat: no-repeat;
-		background-position: center;
-		animation: rotateRing 10s infinite linear;
-		transform-origin: center;
-		// animation: glowDecoration 0.1s  infinite linear ; // vortex effect, too intense
-	}
-  }
+		overflow: hidden;
 
-  @keyframes rotateRing {
-	from{
-		transform: rotate(0deg);
+		h1 {
+			color: rgba(194, 0, 0, 0.689);
+			font-family: 'bronzion';
+			font-size: 100;
+		}
+
+		h2 {
+			font-size: x-large;
+			padding-bottom: 50px;
+		}
+
+		p {
+			width: 50%;
+			text-align: center;
+			padding-bottom: 100px;
+		}
+
+		img {
+			width: 20%;
+			opacity: 0.3;
+		}
+
 	}
-	to{
-		transform: rotate(360deg);
+
+	#lastPage {
+		margin: auto;
+		margin-top: 7.5%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding-top: 0px;
+		flex-direction: column;
+		color: rgba(41, 0, 0, 0.689);
+		font-family: "Lugrasimo";
+		height: 100%;
+		width: 90%;
+		background-image: url("../../assets/flipbook-textures/page_decoration2.png");
+		background-size: contain;
+		background-repeat: no-repeat;
+
+		// overflow: hidden;
+		img {
+			width: 80%;
+			opacity: 0.9;
+			filter: sepia(1);
+			animation: waggle 0.1s infinite ease-in-out alternate;
+		}
 	}
-  }
+
+	@keyframes waggle {
+		from {
+			transform: rotate(20px);
+		}
+
+		to {
+			transform: rotate(-2deg);
+		}
+	}
+
+	#creaturesStart {
+		transform: scaleX(-1);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: rgba(41, 0, 0, 0.689);
+		font-family: "Stempel-Garamond-W01-Roman", "bronzion";
+		color: rgba(6, 106, 38, 0.51);
+		font-size: 40px;
+		height: 100%;
+		width: 100%;
+		background: radial-gradient(#e66465, #9198e5, #9198e500, #9198e500);
+		animation: glowBg 5s infinite alternate;
+
+		&::after {
+			content: "";
+			background-image: url("../../assets/flipbook-textures/celtic_frame.png");
+			position: absolute;
+			top: 50%;
+			right: 50%;
+			height: 80%;
+			width: 80%;
+			transform: translate(50%, -50%);
+			opacity: 0.1;
+			background-size: contain;
+			background-repeat: no-repeat;
+		}
+
+		div {
+			display: flex;
+			position: relative;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			width: 100%;
+			height: 50%;
+			animation: glowText 0.4s ease-in-out infinite alternate;
+
+			&::after {
+				content: "";
+				background-image: url("../../assets/flipbook-textures/celtic_knot.png");
+				position: absolute;
+				top: 50%;
+				right: 50%;
+				height: 300px;
+				width: 300px;
+				transform: translate(50%, -50%);
+				opacity: 0.1;
+				background-size: contain;
+				background-repeat: no-repeat;
+				animation: glowDecoration 5s infinite linear;
+			}
+		}
+	}
+
+	@keyframes glowText {
+		from {
+			text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--glowColor1), 0 0 40px var(--glowColor1), 0 0 50px var(--glowColor1), 0 0 60px var(--glowColor1), 0 0 70px var(--glowColor1);
+			transform: translateX(0.5px);
+		}
+
+		to {
+			text-shadow: 0 0 20px #fff, 0 0 30px var(--glowColor2), 0 0 40px var(--glowColor2), 0 0 50px var(--glowColor2), 0 0 60px var(--glowColor2), 0 0 70px var(--glowColor2), 0 0 80px var(--glowColor2);
+			transform: skew(90deg 90deg);
+			transform: translateX(-0.5px);
+		}
+	}
+
+	@keyframes glowDecoration {
+		0% {
+			opacity: 0.2;
+			transform: translate(50%, -50%)rotate(0deg)scale(0.9, 0.7);
+			filter: hue-rotate(50deg)blur(3px);
+			background: radial-gradient(#e66465, #03030d, #9198e500, #9198e500);
+		}
+
+		50% {
+			opacity: 1;
+			transform: translate(50%, -50%)rotate(180deg)scale(1.1, 0.9);
+			filter: hue-rotate(180deg)blur(0px);
+			background: radial-gradient(#2a0404, #ffffff, #9198e500, #9198e500);
+		}
+
+		100% {
+			opacity: 0.2;
+			transform: translate(50%, -50%)rotate(360deg)scale(0.9, 0.7);
+			filter: hue-rotate(50deg)blur(3px);
+			background: radial-gradient(#e66465, #9198e5, #9198e500, #9198e500);
+		}
+	}
 
 
-.fadeRing{
-	animation: fadeRing 1s;
-	animation-fill-mode: forwards;
-}
+	@keyframes glowBg {
+		0% {
+			// background: radial-gradient(#e66465, #9198e5,#9198e500, #9198e500);
+			filter: blur(0px)hue-rotate(90deg)brightness(2);
+		}
 
-@keyframes fadeRing {
-	from{
-		opacity: 1;
+		50% {
+			filter: blur(1px)hue-rotate(180deg);
+		}
+
+		100% {
+			// background: radial-gradient(#9198e5, #e66465,#9198e500, #9198e500);
+			filter: blur(0px)hue-rotate(-90deg)brightness(0.1);
+		}
 	}
-	to{
-		opacity: 0;
+
+
+	.magic_effect {
+		width: 100%;
+		height: 100%;
+
+		// background: radial-gradient(black, transparent 30%);
+		&::after {
+			content: "";
+			background-image: url("../../assets/flipbook-textures/celtic_knot.png");
+			position: absolute;
+			// top: 50%;
+			// right:50%;
+			height: 100%;
+			width: 100%;
+			// transform: translate(50%,-50%);
+			opacity: 0.1;
+			background-size: 300px 300px;
+			background-repeat: no-repeat;
+			background-position: center;
+			animation: rotateRing 10s infinite linear;
+			transform-origin: center;
+			// animation: glowDecoration 0.1s  infinite linear ; // vortex effect, too intense
+		}
+	}
+
+	@keyframes rotateRing {
+		from {
+			transform: rotate(0deg);
+		}
+
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+
+	.fadeRing {
+		animation: fadeRing 1s;
+		animation-fill-mode: forwards;
+	}
+
+	@keyframes fadeRing {
+		from {
+			opacity: 1;
+		}
+
+		to {
+			opacity: 0;
+		}
+
 	}
 
 }
