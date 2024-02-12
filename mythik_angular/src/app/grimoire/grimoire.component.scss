@@ -20,19 +20,38 @@
 	animation-delay: 2s;
 	animation-fill-mode: forwards;
 
-	flipbook{ // make flipbook size responsive
+	.flipbook_wrapper {
+		// &:after{
+		// 	content: "HELLO";
+		// 	width: 100%;
+		// 	height: 100%;
+		// 	position: absolute;
+		// 	top: 0;
+		// 	left: 0;
+		// 	background: url(../../assets/flipbook-textures/oroboros.png);
+		// 	@include bg-single-contain-center;
+		// }
+	}
+
+
+	flipbook {
+
+		// make flipbook size responsive
 		@media (max-width: 1050px) {
 			transform: scale(0.85);
-		 }
+		}
+
 		@media (max-width: 920px) {
 			transform: scale(0.65);
-		 }
+		}
+
 		@media (max-width: 800px) {
-			transform: scale(0.60)translateX(-25%);
-		 }
+			transform: scale(0.60)translateX(0%);
+		}
+
 		@media (max-width: 630px) {
-			transform: scale(0.40)translateX(-25%);
-		 }
+			transform: scale(0.40)translateX(0%);
+		}
 	}
 
 
@@ -41,47 +60,74 @@
 
 		// filter:brightness(0.5) !important;
 		&:before {
+			// MAIN TITLE
 			content: "Mythik";
 			font-family: bronzion;
 			display: flex;
 			font-size: xx-large;
 			transform: scale(2)translate(0%, -5%);
 			color: rgb(11, 0, 0);
-			text-shadow: #14001b7c 1px 1px 4px;
+			text-shadow: #ede8ee7c 1px 1px 4px;
 			align-items: center;
 			justify-content: center;
 			position: absolute;
 			z-index: 0;
 			width: 100%;
 			height: 100%;
-			background: var(--fire_light_effect-uniform) !important;
+			background: var(--fire_light_effect-uniform);
+			@include bg-single-contain-center;
+			animation: flipbookTitleEffect 10s;
 		}
 
 		&:after {
+			// SUBTITLE
 			content: "Grimoire";
-			opacity: 0.7;
+			opacity: 1;
 			font-family: bronzion;
 			display: flex;
 			font-size: xx-large;
 			transform: scale(1)translate(0%, 60px);
-			color: rgb(213, 210, 227);
-			text-shadow: #14001b7c 1px 1px 4px;
+			color: rgba(213, 210, 227, 0.7);
+			text-shadow: #14001b7c 1px 1px 1px;
 			align-items: center;
 			justify-content: center;
 			position: absolute;
 			z-index: -1;
 			width: 100%;
 			height: 100%;
+			animation: flipbookTitleEffect 10s;
+			background: url(../../assets/flipbook-textures/zodiac_arena_filled.png),
+				rgba(255, 0, 0, 0);
+			@include bg-single-contain-center;
+			$bg-size: 98%;
+			background-size: $bg-size , $bg-size;
+			background-position: 50% 3%;
+		}
+	}
+
+	@keyframes flipbookTitleEffect {
+		0% {
+			// font-size: 3vw;
+			letter-spacing: 3vw;
+			text-shadow: -1px -1px 1px $title-color-pri, -10px -10px 10px $title-color-pri, 10px 10px 10px $title-color-sec, 1px 1px 1px $title-color-sec ;
+			filter: blur(2px) brightness(3) hue-rotate(10deg)contrast(2);
+		}
+
+		50% {
+			letter-spacing: normal;
+		}
+
+		100% {
+			filter: brightness(1)hue-rotate(0), contrast(1), blur(0px);
 		}
 	}
 
 
 
-
-
+	// EFFECT OF COVER HOVER
 	flipbook .cover:first-of-type,
 	flipbook .cover:last-of-type {
-		transition: 0.1s;
+		transition: 0.3s;
 
 		&:hover {
 			filter: saturate(2)
@@ -90,16 +136,7 @@
 
 
 
-	.sj-book .capital:first-letter {
-		display: block;
-		float: left;
-		font-size: 300%;
-		line-height: 70%;
-		margin-right: 6px;
-		margin-top: 7px;
-		margin-left: 18px;
-	}
-
+	// BINDING RINGS
 	flipbook:after {
 		content: "";
 		position: absolute;
@@ -114,9 +151,12 @@
 		filter: brightness(0.75);
 		background-size: contain;
 		// background-repeat: repeat;
-		height: 70%;
+		height: 90%;
 		width: 2%;
 	}
+
+
+
 
 
 	// ALL PAGES EXCEPT COVERS
@@ -127,14 +167,16 @@
 		background-position-x: left;
 		opacity: 1;
 
+		// darken space between pages
 		&:after {
 			display: flex;
 			content: "";
-			background: linear-gradient(0.25turn, rgba(255, 255, 255, 0) 95%, rgba(45, 25, 0, 0.26) 99.9%, rgba(45, 25, 0, 0.916) 100%);
+			background: linear-gradient(0.25turn, rgba(255, 255, 255, 0) 95%, rgba(45, 25, 0, 0.26) 99.8%, rgba(45, 25, 0, 0.916) 100%);
 			height: 100%;
 			width: 100%;
 		}
 
+		// filter over each page
 		&:before {
 			content: "";
 			display: block;
@@ -143,22 +185,61 @@
 			width: 100%;
 			top: 0px !important;
 			background: var(--fire_light_effect-pages) !important;
-			opacity: 0.2;
-			filter: blur()10px;
+			opacity: 0.3;
+			filter: blur(10px);
 		}
 	}
 
-	// TARGET BACK OF COVER:
+	// TARGET BACK OF FRONT COVER:
 	flipbook-page .cover+.page {
 		// background-color: red !important;
+		opacity: 1 !important;
+
+		&::after {
+			// overlay cover image, to slightly blend it into the back
+			content: "";
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			background: url(../../assets/flipbook-textures/grimoire-cover2.jpeg);
+			@include bg-single-contain-center;
+			background-size: 100% 100%;
+			opacity: 0.3;
+		}
+	}
+
+	// TARGET BACK OF BACK COVER:
+	.bookCoverBack .page:not(.cover) {
+		// background-color: red !important;
+		opacity: 1 !important;
+
+		&::after {
+			// overlay cover image, to slightly blend it into the back
+			content: "";
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			background: url(../../assets/flipbook-textures/grimoire-cover2.jpeg) !important;
+			@include bg-single-contain-center;
+			background-size: 100% 100% !important;
+			opacity: 0.3;
+		}
 	}
 
 
+
+
+	// ALL PAGES / COVERS
 	flipbook-page .page {
-		box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
 		overflow: hidden;
 		cursor: url(../../assets/cursors/middle-ages-pointer-32x32.png), pointer;
-
+		// ADD SHADOW EFFECT TO EVERY PAGE
+		// box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
+		filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.1));
 	}
 
 
@@ -169,6 +250,8 @@
 		background-repeat: no-repeat;
 		background-size: contain;
 	}
+
+
 
 	.page_content {
 		color: green;
@@ -195,7 +278,6 @@
 		50% {
 			opacity: 1;
 			filter: brightness(10)blur(10px)drop-shadow(0 0 15px rgb(255, 255, 0));
-
 		}
 
 		100% {
@@ -211,12 +293,16 @@
 		justify-content: center;
 		position: relative;
 		margin: 50px 50px;
-		height: 80%;
+		height: 85%;
 		width: 75%;
 		font-family: "Lugrasimo", "eb_garamond", "notoserif_tc", "notoserif_jp", "grandiflora";
 		color: rgba(78, 2, 2, 0.75);
-		overflow: hidden;
+		overflow:hidden;
 		opacity: 0.9;
+
+		// fade corners of text
+		--mask: radial-gradient( ellipse, black 20%, transparent);
+		mask: var(--mask);
 
 		// filter: blur(1px);
 		&.side0 {
@@ -254,6 +340,18 @@
 			height: 90%;
 		}
 	}
+
+
+	.sj-book .capital:first-letter {
+		display: block;
+		float: left;
+		font-size: 300%;
+		line-height: 70%;
+		margin-right: 6px;
+		margin-top: 7px;
+		margin-left: 18px;
+	}
+
 
 	#firstPage {
 		margin: auto;
@@ -492,4 +590,130 @@
 
 	}
 
+}
+
+
+
+#firelight_effect {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	opacity: 1;
+	z-index: 10;
+	pointer-events: none; // to be able to click-through
+	background-color: rgba(255, 0, 0, 0.00);
+	animation: firelight_effect 1s alternate infinite;
+}
+
+@keyframes firelight_effect {
+	0% {
+		background-color: rgba(255, 0, 0, 0.00);
+	}
+
+	10% {
+		background-color: rgba(255, 0, 0, 0.001);
+	}
+
+	20% {
+		background-color: rgba(205, 133, 0, 0.01);
+	}
+
+	40% {
+		background-color: rgba(174, 153, 36, 0.05);
+	}
+
+	60% {
+		background-color: rgba(80, 62, 51, 0.005);
+	}
+
+	80% {
+		background-color: rgba(189, 0, 60, 0.05);
+	}
+
+	100% {
+		background-color: rgba(15, 6, 0, 0.01);
+	}
+}
+
+
+body #firewall {
+	position: absolute;
+	pointer-events: none;
+	display: flex;
+	visibility: hidden;
+	width: 100vw;
+	justify-content: center;
+	top: 50vh;
+
+	// animation: fireAppear 1s ease-in;
+	img {
+		opacity: 0.1;
+		z-index: 2000;
+		background: url("../../assets/fire.gif");
+		animation: fire_effect 2s infinite;
+		display: none;
+	}
+
+	&::before {
+		content: "";
+		display: block;
+		position: absolute;
+		right: 0;
+		bottom: -1%;
+		left: 0;
+		width: 100%;
+		height: 70%;
+		opacity: 0.3;
+		z-index: 20;
+		background: url("../../assets/fire.gif");
+		animation: fire_effect 1s infinite;
+		// filter: blur(3px)brightness(1.5);
+		//background-repeat: no-repeat;
+	}
+}
+
+@keyframes fireAppear {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes fire_effect {
+	0% {
+		filter: blur(3px)brightness(3);
+		transform: scaleY(1);
+	}
+
+	50% {
+		transform: scaleY(1.1);
+		filter: blur(1px)brightness(2);
+	}
+
+	100% {
+		filter: blur(5px)brightness(1.5);
+		transform: scaleY(1);
+	}
+}
+
+.grimoireAway {
+	transition: 1.25s;
+	transform: translateY(-100vh);
+	filter: blur(10px)brightness(0.1)drop-shadow(0 0 30px $title-color-pri);
+
+	.page.cover {
+
+		&:before,
+		&:after {
+			transition: 0.2s;
+			text-shadow: 0 0 10px $title-color-sec, 0 0 30px $title-color-pri, 0 0 50px $title-color-pri !important;
+		}
+	}
 }

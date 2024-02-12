@@ -28,12 +28,12 @@
 }
 @media (max-width: 800px) {
   .flipbook_container flipbook {
-    transform: scale(0.6) translateX(-25%);
+    transform: scale(0.6) translateX(0%);
   }
 }
 @media (max-width: 630px) {
   .flipbook_container flipbook {
-    transform: scale(0.4) translateX(-25%);
+    transform: scale(0.4) translateX(0%);
   }
 }
 .flipbook_container flipbook .cover:first-of-type:before {
@@ -43,47 +43,62 @@
   font-size: xx-large;
   transform: scale(2) translate(0%, -5%);
   color: rgb(11, 0, 0);
-  text-shadow: rgba(20, 0, 27, 0.4862745098) 1px 1px 4px;
+  text-shadow: rgba(237, 232, 238, 0.4862745098) 1px 1px 4px;
   align-items: center;
   justify-content: center;
   position: absolute;
   z-index: 0;
   width: 100%;
   height: 100%;
-  background: var(--fire_light_effect-uniform) !important;
+  background: var(--fire_light_effect-uniform);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: flipbookTitleEffect 10s;
 }
 .flipbook_container flipbook .cover:first-of-type:after {
   content: "Grimoire";
-  opacity: 0.7;
+  opacity: 1;
   font-family: bronzion;
   display: flex;
   font-size: xx-large;
   transform: scale(1) translate(0%, 60px);
-  color: rgb(213, 210, 227);
-  text-shadow: rgba(20, 0, 27, 0.4862745098) 1px 1px 4px;
+  color: rgba(213, 210, 227, 0.7);
+  text-shadow: rgba(20, 0, 27, 0.4862745098) 1px 1px 1px;
   align-items: center;
   justify-content: center;
   position: absolute;
   z-index: -1;
   width: 100%;
   height: 100%;
+  animation: flipbookTitleEffect 10s;
+  background: url(../../assets/flipbook-textures/zodiac_arena_filled.png), rgba(255, 0, 0, 0);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 98%, 98%;
+  background-position: 50% 3%;
+}
+@keyframes flipbookTitleEffect {
+  0% {
+    letter-spacing: 3vw;
+    text-shadow: -1px -1px 1px rgb(193, 0, 0), -10px -10px 10px rgb(193, 0, 0), 10px 10px 10px rgb(0, 100, 0), 1px 1px 1px rgb(0, 100, 0);
+    filter: blur(2px) brightness(3) hue-rotate(10deg) contrast(2);
+  }
+  50% {
+    letter-spacing: normal;
+  }
+  100% {
+    filter: brightness(1) hue-rotate(0), contrast(1), blur(0px);
+  }
 }
 .flipbook_container flipbook .cover:first-of-type,
 .flipbook_container flipbook .cover:last-of-type {
-  transition: 0.1s;
+  transition: 0.3s;
 }
 .flipbook_container flipbook .cover:first-of-type:hover,
 .flipbook_container flipbook .cover:last-of-type:hover {
   filter: saturate(2);
-}
-.flipbook_container .sj-book .capital:first-letter {
-  display: block;
-  float: left;
-  font-size: 300%;
-  line-height: 70%;
-  margin-right: 6px;
-  margin-top: 7px;
-  margin-left: 18px;
 }
 .flipbook_container flipbook:after {
   content: "";
@@ -97,7 +112,7 @@
   background: url(../../assets/flipbook-textures/ring.png);
   filter: brightness(0.75);
   background-size: contain;
-  height: 70%;
+  height: 90%;
   width: 2%;
 }
 .flipbook_container flipbook-page .page:not(.cover) {
@@ -110,7 +125,7 @@
 .flipbook_container flipbook-page .page:not(.cover):after {
   display: flex;
   content: "";
-  background: linear-gradient(0.25turn, rgba(255, 255, 255, 0) 95%, rgba(45, 25, 0, 0.26) 99.9%, rgba(45, 25, 0, 0.916) 100%);
+  background: linear-gradient(0.25turn, rgba(255, 255, 255, 0) 95%, rgba(45, 25, 0, 0.26) 99.8%, rgba(45, 25, 0, 0.916) 100%);
   height: 100%;
   width: 100%;
 }
@@ -122,13 +137,47 @@
   width: 100%;
   top: 0px !important;
   background: var(--fire_light_effect-pages) !important;
-  opacity: 0.2;
-  filter: blur() 10px;
+  opacity: 0.3;
+  filter: blur(10px);
+}
+.flipbook_container flipbook-page .cover + .page {
+  opacity: 1 !important;
+}
+.flipbook_container flipbook-page .cover + .page::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background: url(../../assets/flipbook-textures/grimoire-cover2.jpeg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  opacity: 0.3;
+}
+.flipbook_container .bookCoverBack .page:not(.cover) {
+  opacity: 1 !important;
+}
+.flipbook_container .bookCoverBack .page:not(.cover)::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background: url(../../assets/flipbook-textures/grimoire-cover2.jpeg) !important;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100% !important;
+  opacity: 0.3;
 }
 .flipbook_container flipbook-page .page {
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
   overflow: hidden;
   cursor: url(../../assets/cursors/middle-ages-pointer-32x32.png), pointer;
+  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.1));
 }
 .flipbook_container .stain {
   display: flex;
@@ -170,12 +219,15 @@
   justify-content: center;
   position: relative;
   margin: 50px 50px;
-  height: 80%;
+  height: 85%;
   width: 75%;
   font-family: "Lugrasimo", "eb_garamond", "notoserif_tc", "notoserif_jp", "grandiflora";
   color: rgba(78, 2, 2, 0.75);
   overflow: hidden;
   opacity: 0.9;
+  --mask: radial-gradient( ellipse, black 20%, transparent);
+  -webkit-mask: var(--mask);
+          mask: var(--mask);
 }
 .flipbook_container .mocktext.side0 {
   transform: scaleX(-1);
@@ -203,6 +255,15 @@
   background-color: rgba(60, 255, 0, 0.1);
   width: 45%;
   height: 90%;
+}
+.flipbook_container .sj-book .capital:first-letter {
+  display: block;
+  float: left;
+  font-size: 300%;
+  line-height: 70%;
+  margin-right: 6px;
+  margin-top: 7px;
+  margin-left: 18px;
 }
 .flipbook_container #firstPage {
   margin: auto;
@@ -399,4 +460,105 @@
   to {
     opacity: 0;
   }
+}
+
+#firelight_effect {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 1;
+  z-index: 10;
+  pointer-events: none;
+  background-color: rgba(255, 0, 0, 0);
+  animation: firelight_effect 1s alternate infinite;
+}
+
+@keyframes firelight_effect {
+  0% {
+    background-color: rgba(255, 0, 0, 0);
+  }
+  10% {
+    background-color: rgba(255, 0, 0, 0.001);
+  }
+  20% {
+    background-color: rgba(205, 133, 0, 0.01);
+  }
+  40% {
+    background-color: rgba(174, 153, 36, 0.05);
+  }
+  60% {
+    background-color: rgba(80, 62, 51, 0.005);
+  }
+  80% {
+    background-color: rgba(189, 0, 60, 0.05);
+  }
+  100% {
+    background-color: rgba(15, 6, 0, 0.01);
+  }
+}
+body #firewall {
+  position: absolute;
+  pointer-events: none;
+  display: flex;
+  visibility: hidden;
+  width: 100vw;
+  justify-content: center;
+  top: 50vh;
+}
+body #firewall img {
+  opacity: 0.1;
+  z-index: 2000;
+  background: url("../../assets/fire.gif");
+  animation: fire_effect 2s infinite;
+  display: none;
+}
+body #firewall::before {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: -1%;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  opacity: 0.3;
+  z-index: 20;
+  background: url("../../assets/fire.gif");
+  animation: fire_effect 1s infinite;
+}
+
+@keyframes fireAppear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fire_effect {
+  0% {
+    filter: blur(3px) brightness(3);
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.1);
+    filter: blur(1px) brightness(2);
+  }
+  100% {
+    filter: blur(5px) brightness(1.5);
+    transform: scaleY(1);
+  }
+}
+.grimoireAway {
+  transition: 1.25s;
+  transform: translateY(-100vh);
+  filter: blur(10px) brightness(0.1) drop-shadow(0 0 30px rgb(193, 0, 0));
+}
+.grimoireAway .page.cover:before, .grimoireAway .page.cover:after {
+  transition: 0.2s;
+  text-shadow: 0 0 10px rgb(0, 100, 0), 0 0 30px rgb(193, 0, 0), 0 0 50px rgb(193, 0, 0) !important;
 }/*# sourceMappingURL=grimoire.component.css.map */

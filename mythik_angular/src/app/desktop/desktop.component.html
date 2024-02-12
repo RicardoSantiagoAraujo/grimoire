@@ -11,7 +11,7 @@
 
 <body>
   <section>
-    <app-grimoire></app-grimoire>
+    <app-grimoire [exitGrimoire]="exitGrimoire"></app-grimoire>
 
     <div class="desktop_prop" id="map">
       <img src="../../assets/flipbook-textures/map.png">
@@ -35,17 +35,11 @@
       <div id="key"></div>
     </div>
 
-    <!-- <div id="firelight_effect"></div>
-
-  <div id="firewall">
-    <img src="">
-    <img src="">
-    <img src="">
-  </div> -->
 
     <div>
       <div id="retour_grimoire">
-        <a [routerLink]="['/accueil']" routerLinkActive="active">
+        <!-- <a [routerLink]="['/accueil']" routerLinkActive="active"> -->
+        <a>
           <button type="button" class="button" (click)="exitAnimation()">Retour</button>
         </a>
         <div id="page_marker"></div>
