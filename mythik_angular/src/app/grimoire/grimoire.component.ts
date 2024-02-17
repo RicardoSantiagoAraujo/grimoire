@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation , Input, OnChanges, SimpleChanges,
 import { Book, PageType } from '@labsforge/flipbook';
 import { CreatureService } from '../creature/creature.service';
 import { Creature } from '../model';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-grimoire',
@@ -15,11 +16,14 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
   @Input() exitGrimoire : boolean = false;
   ouvrirLivre_interval: any;
   ouvrirSectionGrimoire_interval: any;
+  user_id: string;
 
   creatures?: Creature[];
-  constructor(private creatureService: CreatureService) {
-    this.creatureService.findAll().subscribe(resp => { this.creatures = resp })
+  constructor(private creatureService: CreatureService, private authService: AuthService) {
+    this.creatureService.findAll().subscribe(resp => { this.creatures = resp });
+    this.user_id = this.authService.getCompte()!.login!;
   }
+
 
   ngOnInit(): void {
     this.fillBook()
@@ -216,7 +220,7 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
 
             // random bgs in mock pages
             mocktext.style.opacity = `${0.9-Math.random()/2}`;
-            const bg_probability = 1; // probability of getting a bg: fraction of 1
+            const bg_probability = 1/2; // probability of getting a bg: fraction of 1
             let random_bg_i = Math.floor(Math.random() * mock_bgs.length / bg_probability);
             mocktext.style.background = `${mock_bgs[random_bg_i]}`;
             let bg_size = Math.floor( 30 + Math.random()* 60);
@@ -326,7 +330,9 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
       const preambleBack = preamble.querySelector<HTMLElement>(".back")!;
       preambleBack.innerHTML = "<div id=preamble>" +
         // "<img id='img_middle' src='../../assets/flipbook-textures/witchcraft_sigil.png'>" +
-        "<p><span>C</span>e qui suit est la section magique de ce grimoire qui permet au lecteur audacieux d'explorer la collection de créatures mythologiques qu'il contient. Tournez la page si vous l'osez, puis utilisez les boutons pour naviguer.</p>" +
+        `<p><span id="first_letter">B</span>ienvenue,
+            <span id="user_id">${this.user_id}</span>.</p>` +
+        "<p>Ce qui suit est la section magique de ce grimoire qui permet au lecteur audacieux d'explorer la collection de créatures mythologiques qu'il contient. Tournez la page si vous l'osez, puis utilisez les boutons pour naviguer.</p>" +
         "<img  src='assets/flipbook-textures/tree2.png'/>" +
       "</div>";
 
@@ -370,7 +376,7 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
         });
         };
       }
-      this.ouvrirSectionGrimoire_interval = setInterval(ouvrirSectionGrimoire, 100)
+      // this.ouvrirSectionGrimoire_interval = setInterval(ouvrirSectionGrimoire, 100)
 
 
     }, this.timeOut)

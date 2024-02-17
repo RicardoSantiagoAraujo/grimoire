@@ -364,11 +364,18 @@
   height: 100%;
   width: 80%;
   margin: auto;
-  line-height: 3vw;
+  line-height: 2.5vw;
 }
-.flipbook_container #preamble span {
-  color: #470000;
+.flipbook_container #preamble #first_letter {
+  color: rgb(0, 100, 0);
+  font-family: "bronzion";
   font-size: 4vw;
+}
+.flipbook_container #preamble #user_id {
+  margin-top: 3vw;
+  text-transform: capitalize;
+  color: #470000;
+  text-shadow: 0 0 10px rgb(193, 0, 0);
 }
 .flipbook_container #preamble img {
   width: 40%;
