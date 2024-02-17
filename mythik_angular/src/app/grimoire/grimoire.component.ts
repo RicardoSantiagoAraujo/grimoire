@@ -200,7 +200,7 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
             let rnd = Math.floor(Math.random() * lorem_array.length) // generate random number
             let lorem = lorem_array[rnd]; // random text
             lorem_array.splice(rnd, 1); // remove from array
-            pages[i + p].innerHTML = "<div class='mocktext stain " + "side_" + pageside + "'>" + lorem + "</div>";
+            pages[i + p].innerHTML = "<div class='mocktext stained " + "side_" + pageside + "'>" + lorem + "</div>";
 
             // change text
             let mocktext = pages[i + p].querySelector<HTMLElement>(".mocktext")!;
@@ -219,14 +219,13 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
             var stained_page = document.createElement("div");
             pages[i + p].appendChild(stained_page);
             stained_page.style.position="absolute";
-            stained_page.style.top="0";
-            stained_page.style.left="0";
-            stained_page.style.height= "100%";
-            stained_page.style.width= "100%";
+            stained_page.style.top=`${Math.floor(Math.random() * 90)}%`;
+            stained_page.style.left=`${Math.floor(Math.random() * 90)}%`;
             stained_page.style.opacity = `${Math.random()}`;
             stained_page.style.transform = `rotate(${Math.floor(Math.random() * 360)}deg)`;
-            stained_page.style.width = `${Math.floor(Math.random() * 25)}%`;
-            stained_page.style.background = `url(../../assets/flipbook-textures/stain${Math.floor(Math.random() * 5)}.png)`;
+            stained_page.style.width = `${Math.floor(Math.random() * 50)}%`;
+
+            stained_page.style.background = `url(../../assets/flipbook-textures/stain${Math.round(Math.random() * 5)}.png)`;
             // console.log(stain.style.background);
           }
         }

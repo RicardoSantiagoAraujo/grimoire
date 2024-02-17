@@ -242,12 +242,15 @@
 	}
 
 	// random stains
-	.stain {
+	.stained + div{
 		display: flex;
 		position: absolute;
-		height: 100%;
-		background-repeat: no-repeat;
-		background-size: contain;
+		height: auto !important;
+		aspect-ratio: 1 !important;
+		// background-color: rgba(255, 0, 0, 0.515) !important;
+		background-size: contain !important;
+		background-position: center !important;
+		background-repeat: no-repeat !important;
 	}
 
 
@@ -427,8 +430,8 @@
 		flex-direction: column;
 		color: rgba(41, 0, 0, 0.689);
 		font-family: "Lugrasimo";
-		height: 100%;
-		width: 90%;
+		height: 90%;
+		width: 85%;
 		background-image: url("../../assets/flipbook-textures/page_decoration2.png");
 		background-size: contain;
 		background-repeat: no-repeat;

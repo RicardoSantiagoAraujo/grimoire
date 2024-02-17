@@ -180,12 +180,14 @@
   cursor: url(../../assets/cursors/middle-ages-pointer-32x32.png), pointer;
   filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.1));
 }
-.flipbook_container .stain {
+.flipbook_container .stained + div {
   display: flex;
   position: absolute;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-size: contain;
+  height: auto !important;
+  aspect-ratio: 1 !important;
+  background-size: contain !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
 }
 .flipbook_container .page_content {
   color: green;
@@ -330,8 +332,8 @@
   flex-direction: column;
   color: rgba(41, 0, 0, 0.689);
   font-family: "Lugrasimo";
-  height: 100%;
-  width: 90%;
+  height: 90%;
+  width: 85%;
   background-image: url("../../assets/flipbook-textures/page_decoration2.png");
   background-size: contain;
   background-repeat: no-repeat;
