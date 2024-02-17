@@ -5,15 +5,15 @@
 
 $propshadow: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.7));
 #map{
-	img{
-	display: flex;
 	position: absolute;
 	top:-40%;
 	left: -10%;
+	z-index: -2;
+	img{
+	display: flex;
 	height: 60vmin;
 	// width: 100%;
 	transform:rotate(30deg);
-	z-index: 0;
 	filter:brightness(0.7) $propshadow;
 }
 }
@@ -29,7 +29,7 @@ $propshadow: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.7));
 	left:40%;
 	height: 60%;
 	transform:rotate(50deg);
-	z-index: 0;
+	z-index: -2;
 	justify-content: center;
 	filter:brightness(0.7) $propshadow;
 	&:after{
@@ -268,3 +268,24 @@ $propshadow: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.7));
 	//   transform: translateY(-10vh);
 	}
   }
+
+
+  #insect_track{
+	position: absolute;
+	width: 200vw;
+	height: 10vh;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	transform-origin: center;
+	z-index: -1; // place below books, above paper sheets
+	// background-color: rgba(204, 0, 0, 0.448);
+	img{
+		position: absolute;
+		right:0%; // if change is needed, function in .ts probably must be updated too
+		width: 10vmax;
+		height: auto;
+		background: radial-gradient(closest-side,black, transparent 35%);
+		filter: drop-shadow(0 0 3px black);
+	}
+}

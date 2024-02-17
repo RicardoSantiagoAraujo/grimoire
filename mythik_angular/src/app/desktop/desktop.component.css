@@ -1,11 +1,13 @@
-#map img {
-  display: flex;
+#map {
   position: absolute;
   top: -40%;
   left: -10%;
+  z-index: -2;
+}
+#map img {
+  display: flex;
   height: 60vmin;
   transform: rotate(30deg);
-  z-index: 0;
   filter: brightness(0.7) drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.7));
 }
 
@@ -20,7 +22,7 @@
   left: 40%;
   height: 60%;
   transform: rotate(50deg);
-  z-index: 0;
+  z-index: -2;
   justify-content: center;
   filter: brightness(0.7) drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.7));
 }
@@ -251,4 +253,22 @@
   100% {
     opacity: 0;
   }
+}
+#insect_track {
+  position: absolute;
+  width: 200vw;
+  height: 10vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center;
+  z-index: -1;
+}
+#insect_track img {
+  position: absolute;
+  right: 0%;
+  width: 10vmax;
+  height: auto;
+  background: radial-gradient(closest-side, black, transparent 35%);
+  filter: drop-shadow(0 0 3px black);
 }/*# sourceMappingURL=desktop.component.css.map */
