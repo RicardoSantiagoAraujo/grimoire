@@ -912,10 +912,10 @@ svg#spinner_target circle {
   z-index: 1000000000000000000000000;
 }
 .round_winner .img_wrapper.img_player {
-  animation: roundWinner_player;
+  animation: roundWinner_player var(--time-to-impact);
 }
 .round_winner .img_wrapper.img_adv {
-  animation: roundWinner_adv;
+  animation: roundWinner_adv var(--time-to-impact);
 }
 .round_winner .img_wrapper.img_player .attack, .round_winner .img_wrapper.img_adv .attack {
   height: 100%;

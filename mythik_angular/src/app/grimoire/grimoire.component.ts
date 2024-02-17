@@ -367,12 +367,16 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
           document.querySelector<HTMLElement>(".creature_pages")!.style.display = "flex";
           document.querySelectorAll<HTMLElement>(".magic_effect")!.forEach(page => {
             page.classList.add("fadeRing");
+          document.querySelector<HTMLElement>("#firewall")!.classList.remove("neutral_fire");
+          document.querySelector<HTMLElement>("#desktop_glow_wrapper")!.classList.add("desktop_glow_ON");
         });
           console.log("OPEN GRIMOIRE SECTION")
         } else { // CLOSE
           document.querySelector<HTMLElement>(".creature_pages")!.style.display = "none";
           document.querySelectorAll<HTMLElement>(".magic_effect")!.forEach(page => {
             page.classList.remove("fadeRing") ;
+          document.querySelector<HTMLElement>("#firewall")!.classList.add("neutral_fire");
+          document.querySelector<HTMLElement>("#desktop_glow_wrapper")!.classList.remove("desktop_glow_ON");
         });
         };
       }
@@ -476,6 +480,26 @@ firestart() {
       console.log("TEST FIRE START")
     }, index * 1000)
   })
+}
+
+// receiving selected Creature from child component via output
+receiveSelectedCreature(selectedCreature: Creature) {
+  console.log(selectedCreature.typeElement)
+
+  let hue_rotation;
+  let color;
+  switch (selectedCreature.typeElement) {
+    case "feu" : hue_rotation= -25;
+    color= "red"; break;
+    case "eau" : hue_rotation= 180;
+    color= "blue"; break;
+    case "terre" : hue_rotation= 55;
+    color= "green"; break;
+    case "air" : hue_rotation= 15;
+    color= "yellow"; break;
+  }
+  document.querySelector<HTMLElement>("#firewall")!.style.filter=`hue-rotate(${hue_rotation}deg)`;
+  document.querySelector<HTMLElement>("#desktop_glow")!.style.filter=`blur(5px)drop-shadow(0 0 1px ${color})drop-shadow(0 0 5px ${color})`;
 }
 
 }

@@ -34,8 +34,13 @@ export class DesktopComponent implements OnInit {
     let insect_track = document.querySelector<HTMLElement>("#insect_track")!;
     let insect = document.querySelector<HTMLElement>("#insect_track img")!;
     let random_angle =  Math.round(Math.random() * 360);
-    insect_track.style.transform = `translate(-50%,-50%) rotate(${random_angle}deg)`;
-    insect.style.transition = "right " + speed/1000 + "s";
+
+    // add some noise to positioning, centered on 50%
+    const noise = 10;
+    let posX =  Math.round(50 + Math.random() * noise*2 - noise);
+    let posY =  Math.round(50 + Math.random() * noise*2 - noise);
+    insect_track.style.transform = `translate(-${posX}%,-${posY}%) rotate(${random_angle}deg)`;
+    insect.style.transition = "right " + speed/1000 + "s linear";
     if (insect.style.right == "0%"){ // GO BACK
       insect.style.right= "100%";
       insect.style.transform= "scaleX(1)";

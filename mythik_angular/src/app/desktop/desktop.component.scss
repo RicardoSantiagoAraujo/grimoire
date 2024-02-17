@@ -1,6 +1,9 @@
 @use '../../mixins' as *;
 @use '../../variables' as *;
 
+section #desktop_glow{ // do not remove
+	background: url(../../assets/flipbook-textures/wood-texture_glow.png);
+}
 
 
 $propshadow: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.7));

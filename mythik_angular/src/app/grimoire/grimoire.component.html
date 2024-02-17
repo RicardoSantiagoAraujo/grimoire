@@ -1,7 +1,7 @@
 <div class="flipbook_container">
     <div class="creature_pages">
         <div class="creature_pages_content">
-            <app-creature-pages-content></app-creature-pages-content>
+            <app-creature-pages-content (CreatureEvent)="receiveSelectedCreature($event)"></app-creature-pages-content>
         </div>
     </div>
     <div class="flipbook_wrapper">
@@ -9,8 +9,11 @@
     </div>
 </div>
 
-<div id="firelight_effect"></div>
+<div id="desktop_glow_wrapper">
+    <div id="desktop_glow"></div>
+</div>
 
+<div id="firelight_effect"></div>
 
 <div id="firewall">
     <img src="">

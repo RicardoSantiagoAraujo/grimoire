@@ -1,3 +1,7 @@
+section #desktop_glow {
+  background: url(../../assets/flipbook-textures/wood-texture_glow.png);
+}
+
 #map {
   position: absolute;
   top: -40%;

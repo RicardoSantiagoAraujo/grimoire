@@ -1046,13 +1046,13 @@ svg#spinner_target {
 
 .round_winner .img_wrapper {
   &.img_player {
-    animation: roundWinner_player;
+    animation: roundWinner_player var(--time-to-impact);
   }
 
   ;
 
   &.img_adv {
-    animation: roundWinner_adv;
+    animation: roundWinner_adv var(--time-to-impact);
   }
 
   ;
