@@ -228,6 +228,7 @@
   color: rgba(78, 2, 2, 0.75);
   overflow: hidden;
   opacity: 0.9;
+  background-repeat: no-repeat !important;
   --mask: radial-gradient( ellipse, black 20%, transparent);
   -webkit-mask: var(--mask);
           mask: var(--mask);
@@ -352,6 +353,26 @@
   to {
     transform: rotate(-2deg);
   }
+}
+.flipbook_container #preamble {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2vw;
+  color: rgba(71, 0, 0, 0.5);
+  height: 100%;
+  width: 80%;
+  margin: auto;
+  line-height: 3vw;
+}
+.flipbook_container #preamble span {
+  color: #470000;
+  font-size: 4vw;
+}
+.flipbook_container #preamble img {
+  width: 40%;
+  opacity: 0.75;
 }
 .flipbook_container #creaturesStart {
   transform: scaleX(-1);

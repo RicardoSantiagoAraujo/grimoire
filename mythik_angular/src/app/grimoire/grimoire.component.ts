@@ -213,7 +213,18 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
             let random = Math.floor(Math.random() * textColors.length);
             let randomColor= textColors[random];
             mocktext.style.color  = randomColor;
+
+            // random bgs in mock pages
             mocktext.style.opacity = `${0.9-Math.random()/2}`;
+            const bg_probability = 1; // probability of getting a bg: fraction of 1
+            let random_bg_i = Math.floor(Math.random() * mock_bgs.length / bg_probability);
+            mocktext.style.background = `${mock_bgs[random_bg_i]}`;
+            let bg_size = Math.floor( 30 + Math.random()* 60);
+            mocktext.style.backgroundSize = `${bg_size}% auto`;
+            mocktext.style.backgroundPosition = `${["top, center", "center, center", "bottom, center"][Math.floor(Math.random()*3)]}`;
+            console.log(`${["top, center", "center, center", "bottom, center"][Math.floor(Math.random()*3)]}`);
+            mock_bgs.splice(random_bg_i, 1); // remove it so it does not repeat
+            console.log(mock_bgs);
 
             // ADD STAINS
             var stained_page = document.createElement("div");
@@ -275,7 +286,7 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
       this.ouvrirLivre_interval= setInterval(ouvrirLivre, 1000)
 
 
-      // FIRST PAGE
+      // ===== FIRST PAGE
       //front
       const firstPage = sheets[bookStart];
       const firstPageFront = firstPage.querySelector<HTMLElement>(".page")!;
@@ -291,7 +302,7 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
       const firstPageBack = firstPage.querySelector<HTMLElement>(".back")!;
       firstPageBack.innerHTML = ""
       //
-      // LAST PAGE
+      // ===== LAST PAGE
       //front
       const lastPage = sheets[2]; // excludes back cover and transparent sheet
       const lastPageFront = lastPage.querySelector<HTMLElement>(".page")!;
@@ -305,7 +316,21 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
         "<img src='assets/flipbook-textures/duck.png'/>" +
         "</div>"
 
-      // CREATURE SHEET 1
+
+      // ===== PREAMBLE TO GRIMOIRE
+      //front
+      const preamble = sheets[bookStart - 1];
+      const preambleFront = preamble.querySelector<HTMLElement>(".page")!;
+      // preambleFront.innerHTML = "";
+      //back
+      const preambleBack = preamble.querySelector<HTMLElement>(".back")!;
+      preambleBack.innerHTML = "<div id=preamble>" +
+        // "<img id='img_middle' src='../../assets/flipbook-textures/witchcraft_sigil.png'>" +
+        "<p><span>C</span>e qui suit est la section magique de ce grimoire qui permet au lecteur audacieux d'explorer la collection de créatures mythologiques qu'il contient. Tournez la page si vous l'osez, puis utilisez les boutons pour naviguer.</p>" +
+        "<img  src='assets/flipbook-textures/tree2.png'/>" +
+      "</div>";
+
+      // ===== CREATURE SHEET 1
       //front
       const creatureSheet1 = sheets[bookStart - 2];
       const creatureSheet1Front = creatureSheet1.querySelector<HTMLElement>(".page")!;
@@ -315,7 +340,7 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
       //back
       const creatureSheet1Back = creatureSheet1.querySelector<HTMLElement>(".back")!;
       creatureSheet1Back.innerHTML = "<div class='magic_effect'></div>";
-      // CREATURE SHEET 2
+      // ===== CREATURE SHEET 2
       //front
       const creatureSheet2 = sheets[bookStart - 3];
       const creatureSheet2Front = creatureSheet2.querySelector<HTMLElement>(".page")!;
@@ -482,3 +507,33 @@ var lorem_array = ["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
   "ذلك أمدها اسبوعين إذ, الحكم اليابان، ما حدى. والكساد بالسيطرة المؤلّفة أما في, وتم كل يذكر شدّت وصافرات. و بتحدّي العمليات بحث, ثم بتخصيص الأراضي وباستثناء لكل. الساحل مسؤولية هو جُل, إيو عل اللا لأداء.به، حقول كردة حكومة ٣٠. بالرّد انتباه المبرمة أما كل, عُقر جزيرتي نفس بـ. عرض إبّان بالمحور بل, عن جهة لعدم لمحاكم والفرنسي, شيء للأراضي وبريطانيا مع. واحدة اوروبا من عرض, هامش وبولندا والروسية يتم أي.",
   "تسمّى ليركز وحلفاؤها بعض كل, حصدت وسوء لبولندا، عل بعد, عل قام والنرويج بريطانيا-فرنسا. لمّ إنطلاق مواقعها بل, شيء ثم شواطيء وبولندا تزامناً, لها بسبب وكسبت عن. بها بينما الإقتصادي ان, من غير دفّة فشكّل. غير فهرست وحرمان بمباركة و, كل صفحة قررت دون. هو صفحة جسيمة ومن. و سليمان، المتاخمة المشتّتون دنو, لم الخارجية الأمريكية هذا.", "", "لم تلك طوكيو الأخذ الأرضية. و جُل إعادة المضي وبعدما. أمّا الأوضاع بل بها, في لكون بمعارضة تحت. تطوير مشروط البرية وفي بل, إذ واُسدل للسيطرة تزامناً فصل, أي أوزار مهمّات فصل.",
   "شيء ٣٠ بولندا، الكونجرس استطاعوا. لغزو والديون تم كلا, ما حين تمهيد الأرض واقتصار. جزيرتي وتنصيب الا لم. السادس بمحاولة تلك أم. و لكل الصفحات وباستثناء, ٣٠ الأوروبية ويكيبيديا، هذه.٢٠٠٤ الذود أن بحث. إعلان يتبقّ الخارجية قد غير, انتباه الأرواح ضرب ثم. جدول وقبل العالمية في حيث. بقصف حلّت بل كان, مكن هو إعلان مقاومة, بعد لم وبعد أسابيع ا."]
+
+
+  var mock_bgs = [
+    "url(../../assets/flipbook-textures/mock_bgs/tree3.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/endless_knot.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/round_knot.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/triskelion.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/unicorn.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/dragon.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/cupid.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/wreath_bird.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/cupid_lion.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/dragon_skeleton.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/zodiac.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/knight.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/damsel.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/swordsman.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/dragon_cutout.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/medusa.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/greek_parade.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/scarab2.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/scarab.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/serpents.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/dance_macabre.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/tibet2.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/tibet.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/budah.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/chinese_dragon.png)"
+
+  ];
