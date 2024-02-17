@@ -20,7 +20,7 @@
 	animation-delay: 2s;
 	animation-fill-mode: forwards;
 
-	.flipbook_wrapper {
+	.flipbook_wrapper { // seems  to be needed to keep book centered in flipbook_container
 		// &:after{
 		// 	content: "HELLO";
 		// 	width: 100%;
@@ -34,8 +34,7 @@
 	}
 
 
-	flipbook {
-
+	flipbook, .creature_pages {
 		// make flipbook size responsive
 		@media (max-width: 1050px) {
 			transform: scale(0.85);
@@ -127,8 +126,8 @@
 	// EFFECT OF COVER HOVER
 	flipbook .cover:first-of-type,
 	flipbook .cover:last-of-type {
-		transition: 0.3s;
-
+		transition: 0.9s !important;
+		filter: saturate(1);
 		&:hover {
 			filter: saturate(2)
 		}
@@ -242,7 +241,7 @@
 		filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.1));
 	}
 
-
+	// random stains
 	.stain {
 		display: flex;
 		position: absolute;
@@ -305,53 +304,34 @@
 		mask: var(--mask);
 
 		// filter: blur(1px);
-		&.side0 {
+		&.side_right { // flip text on right side pages
 			transform: scaleX(-1);
 		}
 	}
 
-	.creature_pages {
+	.creature_pages { // container of both creature pages
 		pointer-events: none;
-		height: 105%;
-		width: 800px*1.2; // adjust according to book width in "test-flipbook.component.ts"
+		width: 800px * 1.2; // adjust according to book width in "test-flipbook.component.ts"
+		height: auto;
+		aspect-ratio: 4/2.3;
 		display: flex;
-		display: none;
 		flex-direction: row;
 		justify-content: space-around;
-		gap: 5px;
+		// gap: 5px;
 		align-items: center;
 		z-index: 10;
 		position: absolute;
 
+
 		// background-color: rgba(255, 255, 0, 0.1);
-		.creature_page_a {
+		.creature_pages_content {
 			position: relative;
-			// background-color: rgba(255, 0, 0, 0.1);
+			// background-color: rgba(255, 0, 0, 0.5);
 			// width: 45%;
-			width: 95%;
+			width: 100%;
 			height: 100%;
 		}
-
-		.creature_page_b {
-			// excluded
-			position: relative;
-			background-color: rgba(60, 255, 0, 0.1);
-			width: 45%;
-			height: 90%;
-		}
 	}
-
-
-	.sj-book .capital:first-letter {
-		display: block;
-		float: left;
-		font-size: 300%;
-		line-height: 70%;
-		margin-right: 6px;
-		margin-top: 7px;
-		margin-left: 18px;
-	}
-
 
 	#firstPage {
 		margin: auto;
@@ -360,7 +340,7 @@
 		align-items: center;
 		justify-content: center;
 		transform: scaleX(-1);
-		padding-top: 100px;
+		padding-top: 10%;
 		flex-direction: column;
 		color: rgba(41, 0, 0, 0.689);
 		font-family: "Lugrasimo";
@@ -370,29 +350,71 @@
 		background-size: contain;
 		background-repeat: no-repeat;
 		overflow: hidden;
+		// background-color: rgba(255, 0, 0, 0.313);
 
 		h1 {
-			color: rgba(194, 0, 0, 0.689);
+			color: $title-color-pri;
 			font-family: 'bronzion';
-			font-size: 100;
+			font-size: 6vmin;
+			text-transform:uppercase;
+			&::first-letter {
+				border-image: url(../../assets/flipbook-textures/floral.png) 100% 0%/ 2vw 0vw 0vw/ 1.5vw space;
+				color: $title-color-sec;
+				font-size: 9vmin;
+			}
 		}
 
 		h2 {
-			font-size: x-large;
-			padding-bottom: 50px;
+			font-size: 4vmin;
+			// padding-bottom: %;
+			&::first-letter {
+				font-family: 'bronzion';
+				font-size: 5vmin;
+				// background-color: pink;
+			}
 		}
 
 		p {
+			font-size: 2vmin;
 			width: 50%;
 			text-align: center;
-			padding-bottom: 100px;
+			padding: 5% 0px;
 		}
 
-		img {
-			width: 20%;
+		#img_middle {
+			width: 30%;
 			opacity: 0.3;
+			animation: sigilEffect 10s alternate infinite;
+			box-shadow: 0 0 10px black;
+			border-radius: 100%;
 		}
 
+		#img_bottom {
+			width: 20%;
+			opacity: 0.63;
+			// border-radius: 100%;
+			// box-shadow: 0 0 20px red;
+		}
+
+	}
+
+	@keyframes sigilEffect {
+		0%{
+			filter:drop-shadow(0 0 10px gold)brightness(2)contrast(1);
+			background: rgba(64, 0, 255, 0.402);
+			transform: scale(1)rotate(-5deg);
+		}
+
+		50%{
+			filter:drop-shadow(0 0 15px goldenrod)brightness(0.75)contrast(0.75);
+			background: rgba(128, 0, 128, 0.4);
+		}
+
+		100%{
+			filter:drop-shadow(0 0 5px purple)brightness(1.5)contrast(3);
+			background: rgba(255, 217, 0, 0.387);
+			transform: scale(1.05)rotate(5deg);
+		}
 	}
 
 	#lastPage {
@@ -410,6 +432,7 @@
 		background-image: url("../../assets/flipbook-textures/page_decoration2.png");
 		background-size: contain;
 		background-repeat: no-repeat;
+		text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.19);
 
 		// overflow: hidden;
 		img {
@@ -430,15 +453,14 @@
 		}
 	}
 
+	// PAGE BEFORE CREATURES SECTION
 	#creaturesStart {
 		transform: scaleX(-1);
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		color: rgba(41, 0, 0, 0.689);
+		color: rgba(41, 0, 0, 0.889);
 		font-family: "Stempel-Garamond-W01-Roman", "bronzion";
-		color: rgba(6, 106, 38, 0.51);
-		font-size: 40px;
 		height: 100%;
 		width: 100%;
 		background: radial-gradient(#e66465, #9198e5, #9198e500, #9198e500);
@@ -446,7 +468,6 @@
 
 		&::after {
 			content: "";
-			background-image: url("../../assets/flipbook-textures/celtic_frame.png");
 			position: absolute;
 			top: 50%;
 			right: 50%;
@@ -454,8 +475,11 @@
 			width: 80%;
 			transform: translate(50%, -50%);
 			opacity: 0.1;
-			background-size: contain;
+			z-index: -1;
+			background-size: cover;
 			background-repeat: no-repeat;
+			background: url("../../assets/flipbook-textures/floral_bg.png");
+			border-image:  url("../../assets/flipbook-textures/celtic_frame.png") 20% 20% /5vw 5vw /1vw round ;
 		}
 
 		div {
@@ -466,6 +490,7 @@
 			text-align: center;
 			width: 100%;
 			height: 50%;
+			letter-spacing: 1.0vw;
 			animation: glowText 0.4s ease-in-out infinite alternate;
 
 			&::after {
@@ -489,12 +514,14 @@
 		from {
 			text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--glowColor1), 0 0 40px var(--glowColor1), 0 0 50px var(--glowColor1), 0 0 60px var(--glowColor1), 0 0 70px var(--glowColor1);
 			transform: translateX(0.5px);
+			font-size: 3vw;
 		}
 
 		to {
 			text-shadow: 0 0 20px #fff, 0 0 30px var(--glowColor2), 0 0 40px var(--glowColor2), 0 0 50px var(--glowColor2), 0 0 60px var(--glowColor2), 0 0 70px var(--glowColor2), 0 0 80px var(--glowColor2);
 			transform: skew(90deg 90deg);
 			transform: translateX(-0.5px);
+			font-size: 3vw;
 		}
 	}
 
@@ -542,18 +569,27 @@
 	.magic_effect {
 		width: 100%;
 		height: 100%;
+		background: url(../../assets/flipbook-textures/zodiac_arena.png),
+		radial-gradient(circle closest-side,  white, transparent)
+		//radial-gradient(black, transparent 30%)
+		;
+		@include bg-single-contain-center;
+		background-size: 50%;
+		transform: scaleX(-1);
+		opacity: 1;
+		transition: 1s;
 
-		// background: radial-gradient(black, transparent 30%);
 		&::after {
 			content: "";
-			background-image: url("../../assets/flipbook-textures/celtic_knot.png");
+			background:
+			url("../../assets/flipbook-textures/celtic_knot.png");
 			position: absolute;
 			// top: 50%;
 			// right:50%;
 			height: 100%;
 			width: 100%;
 			// transform: translate(50%,-50%);
-			opacity: 0.1;
+			opacity: 0.2;
 			background-size: 300px 300px;
 			background-repeat: no-repeat;
 			background-position: center;
@@ -576,16 +612,21 @@
 
 	.fadeRing {
 		animation: fadeRing 1s;
-		animation-fill-mode: forwards;
+		opacity: 0;
 	}
 
 	@keyframes fadeRing {
-		from {
+		0% {
 			opacity: 1;
+			filter: drop-shadow(0 0 0 black);
 		}
 
-		to {
+		30%{
+			filter: drop-shadow(0 0 10px $title-color-pri);
+		}
+		100% {
 			opacity: 0;
+			filter: drop-shadow(0 0 0 black);
 		}
 
 	}
@@ -602,8 +643,9 @@
 	right: 0;
 	bottom: 0;
 	left: 0;
-	opacity: 1;
 	z-index: 10;
+	opacity: 0;
+	visibility:hidden;
 	pointer-events: none; // to be able to click-through
 	background-color: rgba(255, 0, 0, 0.00);
 	animation: firelight_effect 1s alternate infinite;
@@ -611,31 +653,38 @@
 
 @keyframes firelight_effect {
 	0% {
-		background-color: rgba(255, 0, 0, 0.00);
+		background-color: rgb(255, 0, 0);
+		opacity: 0;
 	}
 
 	10% {
-		background-color: rgba(255, 0, 0, 0.001);
+		background-color: rgb(255, 0, 0);
+		opacity: 0.001;
 	}
 
 	20% {
-		background-color: rgba(205, 133, 0, 0.01);
+		background-color: rgb(205, 133, 0);
+		opacity: 0.01;
 	}
 
 	40% {
-		background-color: rgba(174, 153, 36, 0.05);
+		background-color: rgb(174, 153, 36);
+		opacity: 0.05;
 	}
 
 	60% {
-		background-color: rgba(80, 62, 51, 0.005);
+		background-color: rgb(80, 62, 51);
+		opacity: 0.005;
 	}
 
 	80% {
-		background-color: rgba(189, 0, 60, 0.05);
+		background-color: rgb(189, 0, 60);
+		opacity: 0.05;
 	}
 
 	100% {
-		background-color: rgba(15, 6, 0, 0.01);
+		background-color: rgb(15, 6, 0);
+		opacity: 0.01;
 	}
 }
 
@@ -644,7 +693,8 @@ body #firewall {
 	position: absolute;
 	pointer-events: none;
 	display: flex;
-	visibility: hidden;
+	opacity: 0;
+	transition: 1s;
 	width: 100vw;
 	justify-content: center;
 	top: 50vh;

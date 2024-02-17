@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation , Input, OnChanges, SimpleChanges} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation , Input, OnChanges, SimpleChanges, OnDestroy} from '@angular/core';
 import { Book, PageType } from '@labsforge/flipbook';
 import { CreatureService } from '../creature/creature.service';
 import { Creature } from '../model';
@@ -9,11 +9,12 @@ import { Creature } from '../model';
   styleUrls: ['./grimoire.component.css'],
   encapsulation: ViewEncapsulation.None, // Use None to disable encapsulation and be able to style generated elements
 })
-export class GrimoireComponent implements OnInit, OnChanges {
+export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
   timeOut: number = 2000; // timeout delay to ensure everything is loaded before running the script
   lightstate: string = "off";
   @Input() exitGrimoire : boolean = false;
-
+  ouvrirLivre_interval: any;
+  ouvrirSectionGrimoire_interval: any;
 
   creatures?: Creature[];
   constructor(private creatureService: CreatureService) {
@@ -31,6 +32,13 @@ export class GrimoireComponent implements OnInit, OnChanges {
       document.querySelector<HTMLElement>(".flipbook_wrapper")!.classList.add("grimoireAway");
     }
   }
+
+  ngOnDestroy(): void {
+    // kill interval function when exiting grimoire
+    clearInterval(this.ouvrirLivre_interval);
+    clearInterval(this.ouvrirSectionGrimoire_interval);
+  }
+
 
   book: Book = {
     width: 900 * 1.2,
@@ -157,24 +165,22 @@ export class GrimoireComponent implements OnInit, OnChanges {
       let pages = document.querySelectorAll<HTMLElement>("flipbook-page .page:not(.cover)");
       let sheets = document.querySelectorAll<HTMLElement>("flipbook-page");
 
+      console.log(pages)
       for (let i = 1; i < pages.length - 1; i = i + 2) { // loop over pages to randomly add variety
         // console.log(i);
         let randomizer = 20
         let random_adjustment = (randomizer - Math.floor(Math.random() * randomizer * 2))
         for (let p = 0; p <= 1; p++) {
+          let pageside = p == 0 ? "right" : "left";
+
+          // numner pages (does not necessarily start at 1)
+          pages[i + p].classList.add(`page_number_${pages.length - i+p}`);
+
+          // Xflip left-side pages so they don't appear mirrored
           pages[i + p].style.transform = "scale(-1, 0.98)";
           // pages[i+p].innerHTML = "<div style='background:red'> PAGE NUMBER: \n\n\t " + i + "<div/>";
           pages[i + p].style.backgroundPositionY = random_adjustment + "px";
           // console.log( pages[i+p].style.getPropertyValue("background-position-y"));
-
-          // ADD STAINS
-          pages[i + p].innerHTML = "<div class='stain'></div>";
-          let stain = pages[i + p].querySelector(".stain") as HTMLElement;
-          stain.style.opacity = `${Math.random()}`;
-          stain.style.transform = `rotate(${Math.floor(Math.random() * 360)}deg)`;
-          stain.style.width = `${Math.floor(Math.random() * 25)}%`;
-          stain.style.background = `url(../../assets/flipbook-textures/stain${Math.floor(Math.random() * 5)}.png)`;
-          // console.log(stain.style.background);
 
           // ADD MOCK CONTENTS
           if (i > 2 && i < pages.length - 3) {
@@ -194,7 +200,34 @@ export class GrimoireComponent implements OnInit, OnChanges {
             let rnd = Math.floor(Math.random() * lorem_array.length) // generate random number
             let lorem = lorem_array[rnd]; // random text
             lorem_array.splice(rnd, 1); // remove from array
-            pages[i + p].innerHTML = "<div class='mocktext " + "side" + p + "'>" + lorem + "</div>";
+            pages[i + p].innerHTML = "<div class='mocktext stain " + "side_" + pageside + "'>" + lorem + "</div>";
+
+            // change text
+            let mocktext = pages[i + p].querySelector<HTMLElement>(".mocktext")!;
+
+            var textColors = ["#3d1d26", // red
+             "#1d3d1d", // green
+             "#1d293d", // blue
+              "#3d3b1d" // yellow
+            ];
+            let random = Math.floor(Math.random() * textColors.length);
+            let randomColor= textColors[random];
+            mocktext.style.color  = randomColor;
+            mocktext.style.opacity = `${0.9-Math.random()/2}`;
+
+            // ADD STAINS
+            var stained_page = document.createElement("div");
+            pages[i + p].appendChild(stained_page);
+            stained_page.style.position="absolute";
+            stained_page.style.top="0";
+            stained_page.style.left="0";
+            stained_page.style.height= "100%";
+            stained_page.style.width= "100%";
+            stained_page.style.opacity = `${Math.random()}`;
+            stained_page.style.transform = `rotate(${Math.floor(Math.random() * 360)}deg)`;
+            stained_page.style.width = `${Math.floor(Math.random() * 25)}%`;
+            stained_page.style.background = `url(../../assets/flipbook-textures/stain${Math.floor(Math.random() * 5)}.png)`;
+            // console.log(stain.style.background);
           }
         }
       }
@@ -203,7 +236,7 @@ export class GrimoireComponent implements OnInit, OnChanges {
       const bookStart = sheets.length - 3 // actually corresponds to last page in DOM, excluding covers/transparent sheet
       var candlelightIntervalId: any;
 
-      // COVER PAGE
+      // FRONT AND BACK COVERS
       const cover = sheets[sheets.length - 1];
       cover.classList.add("bookCover");
       const backcover = sheets[0];
@@ -214,23 +247,33 @@ export class GrimoireComponent implements OnInit, OnChanges {
         console.log("CHECK BOOK STATE")
         let coverRotation: any = cover.getAttribute("ng-reflect-rotation");
         let backcoverRotation: any = backcover.getAttribute("ng-reflect-rotation");
-        console.log(document.querySelector<HTMLElement>("#firewall"));
+        // console.log(document.querySelector<HTMLElement>("#firewall"));
+
+        //// IF BOOK IS OPEN
         if (parseInt(coverRotation) < -90 && parseInt(backcoverRotation) > -90) {
-          document.querySelector<HTMLElement>("#firewall")!.style.visibility = "visible";
+
+          // FLAMES IN FOREGROUND
+          document.querySelector<HTMLElement>("#firewall")!.style.opacity = "1";
           document.querySelector<HTMLElement>("#firewall")!.style.animation = "fireAppear 3s ease-in";
-          document.querySelector<HTMLElement>("#firelight_effect")!.style.animation = "firelight_effect 0.1s alternate infinite";
+
+          // FIRE EFFECT FILTER
+          document.querySelector<HTMLElement>("#firelight_effect")!.style.visibility="visible";
           // candlelightIntervalId = setInterval(candlelight, Math.floor(Math.random() * 300));
           this.lightsOn();
 
+        //// IF BOOK IS CLOSED
         } else { // revert back to closed book illumination
-          document.querySelector<HTMLElement>("#firewall")!.style.visibility = "hidden";
+          // FLAMES IN FOREGROUND
+          document.querySelector<HTMLElement>("#firewall")!.style.opacity = "0";
           document.querySelector<HTMLElement>("#firewall")!.style.animation = "none";
-          document.querySelector<HTMLElement>("#firelight_effect")!.style.animation = "none";
+
+          // FIRE EFFECT FILTER
+          document.querySelector<HTMLElement>("#firelight_effect")!.style.visibility = "hidden";
           // clearInterval(candlelightIntervalId); // /!\ NOT WORKING FOR UNKOWN REASON
           this.lightsOut();
         };
       }
-      setInterval(ouvrirLivre, 1000)
+      this.ouvrirLivre_interval= setInterval(ouvrirLivre, 1000)
 
 
       // FIRST PAGE
@@ -241,12 +284,14 @@ export class GrimoireComponent implements OnInit, OnChanges {
       firstPageFront.innerHTML = "<div id=firstPage>" +
         "<h1>Mythik</h1>" +
         "<h2>Grimoire</h2>" +
-        "<p>Project final SOPRA2023 Groupe 1</p>" +
-        "<img src='assets/loader.png'/>" +
+        "<img id='img_middle' src='../../assets/flipbook-textures/witchcraft_sigil.png'>" +
+        "<p>Project final SOPRA 2023 Groupe 1</p>" +
+        "<img id='img_bottom' src='assets/loader.png'/>" +
         "</div>";
       //back
       const firstPageBack = firstPage.querySelector<HTMLElement>(".back")!;
       firstPageBack.innerHTML = ""
+      //
       // LAST PAGE
       //front
       const lastPage = sheets[2]; // excludes back cover and transparent sheet
@@ -261,47 +306,47 @@ export class GrimoireComponent implements OnInit, OnChanges {
         "<img src='assets/flipbook-textures/duck.png'/>" +
         "</div>"
 
-      // CREATURE PAGE A
+      // CREATURE SHEET 1
       //front
-      const creaturePageA = sheets[bookStart - 2];
-      const creaturePageAFront = creaturePageA.querySelector<HTMLElement>(".page")!;
-      creaturePageAFront.classList.add("first-page");
-      creaturePageAFront.style.backgroundColor = "green !important";
-      creaturePageAFront.innerHTML = "<div id=creaturesStart>" +
+      const creatureSheet1 = sheets[bookStart - 2];
+      const creatureSheet1Front = creatureSheet1.querySelector<HTMLElement>(".page")!;
+      creatureSheet1Front.innerHTML = "<div id=creaturesStart>" +
         "<div>  GRIMOIRE </div>" +
         "</div>";
       //back
-      const creaturePageABack = creaturePageA.querySelector<HTMLElement>(".back")!;
-      creaturePageABack.innerHTML = "<div class='magic_effect'></div>";
-      // CREATURE PAGE B
+      const creatureSheet1Back = creatureSheet1.querySelector<HTMLElement>(".back")!;
+      creatureSheet1Back.innerHTML = "<div class='magic_effect'></div>";
+      // CREATURE SHEET 2
       //front
-      const creaturePageB = sheets[bookStart - 3];
-      const creaturePageBFront = creaturePageB.querySelector<HTMLElement>(".page")!;
-      creaturePageBFront.classList.add("first-page");
-      creaturePageBFront.style.backgroundColor = "green !important";
-      creaturePageBFront.innerHTML = "<div class='magic_effect'></div>";
+      const creatureSheet2 = sheets[bookStart - 3];
+      const creatureSheet2Front = creatureSheet2.querySelector<HTMLElement>(".page")!;
+      creatureSheet2Front.innerHTML = "<div class='magic_effect'></div>";
       //back
-      const creaturePageBBack = creaturePageB.querySelector<HTMLElement>(".back")!;
-      creaturePageBBack.innerHTML = "";
+      const creatureSheet2Back = creatureSheet2.querySelector<HTMLElement>(".back")!;
+      creatureSheet2Back.innerHTML = "";
 
 
       //// FUNCTION TO OPEN/CLOSE GRIMOIRE SECTION
       function ouvrirSectionGrimoire() {
-        // console.log(creaturePageA.getAttribute("ng-reflect-rotation"))
-        let pageARotation: any = creaturePageA.getAttribute("ng-reflect-rotation");
-        let pageBRotation: any = creaturePageB.getAttribute("ng-reflect-rotation");
-        if (
+        // console.log(creatureSheet1.getAttribute("ng-reflect-rotation"))
+        let pageARotation: any = creatureSheet1.getAttribute("ng-reflect-rotation");
+        let pageBRotation: any = creatureSheet2.getAttribute("ng-reflect-rotation");
+        if ( // OPEN
           (parseInt(pageARotation) < -170 && parseInt(pageBRotation) > -10)
         ) {
           document.querySelector<HTMLElement>(".creature_pages")!.style.display = "flex";
-          document.querySelectorAll<HTMLElement>(".magic_effect")!.forEach(page => { page.classList.add("fadeRing") });
+          document.querySelectorAll<HTMLElement>(".magic_effect")!.forEach(page => {
+            page.classList.add("fadeRing");
+        });
           console.log("OPEN GRIMOIRE SECTION")
-        } else { //
+        } else { // CLOSE
           document.querySelector<HTMLElement>(".creature_pages")!.style.display = "none";
-          document.querySelectorAll<HTMLElement>(".magic_effect")!.forEach(page => { page.classList.remove("fadeRing") });
+          document.querySelectorAll<HTMLElement>(".magic_effect")!.forEach(page => {
+            page.classList.remove("fadeRing") ;
+        });
         };
       }
-      setInterval(ouvrirSectionGrimoire, 100)
+      this.ouvrirSectionGrimoire_interval = setInterval(ouvrirSectionGrimoire, 100)
 
 
     }, this.timeOut)
@@ -311,6 +356,7 @@ export class GrimoireComponent implements OnInit, OnChanges {
 
 
   // CANDLELIGHT EFFECT FOR BODY (RANDOMIZED TO MIMIC CANDLE FLICKER)
+  // /!\ CAUSES FLICKER GLITCHES
   candlelight() {
     let lightH = Math.floor(Math.random() * 1);
     let lightS = Math.floor(Math.random() * 100);
@@ -333,7 +379,7 @@ export class GrimoireComponent implements OnInit, OnChanges {
 
 
 
-// CANDLELIGHT OFF (STATIC)
+// CANDLELIGHT OFF - effect on BOOK SURFACES (STATIC)
  lightsOut() {
   let H = 150;
   let S = 0;
@@ -347,7 +393,7 @@ export class GrimoireComponent implements OnInit, OnChanges {
 }
 // lightsOut()
 
-// CANDLELIGHT ON (STATIC)
+// CANDLELIGHT ON - effect on BOOK SURFACES (STATIC)
 lightsOn() {
   if (this.lightstate == "off") {
     let H = 0;

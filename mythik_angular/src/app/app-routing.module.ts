@@ -16,7 +16,7 @@ import { JoueurComponent } from './joueur/joueur.component';
 import { CombatComponent } from './combat/combat.component';
 import { DesktopComponent } from './desktop/desktop.component';
 import { StatistiqueComponent } from './statistique/statistique.component';
-import { CreaturePageAComponent } from './creature-page-a/creature-page-a.component';
+import { CreaturePagesContentComponent } from './creature-pages-content/creature-pages-content.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { delayPageResolver } from './delay-page.resolver';
 
@@ -113,8 +113,8 @@ const routes: Routes = [
     component: SelectionCombatComponent
   },
   {
-    path: "creaturea",
-    component: CreaturePageAComponent
+    path: "creaturePagesContent",
+    component: CreaturePagesContentComponent
   },
   {
     path: "statistique",
