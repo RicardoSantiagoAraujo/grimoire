@@ -172,6 +172,7 @@ section #desktop_glow {
   left: 1vmin;
   bottom: 1vmin;
   font-family: "Lugrasimo";
+  animation: booksAppear 2s;
 }
 #retour_grimoire button {
   cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;

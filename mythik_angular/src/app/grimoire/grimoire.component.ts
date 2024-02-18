@@ -380,7 +380,7 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
         });
         };
       }
-      // this.ouvrirSectionGrimoire_interval = setInterval(ouvrirSectionGrimoire, 100)
+      this.ouvrirSectionGrimoire_interval = setInterval(ouvrirSectionGrimoire, 100) // !!!!
 
 
     }, this.timeOut)

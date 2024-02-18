@@ -178,6 +178,7 @@ $propshadow: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.7));
 	bottom: 1vmin;
 	//transform: rotate(-20deg);
 	font-family: "Lugrasimo";
+	animation: booksAppear 2s;
 	button{
 		cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
 		transition: 0.1s;

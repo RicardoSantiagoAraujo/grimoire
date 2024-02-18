@@ -1,33 +1,46 @@
-    <div id="creature_general_container" [class]="(selectedCreature | creatureData)">
-        <div id="creature_selection_menu" [class]="(selectedCreature | creatureData)">
-            <label for="creatureSelector">Choisir une créature :</label>
-            <select id="creatureSelector" [(ngModel)]="selectedCreature">
-                    <option *ngFor="let c of creatureList" [ngValue]="c">{{c.nom}}</option>
-            </select>
-        </div>
+<div id="creature_general_container" [class]="(selectedCreature | creatureData)">
+    <div id="creature_selection_menu" [class]="(selectedCreature | creatureData)">
+        <label for="creatureSelector">Choisir une créature :</label>
+        <select id="creatureSelector" [(ngModel)]="selectedCreature"
+        (change)="this.AdjCreatureDisplay(this.selectedCreature)">
+            <option *ngFor="let c of creatureList" [ngValue]="c">{{c.nom}}</option>
+        </select>
+    </div>
 
-        <div id="creature_contents" [class]="(selectedCreature | creatureData)">
-            <div class="creaturePage" id="pageLeft">
-                <div class="nom">{{selectedCreature.nom}}</div>
-                <div class="descript">{{selectedCreature.description}}</div>
-                <div class="numeroPageLeft">
-                    <ul><span>{{creatureList.indexOf(this.selectedCreature)+1}} </span> / {{creatureList.length}}</ul>
-                </div>
-                <button class="pageControlBtn" *ngIf="this.num > 0" (click)="previous()">Precedent</button>
+    <div id="creature_contents" [class]="(selectedCreature | creatureData)">
+        <div [class]="'creaturePage ' + (selectedCreature | creatureData)" id="pageLeft">
+            <div [class]="'nom ' + (selectedCreature | creatureData)">
+                {{selectedCreature.nom}}
             </div>
-            <div class="creaturePage" id="pageRight">
-                <div [class]="'image ' + (selectedCreature | creatureData)"><img width="30px" height="30px" [src]="selectedCreature.image" /></div>
-                <img class="break" src="../../assets/flipbook-textures/fantasy-break.png"/>
-                <div [class]="'memo ' + (selectedCreature | creatureData)">
-                    <h6>Memo</h6>
-                    <ul id="mytho">Domaine mythologique : <span>{{selectedCreature.mythologie}}</span> </ul>
-                    <ul id="element">Type d'éléments : <span class="element">{{selectedCreature.typeElement}}</span> </ul>
-                    <ul id="attack">Niveau d'attaque : <span>{{selectedCreature.attaque}}</span> </ul>
-                </div>
-                <button class="pageControlBtn" *ngIf="this.num < this.creatureList.length -1" (click)="next()">Suivant</button>
+            <div [class]="'descript ' + (selectedCreature | creatureData)">
+                {{selectedCreature.description}}
             </div>
+            <div class="numeroPageLeft">
+                <span>{{creatureList.indexOf(this.selectedCreature)+1}} </span> / {{creatureList.length}}
+            </div>
+            <button class="pageControlBtn" *ngIf="this.num > 0" (click)="previous()">Precedent</button>
+        </div>
+        <div [class]="'creaturePage ' + (selectedCreature | creatureData)" id="pageRight">
+            <div [class]="'image ' + (selectedCreature | creatureData)"><img width="30px" height="30px"
+                    [src]="selectedCreature.image" /></div>
+            <img class="break" src="../../assets/flipbook-textures/fantasy-break.png" />
+            <div [class]="'memo ' + (selectedCreature | creatureData)">
+                <h6>
+                    <!-- Memo -->
+                </h6>
+                <ul>
+                    <li id="mytho">Mythologie : <span>{{selectedCreature.mythologie}}</span> </li>
+                    <li id="element">Type d'éléments : <span class="element">{{selectedCreature.typeElement}}</span>
+                    </li>
+                    <li id="attack">Niveau d'attaque : <span>{{selectedCreature.attaque}}</span> </li>
+                    <li id="pv">PV : <span>{{selectedCreature.pv}}</span> </li>
+                </ul>
+            </div>
+            <button class="pageControlBtn" *ngIf="this.num < this.creatureList.length -1"
+                (click)="next()">Suivant</button>
         </div>
     </div>
-    <div>
+</div>
+<div>
 
-    </div>
+</div>

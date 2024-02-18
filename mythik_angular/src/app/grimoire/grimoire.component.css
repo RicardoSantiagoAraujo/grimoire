@@ -282,6 +282,7 @@
   align-items: center;
   z-index: 10;
   position: absolute;
+  display: none;
 }
 .flipbook_container .creature_pages .creature_pages_content {
   position: relative;
