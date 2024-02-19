@@ -31,6 +31,7 @@ h1 {
   margin-top: 5vh;
   width: -moz-fit-content;
   width: fit-content;
+  filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.511));
   animation: scrollAppear 1s ease-out;
 }
 h1::first-letter {
@@ -151,6 +152,7 @@ h1:after {
   border: 0px solid #000000;
   border-radius: 10px;
   padding: 0px;
+  filter: drop-shadow(6px 6px 5px rgba(0, 0, 0, 0.711));
 }
 
 .creature_list_body {
@@ -204,6 +206,7 @@ h1:after {
   content: "";
   right: 0px;
   background: url(../../assets/flipbook-textures/infiniteScroll/ink_block.png);
+  filter: drop-shadow(10px 10px 10px black);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -457,6 +460,7 @@ thead th:first-letter {
   background-position: center;
   margin-bottom: 20vh;
   animation: contentAppear 1s;
+  filter: drop-shadow(6px 6px 5px rgba(0, 0, 0, 0.711));
 }
 .creature_edit .card-header {
   position: relative;
@@ -604,6 +608,28 @@ thead th:first-letter {
   }
   to {
     box-shadow: 0 0 4px rgb(0, 100, 0);
+  }
+}
+.hideCreatureForm {
+  animation: hideCreatureForm forwards;
+  overflow: hidden;
+}
+.hideCreatureForm * {
+  opacity: 0;
+  transition: 0.5s;
+}
+
+@keyframes hideCreatureForm {
+  0% {
+    opacity: 1;
+    max-height: 100%;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    max-height: 0px;
   }
 }
 td.type_element {

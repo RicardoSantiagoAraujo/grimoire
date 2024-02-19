@@ -353,8 +353,8 @@ h1.selection_title::after {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(-1) rotate(2deg);
-  filter: hue-rotate(-8deg) brightness(1.09);
+  transform: scaleX(1) scaleY(1) rotate(3deg);
+  filter: hue-rotate(-11deg) brightness(1);
 }
 
 .item:nth-child(2) {
@@ -368,12 +368,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_11.png");
+  background-image: url("../../assets/creature_cards/card_1.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(1) rotate(4deg);
-  filter: hue-rotate(-17deg) brightness(0.96);
+  transform: scaleX(1) scaleY(1) rotate(0deg);
+  filter: hue-rotate(-1deg) brightness(0.94);
 }
 
 .item:nth-child(3) {
@@ -387,12 +387,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_1.png");
+  background-image: url("../../assets/creature_cards/card_8.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(1) rotate(-4deg);
-  filter: hue-rotate(-13deg) brightness(0.99);
+  transform: scaleX(-1) scaleY(-1) rotate(-3deg);
+  filter: hue-rotate(-4deg) brightness(0.97);
 }
 
 .item:nth-child(4) {
@@ -406,12 +406,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_6.png");
+  background-image: url("../../assets/creature_cards/card_5.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(-1) rotate(-4deg);
-  filter: hue-rotate(-17deg) brightness(0.97);
+  transform: scaleX(-1) scaleY(1) rotate(1deg);
+  filter: hue-rotate(-13deg) brightness(0.93);
 }
 
 .item:nth-child(5) {
@@ -425,12 +425,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_3.png");
+  background-image: url("../../assets/creature_cards/card_10.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(1) rotate(0deg);
-  filter: hue-rotate(-12deg) brightness(1.05);
+  transform: scaleX(1) scaleY(1) rotate(4deg);
+  filter: hue-rotate(-9deg) brightness(0.94);
 }
 
 .item:nth-child(6) {
@@ -444,12 +444,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_9.png");
+  background-image: url("../../assets/creature_cards/card_5.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(1) rotate(5deg);
-  filter: hue-rotate(-10deg) brightness(1.02);
+  transform: scaleX(1) scaleY(1) rotate(-1deg);
+  filter: hue-rotate(-19deg) brightness(0.95);
 }
 
 .item:nth-child(7) {
@@ -463,12 +463,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_1.png");
+  background-image: url("../../assets/creature_cards/card_10.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(-1) rotate(0deg);
-  filter: hue-rotate(-14deg) brightness(0.91);
+  transform: scaleX(-1) scaleY(1) rotate(5deg);
+  filter: hue-rotate(-18deg) brightness(0.91);
 }
 
 .item:nth-child(8) {
@@ -482,12 +482,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_10.png");
+  background-image: url("../../assets/creature_cards/card_1.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(-1) rotate(4deg);
-  filter: hue-rotate(-13deg) brightness(0.99);
+  transform: scaleX(1) scaleY(-1) rotate(-1deg);
+  filter: hue-rotate(0deg) brightness(0.95);
 }
 
 .item:nth-child(9) {
@@ -501,12 +501,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_8.png");
+  background-image: url("../../assets/creature_cards/card_3.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(-1) rotate(-2deg);
-  filter: hue-rotate(-18deg) brightness(1.09);
+  transform: scaleX(-1) scaleY(1) rotate(-4deg);
+  filter: hue-rotate(-6deg) brightness(0.95);
 }
 
 .item:nth-child(10) {
@@ -520,12 +520,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_8.png");
+  background-image: url("../../assets/creature_cards/card_3.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(1) rotate(-3deg);
-  filter: hue-rotate(-2deg) brightness(1.02);
+  transform: scaleX(1) scaleY(1) rotate(-2deg);
+  filter: hue-rotate(-15deg) brightness(0.94);
 }
 
 .item:nth-child(11) {
@@ -539,12 +539,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_3.png");
+  background-image: url("../../assets/creature_cards/card_2.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(-1) rotate(3deg);
-  filter: hue-rotate(-5deg) brightness(1.1);
+  transform: scaleX(1) scaleY(-1) rotate(-3deg);
+  filter: hue-rotate(-3deg) brightness(1.02);
 }
 
 .item:nth-child(12) {
@@ -558,12 +558,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_7.png");
+  background-image: url("../../assets/creature_cards/card_1.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(-1) rotate(4deg);
-  filter: hue-rotate(-10deg) brightness(0.94);
+  transform: scaleX(1) scaleY(1) rotate(-4deg);
+  filter: hue-rotate(-12deg) brightness(0.96);
 }
 
 .item:nth-child(13) {
@@ -577,12 +577,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_3.png");
+  background-image: url("../../assets/creature_cards/card_6.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(-1) rotate(-1deg);
-  filter: hue-rotate(-9deg) brightness(1.08);
+  transform: scaleX(-1) scaleY(-1) rotate(-2deg);
+  filter: hue-rotate(-1deg) brightness(0.95);
 }
 
 .item:nth-child(14) {
@@ -596,12 +596,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_1.png");
+  background-image: url("../../assets/creature_cards/card_4.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(1) rotate(5deg);
-  filter: hue-rotate(-17deg) brightness(1.07);
+  transform: scaleX(1) scaleY(-1) rotate(5deg);
+  filter: hue-rotate(-17deg) brightness(1.1);
 }
 
 .item:nth-child(15) {
@@ -615,12 +615,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_3.png");
+  background-image: url("../../assets/creature_cards/card_6.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(1) rotate(5deg);
-  filter: hue-rotate(-3deg) brightness(1.09);
+  transform: scaleX(1) scaleY(1) rotate(-4deg);
+  filter: hue-rotate(-6deg) brightness(0.97);
 }
 
 .item:nth-child(16) {
@@ -634,12 +634,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_6.png");
+  background-image: url("../../assets/creature_cards/card_7.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(1) rotate(-4deg);
-  filter: hue-rotate(-12deg) brightness(0.93);
+  transform: scaleX(1) scaleY(1) rotate(-2deg);
+  filter: hue-rotate(-8deg) brightness(1.04);
 }
 
 .item:nth-child(17) {
@@ -653,12 +653,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_3.png");
+  background-image: url("../../assets/creature_cards/card_11.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(-1) rotate(-3deg);
-  filter: hue-rotate(-14deg) brightness(0.98);
+  transform: scaleX(1) scaleY(1) rotate(1deg);
+  filter: hue-rotate(-3deg) brightness(0.92);
 }
 
 .item:nth-child(18) {
@@ -672,12 +672,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_8.png");
+  background-image: url("../../assets/creature_cards/card_6.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(-1) rotate(3deg);
-  filter: hue-rotate(-16deg) brightness(1.01);
+  transform: scaleX(-1) scaleY(-1) rotate(2deg);
+  filter: hue-rotate(-10deg) brightness(1.05);
 }
 
 .item:nth-child(19) {
@@ -691,12 +691,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_11.png");
+  background-image: url("../../assets/creature_cards/card_10.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(-1) rotate(1deg);
-  filter: hue-rotate(-15deg) brightness(0.94);
+  transform: scaleX(-1) scaleY(1) rotate(-4deg);
+  filter: hue-rotate(-15deg) brightness(1.03);
 }
 
 .item:nth-child(20) {
@@ -710,12 +710,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_5.png");
+  background-image: url("../../assets/creature_cards/card_2.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(-1) rotate(-1deg);
-  filter: hue-rotate(-9deg) brightness(0.91);
+  transform: scaleX(-1) scaleY(1) rotate(5deg);
+  filter: hue-rotate(-13deg) brightness(0.94);
 }
 
 .item:nth-child(21) {
@@ -729,12 +729,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_5.png");
+  background-image: url("../../assets/creature_cards/card_3.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(-1) rotate(1deg);
-  filter: hue-rotate(-15deg) brightness(0.96);
+  transform: scaleX(-1) scaleY(-1) rotate(-2deg);
+  filter: hue-rotate(-2deg) brightness(1.1);
 }
 
 .item:nth-child(22) {
@@ -748,12 +748,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_10.png");
+  background-image: url("../../assets/creature_cards/card_11.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(1) rotate(3deg);
-  filter: hue-rotate(-14deg) brightness(0.99);
+  transform: scaleX(-1) scaleY(-1) rotate(-1deg);
+  filter: hue-rotate(-14deg) brightness(0.98);
 }
 
 .item:nth-child(23) {
@@ -767,12 +767,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_4.png");
+  background-image: url("../../assets/creature_cards/card_10.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(-1) rotate(-1deg);
-  filter: hue-rotate(-17deg) brightness(0.95);
+  transform: scaleX(-1) scaleY(1) rotate(-4deg);
+  filter: hue-rotate(-9deg) brightness(1.09);
 }
 
 .item:nth-child(24) {
@@ -786,12 +786,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_7.png");
+  background-image: url("../../assets/creature_cards/card_9.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(-1) rotate(-4deg);
-  filter: hue-rotate(-11deg) brightness(0.94);
+  transform: scaleX(-1) scaleY(1) rotate(4deg);
+  filter: hue-rotate(-11deg) brightness(0.97);
 }
 
 .item:nth-child(25) {
@@ -805,12 +805,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_11.png");
+  background-image: url("../../assets/creature_cards/card_2.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(1) rotate(-4deg);
-  filter: hue-rotate(-15deg) brightness(1);
+  transform: scaleX(1) scaleY(-1) rotate(1deg);
+  filter: hue-rotate(-8deg) brightness(0.93);
 }
 
 .item:nth-child(26) {
@@ -824,12 +824,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_1.png");
+  background-image: url("../../assets/creature_cards/card_4.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(1) rotate(-2deg);
-  filter: hue-rotate(-5deg) brightness(1.07);
+  transform: scaleX(-1) scaleY(1) rotate(-1deg);
+  filter: hue-rotate(-6deg) brightness(0.93);
 }
 
 .item:nth-child(27) {
@@ -843,12 +843,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_3.png");
+  background-image: url("../../assets/creature_cards/card_1.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(-1) rotate(-3deg);
-  filter: hue-rotate(-1deg) brightness(1.08);
+  transform: scaleX(-1) scaleY(1) rotate(3deg);
+  filter: hue-rotate(-16deg) brightness(0.99);
 }
 
 .item:nth-child(28) {
@@ -862,12 +862,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_4.png");
+  background-image: url("../../assets/creature_cards/card_3.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(-1) rotate(2deg);
-  filter: hue-rotate(-7deg) brightness(0.98);
+  transform: scaleX(-1) scaleY(-1) rotate(-1deg);
+  filter: hue-rotate(-4deg) brightness(1.1);
 }
 
 .item:nth-child(29) {
@@ -885,8 +885,8 @@ h1.selection_title::after {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(1) rotate(-3deg);
-  filter: hue-rotate(-4deg) brightness(0.99);
+  transform: scaleX(1) scaleY(-1) rotate(2deg);
+  filter: hue-rotate(-5deg) brightness(1.01);
 }
 
 .item:nth-child(30) {
@@ -900,12 +900,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_1.png");
+  background-image: url("../../assets/creature_cards/card_11.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(1) rotate(5deg);
-  filter: hue-rotate(-17deg) brightness(0.93);
+  transform: scaleX(1) scaleY(-1) rotate(-4deg);
+  filter: hue-rotate(-5deg) brightness(1.03);
 }
 
 .item:nth-child(31) {
@@ -919,12 +919,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_5.png");
+  background-image: url("../../assets/creature_cards/card_7.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(1) rotate(0deg);
-  filter: hue-rotate(-14deg) brightness(0.91);
+  transform: scaleX(-1) scaleY(-1) rotate(3deg);
+  filter: hue-rotate(-18deg) brightness(1.08);
 }
 
 .item:nth-child(32) {
@@ -938,12 +938,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_9.png");
+  background-image: url("../../assets/creature_cards/card_5.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(1) rotate(-2deg);
-  filter: hue-rotate(-3deg) brightness(0.96);
+  transform: scaleX(1) scaleY(-1) rotate(-4deg);
+  filter: hue-rotate(-11deg) brightness(0.96);
 }
 
 .item:nth-child(33) {
@@ -957,12 +957,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_3.png");
+  background-image: url("../../assets/creature_cards/card_4.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(1) rotate(4deg);
-  filter: hue-rotate(-10deg) brightness(1.05);
+  transform: scaleX(-1) scaleY(-1) rotate(3deg);
+  filter: hue-rotate(-2deg) brightness(1.07);
 }
 
 .item:nth-child(34) {
@@ -976,12 +976,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_6.png");
+  background-image: url("../../assets/creature_cards/card_7.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(1) rotate(1deg);
-  filter: hue-rotate(-8deg) brightness(1.02);
+  transform: scaleX(1) scaleY(-1) rotate(2deg);
+  filter: hue-rotate(-5deg) brightness(1.08);
 }
 
 .item:nth-child(35) {
@@ -995,12 +995,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_6.png");
+  background-image: url("../../assets/creature_cards/card_1.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(1) rotate(-2deg);
-  filter: hue-rotate(-5deg) brightness(1.09);
+  transform: scaleX(-1) scaleY(1) rotate(-1deg);
+  filter: hue-rotate(0deg) brightness(1.04);
 }
 
 .item:nth-child(36) {
@@ -1014,12 +1014,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_7.png");
+  background-image: url("../../assets/creature_cards/card_1.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(1) rotate(-2deg);
-  filter: hue-rotate(-4deg) brightness(0.92);
+  transform: scaleX(1) scaleY(-1) rotate(1deg);
+  filter: hue-rotate(-1deg) brightness(0.93);
 }
 
 .item:nth-child(37) {
@@ -1033,12 +1033,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_8.png");
+  background-image: url("../../assets/creature_cards/card_1.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(1) rotate(2deg);
-  filter: hue-rotate(-14deg) brightness(1.03);
+  transform: scaleX(-1) scaleY(1) rotate(-3deg);
+  filter: hue-rotate(-12deg) brightness(0.91);
 }
 
 .item:nth-child(38) {
@@ -1052,12 +1052,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_7.png");
+  background-image: url("../../assets/creature_cards/card_10.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(1) rotate(3deg);
-  filter: hue-rotate(-9deg) brightness(1.01);
+  transform: scaleX(1) scaleY(-1) rotate(-1deg);
+  filter: hue-rotate(-3deg) brightness(0.94);
 }
 
 .item:nth-child(39) {
@@ -1071,12 +1071,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_5.png");
+  background-image: url("../../assets/creature_cards/card_7.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(-1) rotate(5deg);
-  filter: hue-rotate(-3deg) brightness(0.96);
+  transform: scaleX(1) scaleY(-1) rotate(1deg);
+  filter: hue-rotate(-7deg) brightness(0.94);
 }
 
 .item:nth-child(40) {
@@ -1090,12 +1090,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_5.png");
+  background-image: url("../../assets/creature_cards/card_2.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(1) rotate(-1deg);
-  filter: hue-rotate(-6deg) brightness(0.98);
+  transform: scaleX(1) scaleY(1) rotate(1deg);
+  filter: hue-rotate(0deg) brightness(1);
 }
 
 .item:nth-child(41) {
@@ -1109,12 +1109,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_4.png");
+  background-image: url("../../assets/creature_cards/card_6.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(-1) rotate(-4deg);
-  filter: hue-rotate(-5deg) brightness(1.08);
+  transform: scaleX(-1) scaleY(1) rotate(1deg);
+  filter: hue-rotate(-1deg) brightness(1);
 }
 
 .item:nth-child(42) {
@@ -1128,12 +1128,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_1.png");
+  background-image: url("../../assets/creature_cards/card_10.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(-1) rotate(-4deg);
-  filter: hue-rotate(-18deg) brightness(1.06);
+  transform: scaleX(1) scaleY(-1) rotate(2deg);
+  filter: hue-rotate(-9deg) brightness(1.09);
 }
 
 .item:nth-child(43) {
@@ -1147,12 +1147,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_3.png");
+  background-image: url("../../assets/creature_cards/card_2.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(-1) rotate(-3deg);
-  filter: hue-rotate(-19deg) brightness(1);
+  transform: scaleX(1) scaleY(1) rotate(-3deg);
+  filter: hue-rotate(-2deg) brightness(0.96);
 }
 
 .item:nth-child(44) {
@@ -1166,12 +1166,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_1.png");
+  background-image: url("../../assets/creature_cards/card_2.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(-1) rotate(-2deg);
-  filter: hue-rotate(0deg) brightness(1);
+  transform: scaleX(-1) scaleY(1) rotate(-3deg);
+  filter: hue-rotate(0deg) brightness(0.95);
 }
 
 .item:nth-child(45) {
@@ -1185,12 +1185,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_3.png");
+  background-image: url("../../assets/creature_cards/card_1.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(1) rotate(5deg);
-  filter: hue-rotate(-17deg) brightness(0.93);
+  transform: scaleX(1) scaleY(1) rotate(4deg);
+  filter: hue-rotate(-9deg) brightness(1.04);
 }
 
 .item:nth-child(46) {
@@ -1204,12 +1204,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_2.png");
+  background-image: url("../../assets/creature_cards/card_6.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(1) rotate(-1deg);
-  filter: hue-rotate(-2deg) brightness(0.94);
+  transform: scaleX(-1) scaleY(-1) rotate(-1deg);
+  filter: hue-rotate(-4deg) brightness(1.1);
 }
 
 .item:nth-child(47) {
@@ -1223,12 +1223,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_9.png");
+  background-image: url("../../assets/creature_cards/card_7.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(-1) rotate(-1deg);
-  filter: hue-rotate(-8deg) brightness(1.07);
+  transform: scaleX(-1) scaleY(1) rotate(5deg);
+  filter: hue-rotate(0deg) brightness(0.95);
 }
 
 .item:nth-child(48) {
@@ -1242,12 +1242,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_9.png");
+  background-image: url("../../assets/creature_cards/card_4.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(-1) rotate(3deg);
-  filter: hue-rotate(-15deg) brightness(0.93);
+  transform: scaleX(1) scaleY(-1) rotate(-1deg);
+  filter: hue-rotate(-1deg) brightness(1.01);
 }
 
 .item:nth-child(49) {
@@ -1261,12 +1261,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_3.png");
+  background-image: url("../../assets/creature_cards/card_6.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(-1) rotate(-4deg);
-  filter: hue-rotate(-13deg) brightness(1.02);
+  transform: scaleX(-1) scaleY(-1) rotate(-3deg);
+  filter: hue-rotate(-18deg) brightness(1);
 }
 
 .item:nth-child(50) {
@@ -1280,12 +1280,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_1.png");
+  background-image: url("../../assets/creature_cards/card_11.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(-1) rotate(-2deg);
-  filter: hue-rotate(-5deg) brightness(0.99);
+  transform: scaleX(-1) scaleY(1) rotate(-3deg);
+  filter: hue-rotate(-15deg) brightness(1.1);
 }
 
 .item:nth-child(51) {
@@ -1303,8 +1303,8 @@ h1.selection_title::after {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(1) rotate(4deg);
-  filter: hue-rotate(-1deg) brightness(1.08);
+  transform: scaleX(-1) scaleY(1) rotate(-4deg);
+  filter: hue-rotate(-5deg) brightness(1.08);
 }
 
 .item:nth-child(52) {
@@ -1318,12 +1318,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_9.png");
+  background-image: url("../../assets/creature_cards/card_4.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(1) rotate(4deg);
-  filter: hue-rotate(-17deg) brightness(1.02);
+  transform: scaleX(1) scaleY(-1) rotate(-4deg);
+  filter: hue-rotate(-6deg) brightness(0.96);
 }
 
 .item:nth-child(53) {
@@ -1337,12 +1337,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_10.png");
+  background-image: url("../../assets/creature_cards/card_3.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(1) rotate(0deg);
-  filter: hue-rotate(-1deg) brightness(1.09);
+  transform: scaleX(1) scaleY(1) rotate(-3deg);
+  filter: hue-rotate(-13deg) brightness(0.93);
 }
 
 .item:nth-child(54) {
@@ -1356,12 +1356,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_3.png");
+  background-image: url("../../assets/creature_cards/card_1.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(-1) rotate(-3deg);
-  filter: hue-rotate(-12deg) brightness(1.03);
+  transform: scaleX(-1) scaleY(-1) rotate(4deg);
+  filter: hue-rotate(-1deg) brightness(1.04);
 }
 
 .item:nth-child(55) {
@@ -1375,12 +1375,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_10.png");
+  background-image: url("../../assets/creature_cards/card_7.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(1) rotate(3deg);
-  filter: hue-rotate(-1deg) brightness(1.06);
+  transform: scaleX(-1) scaleY(1) rotate(-4deg);
+  filter: hue-rotate(-2deg) brightness(0.92);
 }
 
 .item:nth-child(56) {
@@ -1394,12 +1394,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_8.png");
+  background-image: url("../../assets/creature_cards/card_9.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(1) rotate(5deg);
-  filter: hue-rotate(-6deg) brightness(0.94);
+  transform: scaleX(-1) scaleY(1) rotate(-3deg);
+  filter: hue-rotate(0deg) brightness(1.09);
 }
 
 .item:nth-child(57) {
@@ -1413,12 +1413,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_7.png");
+  background-image: url("../../assets/creature_cards/card_9.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(1) rotate(2deg);
-  filter: hue-rotate(-16deg) brightness(0.91);
+  transform: scaleX(-1) scaleY(-1) rotate(1deg);
+  filter: hue-rotate(-12deg) brightness(1.01);
 }
 
 .item:nth-child(58) {
@@ -1432,12 +1432,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_9.png");
+  background-image: url("../../assets/creature_cards/card_3.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(-1) rotate(-4deg);
-  filter: hue-rotate(-15deg) brightness(1.1);
+  transform: scaleX(-1) scaleY(-1) rotate(2deg);
+  filter: hue-rotate(-17deg) brightness(0.99);
 }
 
 .item:nth-child(59) {
@@ -1451,12 +1451,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_4.png");
+  background-image: url("../../assets/creature_cards/card_5.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(1) rotate(4deg);
-  filter: hue-rotate(-13deg) brightness(0.93);
+  transform: scaleX(-1) scaleY(1) rotate(-2deg);
+  filter: hue-rotate(-14deg) brightness(1.08);
 }
 
 .item:nth-child(60) {
@@ -1470,12 +1470,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_3.png");
+  background-image: url("../../assets/creature_cards/card_5.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(-1) rotate(4deg);
-  filter: hue-rotate(-12deg) brightness(1.01);
+  transform: scaleX(-1) scaleY(1) rotate(5deg);
+  filter: hue-rotate(-18deg) brightness(0.92);
 }
 
 .item:nth-child(61) {
@@ -1489,12 +1489,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_1.png");
+  background-image: url("../../assets/creature_cards/card_6.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(1) rotate(1deg);
-  filter: hue-rotate(-18deg) brightness(1.08);
+  transform: scaleX(-1) scaleY(-1) rotate(2deg);
+  filter: hue-rotate(-7deg) brightness(0.94);
 }
 
 .item:nth-child(62) {
@@ -1508,12 +1508,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_3.png");
+  background-image: url("../../assets/creature_cards/card_4.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(-1) rotate(-2deg);
-  filter: hue-rotate(-9deg) brightness(0.98);
+  transform: scaleX(1) scaleY(1) rotate(3deg);
+  filter: hue-rotate(-2deg) brightness(1.04);
 }
 
 .item:nth-child(63) {
@@ -1527,12 +1527,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_3.png");
+  background-image: url("../../assets/creature_cards/card_4.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(-1) rotate(-1deg);
-  filter: hue-rotate(-7deg) brightness(0.91);
+  transform: scaleX(1) scaleY(-1) rotate(-4deg);
+  filter: hue-rotate(-17deg) brightness(0.99);
 }
 
 .item:nth-child(64) {
@@ -1546,12 +1546,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_1.png");
+  background-image: url("../../assets/creature_cards/card_2.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(-1) rotate(-3deg);
-  filter: hue-rotate(-1deg) brightness(1.06);
+  transform: scaleX(-1) scaleY(1) rotate(-3deg);
+  filter: hue-rotate(-19deg) brightness(0.96);
 }
 
 .item:nth-child(65) {
@@ -1565,12 +1565,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_4.png");
+  background-image: url("../../assets/creature_cards/card_8.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(1) rotate(5deg);
-  filter: hue-rotate(0deg) brightness(1);
+  transform: scaleX(-1) scaleY(1) rotate(2deg);
+  filter: hue-rotate(0deg) brightness(1.08);
 }
 
 .item:nth-child(66) {
@@ -1584,12 +1584,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_9.png");
+  background-image: url("../../assets/creature_cards/card_4.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(1) rotate(4deg);
-  filter: hue-rotate(-11deg) brightness(1.06);
+  transform: scaleX(-1) scaleY(-1) rotate(4deg);
+  filter: hue-rotate(-14deg) brightness(1.06);
 }
 
 .item:nth-child(67) {
@@ -1603,12 +1603,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_3.png");
+  background-image: url("../../assets/creature_cards/card_10.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(1) rotate(-4deg);
-  filter: hue-rotate(-1deg) brightness(1.04);
+  transform: scaleX(-1) scaleY(1) rotate(3deg);
+  filter: hue-rotate(-4deg) brightness(0.96);
 }
 
 .item:nth-child(68) {
@@ -1622,12 +1622,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_7.png");
+  background-image: url("../../assets/creature_cards/card_8.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(-1) rotate(1deg);
-  filter: hue-rotate(-7deg) brightness(0.97);
+  transform: scaleX(-1) scaleY(1) rotate(-2deg);
+  filter: hue-rotate(-6deg) brightness(0.91);
 }
 
 .item:nth-child(69) {
@@ -1641,12 +1641,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_8.png");
+  background-image: url("../../assets/creature_cards/card_1.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(-1) rotate(-1deg);
-  filter: hue-rotate(-5deg) brightness(0.99);
+  transform: scaleX(-1) scaleY(-1) rotate(3deg);
+  filter: hue-rotate(-4deg) brightness(0.91);
 }
 
 .item:nth-child(70) {
@@ -1660,12 +1660,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_3.png");
+  background-image: url("../../assets/creature_cards/card_8.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(1) rotate(1deg);
-  filter: hue-rotate(-6deg) brightness(1.06);
+  transform: scaleX(1) scaleY(1) rotate(3deg);
+  filter: hue-rotate(-9deg) brightness(0.98);
 }
 
 .item:nth-child(71) {
@@ -1679,12 +1679,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_7.png");
+  background-image: url("../../assets/creature_cards/card_11.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(-1) rotate(2deg);
-  filter: hue-rotate(-7deg) brightness(1.09);
+  transform: scaleX(1) scaleY(1) rotate(-2deg);
+  filter: hue-rotate(-8deg) brightness(1.09);
 }
 
 .item:nth-child(72) {
@@ -1698,12 +1698,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_6.png");
+  background-image: url("../../assets/creature_cards/card_8.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(-1) rotate(5deg);
-  filter: hue-rotate(-12deg) brightness(1.09);
+  transform: scaleX(-1) scaleY(1) rotate(2deg);
+  filter: hue-rotate(-17deg) brightness(1.08);
 }
 
 .item:nth-child(73) {
@@ -1717,12 +1717,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_4.png");
+  background-image: url("../../assets/creature_cards/card_5.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(1) rotate(1deg);
-  filter: hue-rotate(-18deg) brightness(0.93);
+  transform: scaleX(-1) scaleY(1) rotate(3deg);
+  filter: hue-rotate(-2deg) brightness(0.99);
 }
 
 .item:nth-child(74) {
@@ -1736,12 +1736,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_5.png");
+  background-image: url("../../assets/creature_cards/card_11.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(-1) rotate(-4deg);
-  filter: hue-rotate(-8deg) brightness(0.93);
+  transform: scaleX(1) scaleY(-1) rotate(-1deg);
+  filter: hue-rotate(-5deg) brightness(1.08);
 }
 
 .item:nth-child(75) {
@@ -1755,12 +1755,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_4.png");
+  background-image: url("../../assets/creature_cards/card_7.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(-1) rotate(2deg);
-  filter: hue-rotate(-19deg) brightness(1.04);
+  transform: scaleX(1) scaleY(-1) rotate(5deg);
+  filter: hue-rotate(-10deg) brightness(0.92);
 }
 
 .item:nth-child(76) {
@@ -1774,12 +1774,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_7.png");
+  background-image: url("../../assets/creature_cards/card_8.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(1) rotate(-4deg);
-  filter: hue-rotate(-4deg) brightness(0.98);
+  transform: scaleX(1) scaleY(-1) rotate(2deg);
+  filter: hue-rotate(-3deg) brightness(0.95);
 }
 
 .item:nth-child(77) {
@@ -1797,8 +1797,8 @@ h1.selection_title::after {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(-1) rotate(2deg);
-  filter: hue-rotate(-5deg) brightness(1.04);
+  transform: scaleX(-1) scaleY(-1) rotate(-2deg);
+  filter: hue-rotate(0deg) brightness(0.96);
 }
 
 .item:nth-child(78) {
@@ -1816,8 +1816,8 @@ h1.selection_title::after {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(1) rotate(-4deg);
-  filter: hue-rotate(-10deg) brightness(1.01);
+  transform: scaleX(1) scaleY(1) rotate(-4deg);
+  filter: hue-rotate(-12deg) brightness(0.94);
 }
 
 .item:nth-child(79) {
@@ -1831,12 +1831,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_3.png");
+  background-image: url("../../assets/creature_cards/card_4.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(1) rotate(3deg);
-  filter: hue-rotate(-19deg) brightness(1.08);
+  transform: scaleX(1) scaleY(-1) rotate(0deg);
+  filter: hue-rotate(-16deg) brightness(0.95);
 }
 
 .item:nth-child(80) {
@@ -1850,12 +1850,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_10.png");
+  background-image: url("../../assets/creature_cards/card_5.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(-1) rotate(1deg);
-  filter: hue-rotate(-5deg) brightness(0.98);
+  transform: scaleX(1) scaleY(-1) rotate(-1deg);
+  filter: hue-rotate(-18deg) brightness(1.1);
 }
 
 .item:nth-child(81) {
@@ -1869,12 +1869,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_1.png");
+  background-image: url("../../assets/creature_cards/card_4.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(-1) rotate(3deg);
-  filter: hue-rotate(-4deg) brightness(1.03);
+  transform: scaleX(-1) scaleY(1) rotate(0deg);
+  filter: hue-rotate(-2deg) brightness(1.1);
 }
 
 .item:nth-child(82) {
@@ -1888,12 +1888,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_10.png");
+  background-image: url("../../assets/creature_cards/card_3.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(1) rotate(4deg);
-  filter: hue-rotate(-14deg) brightness(1.08);
+  transform: scaleX(1) scaleY(-1) rotate(4deg);
+  filter: hue-rotate(-19deg) brightness(1.06);
 }
 
 .item:nth-child(83) {
@@ -1907,12 +1907,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_10.png");
+  background-image: url("../../assets/creature_cards/card_3.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(-1) rotate(4deg);
-  filter: hue-rotate(-7deg) brightness(1.1);
+  transform: scaleX(-1) scaleY(-1) rotate(3deg);
+  filter: hue-rotate(-16deg) brightness(1.06);
 }
 
 .item:nth-child(84) {
@@ -1926,12 +1926,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_10.png");
+  background-image: url("../../assets/creature_cards/card_6.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(-1) rotate(2deg);
-  filter: hue-rotate(-6deg) brightness(1.05);
+  transform: scaleX(1) scaleY(-1) rotate(5deg);
+  filter: hue-rotate(-18deg) brightness(0.97);
 }
 
 .item:nth-child(85) {
@@ -1949,8 +1949,8 @@ h1.selection_title::after {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(1) rotate(4deg);
-  filter: hue-rotate(-8deg) brightness(0.95);
+  transform: scaleX(-1) scaleY(-1) rotate(-2deg);
+  filter: hue-rotate(-13deg) brightness(0.93);
 }
 
 .item:nth-child(86) {
@@ -1964,12 +1964,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_8.png");
+  background-image: url("../../assets/creature_cards/card_6.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(-1) rotate(-1deg);
-  filter: hue-rotate(-4deg) brightness(1);
+  transform: scaleX(-1) scaleY(1) rotate(-2deg);
+  filter: hue-rotate(-13deg) brightness(1.04);
 }
 
 .item:nth-child(87) {
@@ -1983,12 +1983,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_9.png");
+  background-image: url("../../assets/creature_cards/card_11.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(1) rotate(1deg);
-  filter: hue-rotate(0deg) brightness(1.06);
+  transform: scaleX(1) scaleY(-1) rotate(1deg);
+  filter: hue-rotate(-11deg) brightness(0.96);
 }
 
 .item:nth-child(88) {
@@ -2002,12 +2002,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_3.png");
+  background-image: url("../../assets/creature_cards/card_9.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(1) rotate(0deg);
-  filter: hue-rotate(-1deg) brightness(0.92);
+  transform: scaleX(1) scaleY(1) rotate(-1deg);
+  filter: hue-rotate(-6deg) brightness(0.99);
 }
 
 .item:nth-child(89) {
@@ -2021,12 +2021,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_1.png");
+  background-image: url("../../assets/creature_cards/card_9.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(1) rotate(2deg);
-  filter: hue-rotate(-11deg) brightness(1.03);
+  transform: scaleX(-1) scaleY(-1) rotate(1deg);
+  filter: hue-rotate(-4deg) brightness(0.93);
 }
 
 .item:nth-child(90) {
@@ -2040,12 +2040,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_3.png");
+  background-image: url("../../assets/creature_cards/card_5.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(-1) rotate(-1deg);
-  filter: hue-rotate(-13deg) brightness(1.1);
+  transform: scaleX(-1) scaleY(-1) rotate(-1deg);
+  filter: hue-rotate(-19deg) brightness(0.93);
 }
 
 .item:nth-child(91) {
@@ -2059,12 +2059,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_2.png");
+  background-image: url("../../assets/creature_cards/card_11.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(1) rotate(-2deg);
-  filter: hue-rotate(-17deg) brightness(0.93);
+  transform: scaleX(-1) scaleY(1) rotate(2deg);
+  filter: hue-rotate(-12deg) brightness(0.93);
 }
 
 .item:nth-child(92) {
@@ -2082,8 +2082,8 @@ h1.selection_title::after {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(1) rotate(4deg);
-  filter: hue-rotate(-13deg) brightness(1.07);
+  transform: scaleX(1) scaleY(-1) rotate(5deg);
+  filter: hue-rotate(-8deg) brightness(0.91);
 }
 
 .item:nth-child(93) {
@@ -2097,12 +2097,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_4.png");
+  background-image: url("../../assets/creature_cards/card_9.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(-1) rotate(-4deg);
-  filter: hue-rotate(-18deg) brightness(0.97);
+  transform: scaleX(-1) scaleY(1) rotate(-1deg);
+  filter: hue-rotate(-1deg) brightness(1.08);
 }
 
 .item:nth-child(94) {
@@ -2116,12 +2116,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_2.png");
+  background-image: url("../../assets/creature_cards/card_3.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(-1) rotate(2deg);
-  filter: hue-rotate(-18deg) brightness(0.98);
+  transform: scaleX(1) scaleY(1) rotate(3deg);
+  filter: hue-rotate(-6deg) brightness(0.91);
 }
 
 .item:nth-child(95) {
@@ -2135,12 +2135,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_7.png");
+  background-image: url("../../assets/creature_cards/card_10.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(1) rotate(0deg);
-  filter: hue-rotate(-15deg) brightness(0.91);
+  transform: scaleX(1) scaleY(-1) rotate(-2deg);
+  filter: hue-rotate(-11deg) brightness(1.05);
 }
 
 .item:nth-child(96) {
@@ -2154,12 +2154,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_4.png");
+  background-image: url("../../assets/creature_cards/card_7.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(1) rotate(4deg);
-  filter: hue-rotate(-6deg) brightness(0.96);
+  transform: scaleX(1) scaleY(-1) rotate(5deg);
+  filter: hue-rotate(-17deg) brightness(1.03);
 }
 
 .item:nth-child(97) {
@@ -2173,12 +2173,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_7.png");
+  background-image: url("../../assets/creature_cards/card_2.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(-1) rotate(0deg);
-  filter: hue-rotate(-7deg) brightness(0.96);
+  transform: scaleX(1) scaleY(1) rotate(2deg);
+  filter: hue-rotate(-19deg) brightness(1.03);
 }
 
 .item:nth-child(98) {
@@ -2192,12 +2192,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_3.png");
+  background-image: url("../../assets/creature_cards/card_11.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(-1) rotate(-4deg);
-  filter: hue-rotate(0deg) brightness(1.09);
+  transform: scaleX(1) scaleY(1) rotate(5deg);
+  filter: hue-rotate(-2deg) brightness(1.1);
 }
 
 .item:nth-child(99) {
@@ -2211,12 +2211,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_8.png");
+  background-image: url("../../assets/creature_cards/card_6.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(1) scaleY(1) rotate(-3deg);
-  filter: hue-rotate(-3deg) brightness(0.94);
+  transform: scaleX(-1) scaleY(-1) rotate(5deg);
+  filter: hue-rotate(-9deg) brightness(0.96);
 }
 
 .item:nth-child(100) {
@@ -2230,12 +2230,12 @@ h1.selection_title::after {
   height: 100%;
   top: 0px;
   left: 0px;
-  background-image: url("../../assets/creature_cards/card_2.png");
+  background-image: url("../../assets/creature_cards/card_11.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scaleX(-1) scaleY(-1) rotate(-4deg);
-  filter: hue-rotate(-12deg) brightness(1.09);
+  transform: scaleX(1) scaleY(1) rotate(3deg);
+  filter: hue-rotate(-6deg) brightness(0.96);
 }
 
 .creationCombattant {

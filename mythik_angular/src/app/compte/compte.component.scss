@@ -36,6 +36,7 @@ h1 {
   margin: auto;
   margin-top: 5vh;
   width: fit-content;
+  filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.511));
 
   &::first-letter {
     color: rgb(103, 0, 0);
@@ -165,6 +166,7 @@ h1 {
   border: 0px solid #000000;
   border-radius: 10px;
   padding: 0px;
+  filter: drop-shadow(6px 6px 5px rgba(0, 0, 0, 0.711));
 }
 
 .compte_list_body {
@@ -222,6 +224,7 @@ h1 {
     right: 0px;
     // background-image: url(../../assets/flipbook-textures/infiniteScroll/ink_bottle2.png);
     background: url(../../assets/flipbook-textures/infiniteScroll/ink_block.png);
+    filter: drop-shadow(10px 10px 10px black);
     // background-color: rgba(255, 0, 0, 0.48);
     background-size: contain;
     background-position: center;
@@ -512,6 +515,7 @@ thead {
   margin-bottom: 20vh;
   animation: contentAppear 1s;
   padding: 10%;
+  filter: drop-shadow(6px 6px 5px rgba(0, 0, 0, 0.711));
 
   .card-header {
     position: relative;
@@ -678,6 +682,33 @@ thead {
   to {
     box-shadow: 0 0 4px $title-color-sec;
   }
+}
+
+
+.hideCompteForm{
+  animation: hideCompteForm forwards;
+  overflow: hidden;
+  *{
+    opacity: 0;
+    transition: 0.5s;
+  }
+}
+
+@keyframes hideCompteForm {
+
+  0%{
+    opacity: 1;
+    max-height: 100%;
+  }
+
+  50%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 0;
+    max-height: 0px;
+  }
+
 }
 
 

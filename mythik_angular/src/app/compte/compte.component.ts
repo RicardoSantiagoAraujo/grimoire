@@ -84,8 +84,14 @@ export class CompteComponent {
   }
 
   cancel() {
+    let delay= 3000;
+    document.querySelector<HTMLElement>(".compte_edit")!.classList.add("hideCompteForm");
+    document.querySelector<HTMLElement>(".compte_edit")!.style.animationDuration= delay/1000+"s";
+    setTimeout(()=>{
     this.showForm = false;
     this.compteForm.reset();
+    document.querySelector<HTMLElement>(".compte_edit")!.classList.remove("hideCompteForm");
+    }, delay)
   }
 
   retour() {

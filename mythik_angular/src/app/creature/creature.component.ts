@@ -67,8 +67,14 @@ typeElementCtrl!: FormControl;
     this.showForm = true;
   }
   cancel(){
+    let delay= 3000;
+    document.querySelector<HTMLElement>(".creature_edit")!.classList.add("hideCreatureForm");
+    document.querySelector<HTMLElement>(".creature_edit")!.style.animationDuration= delay/1000+"s";
+    setTimeout(()=>{
     this.showForm = false;
     this.creatureForm.reset();
+    document.querySelector<HTMLElement>(".creature_edit")!.classList.remove("hideCreatureForm");
+    }, delay)
   }
 
   remove(id?: number) {

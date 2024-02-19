@@ -12,7 +12,7 @@
   background-position: center;
   background-size: contain;
   background-repeat: repeat-y;
-  filter: brightness(0.6);
+  filter: brightness(0.6) drop-shadow(30px 30px 10px rgba(0, 0, 0, 0.539));
   transform: translate(-50%, -50%) rotate(calc(-40deg * 1));
   transform-origin: center;
 }
@@ -31,7 +31,7 @@
   background-position: center;
   background-size: contain;
   background-repeat: repeat-y;
-  filter: brightness(0.6);
+  filter: brightness(0.6) drop-shadow(30px 30px 10px rgba(0, 0, 0, 0.539));
   transform: translate(-50%, -50%) rotate(calc(-40deg * 2));
   transform-origin: center;
 }
@@ -50,7 +50,7 @@
   background-position: center;
   background-size: contain;
   background-repeat: repeat-y;
-  filter: brightness(0.6);
+  filter: brightness(0.6) drop-shadow(30px 30px 10px rgba(0, 0, 0, 0.539));
   transform: translate(-50%, -50%) rotate(calc(-40deg * 3));
   transform-origin: center;
 }

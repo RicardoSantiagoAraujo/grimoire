@@ -10,6 +10,7 @@ import { Observable, map, of } from 'rxjs';
 })
 export class CreaturePagesContentComponent implements OnInit, OnDestroy {
 
+
   creatures$!: Observable<Creature[]>;
   creatureList: Creature[] = [];
   creature!: Creature;
@@ -179,4 +180,22 @@ export class CreaturePagesContentComponent implements OnInit, OnDestroy {
       }
     }, interval);
   }
+
+
+  // IMAGE HOVER TO FULLSCREEN
+  timeoutId: any;
+  ShowFullscreenCreature() {
+        this.timeoutId = window.setTimeout(() => {
+        document.querySelector<HTMLImageElement>("#fullscreen_creature img")!.src= this.selectedCreature.image!;
+        document.querySelector<HTMLImageElement>("#fullscreen_creature")?.classList.add("goFullscreen");
+      document.querySelector<HTMLImageElement>("#fullscreen_creature")?.classList.remove("exitFullscreen");
+      }, 1000);
+    }
+
+  HideFullscreenCreature() {
+    window.clearTimeout(this.timeoutId);
+    // document.querySelector<HTMLImageElement>("#fullscreen_creature img")!.src= "none";
+    document.querySelector<HTMLImageElement>("#fullscreen_creature")?.classList.add("exitFullscreen");
+    document.querySelector<HTMLImageElement>("#fullscreen_creature")?.classList.remove("goFullscreen");
+    }
 }

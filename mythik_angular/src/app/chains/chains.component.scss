@@ -15,7 +15,7 @@
     background-position: center;
     background-size: contain;
     background-repeat: repeat-y;
-    filter: brightness(0.6);
+    filter: brightness(0.6)drop-shadow(30px 30px 10px rgba(0, 0, 0, 0.539));
     // background-color: red;
     // transform: rotate( calc(-40deg * #{$i}) );
     transform: translate(-50%, -50%)rotate(calc(-40deg * #{$i}));

@@ -16,6 +16,7 @@
   color: white;
   animation: scrollAppear 1s ease-out;
   transition: 1s ease-in-out;
+  filter: drop-shadow(10px 10px 5px rgba(0, 0, 0, 0.611));
 }
 .formulaire:hover {
   transform: scale(1.05);
@@ -75,6 +76,7 @@
      border-image: url(../../assets/flipbook-textures/nail.png);
   font-size: 8vmin;
   background: url(../../assets/flipbook-textures/scroll_paper.png);
+  filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.711));
   background-position: center;
   background-repeat: no-repeat;
   background-size: 120% 140%;
@@ -180,7 +182,7 @@ input:focus {
   background-position: center;
   background-repeat: no-repeat;
   font-weight: bold;
-  font-size: 3vmin;
+  font-size: 2.7vmin;
   text-align: center;
   text-decoration: none;
   transition: 0.1s;
@@ -199,7 +201,7 @@ input:focus {
 }
 .button_group a button {
   background: none;
-  padding: none;
+  padding: 0;
   border: none;
   height: 100%;
   cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
@@ -220,6 +222,7 @@ input:focus {
   height: 50%;
   top: 0px;
   background: url(../../assets/flipbook-textures/shield.png), radial-gradient(black, transparent, transparent);
+  filter: drop-shadow(15px 15px 7px rgba(0, 0, 0, 0.611));
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

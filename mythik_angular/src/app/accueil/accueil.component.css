@@ -48,6 +48,7 @@
   display: flex;
   flex-direction: column;
   background: url(../../assets/wooden_sign_botton.png), radial-gradient(rgb(0, 0, 0), transparent 85%);
+  filter: drop-shadow(10px 10px 5px rgba(0, 0, 0, 0.711));
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: top;
@@ -204,6 +205,7 @@
   font-size: 15vmin;
   z-index: 10;
   cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
+  filter: drop-shadow(6px 6px 5px rgba(0, 0, 0, 0.999));
   transition: 0.1s ease-in-out;
   transition-delay: 0s;
 }

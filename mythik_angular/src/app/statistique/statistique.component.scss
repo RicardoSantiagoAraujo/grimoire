@@ -30,6 +30,7 @@ h1 {
   background-position: center;
   height: 200px;
   position: relative;
+  filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.511));
 
   z-index: 1;
   color: $text-color;
@@ -91,7 +92,6 @@ button {
   font-size: 18px;
   text-align: center;
   text-decoration: none;
-  cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
   border: none;
   box-shadow: none;
   filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.373));
@@ -123,6 +123,7 @@ button {
     aspect-ratio: 4/3.3;
     padding-top: 25%;
     opacity: 0.6;
+    cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
 
     span {
       display: flex;
@@ -290,6 +291,7 @@ $showStatsAngle: 20deg;
   border-radius: 10px;
   padding: 0px;
   animation: listAppear 1.5s;
+  filter: drop-shadow(10px 10px 5px rgba(0, 0, 0, 0.711));
 }
 
 @keyframes listAppear {

@@ -348,6 +348,7 @@ app-creature-pages-content {
 #pageRight .image img:hover {
   transform: scale(-1.05, 1.05);
   filter: saturate(1);
+  cursor: url(../../assets/cursors/eye-32x32.png), pointer;
 }
 #pageRight .image.grec {
   -o-border-image: url(../../assets/greek/frame.png) 30% 40%/5vw 5vw/2vw round;
@@ -375,6 +376,9 @@ app-creature-pages-content {
 #pageRight .memo {
   height: 25%;
   width: 80%;
+}
+#pageRight .memo * {
+  font-size: 1.5vw;
 }
 #pageRight .memo h6 {
   text-align: center;
@@ -560,6 +564,7 @@ app-creature-pages-content {
   margin: auto;
   text-align: center;
   background: url(../../assets/flipbook-textures/grimoire_button_filled.png), radial-gradient(rgba(172, 255, 47, 0.37), transparent 50%);
+  filter: drop-shadow(10px 10px 5px rgba(0, 0, 0, 0.611));
   cursor: url(../../assets/cursors/middle-ages-pointer-32x32.png), pointer;
   z-index: 1;
   background-size: contain;
@@ -571,7 +576,7 @@ app-creature-pages-content {
   color: rgba(80, 0, 0, 0.649);
 }
 .pageControlBtn:hover {
-  filter: hue-rotate(50deg);
+  filter: hue-rotate(50deg) drop-shadow(15px 15px 10px rgba(0, 0, 0, 0.611));
   text-shadow: #342101 1px 1px 10px;
   transform: scale(1.1);
 }
@@ -579,4 +584,52 @@ app-creature-pages-content {
   filter: hue-rotate(100deg);
   text-shadow: #342101 1px 1px 20px;
   transform: scale(0.95);
+}
+
+#fullscreen_creature {
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 110vw;
+  height: 110vh;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(closest-side, rgba(0, 0, 0, 0.916), rgba(0, 0, 0, 0.562));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  opacity: 0;
+}
+#fullscreen_creature img {
+  opacity: 0.9;
+  height: 100%;
+}
+
+.goFullscreen {
+  animation: goFullscreen 1s forwards;
+  animation-delay: 0s;
+}
+
+@keyframes goFullscreen {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.exitFullscreen {
+  opacity: 1;
+  animation: exitFullscreen 1s forwards;
+  animation-delay: 0s;
+}
+
+@keyframes exitFullscreen {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }/*# sourceMappingURL=creature-pages-content.component.css.map */

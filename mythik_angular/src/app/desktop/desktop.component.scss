@@ -290,6 +290,6 @@ $propshadow: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.7));
 		width: 10vmax;
 		height: auto;
 		background: radial-gradient(closest-side,black, transparent 35%);
-		filter: drop-shadow(0 0 3px black);
+		filter: drop-shadow(0px 0px 3px black);
 	}
 }

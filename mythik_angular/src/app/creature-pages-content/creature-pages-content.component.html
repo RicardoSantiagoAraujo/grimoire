@@ -21,8 +21,8 @@
             <button class="pageControlBtn" *ngIf="this.num > 0" (click)="previous()">Precedent</button>
         </div>
         <div [class]="'creaturePage ' + (selectedCreature | creatureData)" id="pageRight">
-            <div [class]="'image ' + (selectedCreature | creatureData)"><img width="30px" height="30px"
-                    [src]="selectedCreature.image" /></div>
+            <div [class]="'image ' + (selectedCreature | creatureData)"><img
+                    [src]="selectedCreature.image" (mouseenter)="ShowFullscreenCreature()" (mouseleave)="HideFullscreenCreature()"/></div>
             <img class="break" src="../../assets/flipbook-textures/fantasy-break.png" />
             <div [class]="'memo ' + (selectedCreature | creatureData)">
                 <h6>
@@ -42,5 +42,8 @@
     </div>
 </div>
 <div>
+</div>
 
+<div id="fullscreen_creature">
+    <img>
 </div>
