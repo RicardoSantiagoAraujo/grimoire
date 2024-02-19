@@ -7,7 +7,6 @@ app-creature-pages-content {
 }
 
 #creature_contents {
-  background-color: rgba(255, 255, 255, 0.31);
   position: absolute;
   width: 100%;
   height: 100%;
@@ -60,9 +59,8 @@ app-creature-pages-content {
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
-
-.break {
-  width: 40%;
+#creature_contents > .creaturePage.dieu:after {
+  filter: drop-shadow(0 0 10px goldenrod) drop-shadow(0 0 5px white);
 }
 
 @keyframes creatureAppear {
@@ -90,13 +88,13 @@ app-creature-pages-content {
 #pageLeft .nom {
   pointer-events: all;
   width: 100%;
-  margin-top: 20%;
-  margin-left: 33%;
+  margin-top: 15%;
+  margin-left: 35%;
   font-family: "bronzion";
   font-size: 30px;
   padding: 10px;
   position: relative;
-  text-shadow: 0 0 1px white, 0 0 3px white;
+  text-shadow: 0 0 1px rgb(193, 0, 0), 0 0 3px white, 0 0 10px white, 0 0 15px white;
 }
 #pageLeft .nom:before {
   content: "";
@@ -127,8 +125,9 @@ app-creature-pages-content {
 #pageLeft .nom.nordique:after {
   background: url(../../assets/norse/separator.png);
   background-repeat: repeat-x;
-  background-position: left;
+  background-position: center;
   background-size: contain;
+  border-radius: 30%;
 }
 #pageLeft .nom.grec:before {
   width: 60%;
@@ -143,7 +142,8 @@ app-creature-pages-content {
   background: url(../../assets/greek/separator2.png);
   background-repeat: repeat-x;
   background-position: left;
-  background-size: contain;
+  background-size: 33%;
+  border-radius: 35%;
 }
 #pageLeft .nom.egyptienne:before {
   width: 60%;
@@ -166,8 +166,8 @@ app-creature-pages-content {
 #pageLeft .nom.egyptienne:after {
   background: url(../../assets/egyptian/separator.png);
   background-repeat: repeat-x;
-  background-position: left;
-  background-size: contain;
+  background-position: center;
+  background-size: 33%;
 }
 #pageLeft .nom.chinoise:before {
   width: 60%;
@@ -207,9 +207,9 @@ app-creature-pages-content {
 }
 #pageLeft .descript {
   width: 70%;
-  min-height: 30%;
+  height: 38%;
   margin: auto;
-  margin-bottom: 20%;
+  margin-bottom: 15%;
   position: relative;
 }
 #pageLeft .descript.feu {
@@ -283,11 +283,13 @@ app-creature-pages-content {
 #pageLeft .numeroPageLeft {
   position: absolute;
   z-index: 100;
-  bottom: 2%;
+  bottom: 0%;
   left: 7%;
   padding: 0 10%;
   color: rgba(79, 5, 5, 0.623);
-  background: radial-gradient(closest-side, rgba(255, 255, 255, 0.635) 75%, transparent);
+  border-radius: 70% 0%;
+  border: 3px outset rgba(193, 0, 0, 0.7);
+  background: linear-gradient(transparent, rgba(235, 222, 193, 0.9) 10% 90%, transparent);
 }
 #pageLeft .numeroPageLeft span {
   text-shadow: 0 0 2px rgb(0, 100, 0);
@@ -331,6 +333,7 @@ app-creature-pages-content {
 }
 #pageRight .image {
   height: 40%;
+  max-width: 60%;
 }
 #pageRight .image img {
   width: 100%;
@@ -361,6 +364,13 @@ app-creature-pages-content {
 #pageRight .image.egyptienne {
   -o-border-image: url(../../assets/egyptian/frame.png) 30% 30%/5vw 5vw/2vw round;
      border-image: url(../../assets/egyptian/frame.png) 30% 30%/5vw 5vw/2vw round;
+}
+#pageRight .image.dieu {
+  filter: drop-shadow(0 0 10px goldenrod) drop-shadow(0 0 5px white);
+}
+#pageRight .break {
+  width: 40%;
+  padding: 2% 0%;
 }
 #pageRight .memo {
   height: 25%;
@@ -473,6 +483,7 @@ app-creature-pages-content {
   pointer-events: all;
   filter: drop-shadow(10px 10px 5px rgba(0, 0, 0, 0.5));
   transition: 0.5s;
+  animation: selection_menu_appear 1.5s forwards;
   background-color: rgb(193, 0, 0);
   background-image: url("data:image/svg+xml,%3Csvg width='16' height='20' viewBox='0 0 16 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M8 0v20L0 10M16 0v10L8 0M16 10v10H8'/%3E%3C/g%3E%3C/svg%3E");
   border-radius: 1%;
@@ -519,27 +530,38 @@ app-creature-pages-content {
 #creature_selection_menu:before {
   content: "";
   position: absolute;
-  right: -1.5vw;
-  transform: scaleY(2.3);
+  left: 100%;
   width: 0;
   height: 0;
-  border-left: 20px solid rgb(193, 0, 0);
-  border-top: 20px solid transparent;
-  border-bottom: 20px solid transparent;
+  border-left: 2.5vw solid rgb(193, 0, 0);
+  border-top: 3.4vw solid transparent;
+  border-bottom: 3.4vw solid transparent;
   background-image: url(../../assets/flipbook-textures/natural-paper.png);
   background-size: cover;
 }
 
+@keyframes selection_menu_appear {
+  from {
+    opacity: 0;
+    transform: translateY(-100vh) rotate(90deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+}
 .pageControlBtn {
   position: absolute;
-  bottom: -8px;
+  top: 100%;
+  width: 80%;
+  height: 15%;
   display: block;
   text-align: center;
   margin: auto;
   text-align: center;
   background: url(../../assets/flipbook-textures/grimoire_button_filled.png), radial-gradient(rgba(172, 255, 47, 0.37), transparent 50%);
   cursor: url(../../assets/cursors/middle-ages-pointer-32x32.png), pointer;
-  padding: 5vw 5vw;
+  z-index: 1;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;

@@ -17,6 +17,7 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
   ouvrirLivre_interval: any;
   ouvrirSectionGrimoire_interval: any;
   user_id: string;
+  grimoireSectionOpen: boolean = false;
 
   creatures?: Creature[];
   constructor(private creatureService: CreatureService, private authService: AuthService) {
@@ -169,7 +170,7 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
       let pages = document.querySelectorAll<HTMLElement>("flipbook-page .page:not(.cover)");
       let sheets = document.querySelectorAll<HTMLElement>("flipbook-page");
 
-      console.log(pages)
+      // console.log(pages)
       for (let i = 1; i < pages.length - 1; i = i + 2) { // loop over pages to randomly add variety
         // console.log(i);
         let randomizer = 20
@@ -226,9 +227,9 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
             let bg_size = Math.floor( 30 + Math.random()* 60);
             mocktext.style.backgroundSize = `${bg_size}% auto`;
             mocktext.style.backgroundPosition = `${["top, center", "center, center", "bottom, center"][Math.floor(Math.random()*3)]}`;
-            console.log(`${["top, center", "center, center", "bottom, center"][Math.floor(Math.random()*3)]}`);
+            // console.log(`${["top, center", "center, center", "bottom, center"][Math.floor(Math.random()*3)]}`);
             mock_bgs.splice(random_bg_i, 1); // remove it so it does not repeat
-            console.log(mock_bgs);
+            // console.log(mock_bgs);
 
             // ADD STAINS
             var stained_page = document.createElement("div");
@@ -258,7 +259,7 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
       // trigger event on cover/backcover rotation
       // CHECK WHETHER BOOK IS OPEN; IF SO, TURN ON LIGHT
       const ouvrirLivre = (event: { type: string; }) => {
-        console.log("CHECK BOOK STATE")
+        // console.log("CHECK BOOK STATE")
         let coverRotation: any = cover.getAttribute("ng-reflect-rotation");
         let backcoverRotation: any = backcover.getAttribute("ng-reflect-rotation");
         // console.log(document.querySelector<HTMLElement>("#firewall"));
@@ -355,24 +356,34 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
       const creatureSheet2Back = creatureSheet2.querySelector<HTMLElement>(".back")!;
       creatureSheet2Back.innerHTML = "";
 
-
       //// FUNCTION TO OPEN/CLOSE GRIMOIRE SECTION
-      function ouvrirSectionGrimoire() {
+      const ouvrirSectionGrimoire = () => {
         // console.log(creatureSheet1.getAttribute("ng-reflect-rotation"))
         let pageARotation: any = creatureSheet1.getAttribute("ng-reflect-rotation");
         let pageBRotation: any = creatureSheet2.getAttribute("ng-reflect-rotation");
+        let grimoireDelay = 500;
         if ( // OPEN
           (parseInt(pageARotation) < -170 && parseInt(pageBRotation) > -10)
         ) {
-          document.querySelector<HTMLElement>(".creature_pages")!.style.display = "flex";
+          setTimeout(()=>{
+            this.grimoireSectionOpen = true;
+            // console.log(this.grimoireSectionOpen)
+          },grimoireDelay)
+          document.querySelector<HTMLElement>(".creature_pages")!.style.opacity = "1";
+         //  document.querySelector<HTMLElement>(".creature_pages")!.style.display = "flex";
           document.querySelectorAll<HTMLElement>(".magic_effect")!.forEach(page => {
             page.classList.add("fadeRing");
           document.querySelector<HTMLElement>("#firewall")!.classList.remove("neutral_fire");
           document.querySelector<HTMLElement>("#desktop_glow_wrapper")!.classList.add("desktop_glow_ON");
         });
-          console.log("OPEN GRIMOIRE SECTION")
+          // console.log("OPEN GRIMOIRE SECTION")
         } else { // CLOSE
-          document.querySelector<HTMLElement>(".creature_pages")!.style.display = "none";
+          setTimeout(()=>{
+            this.grimoireSectionOpen = false;
+            // console.log(this.grimoireSectionOpen)
+          },grimoireDelay)
+          document.querySelector<HTMLElement>(".creature_pages")!.style.opacity = "0"; // !!!!!
+          // document.querySelector<HTMLElement>(".creature_pages")!.style.display = "none";
           document.querySelectorAll<HTMLElement>(".magic_effect")!.forEach(page => {
             page.classList.remove("fadeRing") ;
           document.querySelector<HTMLElement>("#firewall")!.classList.add("neutral_fire");
@@ -381,7 +392,6 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
         };
       }
       this.ouvrirSectionGrimoire_interval = setInterval(ouvrirSectionGrimoire, 100) // !!!!
-
 
     }, this.timeOut)
   }
@@ -422,7 +432,7 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
   document.documentElement.style.setProperty("--color-overlay-l", `hsla(${H},${S}%,${L}%, ${strength})`);
   document.documentElement.style.setProperty("--color-overlay-d", `hsla(${H},${S}%,${L}%, ${strength})`);
   document.documentElement.style.setProperty("--blur-overlay-l", "0%");
-  console.log("LIGHT OFF");
+  // console.log("LIGHT OFF");
   this.lightstate = "off"
 }
 // lightsOut()
@@ -464,7 +474,7 @@ lightsOn() {
     }
     suddenLights()
 
-    console.log("LIGHT ON")
+    // console.log("LIGHT ON")
     this.lightstate = "on"
   }
 }
@@ -477,14 +487,14 @@ firestart() {
     setTimeout(function () {
       fire.src = "assets/fire.gif";
       fire.style.display = "block";
-      console.log("TEST FIRE START")
+      // console.log("TEST FIRE START")
     }, index * 1000)
   })
 }
 
 // receiving selected Creature from child component via output
 receiveSelectedCreature(selectedCreature: Creature) {
-  console.log(selectedCreature.typeElement)
+  // console.log(selectedCreature.typeElement)
 
   let hue_rotation;
   let color;
