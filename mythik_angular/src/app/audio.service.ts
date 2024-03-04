@@ -39,7 +39,7 @@ export class AudioService {
   pageFlip_5 = new Audio("../assets/audio/page_flip_5.wav");
   pageFlip_6 = new Audio("../assets/audio/page_flip_6.wav");
   fireSounds = new Audio("../assets/audio/fire_sounds.wav");
-  chimes = new Audio("../assets/audio/chimes.flac");
+  chimes = new Audio("../assets/audio/chimes.mp3");
   chime = new Audio("../assets/audio/chime_single.wav");
   chants = new Audio("../assets/audio/chant.mp3");
   bookDown = new Audio("../assets/audio/book_down.mp3");
