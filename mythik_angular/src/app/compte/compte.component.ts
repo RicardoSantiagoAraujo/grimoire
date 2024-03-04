@@ -4,6 +4,7 @@ import { Compte } from '../model';
 import { Observable } from 'rxjs';
 import { CompteService } from './compte.service';
 import { Router } from '@angular/router';
+import { AudioService } from '../audio.service';
 
 @Component({
   selector: 'app-compte',
@@ -22,7 +23,8 @@ export class CompteComponent {
   showForm: boolean = false;
   compte$!: Observable<Compte[]>;
 
-  constructor(private compteService: CompteService, private formBuilder: FormBuilder, private router: Router) {
+  constructor(private compteService: CompteService, private formBuilder: FormBuilder, private router: Router,
+    private audioService: AudioService) {
     this.load();
   }
 
@@ -44,6 +46,7 @@ export class CompteComponent {
 
   load() {
     this.compte$ = this.compteService.findAll();
+    setTimeout(()=>{this.audioService.unrollScrollSound(0.1)}, 1000);
   }
 
   list() {
@@ -53,6 +56,8 @@ export class CompteComponent {
   add() {
     this.compteForm.reset();
     this.showForm = true;
+    this.audioService.unrollScrollSound(0.1);
+    this.audioService.playCoinSound();
   }
 
   edit(id?: number) {
@@ -60,6 +65,8 @@ export class CompteComponent {
     this.compteService.findById(id).subscribe(resp => {
       this.compteForm.patchValue(resp);
       this.showForm = true;
+      this.audioService.unrollScrollSound(0.1);
+      this.audioService.playCoinSound();
     });
 
   }
@@ -81,6 +88,8 @@ export class CompteComponent {
 
   remove(id?: number) {
     this.compteService.delete(id).subscribe(resp => this.load());
+    this.audioService.unrollScrollSound(0.1);
+    this.audioService.playCoinSound();
   }
 
   cancel() {
@@ -92,11 +101,15 @@ export class CompteComponent {
     this.compteForm.reset();
     document.querySelector<HTMLElement>(".compte_edit")!.classList.remove("hideCompteForm");
     }, delay)
+    this.audioService.unrollScrollSound(0.1);
+    this.audioService.playCoinSound();
   }
 
   retour() {
     this.router.navigate(['/accueil']);
-    this.exitAnimation()
+    this.exitAnimation();
+    this.audioService.unrollScrollSound(0.1);
+    this.audioService.playCoinSound();
 
   }
 
@@ -108,6 +121,7 @@ export class CompteComponent {
 
   // Function to sort table by column
   sortTable(n: number, type: string) {
+    this.audioService.unrollScrollSound(0.1);
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById("table_compte")! as HTMLTableElement;
     switching = true;

@@ -2,7 +2,7 @@
     <div id="creature_selection_menu" [class]="(selectedCreature | creatureData)">
         <label for="creatureSelector">Choisir une créature :</label>
         <select id="creatureSelector" [(ngModel)]="selectedCreature"
-        (change)="this.AdjCreatureDisplay(this.selectedCreature)">
+        (change)="this.AdjCreatureDisplay(this.selectedCreature); this.audioService.playCoinSound()">
             <option *ngFor="let c of creatureList" [ngValue]="c">{{c.nom}}</option>
         </select>
     </div>
@@ -22,8 +22,8 @@
         </div>
         <div [class]="'creaturePage ' + (selectedCreature | creatureData)" id="pageRight">
             <div [class]="'image ' + (selectedCreature | creatureData)"><img
-                    [src]="selectedCreature.image" (mouseenter)="ShowFullscreenCreature()" (mouseleave)="HideFullscreenCreature()"/></div>
-            <img class="break" src="../../assets/flipbook-textures/fantasy-break.png" />
+                    [src]="selectedCreature.image! | reduceImage" (mouseenter)="ShowFullscreenCreature()" (mouseleave)="HideFullscreenCreature()"/></div>
+            <img class="break" src="../../assets/flipbook-textures/fantasy-break_reduced.png" />
             <div [class]="'memo ' + (selectedCreature | creatureData)">
                 <h6>
                     <!-- Memo -->

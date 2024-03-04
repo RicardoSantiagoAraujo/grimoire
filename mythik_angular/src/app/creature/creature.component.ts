@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Creature } from '../model';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AudioService } from '../audio.service';
 
 @Component({
   selector: 'app-creature',
@@ -27,7 +28,8 @@ typeElementCtrl!: FormControl;
 
 
 
-  constructor(private creatureService: CreatureService, private formBuilder: FormBuilder, private router: Router){
+  constructor(private creatureService: CreatureService, private formBuilder: FormBuilder, private router: Router,
+    private audioService: AudioService){
     this.load();
   }
 
@@ -56,6 +58,7 @@ typeElementCtrl!: FormControl;
 
   load() {
     this.creatures$ = this.creatureService.findAll();
+    setTimeout(()=>{this.audioService.unrollScrollSound(0.1)}, 1000);
   }
 
   list() {
@@ -65,8 +68,13 @@ typeElementCtrl!: FormControl;
   add(){
     this.creatureForm.reset();
     this.showForm = true;
+    this.audioService.unrollScrollSound(0.1);
+    this.audioService.playCoinSound();
   }
+
   cancel(){
+    this.audioService.unrollScrollSound(0.1);
+    this.audioService.playCoinSound();
     let delay= 3000;
     document.querySelector<HTMLElement>(".creature_edit")!.classList.add("hideCreatureForm");
     document.querySelector<HTMLElement>(".creature_edit")!.style.animationDuration= delay/1000+"s";
@@ -79,13 +87,15 @@ typeElementCtrl!: FormControl;
 
   remove(id?: number) {
     this.creatureService.delete(id).subscribe(resp => {this.load()})
-
+    this.audioService.playCoinSound();
   }
 
   edit(id?: number) {
     this.creatureService.findById(id).subscribe(resp => {
       this.creatureForm.patchValue(resp);
       this.showForm = true;
+      this.audioService.unrollScrollSound(0.1);
+      this.audioService.playCoinSound();
     });
   }
 
@@ -101,6 +111,8 @@ typeElementCtrl!: FormControl;
   }
 
   retour(){
+    this.audioService.unrollScrollSound(0.1);
+    this.audioService.playCoinSound();
     this.router.navigate(['/accueil']);
     this.exitAnimation()
   }
@@ -114,6 +126,7 @@ typeElementCtrl!: FormControl;
 
     // Function to sort table by column
   sortTable(n: number, type: string) {
+    this.audioService.unrollScrollSound(0.1);
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById("table_creature")! as HTMLTableElement;
     switching = true;

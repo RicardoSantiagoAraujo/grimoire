@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CombatService } from '../combat/combat.service';
 import { CombattantService } from '../selection-combat/combattant.service';
 import { AuthService } from '../auth.service';
 import { Combattant, Compte } from '../model';
 import { CompteService } from '../compte/compte.service';
 import { Observable } from 'rxjs';
+import { AudioService } from '../audio.service';
 
 @Component({
   selector: 'app-statistique',
@@ -12,7 +13,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./statistique.component.css']
 })
 
-export class StatistiqueComponent implements OnInit {
+export class StatistiqueComponent implements OnInit, OnDestroy {
   compte!: any;
   compteIA!: Compte;
   combattants!: Combattant[];
@@ -21,14 +22,22 @@ export class StatistiqueComponent implements OnInit {
   id!: number;
   tauxVictoire?: number;
   changement: boolean = true;
-  constructor(private combattantService: CombattantService, private compteService: CompteService, private authService: AuthService) {
+  constructor(private combattantService: CombattantService, private compteService: CompteService, private authService: AuthService, public audioService: AudioService) {
   }
+
 
   ngOnInit(): void {
     this.compte = this.authService.getCompte();
     this.compteService.findIA().subscribe(resp => {
       this.compteIA = resp;
     });
+    this.audioService.unrollScrollSound(1);
+  }
+
+  ngOnDestroy(): void {
+    this.audioService.switchResultTheme("victory", false, 0);
+    this.audioService.switchResultTheme("defeat", false, 0);
+    this.audioService.switchChants(false)
   }
 
   mesparties() {
@@ -40,6 +49,7 @@ export class StatistiqueComponent implements OnInit {
       this.unrollScroll(this.combattants.length)
     });
     this.stat()
+    this.audioService.clickButtonSound();
   }
 
   IAparties() {
@@ -51,10 +61,12 @@ export class StatistiqueComponent implements OnInit {
       this.unrollScroll(this.combattants.length)
     });
     this.stat()
+    this.audioService.clickButtonSound();
   }
 
   unrollScroll(n_items: number) {
     // console.log(n_items)
+    this.audioService.unrollScrollSound(1);
     let length_scroll = (n_items * 50) + 50;
     document.querySelector<HTMLBodyElement>(".stats_list_body")!.style.maxHeight = length_scroll + "px";
     setTimeout(() => {
@@ -110,6 +122,7 @@ export class StatistiqueComponent implements OnInit {
 
   // Function to sort table by column
   sortTable(n: number, type: string) {
+    this.audioService.unrollScrollSound(1);
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById("table_stats")! as HTMLTableElement;
     switching = true;
@@ -172,6 +185,7 @@ export class StatistiqueComponent implements OnInit {
 
     // add class to trigger exit animation on click
     exitAnimation() {
+      this.audioService.playWoodImpact();
       document.querySelector("section")?.classList.add("exitAnimation");
     }
 }

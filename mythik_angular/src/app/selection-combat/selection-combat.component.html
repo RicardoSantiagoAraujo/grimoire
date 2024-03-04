@@ -10,12 +10,13 @@
         <div class="selectionCreatureContainer">
 
             <div *ngFor="let c of list() |async" [class]="'item ' + (c | creatureData)">
-                <div [class]="'creature_card ' + (c | creatureData)" (click)="creationCombattant1(c)">
+                <div [class]="'creature_card ' + (c | creatureData)"
+                (click)="creationCombattant1(c)" (mouseenter)="audioService.playPageFlip(0.3)">
                     <div [class]="'name ' + (c | creatureData)">
                         <!-- <span>{{c.nom}}</span> -->
                         <span [class]="(c | creatureData)">{{c.nom}}</span>
                     </div>
-                    <img [src]="c.image" [class]="'img ' + (c | creatureData)">
+                    <img [src]="c.image! | reduceImage" [class]="'img ' + (c | creatureData)">
                     <ul [class]="(c | creatureData)">
                         <li class="pv"> pv: <span>{{c.pv}}</span> </li>
                         <li class="attaque"> pa: <span>{{c.attaque}}</span></li>
@@ -60,19 +61,23 @@
                     </div>
                     <!-- ========================== -->
                     <div class="buttons">
-                        <a (click)="creationCombattant2()" id="adv_btn">
+                        <a (click)="creationCombattant2()" (mouseenter)="
+                        this.audioService.playWeaponDraw(0.1)"
+                         id="adv_btn">
                             <button type="button" class="button">
                                 Trouver un adversaire
                             </button>
                         </a>
                         <div *ngIf="cb1 && cb2" id="combat_btn">
-                            <a (click)="goCombat()">
+                            <a (click)="goCombat()" (mouseenter)="audioService.playWhisper_1(0.5)">
                                 <button type="button" class="button">
                                     Combat
                                 </button>
                             </a>
                         </div>
-                        <a [routerLink]="['/accueil']" routerLinkActive="active" id="retour_btn" (click)="goBack()">
+                        <a [routerLink]="['/accueil']" routerLinkActive="active" id="retour_btn"
+                         (click)="goBack()" (mouseenter)="
+                         this.audioService.playWoodCreak()">
                             <button type="button" class="button">
                                 Retour
                             </button>

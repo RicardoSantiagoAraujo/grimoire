@@ -7,6 +7,13 @@
 	--glowColor2: #000000;
 }
 
+// *{
+// 	background: none !important;
+// }
+// img{
+// 	display: none !important;
+// }
+
 #desktop_glow_wrapper {
 	background-color: red !important;
 	opacity: 0;
@@ -22,7 +29,7 @@
 		left: 0px;
 		height: 100%;
 		width: 100%;
-		background: url(../../assets/flipbook-textures/wood-texture_glow.png);
+		background: url(../../assets/flipbook-textures/wood-texture_glow_reduced.png);
 		background-size: cover;
 		z-index: -3;
 		filter: blur(10px)drop-shadow(0 0 1px red)drop-shadow(0 0 10px red);
@@ -134,7 +141,7 @@
 			width: 100%;
 			height: 100%;
 			animation: flipbookTitleEffect 10s;
-			background: url(../../assets/flipbook-textures/zodiac_arena_filled.png),
+			background: url(../../assets/flipbook-textures/zodiac_arena_filled_reduced.png),
 				rgba(255, 0, 0, 0);
 			@include bg-single-contain-center;
 			$bg-size: 98%;
@@ -186,7 +193,7 @@
 		justify-content: center;
 		align-items: center;
 		//background-color: red;
-		background: url(../../assets/flipbook-textures/ring.png);
+		background: url(../../assets/flipbook-textures/ring_reduced.png);
 		filter: brightness(0.75);
 		background-size: contain;
 		// background-repeat: repeat;
@@ -393,7 +400,7 @@
 		font-family: "Lugrasimo";
 		height: 100%;
 		width: 90%;
-		background-image: url("../../assets/flipbook-textures/page_decoration1.png");
+		background-image: url(../../assets/flipbook-textures/page_decoration1.png);
 		background-size: contain;
 		background-repeat: no-repeat;
 		overflow: hidden;
@@ -406,7 +413,7 @@
 			text-transform: uppercase;
 
 			&::first-letter {
-				border-image: url(../../assets/flipbook-textures/floral.png) 100% 0%/ 2vw 0vw 0vw/ 1.5vw space;
+				border-image: url(../../assets/flipbook-textures/floral_reduced.png) 100% 0%/ 2vw 0vw 0vw/ 1.5vw space;
 				color: $title-color-sec;
 				font-size: 9vmin;
 			}
@@ -477,8 +484,10 @@
 		color: rgba(41, 0, 0, 0.689);
 		font-family: "Lugrasimo";
 		height: 90%;
+		padding: 0 10%;
+		text-align: center;
 		width: 85%;
-		background-image: url("../../assets/flipbook-textures/page_decoration2.png");
+		background-image: url(../../assets/flipbook-textures/page_decoration2.png);
 		background-size: contain;
 		background-repeat: no-repeat;
 		text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.19);
@@ -531,6 +540,10 @@
 			text-shadow: 0 0 10px $title-color-pri;
 		}
 
+		#instructions{
+			font-size: 1.3vw;
+		}
+
 		img {
 			width: 40%;
 			opacity: 0.75;
@@ -563,8 +576,8 @@
 			z-index: -1;
 			background-size: cover;
 			background-repeat: no-repeat;
-			background: url("../../assets/flipbook-textures/floral_bg.png");
-			border-image: url("../../assets/flipbook-textures/celtic_frame.png") 20% 20% /5vw 5vw /1vw round;
+			background: url(../../assets/flipbook-textures/floral_bg_reduced.png);
+			border-image: url(../../assets/flipbook-textures/celtic_frame_reduced.png) 20% 20% /5vw 5vw /1vw round;
 		}
 
 		div {
@@ -580,7 +593,7 @@
 
 			&::after {
 				content: "";
-				background-image: url("../../assets/flipbook-textures/celtic_knot.png");
+				background-image: url(../../assets/flipbook-textures/celtic_knot_reduced.png);
 				position: absolute;
 				top: 50%;
 				right: 50%;
@@ -654,7 +667,7 @@
 	.magic_effect {
 		width: 100%;
 		height: 100%;
-		background: url(../../assets/flipbook-textures/zodiac_arena.png),
+		background: url(../../assets/flipbook-textures/zodiac_arena_reduced.png),
 			radial-gradient(circle closest-side, white, transparent) //radial-gradient(black, transparent 30%)
 		;
 		@include bg-single-contain-center;
@@ -666,7 +679,7 @@
 		&::after {
 			content: "";
 			background:
-				url("../../assets/flipbook-textures/celtic_knot.png");
+				url(../../assets/flipbook-textures/celtic_knot_reduced.png);
 			position: absolute;
 			// top: 50%;
 			// right:50%;

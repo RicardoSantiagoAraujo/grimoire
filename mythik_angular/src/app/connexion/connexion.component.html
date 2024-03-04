@@ -7,16 +7,16 @@
     </div>
     <img id="bg_img" src="../../assets/flipbook-textures/dialog_scroll.png"/>
 
-    <div class="container">
+    <div class="container" (mouseenter)="this.audioService.playWoodCreak()">
         <!-- USER NAME INPUT -->
         <div >
             <label for="login" class="form-label">Login:</label>
-            <div class="input-div"><input type="text" class="form-control" id="login" name="login" formControlName="login"></div>
+            <div class="input-div"><input type="text" class="form-control" id="login" name="login" formControlName="login" (focus)="onFocus()"></div>
         </div>
         <!-- PASSWORD INPUT -->
         <div >
             <label for="password" class="form-label">Password:</label>
-            <div class="input-div"><input type="password" class="form-control" id="password" name="password" formControlName="password"></div>
+            <div class="input-div"><input type="password" class="form-control" id="password" name="password" formControlName="password" (focus)="onFocus()"></div>
         </div>
     </div>
     <div class="button_group">

@@ -29,7 +29,9 @@
       <div id="retour_grimoire">
         <!-- <a [routerLink]="['/accueil']" routerLinkActive="active"> -->
         <a>
-          <button type="button" class="button" (click)="exitAnimation()">Retour</button>
+          <button type="button" class="button" (click)="exitAnimation()"
+          (mouseenter)="exitHover(0.05)" (mouseleave)="exitHover(0.01)"
+          >Retour</button>
         </a>
         <div id="page_marker"></div>
       </div>

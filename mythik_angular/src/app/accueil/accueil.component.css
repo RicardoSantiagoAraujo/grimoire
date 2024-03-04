@@ -297,6 +297,9 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+.sec_grimoire span {
+  pointer-events: none;
+}
 .sec_grimoire #letterG {
   font-family: "bronzion";
   font-size: 10vmin;

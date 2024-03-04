@@ -1,17 +1,61 @@
-
-  <div class="container">
-    <h1>Mythik</h1>
-    <img src="../../assets/flipbook-textures/fantasy-break.png"/>
-    <div class="connect">
-      <a class="nav-link" [routerLink]="['/connexion']" routerLinkActive="active"><button type="button"
-        (click)="exitAnimation()">Se connecter</button></a>
-      <img id="key"/>
-    </div>
-    <div class="inscript">
-    <a class="nav-link" [routerLink]="['/inscription']" routerLinkActive="active"><button type="button"  (click)="exitAnimation()">S'inscrire</button></a>
-    <img id="feather"/>
-    </div>
+<div class="container">
+  <h1>Mythik</h1>
+  <img src="../../assets/flipbook-textures/fantasy-break.png" />
+  <div class="connect">
+    <a class="nav-link" [routerLink]="['/connexion']" routerLinkActive="active"><button type="button"
+        (click)="exitAnimation()" (mouseenter)="this.audioService.playWeaponDraw(0.01)">Se connecter</button></a>
+    <img id="key" />
   </div>
+  <div class="inscript">
+    <a class="nav-link" [routerLink]="['/inscription']" routerLinkActive="active"><button type="button"
+        (click)="exitAnimation()" (mouseenter)="this.audioService.playPageFlip(0.1)">S'inscrire</button></a>
+    <img id="feather" />
+  </div>
+
+  <div class="about_btn">
+    <a class="nav-link">
+      <button type="button" (click)="aboutGrimoire()">
+        À propos
+      </button>
+    </a>
+  </div>
+</div>
+
+
+<div class="about_container">
+
+  <div class="about_btn">
+    <a class="nav-link">
+
+      <p>
+        Mythik est un jeu développé par une équipe de quatre programmeurs.
+        Il est centré sur un livre magique, un grimoire, dans lequel vous pouvez ajouter, supprimer et modifier des créatures mythologiques dotées de divers attributs.
+        De même, il existe un mode de combat dans lequel vous pouvez choisir votre créature préférée et affronter des adversaires dotés d'une intelligence artificielle !
+      </p>
+
+    <div class="creators">
+      <div class="list_header">Creators:</div>
+      <ul>
+        <li> Ricardo </li>
+        <li> Benjamin</li>
+        <li>Baptiste</li>
+        <li> Emilie</li>
+      </ul>
+    </div>
+      <p>
+        Les éléments artistiques utilisés dans le projet, y compris les images et la musique, ont tous été trouvés en ligne et sont l'œuvre d'autres personnes. Dans certains cas, j'ai modifié les éléments pour les adapter à mes besoins, mais la majorité d'entre eux proviennent de dépôts d'images et de sons gratuits en ligne. Les images des créatures sont l'exception la plus significative : elles sont le merveilleux travail de l'équipe d'artistes et de la communauté derrière le jeu <a href="https://www.smitegame.com/">Smite</a>. Tout le mérite leur revient.
+        Ce projet a été réalisé uniquement dans le but de m'améliorer en tant que programmeur, et n'a pas été et ne sera pas exploité à des fins commerciales.
+      </p>
+
+
+      <button type="button" (click)="aboutGrimoire()">
+        Retour
+      </button>
+    </a>
+  </div>
+
+</div>
+
 
 <app-chains class="chain_create"></app-chains>
 

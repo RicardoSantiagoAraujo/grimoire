@@ -634,7 +634,7 @@ h1.combat_title::after {
   background-repeat: no-repeat;
   top: 2vw;
   left: 50%;
-  transform: translate(-50%, 0%);
+  transform: translate(-50%, 2.5%);
   height: -moz-fit-content;
   height: fit-content;
   font-weight: bold;
@@ -648,7 +648,7 @@ h1.combat_title::after {
   overflow: visible;
 }
 #book_deco #dialog_banner .suivi_conteneur .suiviCombat .start_banner {
-  font-size: 50% !important;
+  font-size: 45% !important;
   font-family: bronzion;
   fill: black;
   text-shadow: 0 0 10px rgb(0, 100, 0);
@@ -667,7 +667,7 @@ h1.combat_title::after {
   text-shadow: 0 0 10px rgb(255, 255, 255);
 }
 #book_deco #dialog_banner .suivi_conteneur .suiviCombat textPath tspan {
-  font-size: 25%;
+  font-size: 23%;
 }
 #book_deco #dialog_banner .suivi_conteneur .suiviCombat textPath tspan.degat {
   fill: white;
@@ -1074,10 +1074,12 @@ svg#spinner_target circle {
   background-repeat: no-repeat;
 }
 .finishedCombat #combat_winner div.combat_winner_animation {
-  animation: combat_winner_animation_player calc(var(--time-to-impact) * 1.5) forwards;
+  opacity: 0;
+  animation: combat_winner_animation_player 4s forwards;
 }
 .finishedCombat #combat_winner div.combat_winner_animation.advWin {
-  animation: combat_winner_animation_adv calc(var(--time-to-impact) * 1.5) forwards;
+  opacity: 0;
+  animation: combat_winner_animation_adv 4s forwards;
 }
 .finishedCombat .round_loser, .finishedCombat .round_winner {
   transition-duration: calc(var(--time-to-impact) / 1);
@@ -1192,7 +1194,7 @@ svg#spinner_target circle {
   display: block;
   height: 150%;
   width: 50%;
-  padding-top: 15%;
+  padding-top: 21%;
   margin: auto;
   background: url(../../assets/flipbook-textures/war_banner.png);
   background-size: contain;
@@ -1258,7 +1260,7 @@ svg#spinner_target circle {
   justify-content: center;
   position: relative;
   z-index: 100000000000000000;
-  width: 30%;
+  width: 40%;
   margin: auto;
 }
 .resultat_container .btn_group#victory {

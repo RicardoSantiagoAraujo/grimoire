@@ -3,6 +3,7 @@ import { Book, PageType } from '@labsforge/flipbook';
 import { CreatureService } from '../creature/creature.service';
 import { Creature } from '../model';
 import { AuthService } from '../auth.service';
+import { AudioService } from '../audio.service';
 
 @Component({
   selector: 'app-grimoire',
@@ -20,16 +21,20 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
   grimoireSectionOpen: boolean = false;
 
   creatures?: Creature[];
-  constructor(private creatureService: CreatureService, private authService: AuthService) {
+
+  constructor(private creatureService: CreatureService, private authService: AuthService, public audioService: AudioService) {
     this.creatureService.findAll().subscribe(resp => { this.creatures = resp });
     this.user_id = this.authService.getCompte()!.login!;
   }
 
 
   ngOnInit(): void {
+    this.audioService.switchChants(true);
     this.fillBook()
     this.firestart()
     setTimeout(this.firestart, 3000);
+    this.bookFlipSounds();
+    this.flipbookAppearSound();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -42,6 +47,7 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
     // kill interval function when exiting grimoire
     clearInterval(this.ouvrirLivre_interval);
     clearInterval(this.ouvrirSectionGrimoire_interval);
+    this.audioService.switchChants(false);
   }
 
 
@@ -63,7 +69,7 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
     pages: [
       {
         // BACKSIDE OF FRONT COVER
-        imageUrl: 'assets/flipbook-textures/leather-texture.jpeg',
+        imageUrl: 'assets/flipbook-textures/leather-texture_reduced.jpeg',
         backgroundColor: '#41473A' // don't use if want to see front-cover inverted image
       },
       //////////////////////////////
@@ -153,7 +159,7 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
       },
       {
         // BACKSIDE OF BACK COVER
-        imageUrl: 'assets/flipbook-textures/leather-texture.jpeg',
+        imageUrl: 'assets/flipbook-textures/leather-texture_reduced.jpeg',
         backgroundColor: '#41473A', // don't use if want to see back-cover inverted image
       },
     ],
@@ -161,6 +167,18 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
     pageHeight: 780,
     startPageType: PageType.Double,
     endPageType: PageType.Double
+  }
+
+  bookFlipSounds() {
+    // add sound to each page turn
+    setTimeout(() => {
+      let pages = document.querySelectorAll<HTMLElement>("flipbook-page");
+      pages.forEach( (page) => {
+        page.addEventListener("click", () =>{
+          this.audioService.playPageFlip(0.2);
+        })
+      })
+    } ,1000)
   }
 
   //// ADDITIONAL CODE TO MANIPULATE DOM
@@ -241,7 +259,7 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
             stained_page.style.transform = `rotate(${Math.floor(Math.random() * 360)}deg)`;
             stained_page.style.width = `${Math.floor(Math.random() * 50)}%`;
 
-            stained_page.style.background = `url(../../assets/flipbook-textures/stain${Math.round(Math.random() * 5)}.png)`;
+            stained_page.style.background = `url(../../assets/flipbook-textures/stain${Math.round(Math.random() * 5)}_reduced.png)`;
             // console.log(stain.style.background);
           }
         }
@@ -263,9 +281,13 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
         let coverRotation: any = cover.getAttribute("ng-reflect-rotation");
         let backcoverRotation: any = backcover.getAttribute("ng-reflect-rotation");
         // console.log(document.querySelector<HTMLElement>("#firewall"));
+        cover.addEventListener("mouseenter", ()=>{
+          this.audioService.playWhisper_2(0.5);
+        })
 
         //// IF BOOK IS OPEN
         if (parseInt(coverRotation) < -90 && parseInt(backcoverRotation) > -90) {
+          this.audioService.switchFireSounds(true);
 
           // FLAMES IN FOREGROUND
           document.querySelector<HTMLElement>("#firewall")!.style.opacity = "1";
@@ -278,6 +300,7 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
 
         //// IF BOOK IS CLOSED
         } else { // revert back to closed book illumination
+          this.audioService.switchFireSounds(false);
           // FLAMES IN FOREGROUND
           document.querySelector<HTMLElement>("#firewall")!.style.opacity = "0";
           document.querySelector<HTMLElement>("#firewall")!.style.animation = "none";
@@ -299,9 +322,9 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
       firstPageFront.innerHTML = "<div id=firstPage>" +
         "<h1>Mythik</h1>" +
         "<h2>Grimoire</h2>" +
-        "<img id='img_middle' src='../../assets/flipbook-textures/witchcraft_sigil.png'>" +
+        "<img id='img_middle' src='../../assets/flipbook-textures/witchcraft_sigil_reduced.png'>" +
         "<p>Project final SOPRA 2023 Groupe 1</p>" +
-        "<img id='img_bottom' src='assets/loader.png'/>" +
+        "<img id='img_bottom' src='assets/loader_reduced.png'/>" +
         "</div>";
       //back
       const firstPageBack = firstPage.querySelector<HTMLElement>(".back")!;
@@ -318,7 +341,7 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
       const lastPageBack = lastPage.querySelector<HTMLElement>(".back")!;
       lastPageBack.innerHTML = "<div id=lastPage>" +
         "<div>  Est-ce que c’est bon pour vous ? </div>" +
-        "<img src='assets/flipbook-textures/duck.png'/>" +
+        "<img src='assets/flipbook-textures/duck_reduced.png'/>" +
         "</div>"
 
 
@@ -333,8 +356,8 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
         // "<img id='img_middle' src='../../assets/flipbook-textures/witchcraft_sigil.png'>" +
         `<p><span id="first_letter">B</span>ienvenue,
             <span id="user_id">${this.user_id}</span>.</p>` +
-        "<p>Ce qui suit est la section magique de ce grimoire qui permet au lecteur audacieux d'explorer la collection de créatures mythologiques qu'il contient. Tournez la page si vous l'osez, puis utilisez les boutons pour naviguer.</p>" +
-        "<img  src='assets/flipbook-textures/tree2.png'/>" +
+        "<p id='instructions'>Ce qui suit est la section magique de ce grimoire qui permet au lecteur audacieux d'explorer la collection de créatures mythologiques qu'il contient. Tournez la page si vous l'osez, puis utilisez les boutons pour naviguer.</p>" +
+        "<img  src='assets/flipbook-textures/tree2_reduced.png'/>" +
       "</div>";
 
       // ===== CREATURE SHEET 1
@@ -344,6 +367,10 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
       creatureSheet1Front.innerHTML = "<div id=creaturesStart>" +
         "<div>  GRIMOIRE </div>" +
         "</div>";
+
+      creatureSheet1Front.addEventListener("mouseenter", ()=>{
+        this.audioService.playWhisper_1(0.1);
+      })
       //back
       const creatureSheet1Back = creatureSheet1.querySelector<HTMLElement>(".back")!;
       creatureSheet1Back.innerHTML = "<div class='magic_effect'></div>";
@@ -391,7 +418,7 @@ export class GrimoireComponent implements OnInit, OnChanges, OnDestroy {
         });
         };
       }
-      this.ouvrirSectionGrimoire_interval = setInterval(ouvrirSectionGrimoire, 100) // !!!!
+      this.ouvrirSectionGrimoire_interval = setInterval(ouvrirSectionGrimoire, 200) // !!!!
 
     }, this.timeOut)
   }
@@ -512,6 +539,18 @@ receiveSelectedCreature(selectedCreature: Creature) {
   document.querySelector<HTMLElement>("#desktop_glow")!.style.filter=`blur(5px)drop-shadow(0 0 1px ${color})drop-shadow(0 0 5px ${color})`;
 }
 
+
+flipbookAppearSound(){
+  // sound as flipbook appears
+  let flipbook = document.querySelector<HTMLElement>(".flipbook_container");
+  let delay = getComputedStyle(flipbook!).getPropertyValue('animation-delay');
+  console.log(delay);
+  setTimeout(()=>{
+    this.audioService.itemDown(0.5, "grimoire");
+  }, parseFloat(delay)* 1000* 1.3);
+
+}
+
 }
 
 
@@ -550,30 +589,30 @@ var lorem_array = ["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
 
 
   var mock_bgs = [
-    "url(../../assets/flipbook-textures/mock_bgs/tree3.png)",
-    "url(../../assets/flipbook-textures/mock_bgs/endless_knot.png)",
-    "url(../../assets/flipbook-textures/mock_bgs/round_knot.png)",
-    "url(../../assets/flipbook-textures/mock_bgs/triskelion.png)",
-    "url(../../assets/flipbook-textures/mock_bgs/unicorn.png)",
-    "url(../../assets/flipbook-textures/mock_bgs/dragon.png)",
-    "url(../../assets/flipbook-textures/mock_bgs/cupid.png)",
-    "url(../../assets/flipbook-textures/mock_bgs/wreath_bird.png)",
-    "url(../../assets/flipbook-textures/mock_bgs/cupid_lion.png)",
-    "url(../../assets/flipbook-textures/mock_bgs/dragon_skeleton.png)",
-    "url(../../assets/flipbook-textures/mock_bgs/zodiac.png)",
-    "url(../../assets/flipbook-textures/mock_bgs/knight.png)",
-    "url(../../assets/flipbook-textures/mock_bgs/damsel.png)",
-    "url(../../assets/flipbook-textures/mock_bgs/swordsman.png)",
-    "url(../../assets/flipbook-textures/mock_bgs/dragon_cutout.png)",
-    "url(../../assets/flipbook-textures/mock_bgs/medusa.png)",
-    "url(../../assets/flipbook-textures/mock_bgs/greek_parade.png)",
-    "url(../../assets/flipbook-textures/mock_bgs/scarab2.png)",
-    "url(../../assets/flipbook-textures/mock_bgs/scarab.png)",
-    "url(../../assets/flipbook-textures/mock_bgs/serpents.png)",
-    "url(../../assets/flipbook-textures/mock_bgs/dance_macabre.png)",
-    "url(../../assets/flipbook-textures/mock_bgs/tibet2.png)",
-    "url(../../assets/flipbook-textures/mock_bgs/tibet.png)",
-    "url(../../assets/flipbook-textures/mock_bgs/budah.png)",
-    "url(../../assets/flipbook-textures/mock_bgs/chinese_dragon.png)"
+    "url(../../assets/flipbook-textures/mock_bgs/tree3_reduced.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/endless_knot_reduced.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/round_knot_reduced.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/triskelion_reduced.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/unicorn_reduced.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/dragon_reduced.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/cupid_reduced.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/wreath_bird_reduced.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/cupid_lion_reduced.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/dragon_skeleton_reduced.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/zodiac_reduced.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/knight_reduced.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/damsel_reduced.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/swordsman_reduced.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/dragon_cutout_reduced.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/medusa_reduced.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/greek_parade_reduced.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/scarab2_reduced.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/scarab_reduced.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/serpents_reduced.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/dance_macabre_reduced.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/tibet2_reduced.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/tibet_reduced.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/buddah_reduced.png)",
+    "url(../../assets/flipbook-textures/mock_bgs/chinese_dragon_reduced.png)"
 
   ];

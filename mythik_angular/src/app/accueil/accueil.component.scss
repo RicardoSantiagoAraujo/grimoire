@@ -361,6 +361,10 @@
   background-position: center;
   background-repeat: no-repeat;
 
+  span{
+    pointer-events: none;
+  }
+
   #letterG {
     font-family: "bronzion";
     font-size: 10vmin;

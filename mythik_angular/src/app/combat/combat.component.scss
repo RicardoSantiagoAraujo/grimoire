@@ -696,7 +696,7 @@ $btn_size: 5vw;
         @include bg-single-contain-center;
         top: 2vw;
         left: 50%;
-        transform: translate(-50%, 0%);
+        transform: translate(-50%, 2.5%);
         height: fit-content;
 
         // overflow: auto;
@@ -713,7 +713,7 @@ $btn_size: 5vw;
         animation: itemGlow 2s infinite alternate;
 
         .start_banner {
-          font-size: 50% !important;
+          font-size: 45% !important;
           font-family: bronzion;
           fill: darken($title-color-pri, 60);
           text-shadow: 0 0 10px $title-color-sec;
@@ -737,7 +737,7 @@ $btn_size: 5vw;
 
         textPath {
           tspan {
-            font-size: 25%;
+            font-size: 23%;
 
             &.degat {
               fill: white;
@@ -1265,10 +1265,14 @@ $finish-delay: 2s;
     animation-delay: $finish-delay;
     @include bg-single-contain-center;
     &.combat_winner_animation{
-      animation: combat_winner_animation_player calc(var(--time-to-impact)*1.5) forwards;
+      opacity: 0;
+      // animation: combat_winner_animation_player calc(var(--time-to-impact)*1.5) forwards;
+      animation: combat_winner_animation_player 4s forwards; // set time manually to avoid BUG
     }
     &.combat_winner_animation.advWin{
-      animation: combat_winner_animation_adv calc(var(--time-to-impact)*1.5) forwards;
+      opacity: 0;
+      // animation: combat_winner_animation_adv calc(var(--time-to-impact)*1.5) forwards;
+      animation: combat_winner_animation_adv 4s forwards; // set time manually to avoid BUG
     }
   }
   .round_loser, .round_winner{
@@ -1398,7 +1402,7 @@ $winner_scale_f: 2;
     display: block;
     height: 150%;
     width: 50%;
-    padding-top: 15%;
+    padding-top: 21%;
     margin: auto;
     background: url(../../assets/flipbook-textures/war_banner.png);
     @include bg-single-contain-center;
@@ -1469,7 +1473,7 @@ $winner_scale_f: 2;
     justify-content: center;
     position: relative;
     z-index: 99999999999999999;
-    width: 30%;
+    width: 40%;
     margin: auto;
 
     &#victory {

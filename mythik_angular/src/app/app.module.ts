@@ -27,6 +27,11 @@ import { GagnantPipe } from './gagnant.pipe';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CreatureDataPipe } from './creature-data.pipe';
 import { CombattanteDataPipe } from './combattant-data.pipe';
+import { AudioService } from './audio.service';
+import { AudioToggleComponent } from './audio-toggle/audio-toggle.component';
+import { ReduceImagePipe } from './reduce-image.pipe';
+
+
 
 
 
@@ -51,7 +56,9 @@ import { CombattanteDataPipe } from './combattant-data.pipe';
     GagnantPipe,
     PageNotFoundComponent,
     CreatureDataPipe,
-    CombattanteDataPipe
+    CombattanteDataPipe,
+    AudioToggleComponent,
+    ReduceImagePipe
   ],
   imports: [
     BrowserModule,
@@ -68,4 +75,6 @@ import { CombattanteDataPipe } from './combattant-data.pipe';
   }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+ }

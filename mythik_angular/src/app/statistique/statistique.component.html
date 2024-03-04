@@ -5,15 +5,17 @@
 
     <div id="btn_accueil">
         <a [routerLink]="['/accueil']" routerLinkActive="active">
-            <button type="button" class="button" (click)="exitAnimation()"><span>Accueil</span></button>
+            <button type="button" class="button"
+            (click)="exitAnimation()" (mouseenter)="this.audioService.playWoodCreak();">
+            <span>Accueil</span></button>
         </a>
     </div>
 
     <div id="btn_stats"
     *ngIf="combattants">
         <div id="glass"
-        (mouseenter)="showStats()"
-        (mouseout)="hideStats()"
+        (mouseenter)="showStats(); this.audioService.playElectricHum(true); this.audioService.playLowBurst(0.5)"
+        (mouseout)="hideStats(); this.audioService.playElectricHum(false);  this.audioService.playLowBurst(0.1)"
         >
             <button
             >Statistiques
@@ -71,7 +73,7 @@
                         <td class="name">{{c.creature?.nom}}</td>
                         <td class="element">{{c.creature?.typeElement}}</td>
                         <td class="date_time">{{c.combat?.dateCombat}} {{c.combat?.heureCombat}}</td>
-                        <td class="result">{{c.gagnant}}</td>
+                        <td class="result">{{c.gagnant! | gagnant}}</td>
                     </tr>
                 </tbody>
             </table>

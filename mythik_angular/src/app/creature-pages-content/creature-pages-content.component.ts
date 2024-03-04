@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnDestroy, OnInit, Output, SimpleChanges } fro
 import { CreatureService } from '../creature/creature.service';
 import { Creature } from '../model';
 import { Observable, map, of } from 'rxjs';
+import { AudioService } from '../audio.service';
 
 @Component({
   selector: 'app-creature-pages-content',
@@ -20,10 +21,11 @@ export class CreaturePagesContentComponent implements OnInit, OnDestroy {
   selectShow: boolean = false;
   i: number = 1;
   loop: any = undefined;
-  constructor(private creatureService: CreatureService) {
+  constructor(private creatureService: CreatureService, public audioService: AudioService) {
   }
 
   ngOnInit(): void {
+    this.audioService.switchChimes(true);
     this.creatureService.findAll().subscribe(
       (creatures) => {
         this.creatureList = creatures;
@@ -43,6 +45,7 @@ export class CreaturePagesContentComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     console.log("Component destroyed")
+    this.audioService.switchChimes(false);
   }
 
 
@@ -54,6 +57,8 @@ export class CreaturePagesContentComponent implements OnInit, OnDestroy {
   }
 
   previous(): void {
+    this.audioService.playChime(0.1);
+
     if (this.num > 0) {
       this.num = this.creatureList.indexOf(this.selectedCreature) - 1;
       this.selectedCreature = this.loadCreature();
@@ -63,6 +68,7 @@ export class CreaturePagesContentComponent implements OnInit, OnDestroy {
   }
 
   next(): void {
+    this.audioService.playChime(0.1);
 
     if (this.num < this.creatureList.length - 1) {
       this.num = this.creatureList.indexOf(this.selectedCreature) + 1;
@@ -77,10 +83,11 @@ export class CreaturePagesContentComponent implements OnInit, OnDestroy {
   }
 
   AdjCreatureDisplay(selectedCreature: any) {
-    let creature = selectedCreature
+    this.audioService.playLowBurst(0.1);
+    let creature = selectedCreature;
     // console.log(creature)
     // let element = creature.typeElement
-    let mythology = creature.mythologie
+    let mythology = creature.mythologie;
     // let pv = creature.pv
     // let god = creature.dieu
 
@@ -155,7 +162,7 @@ export class CreaturePagesContentComponent implements OnInit, OnDestroy {
       // ==== ANIMATE LETTERS AS THEY APPEAR //
       new_letter.style.opacity = "0";
       // console.log(`${100 / text.length}vw`);
-      let font_size = 200 / text.length;
+      let font_size = 170 / text.length;
       font_size = font_size > 2 ? 2 : font_size; // max font size
       new_letter.style.fontSize = `${font_size}vw`; // adjust font size depending on text length. numerator chosen by trial-error
 
@@ -186,7 +193,8 @@ export class CreaturePagesContentComponent implements OnInit, OnDestroy {
   timeoutId: any;
   ShowFullscreenCreature() {
         this.timeoutId = window.setTimeout(() => {
-        document.querySelector<HTMLImageElement>("#fullscreen_creature img")!.src= this.selectedCreature.image!;
+        let img_fullscreen = this.selectedCreature.image!.replace("_reduced", ""); // to get high quality img
+        document.querySelector<HTMLImageElement>("#fullscreen_creature img")!.src= img_fullscreen;
         document.querySelector<HTMLImageElement>("#fullscreen_creature")?.classList.add("goFullscreen");
       document.querySelector<HTMLImageElement>("#fullscreen_creature")?.classList.remove("exitFullscreen");
       }, 1000);

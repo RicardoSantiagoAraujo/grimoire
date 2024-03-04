@@ -1,0 +1,67 @@
+@use '../../mixins' as *;
+@use '../../variables' as *;
+
+
+#audio_toggle{
+    background-color: transparent;
+    position: absolute;
+    top: 2vh;
+    left: 0px;
+    width: fit-content;
+    padding: 0;
+    height: fit-content;
+    @include bg-single-contain-center;
+    border: none;
+    filter: brightness(1);
+    transition: 0.1s;
+    cursor: url(../../assets/cursors/middle-ages-pointer-32x32.png), pointer;
+    z-index: 100000000000000000099999999999999999999;
+
+    img{
+        height: 20vh;
+        filter: drop-shadow( 10px 10px 5px rgba(0, 0, 0, 0.496));
+        transition: 0.2s;
+        animation:
+                // jiggle 0.4s 5 alternate,
+                bellAppear 2s;
+
+        @keyframes jiggle {
+            from{
+                filter: brightness(1);
+            }
+            to{
+                filter: brightness(1.2);
+            }
+        }
+
+
+        @keyframes bellAppear {
+            from{
+                transform: translateX(-100%);
+            }
+            to{
+                transform: translateX(0);
+            }
+        }
+
+        &:hover{
+            filter: drop-shadow(0 0 10px $title-color-pri);
+        }
+    }
+
+    &.soundActive{
+        filter: brightness(2);
+        animation: bellRing 0.2s;
+    }
+
+    &.soundInactive{
+        filter: brightness(1);
+        animation: bellRing 0.2s;
+    }
+}
+
+@keyframes bellRing {
+    0%{transform: rotate(3deg);};
+    50%{transform: rotate(-3deg);};
+    100%{transform: rotate(0deg);};
+}

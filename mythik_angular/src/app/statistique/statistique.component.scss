@@ -104,8 +104,9 @@ button {
 #btn_accueil {
   background-image: url(../../assets/flipbook-textures/board_side.png);
   @include bg-single-contain-center;
-  background-position: left;
+  background-position: right;
   top: 1vh;
+  right: 0;
   height: fit-content;
   width: fit-content;
   position: fixed;
@@ -122,6 +123,7 @@ button {
     width: 15vw;
     aspect-ratio: 4/3.3;
     padding-top: 25%;
+    padding-right: 10%;
     opacity: 0.6;
     cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
 
@@ -154,7 +156,7 @@ button {
 @keyframes boardAppear {
   from {
     opacity: 0;
-    transform: translateX(-100%);
+    transform: translateX(100%);
   }
 
   to {
@@ -505,7 +507,7 @@ table {
   }
 }
 
-@for $i from 1 through 50 {
+@for $i from 1 through 500 {
   tbody tr:nth-child(#{$i}) td {
   transition-delay: calc( var(--unscroll_duration) * 0.5 + #{$i} * 0.2s) !important;
   }

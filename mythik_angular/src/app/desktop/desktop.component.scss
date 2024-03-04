@@ -1,8 +1,10 @@
 @use '../../mixins' as *;
 @use '../../variables' as *;
 
+
+
 section #desktop_glow{ // do not remove
-	background: url(../../assets/flipbook-textures/wood-texture_glow.png);
+	background: url(../../assets/flipbook-textures/wood-texture_glow_reduced.png);
 }
 
 
@@ -25,7 +27,7 @@ $propshadow: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.7));
 #zodiac{
 	width: fit-content;
 	height: 50vmin;
-	background-image: url(../../assets/flipbook-textures/old-paper-texture_alt.png);
+	// background-image: url(../../assets/flipbook-textures/old-paper-texture_alt.png);
 	display: flex;
 	position: absolute;
 	bottom:-10%;
@@ -43,7 +45,7 @@ $propshadow: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.7));
 		width: 70%;
 		margin-top: 40px;
 		align-content: center;
-		background-image: url(../../assets/flipbook-textures/astrology_print.png);
+		background-image: url(../../assets/flipbook-textures/astrology_print_reduced.png);
 		background-size: contain;
 		background-repeat: no-repeat;
 		opacity: 0.2;
@@ -87,7 +89,7 @@ $propshadow: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.7));
 	top:45%;
 	right:240px;
 	position: absolute;
-	background-image: url(../../assets/flipbook-textures/lock.png),radial-gradient(rgb(0, 0, 0,1), rgba(0,0,0,0) 50%);
+	background-image: url(../../assets/flipbook-textures/lock_reduced.png),radial-gradient(rgb(0, 0, 0,1), rgba(0,0,0,0) 50%);
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-blend-mode: lighten;
@@ -102,7 +104,7 @@ $propshadow: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.7));
 	left: 400px;
 	top: 200px;
 	text-align: center;
-	background-image: url(../../assets/flipbook-textures/old-paper-texture_alt.png);
+	background-image: url(../../assets/flipbook-textures/old-paper-texture_alt_reduced.png);
 	background-size: contain;
 	background-repeat: no-repeat;
 	transform: rotate(-20deg);
@@ -116,7 +118,7 @@ $propshadow: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.7));
 		height: 250px;
 		position: relative;
 		width: 100px;
-		background:  url(../../assets/flipbook-textures/key.png), radial-gradient(#00000082, #00000000 50%);
+		background:  url(../../assets/flipbook-textures/key_reduced.png), radial-gradient(#00000082, #00000000 50%);
 		border-radius: 50%;
 		transform: rotate(50deg);
 		background-blend-mode: lighten;
@@ -145,6 +147,7 @@ $propshadow: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.7));
 
 
 .desktop_prop{
+	--item_delay: 0.2s;
 	animation: booksAppear 1s ease-in;
 	opacity: 0;
 	animation-fill-mode: forwards;
@@ -154,7 +157,7 @@ $propshadow: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.7));
 
 @for $i from 1 through 5 {
     .desktop_prop:nth-child(#{$i}) {
-		animation-delay: calc(#{$i} * 0.2s);
+		animation-delay: calc(#{$i} * var(--item_delay));
     }
 }
 
@@ -192,7 +195,7 @@ $propshadow: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.7));
 		background: none;
 		border: none;
 		filter: $propshadow;
-		background: url(../../assets/flipbook-textures/old-paper-texture_alt.png);
+		background: url(../../assets/flipbook-textures/old-paper-texture_alt_reduced.png);
 		@include bg-single-contain-center;
 		&:after{
 			content: "";
@@ -202,7 +205,7 @@ $propshadow: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.7));
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%,-50%);
-			background: url(../../assets/flipbook-textures/cyclops.png);
+			background: url(../../assets/flipbook-textures/cyclops_reduced.png);
 			@include bg-single-contain-center;
 			opacity: 0.1;
 			transition: 0.3s;
@@ -216,7 +219,7 @@ $propshadow: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.7));
 		position: relative;
 		bottom:1vw;
 		left: 0vw;
-		background:  url(../../assets/flipbook-textures/dagger.png);
+		background:  url(../../assets/flipbook-textures/dagger_reduced.png);
 		@include bg-single-contain-center;
 		animation: pulse 2s infinite;
 		transition: 1s;

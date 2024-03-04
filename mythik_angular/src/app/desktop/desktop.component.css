@@ -1,5 +1,5 @@
 section #desktop_glow {
-  background: url(../../assets/flipbook-textures/wood-texture_glow.png);
+  background: url(../../assets/flipbook-textures/wood-texture_glow_reduced.png);
 }
 
 #map {
@@ -19,7 +19,6 @@ section #desktop_glow {
   width: -moz-fit-content;
   width: fit-content;
   height: 50vmin;
-  background-image: url(../../assets/flipbook-textures/old-paper-texture_alt.png);
   display: flex;
   position: absolute;
   bottom: -10%;
@@ -38,7 +37,7 @@ section #desktop_glow {
   width: 70%;
   margin-top: 40px;
   align-content: center;
-  background-image: url(../../assets/flipbook-textures/astrology_print.png);
+  background-image: url(../../assets/flipbook-textures/astrology_print_reduced.png);
   background-size: contain;
   background-repeat: no-repeat;
   opacity: 0.2;
@@ -73,7 +72,7 @@ section #desktop_glow {
   top: 45%;
   right: 240px;
   position: absolute;
-  background-image: url(../../assets/flipbook-textures/lock.png), radial-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0) 50%);
+  background-image: url(../../assets/flipbook-textures/lock_reduced.png), radial-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0) 50%);
   background-size: contain;
   background-repeat: no-repeat;
   background-blend-mode: lighten;
@@ -87,7 +86,7 @@ section #desktop_glow {
   left: 400px;
   top: 200px;
   text-align: center;
-  background-image: url(../../assets/flipbook-textures/old-paper-texture_alt.png);
+  background-image: url(../../assets/flipbook-textures/old-paper-texture_alt_reduced.png);
   background-size: contain;
   background-repeat: no-repeat;
   transform: rotate(-20deg);
@@ -102,7 +101,7 @@ section #desktop_glow {
   height: 250px;
   position: relative;
   width: 100px;
-  background: url(../../assets/flipbook-textures/key.png), radial-gradient(rgba(0, 0, 0, 0.5098039216), rgba(0, 0, 0, 0) 50%);
+  background: url(../../assets/flipbook-textures/key_reduced.png), radial-gradient(rgba(0, 0, 0, 0.5098039216), rgba(0, 0, 0, 0) 50%);
   border-radius: 50%;
   transform: rotate(50deg);
   background-blend-mode: lighten;
@@ -128,6 +127,7 @@ section #desktop_glow {
   }
 }
 .desktop_prop {
+  --item_delay: 0.2s;
   animation: booksAppear 1s ease-in;
   opacity: 0;
   animation-fill-mode: forwards;
@@ -138,23 +138,23 @@ section #desktop_glow {
 }
 
 .desktop_prop:nth-child(1) {
-  animation-delay: calc(1 * 0.2s);
+  animation-delay: calc(1 * var(--item_delay));
 }
 
 .desktop_prop:nth-child(2) {
-  animation-delay: calc(2 * 0.2s);
+  animation-delay: calc(2 * var(--item_delay));
 }
 
 .desktop_prop:nth-child(3) {
-  animation-delay: calc(3 * 0.2s);
+  animation-delay: calc(3 * var(--item_delay));
 }
 
 .desktop_prop:nth-child(4) {
-  animation-delay: calc(4 * 0.2s);
+  animation-delay: calc(4 * var(--item_delay));
 }
 
 .desktop_prop:nth-child(5) {
-  animation-delay: calc(5 * 0.2s);
+  animation-delay: calc(5 * var(--item_delay));
 }
 
 @keyframes booksAppear {
@@ -187,7 +187,7 @@ section #desktop_glow {
   background: none;
   border: none;
   filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.7));
-  background: url(../../assets/flipbook-textures/old-paper-texture_alt.png);
+  background: url(../../assets/flipbook-textures/old-paper-texture_alt_reduced.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -200,7 +200,7 @@ section #desktop_glow {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: url(../../assets/flipbook-textures/cyclops.png);
+  background: url(../../assets/flipbook-textures/cyclops_reduced.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -214,7 +214,7 @@ section #desktop_glow {
   position: relative;
   bottom: 1vw;
   left: 0vw;
-  background: url(../../assets/flipbook-textures/dagger.png);
+  background: url(../../assets/flipbook-textures/dagger_reduced.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;

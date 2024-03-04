@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation, Input, OnInit } from '@angular/core';
-import {Router} from "@angular/router"
+import {Router} from "@angular/router";
+import { AudioService } from '../audio.service';
 
 @Component({
   selector: 'app-desktop',
@@ -11,14 +12,30 @@ import {Router} from "@angular/router"
 export class DesktopComponent implements OnInit {
   exitGrimoire: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private audioService: AudioService) { }
+
+
   ngOnInit(): void {
-    this.loop()
+    this.loop();
+    this.audioService.playAnimalSounds(false);
+    this.propSounds();
+  }
+
+  propSounds(){
+    // add sound as each prop appears
+    document.querySelectorAll<HTMLElement>(".desktop_prop").forEach((prop)=>{
+      let delay =getComputedStyle(prop) .getPropertyValue('animation-delay');
+      console.log(parseFloat(delay) * 1000);
+      setTimeout(()=>{
+        this.audioService.itemDown(0.3, "paper");
+      }, parseFloat(delay) * 1000 * 1.2);
+    })
   }
 
   // add class to trigger exit animation on click
   exitAnimation(){
         this.exitGrimoire = true;
+        this.audioService.unrollScrollSound(0.1);
         document.querySelector("#retour_grimoire button")?.classList.add("exitButtonTrigger");
         setTimeout(()=>{
         document.querySelector("section")?.classList.add("exitAnimation");
@@ -28,8 +45,14 @@ export class DesktopComponent implements OnInit {
         )
   }
 
+  exitHover(vol: number){
+    this.audioService.playWeaponDraw(vol);
+}
+
   // insect animation
   insectAnimate(speed:number){
+    setTimeout(()=>{this.audioService.playInsectCrawl()}, 1400) // Insect crawl sounds. Adjust to insect delay
+
     Math.random() * 1000 * 60;
     let insect_track = document.querySelector<HTMLElement>("#insect_track")!;
     let insect = document.querySelector<HTMLElement>("#insect_track img")!;

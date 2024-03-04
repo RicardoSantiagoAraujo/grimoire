@@ -23,7 +23,7 @@ app-creature-pages-content {
   height: 100%;
   top: 0;
   left: 0;
-  background-image: url(../../assets/flipbook-textures/nordic_frame.png);
+  background-image: url(../../assets/flipbook-textures/nordic_frame_reduced.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -32,28 +32,28 @@ app-creature-pages-content {
   transform: scaleX(-1);
 }
 #creature_contents > .creaturePage.grec::after {
-  background: url(../../assets/flipbook-textures/greek_frame.png);
+  background: url(../../assets/flipbook-textures/greek_frame_reduced.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
 #creature_contents > .creaturePage.nordique::after {
-  background: url(../../assets/flipbook-textures/nordic_frame.png);
+  background: url(../../assets/flipbook-textures/nordic_frame_reduced.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
 #creature_contents > .creaturePage.chinoise::after {
-  background: url(../../assets/flipbook-textures/chinese_frame.png);
+  background: url(../../assets/flipbook-textures/chinese_frame_reduced.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
 #creature_contents > .creaturePage.egyptienne::after {
-  background: url(../../assets/flipbook-textures/egyptian_frame.png);
+  background: url(../../assets/flipbook-textures/egyptian_frame_reduced.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -117,13 +117,13 @@ app-creature-pages-content {
   width: 60%;
   height: 100%;
   opacity: 1;
-  background: url(../../assets/norse/name_deco3.png);
+  background: url(../../assets/norse/name_deco3_reduced.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
 #pageLeft .nom.nordique:after {
-  background: url(../../assets/norse/separator.png);
+  background: url(../../assets/norse/separator_reduced.png);
   background-repeat: repeat-x;
   background-position: center;
   background-size: contain;
@@ -133,13 +133,13 @@ app-creature-pages-content {
   width: 60%;
   height: 100%;
   opacity: 1;
-  background: url(../../assets/greek/name_deco2.png);
+  background: url(../../assets/greek/name_deco2_reduced.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
 #pageLeft .nom.grec:after {
-  background: url(../../assets/greek/separator2.png);
+  background: url(../../assets/greek/separator2_reduced.png);
   background-repeat: repeat-x;
   background-position: left;
   background-size: 33%;
@@ -149,22 +149,13 @@ app-creature-pages-content {
   width: 60%;
   height: 100%;
   opacity: 1;
-  background: url(../../assets/egyptian/name_deco.png);
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-#pageLeft .nom.egyptienne:before {
-  width: 60%;
-  height: 100%;
-  opacity: 1;
-  background: url(../../assets/egyptian/name_deco.png);
+  background: url(../../assets/egyptian/name_deco_reduced.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
 #pageLeft .nom.egyptienne:after {
-  background: url(../../assets/egyptian/separator.png);
+  background: url(../../assets/egyptian/separator_reduced.png);
   background-repeat: repeat-x;
   background-position: center;
   background-size: 33%;
@@ -173,13 +164,13 @@ app-creature-pages-content {
   width: 60%;
   height: 100%;
   opacity: 1;
-  background: url(../../assets/chinese/name_deco.png);
+  background: url(../../assets/chinese/name_deco_reduced.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
 #pageLeft .nom.chinoise:after {
-  background: url(../../assets/chinese/separator.png);
+  background: url(../../assets/chinese/separator_reduced.png);
   background-repeat: repeat-x;
   background-position: left;
   background-size: contain;
@@ -238,7 +229,7 @@ app-creature-pages-content {
   z-index: -1;
   filter: blur(3px) drop-shadow(0 0 10px white);
   opacity: 0.5;
-  background: url(../../assets/flipbook-textures/sun.png);
+  background: url(../../assets/flipbook-textures/sun_reduced.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -255,27 +246,27 @@ app-creature-pages-content {
   opacity: 0.5;
 }
 #pageLeft .descript.grec::after {
-  background: url(../../assets/greek/medusa.png);
+  background: url(../../assets/greek/medusa_reduced.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 33% auto;
 }
 #pageLeft .descript.nordique::after {
-  background: url(../../assets/norse/vegvisir.png);
+  background: url(../../assets/norse/vegvisir_reduced.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 33% auto;
 }
 #pageLeft .descript.chinoise::after {
-  background: url(../../assets/chinese/dragons.png);
+  background: url(../../assets/chinese/dragons_reduced.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
 #pageLeft .descript.egyptienne::after {
-  background: url(../../assets/egyptian/eagle.png);
+  background: url(../../assets/egyptian/eagle_reduced.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -351,20 +342,20 @@ app-creature-pages-content {
   cursor: url(../../assets/cursors/eye-32x32.png), pointer;
 }
 #pageRight .image.grec {
-  -o-border-image: url(../../assets/greek/frame.png) 30% 40%/5vw 5vw/2vw round;
-     border-image: url(../../assets/greek/frame.png) 30% 40%/5vw 5vw/2vw round;
+  -o-border-image: url(../../assets/greek/frame_reduced.png) 30% 40%/5vw 5vw/2vw round;
+     border-image: url(../../assets/greek/frame_reduced.png) 30% 40%/5vw 5vw/2vw round;
 }
 #pageRight .image.nordique {
-  -o-border-image: url(../../assets/norse/frame.png) 30% 30%/5vw 5vw/2vw round;
-     border-image: url(../../assets/norse/frame.png) 30% 30%/5vw 5vw/2vw round;
+  -o-border-image: url(../../assets/norse/frame_reduced.png) 30% 30%/5vw 5vw/2vw round;
+     border-image: url(../../assets/norse/frame_reduced.png) 30% 30%/5vw 5vw/2vw round;
 }
 #pageRight .image.chinoise {
-  -o-border-image: url(../../assets/chinese/frame.png) 30% 30%/5vw 5vw/2vw round;
-     border-image: url(../../assets/chinese/frame.png) 30% 30%/5vw 5vw/2vw round;
+  -o-border-image: url(../../assets/chinese/frame_reduced.png) 30% 30%/5vw 5vw/2vw round;
+     border-image: url(../../assets/chinese/frame_reduced.png) 30% 30%/5vw 5vw/2vw round;
 }
 #pageRight .image.egyptienne {
-  -o-border-image: url(../../assets/egyptian/frame.png) 30% 30%/5vw 5vw/2vw round;
-     border-image: url(../../assets/egyptian/frame.png) 30% 30%/5vw 5vw/2vw round;
+  -o-border-image: url(../../assets/egyptian/frame_reduced.png) 30% 30%/5vw 5vw/2vw round;
+     border-image: url(../../assets/egyptian/frame_reduced.png) 30% 30%/5vw 5vw/2vw round;
 }
 #pageRight .image.dieu {
   filter: drop-shadow(0 0 10px goldenrod) drop-shadow(0 0 5px white);
@@ -396,7 +387,7 @@ app-creature-pages-content {
 }
 #pageRight .memo.feu ul #element span {
   color: red;
-  background: url(../../assets/elements/element_fire.png);
+  background: url(../../assets/elements/element_fire_reduced.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -407,7 +398,7 @@ app-creature-pages-content {
 }
 #pageRight .memo.eau ul #element span {
   color: blue;
-  background: url(../../assets/elements/element_water.png);
+  background: url(../../assets/elements/element_water_reduced.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -418,7 +409,7 @@ app-creature-pages-content {
 }
 #pageRight .memo.air ul #element span {
   color: yellow;
-  background: url(../../assets/elements/element_air.png);
+  background: url(../../assets/elements/element_air_reduced.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -429,7 +420,7 @@ app-creature-pages-content {
 }
 #pageRight .memo.terre ul #element span {
   color: green;
-  background: url(../../assets/elements/element_earth.png);
+  background: url(../../assets/elements/element_earth_reduced.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -452,7 +443,7 @@ app-creature-pages-content {
 #pageRight .memo.dieu #mytho span {
   color: goldenrod;
   text-shadow: 0 0 2px rgb(71, 0, 0);
-  background: url(../../assets/flipbook-textures/god_bg_centered.png);
+  background: url(../../assets/flipbook-textures/god_bg_centered_reduced.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -540,7 +531,7 @@ app-creature-pages-content {
   border-left: 2.5vw solid rgb(193, 0, 0);
   border-top: 3.4vw solid transparent;
   border-bottom: 3.4vw solid transparent;
-  background-image: url(../../assets/flipbook-textures/natural-paper.png);
+  background-image: url(../../assets/flipbook-textures/natural-paper_reduced.png);
   background-size: cover;
 }
 
@@ -591,8 +582,8 @@ app-creature-pages-content {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 110vw;
-  height: 110vh;
+  width: 210vw;
+  height: 210vh;
   transform: translate(-50%, -50%);
   background: radial-gradient(closest-side, rgba(0, 0, 0, 0.916), rgba(0, 0, 0, 0.562));
   display: flex;
@@ -603,7 +594,7 @@ app-creature-pages-content {
 }
 #fullscreen_creature img {
   opacity: 0.9;
-  height: 100%;
+  height: 100vh;
 }
 
 .goFullscreen {

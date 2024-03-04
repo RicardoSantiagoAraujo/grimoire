@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { CompteService } from '../compte/compte.service';
 import { Compte } from '../model';
+import { AudioService } from '../audio.service';
 
 @Component({
   selector: 'app-inscription',
@@ -18,7 +19,7 @@ export class InscriptionComponent {
   loginCtrl!: FormControl;
   passwordCtrl!: FormControl;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private compteService: CompteService) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private compteService: CompteService, public audioService : AudioService) {
   }
 
   ngOnInit() : void {
@@ -32,6 +33,9 @@ export class InscriptionComponent {
       login: this.loginCtrl,
       password: this.passwordCtrl
     });
+
+
+    this.audioService.unrollScrollSound(0.1);
   }
 
 
@@ -57,5 +61,11 @@ export class InscriptionComponent {
   exitAnimation(){
     document.querySelector(".formulaire")?.classList.add("exitAnimation");
     console.log(document.querySelector(".container"));
+    this.audioService.clickButtonSound()
+  }
+
+
+  onFocus(){
+    this.audioService.brushSoundActive()
   }
 }
