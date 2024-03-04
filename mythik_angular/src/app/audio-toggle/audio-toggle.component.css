@@ -1,0 +1,64 @@
+#audio_toggle {
+  background-color: transparent;
+  position: absolute;
+  top: 2vh;
+  left: 0px;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  filter: brightness(1);
+  transition: 0.1s;
+  cursor: url(../../assets/cursors/middle-ages-pointer-32x32.png), pointer;
+  z-index: 100000000000000000000000000000000000000;
+}
+#audio_toggle img {
+  height: 20vh;
+  filter: drop-shadow(10px 10px 5px rgba(0, 0, 0, 0.496));
+  transition: 0.2s;
+  animation: bellAppear 2s;
+}
+@keyframes jiggle {
+  from {
+    filter: brightness(1);
+  }
+  to {
+    filter: brightness(1.2);
+  }
+}
+@keyframes bellAppear {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+#audio_toggle img:hover {
+  filter: drop-shadow(0 0 10px rgb(193, 0, 0));
+}
+#audio_toggle.soundActive {
+  filter: brightness(2);
+  animation: bellRing 0.2s;
+}
+#audio_toggle.soundInactive {
+  filter: brightness(1);
+  animation: bellRing 0.2s;
+}
+
+@keyframes bellRing {
+  0% {
+    transform: rotate(3deg);
+  }
+  50% {
+    transform: rotate(-3deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}/*# sourceMappingURL=audio-toggle.component.css.map */

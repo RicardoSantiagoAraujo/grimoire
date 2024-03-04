@@ -1,147 +1,743 @@
-@font-face {
-    font-family: "Stempel-Garamond-W01-Roman";
-    font-style: normal;
-    font-weight: normal;
-    src: url("../../assets/fonts/Stempel-Garamond-W01-Roman.woff");
-  }
-  @font-face {
-    font-family: "Lugrasimo";
-    font-style: normal;
-    font-weight: normal;
-    src: url("../../assets/fonts/Lugrasimo/Lugrasimo-Regular.ttf");
-  }
-  @font-face {
-    font-family: "bronzion";
-    font-style: normal;
-    font-weight: normal;
-    src: url("../../assets/fonts/bronzion_deco/BronzionDeco_PERSONAL_USE_ONLY.otf");
-  }
-  @font-face {
-    font-family: "eb_garamond";
-    font-style: normal;
-    font-weight: normal;
-    src: url("../../assets/fonts/EB_Garamond/EBGaramond-Italic-VariableFont_wght.ttf");
-  }
-  @font-face {
-    font-family: "grandiflora";
-    font-style: normal;
-    font-weight: normal;
-    src: url("../../assets/fonts/Grandiflora_One/GrandifloraOne-Regular.ttf");
-  }
-  @font-face {
-    font-family: "notoserif_jp";
-    font-style: normal;
-    font-weight: normal;
-    src: url("../../assets/fonts/Noto_Serif_JP/NotoSerifJP-Regular.otf");
-  }
-  @font-face {
-    font-family: "notoserif_tc";
-    font-style: normal;
-    font-weight: normal;
-    src: url("../../assets/fonts/Noto_Serif_TC/NotoSerifTC-Regular.otf");
-  }
+@charset "UTF-8";
+section {
+  width: 100vw;
+  /* 50% de la largeur de la fenêtre */
+  height: 100%;
+  cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
+  font-family: "Lugrasimo";
+  overflow: auto;
+  animation: contentAppear 1s;
+}
 
-  :root {
-    --text-color: rgb(71, 0, 0);
-    --paper-color-l: rgb(255, 251, 212);
-    --paper-color-d: rgb(100, 79, 30);
-    --paper-texture: url("../../assets/flipbook-textures/natural-paper.png");
-    /* --paper-texture: url(../pics/black-paper.png); */
-    /* --paper-texture: url(../pics/old-paper-texture.webp); */
-    /* Candlelight effect */
-    --color-overlay-l: #ffd58d;
-    --color-overlay-d: #00021e;
-    --blur-overlay-l: 60%;
-    --fire_light_effect-radial: radial-gradient(var(--color-overlay-l) var(--blur-overlay-l), var(--color-overlay-d) 75%);
-    --fire_light_effect-linear: linear-gradient(var(--color-overlay-l) var(--blur-overlay-l) 90%, var(--color-overlay-d) 100%);
-    --fire_light_effect-uniform: var(--color-overlay-l);
-    --fire_light_effect-pages: radial-gradient(var(--color-overlay-l) var(--blur-overlay-l), rgba(0,0,0,0) 75%);
+@keyframes contentAppear {
+  from {
+    opacity: 0;
   }
-  
-  
-  body {
-    background: url("../../assets/flipbook-textures/wood-texture.jpeg"), radial-gradient(#e6b664, #000325);
-    background-blend-mode: multiply;
-    background-size: cover;
-    overflow: auto;
-    width: 100vw;  /* 50% de la largeur de la fenêtre */
-    height: 230vh;
-    cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
-    overflow: auto;
+  to {
+    opacity: 1;
   }
-  
-  .container {
-    max-width: 800px;
-    margin: 50px auto;
-  }
-  
-  h1 {
-    font-family: "bronzion";
-    font-size: 36px;
-    text-align: center;
-    background-color:rgba(245, 245, 220, 0.555);
-    border-radius: 10px;
-    padding: 5px;
-    margin: 0px 100px;
-  }
+}
+h1 {
+  position: relative;
+  font-family: "bronzion";
+  font-size: 7vmin;
+  text-align: center;
+  background: url(../../assets/flipbook-textures/scroll2.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 27vmin;
+  margin: auto;
+  margin-top: 5vh;
+  width: -moz-fit-content;
+  width: fit-content;
+  filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.511));
+  animation: scrollAppear 1s ease-out;
+}
+h1::first-letter {
+  color: rgb(103, 0, 0);
+  font-size: 14vmin;
+}
+h1:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 30%;
+  animation: Rotate 50s infinite linear;
+  transform-origin: center;
+  background: url(../../assets/flipbook-textures/celtic_knot.png), rgb(0, 26, 173);
+  background-blend-mode: lighten;
+  -webkit-mask-image: url(../../assets/flipbook-textures/celtic_knot.png);
+          mask-image: url(../../assets/flipbook-textures/celtic_knot.png);
+  mask-mode: alpha;
+  -webkit-mask-size: 30%;
+          mask-size: 30%;
+  -webkit-mask-position: center;
+          mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+}
 
-  th {
-    font-family: "grandiflora";
+@keyframes Rotate {
+  from {
+    transform: rotate(0deg);
   }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes scrollAppear {
+  from {
+    transform: scale(0.5, 0.75);
+  }
+  to {
+    transform: scale(1, 1);
+  }
+}
+.btn {
+  display: inline-block;
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+  cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
+  border: 1px solid rgba(41, 19, 139, 0.5137254902);
+  box-shadow: 5px 5px 5px rgba(62, 0, 0, 0.488) !important;
+  border-radius: 50% !important;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  color: #fff;
+  background: url(../../assets/flipbook-textures/coin.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.btn:hover {
+  transform: scale(1.1) rotate(360deg);
+  transition: 0.9s;
+}
+.btn:active {
+  transform: scale(1.2) rotate(350deg);
+  transition: 0.1s;
+  color: rgb(0, 100, 0);
+}
 
-  tbody {
-    font-family: "notoserif_tc";
+.compte_list_header {
+  position: relative;
+  color: rgba(119, 0, 0, 0.68);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-family: "Lugrasimo";
+  background: url(../../assets/flipbook-textures/infiniteScroll/top.png);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: contain;
+  width: 100%;
+  height: 350px;
+  text-align: center;
+  padding: 0px;
+  padding-bottom: 1vmin;
+  margin-bottom: 0px;
+  border: 0px;
+}
+.compte_list_header span {
+  font-family: "bronzion";
+  color: rgba(1, 79, 37, 0.668);
+  font-size: 7.5vw;
+}
+.compte_list_header:after {
+  content: "";
+  width: 70%;
+  height: 1.5vw;
+  bottom: 0px;
+  position: absolute;
+  background: url(../../assets/flipbook-textures/page_decorative_divider.png);
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: repeat-x;
+  opacity: 0.3;
+}
+
+.compte_list {
+  background-color: transparent;
+  border: 0px solid #000000;
+  border-radius: 10px;
+  padding: 0px;
+  filter: drop-shadow(6px 6px 5px rgba(0, 0, 0, 0.711));
+}
+
+.compte_list_body {
+  background: url(../../assets/flipbook-textures/infiniteScroll/middle_mirrored.png);
+  background-size: contain;
+  background-repeat: repeat;
+  background-position: top;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 0px;
+}
+
+.compte_list_footer {
+  color: rgba(119, 0, 0, 0.68);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10%;
+  font-family: "Lugrasimo";
+  background: url(../../assets/flipbook-textures/infiniteScroll/top_mirrored.png);
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: contain;
+  width: 100%;
+  height: 340px;
+  text-align: center;
+  padding: 0px;
+  margin-bottom: 0px;
+  border: 0px;
+  position: relative;
+}
+.compte_list_footer:before {
+  pointer-events: none;
+  content: "";
+  left: 0px;
+  background-image: url(../../assets/flipbook-textures/infiniteScroll/pen2.png);
+  background-size: contain;
+  background-position: left;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 70%;
+  height: 1000px;
+  top: 0px;
+  transform: translateY(-50%) translateX(5%);
+}
+.compte_list_footer:after {
+  pointer-events: none;
+  content: "";
+  right: 0px;
+  background: url(../../assets/flipbook-textures/infiniteScroll/ink_block.png);
+  filter: drop-shadow(10px 10px 10px black);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 40%;
+  height: 40%;
+  top: 0px;
+  transform: translateY(-50%) translateX(40%) rotate(12deg);
+}
+.compte_list_footer .btn {
+  width: 10vw;
+  height: 10vw;
+  position: relative;
+  font-size: 3vw;
+  text-shadow: 1px 1px rgb(71, 0, 0);
+}
+.compte_list_footer .btn i {
+  position: absolute;
+  font-size: 4vw;
+  font-weight: bolder;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  color: rgba(81, 0, 0, 0.792);
+  text-align: center;
+}
+.compte_list_footer .btn:nth-child(1) {
+  background-image: url(../../assets/flipbook-textures/coin3.png) !important;
+  background-size: 103% 103%;
+}
+.compte_list_footer .btn:nth-child(1):after {
+  position: absolute;
+  bottom: 0px;
+  transform: translateX(-50%) translateY(50%);
+  content: "Ajouter";
+}
+.compte_list_footer .btn:nth-child(2) {
+  background-image: url(../../assets/flipbook-textures/coin2.png) !important;
+  background-size: 103% 103%;
+}
+.compte_list_footer .btn:nth-child(2):after {
+  position: absolute;
+  bottom: 0px;
+  transform: translateX(-50%) translateY(50%);
+  content: "Retour";
+}
+
+table {
+  width: 80%;
+  margin-bottom: 100px;
+}
+
+tbody tr {
+  height: 25vh;
+}
+tbody tr .id {
+  transition: 0.2s;
+}
+tbody tr:hover td:not(.id, .btn_td) {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5));
+}
+tbody tr:hover .id {
+  transform: scale(1.1);
+  color: rgb(0, 100, 0);
+}
+tbody tr td:not(.id, .btn_td) {
+  transition: 0.1s;
+}
+tbody tr td:not(.id, .btn_td):hover {
+  background-color: rgba(178, 255, 178, 0.755) !important;
+}
+
+table .btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+table .btn-group .btn {
+  width: 3vw;
+  height: 3vw;
+  font-size: 0.5vw;
+}
+table .btn-group .btn i,
+table .btn-group .btn img {
+  display: flex;
+  align-items: center;
+  height: 50%;
+  justify-content: center;
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  text-align: center;
+}
+table .btn-group .btn:nth-child(1) {
+  background-image: url(../../assets/flipbook-textures/coin.png) !important;
+  background-size: 103% 103%;
+}
+table .btn-group .btn:nth-child(1):after {
+  position: absolute;
+  bottom: 0px;
+  transform: translateX(-50%) translateY(50%);
+  content: "Edit";
+}
+table .btn-group .btn:nth-child(2) {
+  background-image: url(../../assets/flipbook-textures/coin5.png) !important;
+  background-size: 103% 103%;
+}
+table .btn-group .btn:nth-child(2):after {
+  position: absolute;
+  bottom: 0px;
+  transform: translateX(-50%) translateY(50%);
+  content: "Remove";
+}
+
+.id {
+  width: 5vw;
+  font-size: 2vw;
+  text-align: center;
+  position: relative;
+  right: 10%;
+}
+.id:not(td) {
+  padding: -100%;
+  overflow: visible;
+  background-size: 150%;
+  border-radius: 100%;
+  position: relative;
+  text-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
+}
+.id:not(td):before {
+  content: "id";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(87, 0, 0, 0.32);
+  height: 100%;
+  width: 100%;
+  transform: scale(1.5);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-image: url(../../assets/flipbook-textures/shield_round.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.id:not(td)::after {
+  color: goldenrod;
+}
+.id:not(th) {
+  background: url(../../assets/flipbook-textures/shield2.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-position: 50% 54%;
+  background-size: contain;
+  font-weight: bolder;
+  color: rgba(89, 0, 0, 0.766);
+}
+
+.btn_td {
+  width: 7vw;
+  position: relative;
+  left: 10%;
+  background-size: contain;
+}
+.btn_td:not(td) {
+  visibility: hidden;
+}
+
+table td:not(.id, .btn_td) {
+  font-size: 1vw;
+  align-items: center;
+  border: 2px dashed rgba(132, 8, 8, 0.501);
+  text-align: center;
+}
+
+.nom {
+  font-weight: bolder;
+}
+.nom::first-letter {
+  color: rgb(193, 0, 0);
+}
+
+thead {
+  position: sticky;
+  z-index: 11;
+  text-transform: capitalize;
+  top: 0px;
+  background-color: rgba(219, 220, 229, 0.4901960784);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 28' width='56' height='28'%3E%3Cpath fill='%2392acac' fill-opacity='0.74' d='M56 26v2h-7.75c2.3-1.27 4.94-2 7.75-2zm-26 2a2 2 0 1 0-4 0h-4.09A25.98 25.98 0 0 0 0 16v-2c.67 0 1.34.02 2 .07V14a2 2 0 0 0-2-2v-2a4 4 0 0 1 3.98 3.6 28.09 28.09 0 0 1 2.8-3.86A8 8 0 0 0 0 6V4a9.99 9.99 0 0 1 8.17 4.23c.94-.95 1.96-1.83 3.03-2.63A13.98 13.98 0 0 0 0 0h7.75c2 1.1 3.73 2.63 5.1 4.45 1.12-.72 2.3-1.37 3.53-1.93A20.1 20.1 0 0 0 14.28 0h2.7c.45.56.88 1.14 1.29 1.74 1.3-.48 2.63-.87 4-1.15-.11-.2-.23-.4-.36-.59H26v.07a28.4 28.4 0 0 1 4 0V0h4.09l-.37.59c1.38.28 2.72.67 4.01 1.15.4-.6.84-1.18 1.3-1.74h2.69a20.1 20.1 0 0 0-2.1 2.52c1.23.56 2.41 1.2 3.54 1.93A16.08 16.08 0 0 1 48.25 0H56c-4.58 0-8.65 2.2-11.2 5.6 1.07.8 2.09 1.68 3.03 2.63A9.99 9.99 0 0 1 56 4v2a8 8 0 0 0-6.77 3.74c1.03 1.2 1.97 2.5 2.79 3.86A4 4 0 0 1 56 10v2a2 2 0 0 0-2 2.07 28.4 28.4 0 0 1 2-.07v2c-9.2 0-17.3 4.78-21.91 12H30zM7.75 28H0v-2c2.81 0 5.46.73 7.75 2zM56 20v2c-5.6 0-10.65 2.3-14.28 6h-2.7c4.04-4.89 10.15-8 16.98-8zm-39.03 8h-2.69C10.65 24.3 5.6 22 0 22v-2c6.83 0 12.94 3.11 16.97 8zm15.01-.4a28.09 28.09 0 0 1 2.8-3.86 8 8 0 0 0-13.55 0c1.03 1.2 1.97 2.5 2.79 3.86a4 4 0 0 1 7.96 0zm14.29-11.86c1.3-.48 2.63-.87 4-1.15a25.99 25.99 0 0 0-44.55 0c1.38.28 2.72.67 4.01 1.15a21.98 21.98 0 0 1 36.54 0zm-5.43 2.71c1.13-.72 2.3-1.37 3.54-1.93a19.98 19.98 0 0 0-32.76 0c1.23.56 2.41 1.2 3.54 1.93a15.98 15.98 0 0 1 25.68 0zm-4.67 3.78c.94-.95 1.96-1.83 3.03-2.63a13.98 13.98 0 0 0-22.4 0c1.07.8 2.09 1.68 3.03 2.63a9.99 9.99 0 0 1 16.34 0z'%3E%3C/path%3E%3C/svg%3E");
+  color: white;
+}
+thead th {
+  text-align: center;
+  text-shadow: 1px 1px 1px rgb(71, 0, 0);
+  font-size: 1.3vw;
+  padding: 1vw;
+  cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
+  transition: 0.1s;
+  position: relative;
+}
+thead th:hover {
+  transform: scale(1.1);
+  background-color: rgba(13, 107, 13, 0.35);
+}
+thead th:hover::after {
+  font-size: xx-small;
+  position: absolute;
+  bottom: 0.25vw;
+  right: 0px;
+  width: 100%;
+  content: "▼";
+  animation: listOrderPulse 0.3s alternate infinite;
+}
+thead th:first-letter {
+  color: rgb(193, 0, 0);
+  font-size: 1.75vw;
+}
+
+@keyframes listOrderPulse {
+  from {
+    transform: scale(1.3);
   }
-  
-  .card {
-    
-    background-color: #d2b48c62;
-    border: 1px solid #8b4513;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 30px 10px;
+  to {
+    transform: scale(1);
   }
-  
-  .card-header {
-    font-family: "Lugrasimo";
-    background-color: #8b4513b3;
-    color: #fff;
-    font-size: 24px;
-    text-align: center;
-    padding: 10px;
-    margin-bottom: 10px;
+}
+.compte_edit {
+  background-color: transparent;
+  background-image: url(../../assets/flipbook-textures/scroll3.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 20vh;
+  animation: contentAppear 1s;
+  padding: 10%;
+  filter: drop-shadow(6px 6px 5px rgba(0, 0, 0, 0.711));
+}
+.compte_edit .card-header {
+  position: relative;
+  color: rgb(71, 0, 0);
+  text-align: center;
+  font-size: 3vw;
+  padding-top: 13vw;
+}
+.compte_edit .card-header::first-letter {
+  font-family: "bronzion";
+  color: rgba(1, 79, 37, 0.668);
+  font-size: 6vw;
+}
+.compte_edit .card-header:after {
+  content: "";
+  width: 60%;
+  height: 1.5vw;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  background: url(../../assets/flipbook-textures/page_decorative_divider2.png);
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: repeat-x;
+  opacity: 0.3;
+}
+.compte_edit .form_item {
+  display: flex;
+  align-items: center;
+  padding-top: 1vw;
+  width: 50%;
+  align-items: center;
+  margin: auto;
+  padding-bottom: 2vw;
+  position: relative;
+}
+.compte_edit .form_item label,
+.compte_edit .form_item span {
+  position: relative;
+  text-align: center;
+  width: 20%;
+  color: rgba(79, 0, 0, 0.644);
+  display: flex;
+  justify-content: center;
+  cursor: url("../../assets/cursors/feather.png"), pointer;
+  font-size: 1vw;
+}
+.compte_edit .form_item label:after,
+.compte_edit .form_item span:after {
+  content: "";
+  width: 90%;
+  height: 3vw;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%) translateY(25%);
+  position: absolute;
+  background: url(../../assets/flipbook-textures/page_decorative_divider3.png);
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  opacity: 0.3;
+}
+.compte_edit .form_item input[type=checkbox] {
+  margin-left: 1vw;
+}
+.compte_edit .form_item input,
+.compte_edit .form_item select {
+  background-color: rgba(172, 233, 237, 0.392);
+  border: 1px solid rgba(121, 1, 1, 0.5);
+  cursor: url("../../assets/cursors/feather.png"), pointer;
+  font-size: 1vw;
+}
+.compte_edit .form_item input:hover,
+.compte_edit .form_item select:hover {
+  border-color: #333;
+}
+.compte_edit .form_item input:focus,
+.compte_edit .form_item select:focus {
+  outline: none;
+  border-color: rgb(193, 0, 0);
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  background-color: rgba(255, 128, 0, 0.1);
+  animation: inputFocus 1s infinite alternate;
+}
+.compte_edit .form_item:not(:last-child):after {
+  content: "";
+  width: 40%;
+  height: 3vw;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%) translateY(0%);
+  position: absolute;
+  background: url(../../assets/flipbook-textures/page_decorative_divider4.png);
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  opacity: 0.3;
+}
+.compte_edit .card-footer {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly !important;
+}
+.compte_edit .card-footer .btn {
+  width: 10vw;
+  height: 10vw;
+  position: relative;
+  border: none;
+  box-shadow: none;
+}
+.compte_edit .card-footer .btn i {
+  position: absolute;
+  font-size: 40px;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  color: rgba(81, 0, 0, 0.792);
+  text-align: center;
+}
+.compte_edit .card-footer .btn:nth-child(1) {
+  background-image: url(../../assets/flipbook-textures/coin3.png) !important;
+  background-size: 103% 103%;
+}
+.compte_edit .card-footer .btn:nth-child(1):after {
+  position: absolute;
+  bottom: 0px;
+  transform: translateX(-50%) translateY(50%);
+  content: "Ajouter";
+}
+.compte_edit .card-footer .btn:nth-child(2) {
+  background-image: url(../../assets/flipbook-textures/coin2.png) !important;
+  background-size: 103% 103%;
+}
+.compte_edit .card-footer .btn:nth-child(2):after {
+  position: absolute;
+  bottom: 0px;
+  transform: translateX(-50%) translateY(50%);
+  content: "Fermer";
+}
+
+@keyframes inputFocus {
+  from {
+    box-shadow: 0 0 5px rgb(193, 0, 0);
   }
-  
-  .btn {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 18px;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    border: 1px solid #8b4513;
-    border-radius: 5px;
-    color: #fff;
-    background-color: #8b4513;
+  to {
+    box-shadow: 0 0 4px rgb(0, 100, 0);
   }
-  
-  .btn:hover {
-    background-color: #654321;
+}
+.hideCompteForm {
+  animation: hideCompteForm forwards;
+  overflow: hidden;
+}
+.hideCompteForm * {
+  opacity: 0;
+  transition: 0.5s;
+}
+
+@keyframes hideCompteForm {
+  0% {
+    opacity: 1;
+    max-height: 100%;
   }
-  
-  .table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
+  50% {
+    opacity: 0;
   }
-  
-  .table th, .table td {
-    border: 1px solid #8b4513;
-    padding: 10px;
-    text-align: center;
+  100% {
+    opacity: 0;
+    max-height: 0px;
   }
-  
-  .table th {
-    background-color: #654321;
-    color: #fff;
+}
+td.type {
+  font-size: 2vw !important;
+  text-shadow: 0 0 5px purple;
+  position: relative;
+  z-index: 1;
+}
+
+tr.admin td:not(.id, .btn_td) {
+  background-color: rgba(145, 255, 0, 0.05);
+}
+tr.admin td:not(.id, .btn_td).type {
+  color: rgb(152, 110, 3);
+}
+tr.admin td:not(.id, .btn_td).type:after {
+  content: "";
+  position: absolute;
+  z-index: -10;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url(../../assets/flipbook-textures/crown.png);
+  opacity: 0.3;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+tr.admin td.id {
+  background: url(../../assets/flipbook-textures/shield3.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+tr.admin td.login {
+  position: relative;
+  color: goldenrod;
+  text-shadow: 0 0 7px #000000, 0 0 10px #000000, 0 0 21px #000000;
+  text-transform: capitalize;
+}
+tr.admin td.login:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url(../../assets/flipbook-textures/god_bg.png);
+  opacity: 0.3;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: godGlow 0.3s alternate infinite;
+}
+
+tr.humain td:not(.id, .btn_td) {
+  background-color: rgba(255, 81, 0, 0.05);
+}
+tr.humain td:not(.id, .btn_td).type {
+  color: rgb(98, 0, 0);
+}
+tr.humain td:not(.id, .btn_td).type:after {
+  content: "";
+  position: absolute;
+  z-index: -10;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url(../../assets/flipbook-textures/skull.png);
+  opacity: 0.3;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+tr.ia td:not(.id, .btn_td) {
+  background-color: rgba(149, 0, 255, 0.05);
+}
+tr.ia td:not(.id, .btn_td).type {
+  color: rgb(78, 0, 98);
+}
+tr.ia td:not(.id, .btn_td).type:after {
+  content: "";
+  position: absolute;
+  z-index: -10;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-image: url(../../assets/flipbook-textures/cogwheel.png);
+  opacity: 0.3;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@keyframes godGlow {
+  from {
+    opacity: 0.1;
   }
+  to {
+    opacity: 0.3;
+  }
+}
+.exitAnimation {
+  animation: exitAnimation 0.25s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes exitAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.text_intro {
+  color: rgb(71, 0, 0) !important;
+  width: 60%;
+}/*# sourceMappingURL=compte.component.css.map */

@@ -1,141 +1,167 @@
-@font-face {
-    font-family: "bronzion";
-    font-style: normal;
-    font-weight: normal;
-    src: url("../../assets/fonts/bronzion_deco/BronzionDeco_PERSONAL_USE_ONLY.otf");
-  }
+@use '../../mixins' as *;
+@use '../../variables' as *;
 
-
-@font-face {
-    font-family: 'Lugrasimo';
-    font-style: normal;
-    font-weight: normal;
-    src: url('../../assets/fonts/Lugrasimo/Lugrasimo-Regular.ttf');
-  }
-
-:root {
-    --text-color: rgb(71, 0, 0);
-    --paper-color-l: rgb(255, 251, 212);
-    --paper-color-d: rgb(100, 79, 30);
-    --paper-texture: url("../../assets/flipbook-textures/natural-paper.png");
-    /* --paper-texture: url(../pics/black-paper.png); */
-    /* --paper-texture: url(../pics/old-paper-texture.webp); */
-    /* Candlelight effect */
-    --color-overlay-l: #ffd58d;
-    --color-overlay-d: #00021e;
-    --blur-overlay-l: 60%;
-    --fire_light_effect-radial: radial-gradient(var(--color-overlay-l) var(--blur-overlay-l), var(--color-overlay-d) 75%);
-    --fire_light_effect-linear: linear-gradient(var(--color-overlay-l) var(--blur-overlay-l) 90%, var(--color-overlay-d) 100%);
-    --fire_light_effect-uniform: var(--color-overlay-l);
-    --fire_light_effect-pages: radial-gradient(var(--color-overlay-l) var(--blur-overlay-l), rgba(0,0,0,0) 75%);
-  }
-body, html {
-    height: 100%;
-    overflow: hidden;
-    font-family: "Lugrasimo";
-  }
-
-body {
-    background: url("../../assets/flipbook-textures/wood-texture.jpeg"), radial-gradient(#e6b664, #000325);
-    background-blend-mode: multiply;
-    background-size: cover;
-    width: 100vw;  /* 50% de la largeur de la fenêtre */
-    height: 100vh;
-    cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-
- .formulaire{
-  position: relative;
-  z-index: 1;
-  background: url("../../assets/flipbook-textures/dialog_scroll.png");
+.formulaire {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  background-size:contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
   width: 70%;
   height: 80%;
+  margin: auto;
   color: white;
-  font-size: 25px;
   animation: scrollAppear 1s ease-out;
   transition: 1s ease-in-out;
-  &:hover{
+  filter: drop-shadow(10px 10px 5px rgba(0, 0, 0, 0.611));
+
+
+  &:hover {
     transform: scale(1.05);
-    .shield{
+
+    .prop {
       transform: rotate(0deg)scale(1.1);
     }
   }
- }
+}
 
- @keyframes scrollAppear {
-  from{
-    transform: scale(0,0.5);
+#bg_img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes scrollAppear {
+  from {
+    transform: scale(0, 0.5);
 
   }
-  to{
-    transform: scale(1,1);
-  }
- }
 
- .formulaire *:not(.text-danger) {
+  to {
+    transform: scale(1, 1);
+  }
+}
+
+
+// animate contents (exclude warning texts and img)
+.container,
+.button_group,
+.titre,
+.prop {
   opacity: 0;
   animation: contentAppear 1s ease-in;
   animation-delay: 0.7s;
   animation-fill-mode: forwards;
- }
+}
 
 
- @keyframes contentAppear {
-  from{
+@keyframes contentAppear {
+  from {
     opacity: 0;
 
   }
-  to{
+
+  to {
     opacity: 1;
   }
- }
+}
 
 
- .titre{
+.titre {
   display: flex;
-    align-items: center;
-    justify-content: center;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   width: 50%;
   margin: auto;
-  border: 10px double rgba(0, 255, 0, 0.1);
-  border-radius: 1% 1% 50% 50%;
+  padding: 10px 20vmin;
   position: relative;
-  background-color:rgba(245, 245, 220, 0.555);
-  font-size: 40px;
+  border: 2vmin double rgba(0, 255, 0, 0.1);
+  // border-radius: 1% 1% 50% 50%;
+  border-image: url(../../assets/flipbook-textures/nail.png);
+  font-size: 8vmin;
+  // background:url(../../assets/flipbook-textures/black-paper.png) rgba(223, 220, 245, 0.215) ;
+  background: url(../../assets/flipbook-textures/scroll_paper.png);
+  filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.711));
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 120% 140%;
+  background-blend-mode: soft-light;
+
 
   font-family: bronzion;
-  color: darkred;
+  color: $title-color-pri;
   text-shadow: 1px 1px 1px rgba(0, 128, 0, 0.501);
 
- }
+}
 
- label{
-  width: 100%;
+
+label {
+  display: block;
+  width: 40%;
+  margin: auto;
   color: rgba(67, 2, 2, 0.824);
   text-align: center;
- }
+  position: relative;
+}
 
- /* Appliquer des styles généraux aux champs de texte */
+.container .input-div {
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 15%;
+    height: 100%;
+    opacity: 0;
+    transition: 0.2s;
+    background-image: url(../../assets/flipbook-textures/bow.png);
+    @include bg-single-contain-center;
+    background-position: right;
+  }
+  &:hover{
+    &:after {
+      opacity: 0.3;
+      animation:  arrowInput 0.2s alternate infinite;
+    }
+  }
+}
+
+@keyframes arrowInput {
+  from{
+    opacity: 0.1;
+    transform: translateX(-0.5vw);
+  }
+  to{
+    opacity: 0.3;
+    transform: translateX(0vw);
+  }
+}
+
+
+/* Appliquer des styles généraux aux champs de texte */
 input {
-  width: 500px;
-  padding: 10px;
-  margin: 5px;
+  width: 50vh;
+  height: 3vh;
+  padding: 3vmin;
+  margin: auto;
   border: 1px dashed #ccc;
   border-radius: 4px;
   box-sizing: border-box;
-  background-color: #d8ba856b;
-  cursor: url("../../assets/cursors/feather.png"), pointer ;
+  background: url(../../assets/flipbook-textures/linen.png), #f8eddb6b;
+  background-size: contain;
+  cursor: url("../../assets/cursors/feather.png"), pointer;
 }
 
 /* Appliquer des styles spécifiques au survol du champ de texte */
@@ -146,116 +172,173 @@ input:hover {
 /* Appliquer des styles spécifiques au focus sur le champ de texte */
 input:focus {
   outline: none;
-  border-color: #007bff;
+  border-color: $title-color-pri;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
   background-color: rgba(255, 128, 0, 0.1);
   animation: inputFocus 1s infinite alternate;
 }
 
+@keyframes inputFocus {
+  from {
+    box-shadow: 0 0 5px $title-color-pri;
+  }
 
-.button_group{
+  to {
+    box-shadow: 0 0 4px $title-color-sec;
+  }
+}
+
+
+.button_group {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  > *{
-    min-width: 200px;
+  gap: 1vmin;
+  padding-bottom: 20px;
+
+  >* {
+    min-width: 45%;
     height: 50px;
     padding: 0;
-    margin-top: 10px;
+    margin-top: 1vmin;
     border: none;
     background: url("../../assets/flipbook-textures/fantasy-button.png");
     background-blend-mode: multiply;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     font-weight: bold;
-    margin-right: 10px;
-    font-size: 18px;
+    font-size: 2.7vmin;
     text-align: center;
     text-decoration: none;
     transition: 0.1s;
-    &:hover{
+
+    &:hover {
       filter: hue-rotate(50deg);
       text-shadow: #342101 1px 1px 10px;
       transform: scale(1.1);
     }
-    cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer ;
+    &:active {
+      transform: scale(1.2);
+      button{
+        color: white;
+      }
+    }
+
+    cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"),
+    pointer;
   }
-  a button{
+
+  a button {
     background: none;
-    padding: none;
+    padding: 0;
     border: none;
     height: 100%;
-    cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer ;
+    cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
     box-shadow: none;
   }
 }
 
-.shield{
+.prop {
+  pointer-events: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 30px;
+  font-size: 4vmin;
   font-family: bronzion;
   writing-mode: vertical-rl;
   text-orientation: upright;
-  color: rgba(255, 111, 111, 0.486);
-  width: 30%;
+  color: $title-color-pri;
+  width: 50%;
   height: 50%;
-  top:10px;
-  background: url(../../assets/flipbook-textures/shield.png), radial-gradient(black, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+  top: 0px;
+  background: url(../../assets/flipbook-textures/shield.png), radial-gradient(black, transparent, transparent);
+  filter: drop-shadow(15px 15px 7px rgba(0, 0, 0, 0.611));
+
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   position: absolute;
-  right:10%;
+  right: -7vw;
   transform: rotate(10deg);
-  span{
-    font-size: 60px;
+
+  span {
+    font-size: 8vmin;
     font-weight: bold;
     color: rgb(84, 87, 255);
+    transform: translateY(1vmin);
   }
+
   transition: 1s;
 }
 
 
-
-.text-danger{
+.danger_group {
   position: absolute;
-  bottom:0px;
+  bottom: 0px;
   right: 50%;
   width: 100%;
   text-align: center;
   transform: translateX(50%);
-  animation: dangerAppear 0.3s ease-in, dangerAnimate 0.3s ease-in-out infinite alternate;
-  &.pass-danger{
-    bottom:30px;
-  }
-  &.user-danger{
-    bottom:20px;
+
+  .danger {
+    color: rgb(216, 0, 93);
+    animation: dangerAppear 0.3s ease-in, dangerAnimate 0.3s ease-in-out infinite alternate;
+
+    &.pass_mandatory {
+      bottom: 0vmin;
+    }
+
+    &.pass_min_length {
+      bottom: 2vmin;
+    }
+
+    &.user.login_mandatory {
+      bottom: 4vmin;
+    }
   }
 }
 
 @keyframes dangerAppear {
-  from{
+  from {
     opacity: 0;
   }
 
-  to{
+  to {
     opacity: 1;
   }
 }
 
-@keyframes dangerAnimate{
-  0%{
+@keyframes dangerAnimate {
+  0% {
     text-shadow: 0 0 8px rgba(0, 0, 255, 0.503);
   }
 
-  50%{
+  50% {
     text-shadow: 0 0 12px rgba(85, 0, 255, 0.484);
   }
 
-  100%{
+  100% {
     text-shadow: 0 0 5px rgba(0, 183, 255, 0.598);
+  }
+}
+
+
+// exit animation(s)
+.exitAnimation {
+  animation: exitAnimation 1s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes exitAnimation {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
   }
 }

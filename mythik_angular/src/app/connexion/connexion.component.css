@@ -1,73 +1,39 @@
 @charset "UTF-8";
-@font-face {
-  font-family: "bronzion";
-  font-style: normal;
-  font-weight: normal;
-  src: url("../../assets/fonts/bronzion_deco/BronzionDeco_PERSONAL_USE_ONLY.otf");
-}
-@font-face {
-  font-family: "Lugrasimo";
-  font-style: normal;
-  font-weight: normal;
-  src: url("../../assets/fonts/Lugrasimo/Lugrasimo-Regular.ttf");
-}
-:root {
-  --text-color: rgb(71, 0, 0);
-  --paper-color-l: rgb(255, 251, 212);
-  --paper-color-d: rgb(100, 79, 30);
-  --paper-texture: url("../../assets/flipbook-textures/natural-paper.png");
-  /* --paper-texture: url(../pics/black-paper.png); */
-  /* --paper-texture: url(../pics/old-paper-texture.webp); */
-  /* Candlelight effect */
-  --color-overlay-l: #ffd58d;
-  --color-overlay-d: #00021e;
-  --blur-overlay-l: 60%;
-  --fire_light_effect-radial: radial-gradient(var(--color-overlay-l) var(--blur-overlay-l), var(--color-overlay-d) 75%);
-  --fire_light_effect-linear: linear-gradient(var(--color-overlay-l) var(--blur-overlay-l) 90%, var(--color-overlay-d) 100%);
-  --fire_light_effect-uniform: var(--color-overlay-l);
-  --fire_light_effect-pages: radial-gradient(var(--color-overlay-l) var(--blur-overlay-l), rgba(0,0,0,0) 75%);
-}
-
-body, html {
-  height: 100%;
-  overflow: hidden;
-  font-family: "Lugrasimo";
-}
-
-body {
-  background: url("../../assets/flipbook-textures/wood-texture.jpeg"), radial-gradient(#e6b664, #000325);
-  background-blend-mode: multiply;
-  background-size: cover;
-  width: 100vw; /* 50% de la largeur de la fenêtre */
-  height: 100vh;
-  cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .formulaire {
-  position: relative;
-  z-index: 1;
-  background: url("../../assets/flipbook-textures/dialog_scroll.png");
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
   width: 70%;
   height: 80%;
+  margin: auto;
   color: white;
-  font-size: 25px;
   animation: scrollAppear 1s ease-out;
   transition: 1s ease-in-out;
+  filter: drop-shadow(10px 10px 5px rgba(0, 0, 0, 0.611));
 }
 .formulaire:hover {
   transform: scale(1.05);
 }
-.formulaire:hover .shield {
+.formulaire:hover .prop {
   transform: rotate(0deg) scale(1.1);
+}
+
+#bg_img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 @keyframes scrollAppear {
@@ -78,7 +44,10 @@ body {
     transform: scale(1, 1);
   }
 }
-.formulaire *:not(.text-danger) {
+.container,
+.button_group,
+.titre,
+.prop {
   opacity: 0;
   animation: contentAppear 1s ease-in;
   animation-delay: 0.7s;
@@ -100,31 +69,76 @@ body {
   text-align: center;
   width: 50%;
   margin: auto;
-  border: 10px double rgba(0, 255, 0, 0.1);
-  border-radius: 1% 1% 50% 50%;
+  padding: 10px 20vmin;
   position: relative;
-  background-color: rgba(245, 245, 220, 0.555);
-  font-size: 40px;
+  border: 2vmin double rgba(0, 255, 0, 0.1);
+  -o-border-image: url(../../assets/flipbook-textures/nail.png);
+     border-image: url(../../assets/flipbook-textures/nail.png);
+  font-size: 8vmin;
+  background: url(../../assets/flipbook-textures/scroll_paper.png);
+  filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.711));
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 120% 140%;
+  background-blend-mode: soft-light;
   font-family: bronzion;
-  color: darkred;
+  color: rgb(193, 0, 0);
   text-shadow: 1px 1px 1px rgba(0, 128, 0, 0.501);
 }
 
 label {
-  width: 100%;
+  display: block;
+  width: 40%;
+  margin: auto;
   color: rgba(67, 2, 2, 0.824);
   text-align: center;
+  position: relative;
 }
 
+.container .input-div {
+  position: relative;
+}
+.container .input-div:after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 15%;
+  height: 100%;
+  opacity: 0;
+  transition: 0.2s;
+  background-image: url(../../assets/flipbook-textures/bow.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+.container .input-div:hover:after {
+  opacity: 0.3;
+  animation: arrowInput 0.2s alternate infinite;
+}
+
+@keyframes arrowInput {
+  from {
+    opacity: 0.1;
+    transform: translateX(-0.5vw);
+  }
+  to {
+    opacity: 0.3;
+    transform: translateX(0vw);
+  }
+}
 /* Appliquer des styles généraux aux champs de texte */
 input {
-  width: 500px;
-  padding: 10px;
-  margin: 5px;
+  width: 50vh;
+  height: 3vh;
+  padding: 3vmin;
+  margin: auto;
   border: 1px dashed #ccc;
   border-radius: 4px;
   box-sizing: border-box;
-  background-color: rgba(216, 186, 133, 0.4196078431);
+  background: url(../../assets/flipbook-textures/linen.png), rgba(248, 237, 219, 0.4196078431);
+  background-size: contain;
   cursor: url("../../assets/cursors/feather.png"), pointer;
 }
 
@@ -136,31 +150,39 @@ input:hover {
 /* Appliquer des styles spécifiques au focus sur le champ de texte */
 input:focus {
   outline: none;
-  border-color: #007bff;
+  border-color: rgb(193, 0, 0);
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
   background-color: rgba(255, 128, 0, 0.1);
   animation: inputFocus 1s infinite alternate;
 }
 
+@keyframes inputFocus {
+  from {
+    box-shadow: 0 0 5px rgb(193, 0, 0);
+  }
+  to {
+    box-shadow: 0 0 4px rgb(0, 100, 0);
+  }
+}
 .button_group {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 1vmin;
+  padding-bottom: 20px;
 }
 .button_group > * {
-  min-width: 200px;
+  min-width: 45%;
   height: 50px;
   padding: 0;
-  margin-top: 10px;
+  margin-top: 1vmin;
   border: none;
   background: url("../../assets/flipbook-textures/fantasy-button.png");
   background-blend-mode: multiply;
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   font-weight: bold;
-  margin-right: 10px;
-  font-size: 18px;
+  font-size: 2.7vmin;
   text-align: center;
   text-decoration: none;
   transition: 0.1s;
@@ -171,56 +193,71 @@ input:focus {
   text-shadow: #342101 1px 1px 10px;
   transform: scale(1.1);
 }
+.button_group > *:active {
+  transform: scale(1.2);
+}
+.button_group > *:active button {
+  color: white;
+}
 .button_group a button {
   background: none;
-  padding: none;
+  padding: 0;
   border: none;
   height: 100%;
   cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
   box-shadow: none;
 }
 
-.shield {
+.prop {
+  pointer-events: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 30px;
+  font-size: 4vmin;
   font-family: bronzion;
   writing-mode: vertical-rl;
   text-orientation: upright;
-  color: rgba(255, 111, 111, 0.486);
-  width: 30%;
+  color: rgb(193, 0, 0);
+  width: 50%;
   height: 50%;
-  top: 10px;
-  background: url(../../assets/flipbook-textures/shield.png), radial-gradient(black, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+  top: 0px;
+  background: url(../../assets/flipbook-textures/shield.png), radial-gradient(black, transparent, transparent);
+  filter: drop-shadow(15px 15px 7px rgba(0, 0, 0, 0.611));
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   position: absolute;
-  right: 10%;
+  right: -7vw;
   transform: rotate(10deg);
   transition: 1s;
 }
-.shield span {
-  font-size: 60px;
+.prop span {
+  font-size: 8vmin;
   font-weight: bold;
   color: rgb(84, 87, 255);
+  transform: translateY(1vmin);
 }
 
-.text-danger {
+.danger_group {
   position: absolute;
   bottom: 0px;
   right: 50%;
   width: 100%;
   text-align: center;
   transform: translateX(50%);
+}
+.danger_group .danger {
+  color: rgb(216, 0, 93);
   animation: dangerAppear 0.3s ease-in, dangerAnimate 0.3s ease-in-out infinite alternate;
 }
-.text-danger.pass-danger {
-  bottom: 30px;
+.danger_group .danger.pass_mandatory {
+  bottom: 0vmin;
 }
-.text-danger.user-danger {
-  bottom: 20px;
+.danger_group .danger.pass_min_length {
+  bottom: 2vmin;
+}
+.danger_group .danger.user.login_mandatory {
+  bottom: 4vmin;
 }
 
 @keyframes dangerAppear {
@@ -240,5 +277,21 @@ input:focus {
   }
   100% {
     text-shadow: 0 0 5px rgba(0, 183, 255, 0.598);
+  }
+}
+.exitAnimation {
+  animation: exitAnimation 1s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes exitAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
   }
 }/*# sourceMappingURL=connexion.component.css.map */

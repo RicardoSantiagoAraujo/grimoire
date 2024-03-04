@@ -1,210 +1,99 @@
-@font-face {
-  font-family: "Stempel-Garamond-W01-Roman";
-  font-style: normal;
-  font-weight: normal;
-  src: url("../../assets/fonts/Stempel-Garamond-W01-Roman.woff");
-}
-@font-face {
-  font-family: "Lugrasimo";
-  font-style: normal;
-  font-weight: normal;
-  src: url("../../assets/fonts/Lugrasimo/Lugrasimo-Regular.ttf");
-}
-@font-face {
-  font-family: "bronzion";
-  font-style: normal;
-  font-weight: normal;
-  src: url("../../assets/fonts/bronzion_deco/BronzionDeco_PERSONAL_USE_ONLY.otf");
-}
-@font-face {
-  font-family: "eb_garamond";
-  font-style: normal;
-  font-weight: normal;
-  src: url("../../assets/fonts/EB_Garamond/EBGaramond-Italic-VariableFont_wght.ttf");
-}
-@font-face {
-  font-family: "grandiflora";
-  font-style: normal;
-  font-weight: normal;
-  src: url("../../assets/fonts/Grandiflora_One/GrandifloraOne-Regular.ttf");
-}
-@font-face {
-  font-family: "notoserif_jp";
-  font-style: normal;
-  font-weight: normal;
-  src: url("../../assets/fonts/Noto_Serif_JP/NotoSerifJP-Regular.otf");
-}
-@font-face {
-  font-family: "notoserif_tc";
-  font-style: normal;
-  font-weight: normal;
-  src: url("../../assets/fonts/Noto_Serif_TC/NotoSerifTC-Regular.otf");
-}
+@use '../../mixins' as *;
+@use '../../variables' as *;
 
-
-body {
-  background: url("../../assets/flipbook-textures/wood-texture.jpeg"), radial-gradient(#e6b664, #000325);
-  background-blend-mode: multiply;
-  background-size: cover;
-  background-attachment: fixed ;
-  width: 100vw;  /* 50% de la largeur de la fenêtre */
+section {
+  width: 100vw;
+  /* 50% de la largeur de la fenêtre */
   height: 100%;
   cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
   font-family: "Lugrasimo";
   overflow: auto;
+  animation: contentAppear 1s;
 }
 
-header{
-  position: relative;
-  padding-top: 30px;
+@keyframes contentAppear {
+  from {
+    opacity: 0;
+  }
 
+  to {
+    opacity: 1;
+  }
 }
+
 
 h1 {
+  position: relative;
   font-family: "bronzion";
-  font-size: 36px;
+  font-size: 7vmin;
   text-align: center;
   background: url(../../assets/flipbook-textures/scroll2.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  border-radius: 10px;
-  padding: 145px;
+  // border-radius: 10px;
+  padding: 27vmin;
   margin: auto;
+  margin-top: 5vh;
   width: fit-content;
-  &::first-letter{
+  filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.511));
+
+  &::first-letter {
     color: rgb(103, 0, 0);
-    font-size: 70px
+    font-size: 14vmin
   }
+
   animation: scrollAppear 1s ease-out;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    @include bg-single-contain-center;
+    $bg_size: 30%;
+    background-size: $bg_size;
+    animation: Rotate 50s infinite linear;
+    transform-origin: center;
+    // background image
+    background: url(../../assets/flipbook-textures/oroboros.png), rgb(173, 0, 0);
+    background-blend-mode: lighten;
+    // mask with image to exclude transparent pixels
+    mask-image: url(../../assets/flipbook-textures/oroboros.png);
+    mask-size: $bg_size;
+    mask-mode: alpha;
+    mask-position: center;
+    mask-repeat: no-repeat;
+  }
 }
 
+@keyframes Rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 
 @keyframes scrollAppear {
-from{
-  transform: scale(0.5,0.75);
+  from {
+    transform: scale(0.5, 0.75);
 
-}
-to{
-  transform: scale(1,1);
-}
-}
+  }
 
-
-.creature_list_header {
-color: rgba(119, 0, 0, 0.68);
-display: flex;
-align-items: end;
-justify-content: center;
-font-family: "Lugrasimo";
-background: url(../../assets/flipbook-textures/infiniteScroll/top.png);
-background-repeat: no-repeat;
-background-position: bottom;
-background-size: contain;
-width: 100%;
-height: 275px;
-font-size: 30px;
-text-align: center;
-padding: 0px;
-margin-bottom: 0px;
-border: 0px;
-span{
-  font-family: "bronzion";
-  color: rgba(1, 79, 37, 0.668);
-  font-size: 75px
-}
-}
-
-.creature_list {
-
-background-color: rgba(0, 0, 0, 0);
-border: 1px solid #00000000;
-border-radius: 10px;
-padding: 20px;
-margin: 30px 10px;
-}
-
-.creature_list_body{
-background: url(../../assets/flipbook-textures/infiniteScroll/middle.png);
-background-size: contain;
-background-repeat: repeat;
-background-position: top;
-width: 100%;
-display: flex;
-align-items: center;
-justify-content: center;
-border: 0px;
-}
-
-.creature_list_footer{
-  color: rgba(119, 0, 0, 0.68);
-  display: flex;
-  align-items: start;
-  justify-content: center;
-  gap: 30px;
-  font-family: "Lugrasimo";
-  background: url(../../assets/flipbook-textures/infiniteScroll/bottom.png);
-  background-repeat: no-repeat;
-  background-position: top;
-  background-size: contain;
-  width: 100%;
-  height: 299px;
-  font-size: 30px;
-  text-align: center;
-  padding: 0px;
-  margin-bottom: 0px;
-  border: 0px;
-  .btn{
-    width: 100px;
-    height: 100px;
-    position: relative;
-    i {
-      position: absolute;
-      font-size: 40px;
-      bottom:50%;
-      left: 50%;
-      transform: translate(-50%,50%);
-      color: rgba(81, 0, 0, 0.792);
-      text-align: center;
-    }
-    &:nth-child(1):after{
-      position: absolute;
-      bottom:0px;
-      transform: translateX(-50%);
-      content: "Ajouter";
-    }
-    &:nth-child(2):after{
-      position: absolute;
-      bottom:0px;
-      transform: translateX(-50%);
-      content: "Retour";
-    }
+  to {
+    transform: scale(1, 1);
   }
 }
 
 
-table{
-width: 80%;
-}
-
-
-thead{
-position: static;
-top:0px;
-background: url(../../assets/flipbook-textures/frieze.png), rgba(202, 84, 0, 0.911);
-background-blend-mode:soft-light;
-background-size: contain;
-background-position: top;
-height: 100px;
-color: white;
-th{
-  text-align: center;
-}
-}
-
-
-
+// generic style for ALL buttons
 .btn {
   display: inline-block;
   //padding: 10px 20px;
@@ -213,134 +102,860 @@ th{
   text-decoration: none;
   cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
   border: 1px solid #29138b83;
-  box-shadow: 5px 5px 5px rgba(62, 0, 0, 0.488);
+  box-shadow: 5px 5px 5px rgba(62, 0, 0, 0.488) !important;
   border-radius: 50% !important;
   width: fit-content;
   height: fit-content;
   color: #fff;
   background: url(../../assets/flipbook-textures/coin.png);
-  background-size: contain;
-  background-position: center;
+  @include bg-single-contain-center;
+
+  &:hover {
+    transform: scale(1.1)rotate(360deg);
+    transition: 0.9s;
+  }
+  &:active{
+    transform: scale(1.2)rotate(350deg);
+    transition: 0.1s;
+    color: $title-color-sec;
+  }
+}
+
+.creature_list_header {
+  position: relative;
+  color: rgba(119, 0, 0, 0.68);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-family: "Lugrasimo";
+  background: url(../../assets/flipbook-textures/infiniteScroll/top.png);
   background-repeat: no-repeat;
-  transition: 0.2s;
-  &:hover{
-    transform: scale(1.1);
+  background-position: bottom;
+  background-size: contain;
+  width: 100%;
+  height: 350px;
+  text-align: center;
+  padding: 0px;
+  padding-bottom: 1vmin;
+  margin-bottom: 0px;
+  border: 0px;
+
+  span {
+    font-family: "bronzion";
+    color: rgba(1, 79, 37, 0.668);
+    font-size: 7.5vw;
+  }
+
+  &:after {
+    content: "";
+    width: 70%;
+    height: 1.5vw;
+    bottom: 0px;
+    position: absolute;
+    background: url(../../assets/flipbook-textures/page_decorative_divider.png);
+    background-size: contain;
+    background-position: bottom;
+    background-repeat: repeat-x;
+    opacity: 0.3;
+  }
+}
+
+.creature_list {
+
+  background-color: transparent;
+  border: 0px solid #000000;
+  border-radius: 10px;
+  padding: 0px;
+  filter: drop-shadow(6px 6px 5px rgba(0, 0, 0, 0.711));
+}
+
+.creature_list_body {
+  background: url(../../assets/flipbook-textures/infiniteScroll/middle_mirrored.png);
+  background-size: contain;
+  background-repeat: repeat;
+  background-position: top;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 0px;
+}
+
+.creature_list_footer {
+  color: rgba(119, 0, 0, 0.68);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10%;
+  font-family: "Lugrasimo";
+  background: url(../../assets/flipbook-textures/infiniteScroll/top_mirrored.png);
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: contain;
+  width: 100%;
+  height: 340px;
+  text-align: center;
+  padding: 0px;
+  margin-bottom: 0px;
+  border: 0px;
+  position: relative;
+
+  &:before {
+    // prop to cover background parchement "stitching
+    pointer-events: none;
+    content: "";
+    left: 0px;
+    background-image: url(../../assets/flipbook-textures/infiniteScroll/pen2.png);
+    background-size: contain;
+    background-position: left;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 70%;
+    height: 1000px;
+    top: 0px;
+    transform: translateY(-50%)translateX(5%);
+  }
+
+  &:after {
+    // prop to cover background parchement "stitching
+    pointer-events: none;
+    content: "";
+    right: 0px;
+    // background-image: url(../../assets/flipbook-textures/infiniteScroll/ink_bottle2.png);
+    background: url(../../assets/flipbook-textures/infiniteScroll/ink_block.png);
+    filter: drop-shadow(10px 10px 10px black);
+    // background-color: rgba(255, 0, 0, 0.48);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 40%;
+    height: 40%;
+    top: 0px;
+    transform: translateY(-50%)translateX(40%)rotate(12deg);
+  }
+
+  .btn {
+    $coinsize: 10vw;
+    width: $coinsize;
+    height: $coinsize;
+    position: relative;
+    font-size: 3vw;
+    text-shadow: 1px 1px $text-color;
+
+    i {
+      position: absolute;
+      font-size: 4vw;
+      font-weight: bolder;
+      bottom: 50%;
+      left: 50%;
+      transform: translate(-50%, 50%);
+      color: rgba(81, 0, 0, 0.792);
+      text-align: center;
+    }
+
+    &:nth-child(1) {
+      background-image: url(../../assets/flipbook-textures/coin3.png) !important;
+      background-size: 103% 103%;
+
+      &:after {
+        position: absolute;
+        bottom: 0px;
+        transform: translateX(-50%)translateY(50%);
+        content: "Ajouter";
+      }
+    }
+
+    &:nth-child(2) {
+      background-image: url(../../assets/flipbook-textures/coin2.png) !important;
+      background-size: 103% 103%;
+
+      &:after {
+        position: absolute;
+        bottom: 0px;
+        transform: translateX(-50%)translateY(50%);
+        content: "Retour";
+      }
+    }
+
+
   }
 }
 
 
-
-table td {
-  align-items: center;
-  border: 2px dashed rgba(132, 8, 8, 0.501);
-  padding: 10px;
-  text-align: center;
-  min-width: 70px;
+table {
+  width: 80%;
+  margin-bottom: 100px;
 }
 
-.td_nom{
+tbody tr {
+  .id{
+    transition: 0.2s;
+  }
+  &:hover td:not(.id, .btn_td) {
+    $alpha_bg : 0.5;
+    background: linear-gradient(rgba(0, 0, 0, $alpha_bg), rgba(255, 255, 255, $alpha_bg), rgba(0, 0, 0, $alpha_bg));
+  }
+
+  &:hover .id {
+    transform: scale(1.1);
+    color: $title-color-sec;
+  }
+
+  td:not(.id, .btn_td) {
+    transition: 0.1s;
+
+    &:hover {
+      background-color: rgba(178, 255, 178, 0.755) !important;
+    }
+  }
+}
+
+
+table .btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+
+  .btn {
+    $coinsize: 3vw;
+    width: $coinsize;
+    height: $coinsize;
+    font-size: 0.5vw;
+
+    i,
+    img {
+      display: flex;
+      align-items: center;
+      height: 50%;
+      justify-content: center;
+      position: absolute;
+      bottom: 50%;
+      left: 50%;
+      transform: translate(-50%, 50%);
+      text-align: center;
+    }
+
+
+    &:nth-child(1) {
+      background-image: url(../../assets/flipbook-textures/coin.png) !important;
+      background-size: 103% 103%;
+
+      &:after {
+        position: absolute;
+        bottom: 0px;
+        transform: translateX(-50%)translateY(50%);
+        content: "Edit";
+      }
+    }
+
+    &:nth-child(2) {
+      background-image: url(../../assets/flipbook-textures/coin5.png) !important;
+      background-size: 103% 103%;
+
+      &:after {
+        position: absolute;
+        bottom: 0px;
+        transform: translateX(-50%)translateY(50%);
+        content: "Remove";
+      }
+    }
+  }
+}
+
+
+.id {
+  width: 5vw;
+  font-size: 2vw;
+  text-align: center;
+  position: relative;
+  right:10%;
+
+  &:not(td) { // only head
+    // th only
+    // visibility: hidden;
+    // background: none;
+    padding: -100%;
+    overflow: visible;
+    background-size: 150%;
+    border-radius: 100%;
+
+    position: relative;
+
+    // REMOVE TH LABEL
+    text-shadow: 0 0 0 rgba(0,0,0,0) !important;
+    // &::first-letter{
+    //   opacity: 0;
+    // }
+    &:before{
+      content:"id";
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(87, 0, 0, 0.32);
+      height: 100%;
+      width: 100%;
+      transform: scale(1.5);
+      position: absolute;
+      top:0px;
+      left:0px;
+      background-image: url(../../assets/flipbook-textures/shield_round.png);
+      @include bg-single-contain-center;
+    }
+    &::after{
+      color: goldenrod;
+    }
+  }
+
+  &:not(th){ // all cells except head
+  background: url(../../assets/flipbook-textures/shield2.png);
+  @include bg-single-contain-center;
+  background-position: 50% 54%;
+  background-size: contain;
+  font-weight: bolder;
+  color: rgba(89, 0, 0, 0.766);
+  }
+}
+
+.btn_td {
+  width: 7vw; //adjust to fix table centering
+
+  &:not(td) {
+    // th only
+    visibility: hidden;
+  }
+
+  position: relative;
+  left:10%;
+  // background-color: rgba(255, 0, 0, 0.1);
+  background-size: contain;
+}
+
+
+
+table td:not(.id, .btn_td) {
+  font-size: 1vw;
+  align-items: center;
+  border: 2px dashed rgba(132, 8, 8, 0.501);
+  text-align: center;
+}
+
+.nom {
+  &::first-letter {
+    color: $title-color-pri;
+  }
+
   font-weight: bolder;
 }
 
 
-.btn-group{
-  display: flex;
-  flex-direction: column;
-  gap:3px;
-}
+.creature_img {
+  width: 8vw;
+  transition: 0.5s ease-in-out;
+  filter: sepia(0.5)brightness(0.75);
+  position: relative;
+  z-index: 1;
 
-.creature_img{
-  width: 150px;
-  transition: 1s ease-in-out;
-  &:hover{
+  &:hover {
     transform: scale(1.5);
     box-shadow: 10px 10px 10px rgba(69, 1, 1, 0.589);
+    z-index: 10;
+    filter: sepia(0)brightness(1);
+  }
+
+  border: 10px solid transparent;
+  padding: 1px;
+  border-image-source: url(../../assets/flipbook-textures/ruby.png);
+  border-image-repeat: round;
+  border-image-slice: 1000;
+}
+
+thead {
+  position: sticky;
+  z-index: 11;
+  text-transform: capitalize;
+  top: 0px;
+
+  //// greek frieze:
+  // background: url(../../assets/flipbook-textures/frieze.png), rgba(202, 84, 0, 0.911);
+  // background-blend-mode: soft-light;
+  // background-size: contain;
+  // background-position: top;
+
+  //// Heropattern aztec:
+  background-color: #48342eaa;
+  background-image: url("data:image/svg+xml,%3Csvg width='32' height='64' viewBox='0 0 32 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 28h20V16h-4v8H4V4h28v28h-4V8H8v12h4v-8h12v20H0v-4zm12 8h20v4H16v24H0v-4h12V36zm16 12h-4v12h8v4H20V44h12v12h-4v-8zM0 36h8v20H0v-4h4V40H0v-4z' fill='%23ab0b0b' fill-opacity='0.46' fill-rule='evenodd'/%3E%3C/svg%3E");
+
+  color: white;
+
+  th {
+    text-align: center;
+    text-shadow: 1px 1px 1px $text-color;
+    font-size: 1.3vw;
+    padding: 1vw;
+    cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
+    transition: 0.1s;
+    position: relative;
+    &:hover{
+      transform: scale(1.1);
+      background-color: rgba(13, 107, 13, 0.35);
+      &::after{
+        font-size:xx-small;
+        position: absolute;
+        bottom: 0.25vw;
+        right: 0px;
+        width: 100%;
+        content: "▼";
+        animation: listOrderPulse 0.3s alternate infinite;
+      }
+    }
+
+    &:first-letter {
+      color: $title-color-pri;
+      font-size: 1.75vw;
+    }
   }
 }
 
-thead{
-  position: sticky;
-  text-transform: capitalize;
-  top:0px;
-  background: url(../../assets/flipbook-textures/frieze.png), rgba(202, 84, 0, 0.911);
-  background-blend-mode:soft-light;
+
+@keyframes listOrderPulse {
+  from{transform: scale(1.3);}
+  to{transform: scale(1);}
+}
+
+
+.creature_edit {
+  background-color: transparent;
+  background-image: url(../../assets/flipbook-textures/scroll3.png);
+  background-repeat: no-repeat;
   background-size: contain;
-  background-position: top;
-  height: 100px;
-  color: white;
-  th{
+  background-position: center;
+  margin-bottom: 20vh;
+  animation: contentAppear 1s;
+  filter: drop-shadow(6px 6px 5px rgba(0, 0, 0, 0.711));
+
+  .card-header {
+    position: relative;
     text-align: center;
-  }
+    font-size: 3vw;
+    padding-top: 13vw;
+    color: $text-color;
+
+    &::first-letter {
+      font-family: "bronzion";
+      color: rgba(1, 79, 37, 0.668);
+      font-size: 6vw;
+    }
+
+    &:after {
+      content: "";
+      width: 60%;
+      height: 1.5vw;
+      bottom: 0px;
+      left: 50%;
+      transform: translateX(-50%);
+      position: absolute;
+      background: url(../../assets/flipbook-textures/page_decorative_divider2.png);
+      background-size: contain;
+      background-position: bottom;
+      background-repeat: repeat-x;
+      opacity: 0.3;
+    }
   }
 
+  .form_item {
+    display: flex;
+    align-items: center;
 
-  .creature_edit{
-    background-color: rgba(0, 0, 0, 0);
-    background-image: url(../../assets/flipbook-textures/old-paper-texture_alt.png);
-    background-repeat: no-repeat;
-    background-size:contain;
-    background-position: center;
-    .card-header{
+    padding-top: 1vw;
+    width: 50%;
+    align-items: center;
+    margin: auto;
+    padding-bottom: 2vw;
+    position: relative;
+
+    label,
+    span {
+      position: relative;
       text-align: center;
-      font-size: 60px;
-      padding-top: 150px;
-      &::first-letter{
-        font-family: "bronzion";
-        color: rgba(1, 79, 37, 0.668);
-        font-size: 100px;
-      }
-    }
-    .form_item{
-      padding-top:15px;
-      width: 50%;
-      align-items: center;
-      margin: auto;
-      label, span{
-        text-align: center;
-        width: 100%;
-        color: rgba(79, 0, 0, 0.644);
-        display: flex;
-        justify-content: center;
-        }
-      input[type='checkbox']{
-          margin-left: 10px;
-        }
-      input,select{
-          background-color: rgba(172, 233, 237, 0.392);
-          border: 1px solid rgba(121, 1, 1, 0.5);
-      }
-    }
-    .card-footer{
+      width: 20%;
+      color: rgba(79, 0, 0, 0.644);
       display: flex;
-      width: 100%;
-      justify-content: space-evenly;
-      .btn{
-        width: 1000px; // stupid hack to center
-        height: 100px;
-        position: relative;
-        border: none;
-        box-shadow: none;
-        i {
+      justify-content: center;
+      cursor: url("../../assets/cursors/feather.png"), pointer;
+      font-size: 1vw;
+
+      &:after {
+        content: "";
+        width: 90%;
+        height: 3vw;
+        bottom: 0px;
+        left: 50%;
+        transform: translateX(-50%)translateY(25%);
+        position: absolute;
+        background: url(../../assets/flipbook-textures/page_decorative_divider3.png);
+        background-size: contain;
+        background-position: bottom;
+        background-repeat: no-repeat;
+        opacity: 0.3;
+      }
+    }
+
+    input[type='checkbox'] {
+      margin-left: 1vw;
+    }
+
+    input,
+    select {
+      background-color: rgba(172, 233, 237, 0.392);
+      border: 1px solid rgba(121, 1, 1, 0.5);
+      cursor: url("../../assets/cursors/feather.png"), pointer;
+      font-size: 1vw;
+
+      &:hover {
+        border-color: #333;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: $title-color-pri;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        background-color: rgba(255, 128, 0, 0.1);
+        animation: inputFocus 1s infinite alternate;
+      }
+    }
+
+    &:not(:last-child):after {
+      content: "";
+      width: 40%;
+      height: 3vw;
+      bottom: 0px;
+      left: 50%;
+      transform: translateX(-50%)translateY(0%);
+      position: absolute;
+      background: url(../../assets/flipbook-textures/page_decorative_divider4.png);
+      background-size: contain;
+      background-position: bottom;
+      background-repeat: no-repeat;
+      opacity: 0.3;
+    }
+  }
+
+  .card-footer {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly !important;
+
+    .btn {
+      $coinsize: 10vw;
+      width: $coinsize;
+      height: $coinsize;
+      position: relative;
+      border: none;
+      box-shadow: none;
+
+      i {
+        position: absolute;
+        font-size: 40px;
+        bottom: 50%;
+        left: 50%;
+        transform: translate(-50%, 50%);
+        color: rgba(81, 0, 0, 0.792);
+        text-align: center;
+      }
+
+      &:nth-child(1) {
+        background-image: url(../../assets/flipbook-textures/coin3.png) !important;
+        background-size: 103% 103%;
+
+        &:after {
           position: absolute;
-          font-size: 40px;
-          bottom:50%;
-          left: 50%;
-          transform: translate(-50%,50%);
-          color: rgba(81, 0, 0, 0.792);
-          text-align: center;
-        }
-        &:nth-child(1):after{
-          position: absolute;
-          bottom:0px;
-          transform: translateX(-50%);
+          bottom: 0px;
+          transform: translateX(-50%)translateY(50%);
           content: "Ajouter";
         }
-        &:nth-child(2):after{
+      }
+
+      &:nth-child(2) {
+        background-image: url(../../assets/flipbook-textures/coin2.png) !important;
+        background-size: 103% 103%;
+
+        &:after {
           position: absolute;
-          bottom:0px;
-          transform: translateX(-50%);
+          bottom: 0px;
+          transform: translateX(-50%)translateY(50%);
           content: "Fermer";
         }
       }
     }
   }
+}
+
+@keyframes inputFocus {
+  from {
+    box-shadow: 0 0 5px $title-color-pri;
+  }
+
+  to {
+    box-shadow: 0 0 4px $title-color-sec;
+  }
+}
+
+
+.hideCreatureForm{
+  animation: hideCreatureForm forwards;
+  overflow: hidden;
+  *{
+    opacity: 0;
+    transition: 0.5s;
+  }
+}
+
+@keyframes hideCreatureForm {
+
+  0%{
+    opacity: 1;
+    max-height: 100%;
+  }
+
+  50%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 0;
+    max-height: 0px;
+  }
+
+}
+
+
+
+td.type_element {
+  font-size: 2vw !important;
+  text-shadow: 0 0 5px purple;
+  position: relative;
+  z-index: 1;
+}
+
+// fire
+tr.feu td:not(.id, .btn_td) {
+  background-color: rgba(255, 81, 0, 0.05);
+
+  &.type_element {
+    color: red;
+
+    &:after {
+      content: "";
+      position: absolute;
+      z-index: -10;
+      width: 100%;
+      height: 100%;
+      top: 0px;
+      left: 0px;
+      background-image: url(../../assets/flipbook-textures/element_fire.png);
+      opacity: 0.3;
+      @include bg-single-contain-center
+    }
+  }
+}
+
+// water
+tr.eau td:not(.id, .btn_td) {
+  background-color: rgba(21, 0, 255, 0.05);
+
+  &.type_element {
+    color: blue;
+
+    &:after {
+      content: "";
+      position: absolute;
+      z-index: -10;
+      width: 100%;
+      height: 100%;
+      top: 0px;
+      left: 0px;
+      background-image: url(../../assets/flipbook-textures/element_water.png);
+      opacity: 0.3;
+      @include bg-single-contain-center
+    }
+  }
+}
+
+// earth
+tr.terre td:not(.id, .btn_td) {
+  background-color: rgba(166, 255, 0, 0.05);
+
+  &.type_element {
+    color: brown;
+
+    &:after {
+      content: "";
+      position: absolute;
+      z-index: -10;
+      width: 100%;
+      height: 100%;
+      top: 0px;
+      left: 0px;
+      background-image: url(../../assets/flipbook-textures/element_earth.png);
+      opacity: 0.3;
+      @include bg-single-contain-center
+    }
+  }
+}
+
+
+// air
+tr.air td:not(.id, .btn_td) {
+  background-color: rgba(0, 229, 255, 0.05);
+
+  &.type_element {
+    color: cyan;
+
+    &:after {
+      content: "";
+      position: absolute;
+      z-index: -10;
+      width: 100%;
+      height: 100%;
+      top: 0px;
+      left: 0px;
+      background-image: url(../../assets/flipbook-textures/element_air.png);
+      opacity: 0.3;
+      @include bg-single-contain-center
+    }
+  }
+}
+
+
+// GODS
+
+tr.dieu:not(.id, .btn_td) {
+  td.id{
+    background: url(../../assets/flipbook-textures/shield3.png);
+    @include bg-single-contain-center;
+  }
+  //td.nom,
+  td.dieu {
+    position: relative;
+    color: goldenrod;
+    text-shadow: 0 0 7px #000000,
+      0 0 10px #000000,
+       0 0 21px #000000;
+    text-transform: capitalize;
+
+      &:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        left: 0px;
+        background-image: url(../../assets/flipbook-textures/god_bg.png);
+        opacity: 0.3;
+        @include bg-single-contain-center;
+        animation: godGlow 0.3s alternate infinite;
+      }
+  }
+}
+
+@keyframes godGlow {
+  from{opacity: 0.1}
+  to{opacity: 0.3}
+}
+
+// Mythology
+
+td.mythologie {
+  text-shadow: 0 0 10px white;
+  text-transform: capitalize;
+}
+
+// greek
+tr.grec .mythologie {
+  position: relative;
+    &:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0px;
+      left: 0px;
+      background-image: url(../../assets/flipbook-textures/symbol_greek.png);
+      opacity: 0.2;
+      @include bg-single-contain-center
+    }
+}
+// chinese
+tr.chinoise .mythologie {
+  position: relative;
+    &:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0px;
+      left: 0px;
+      background-image: url(../../assets/flipbook-textures/symbol_chinese.png);
+      opacity: 0.2;
+      @include bg-single-contain-center
+    }
+}
+
+// egyptian
+tr.egyptienne .mythologie {
+  position: relative;
+    &:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0px;
+      left: 0px;
+      background-image: url(../../assets/flipbook-textures/symbol_egyptian.png);
+      opacity: 0.2;
+      @include bg-single-contain-center
+    }
+}
+
+// norse
+tr.nordique .mythologie {
+  position: relative;
+    &:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0px;
+      left: 0px;
+      background-image: url(../../assets/flipbook-textures/symbol_nordic.png);
+      opacity: 0.2;
+      @include bg-single-contain-center
+    }
+}
+
+
+
+// exit animation(s)
+.exitAnimation{
+  animation: exitAnimation 0.25s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes exitAnimation {
+  0%{
+    opacity: 1;
+  }
+  50%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+
+
+.text_intro{
+  color: $text-color !important;
+  width: 60%;
+}

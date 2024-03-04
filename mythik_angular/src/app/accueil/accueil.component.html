@@ -1,5 +1,3 @@
-
-<body>
 <!-- <ul class="nav nav-pills mt-3">
     <li class="nav-item" >
       <a class="nav-link" [routerLink]="['/menu']" routerLinkActive="active"></a>
@@ -13,18 +11,33 @@
 </ul> -->
 <div id="main_container">
   <div class="boutons">
-    <a  [routerLink]="['/menu']" routerLinkActive="active"><button type="button" class="button">Se déconnecter</button></a>
-    <a  [routerLink]="['/creature']" routerLinkActive="active"><button type="button" *ngIf="isAdmin()" class="button">Gestion des creatures</button></a>
-    <a  [routerLink]="['/compte']" routerLinkActive="active"><button type="button" *ngIf="isAdmin()" class="button">Gestion des comptes</button></a>
+    <a  [routerLink]="['/menu']" routerLinkActive="active"><button type="button" class="button"
+      (mouseenter)="hoverSign()"  (click)="clickSign()">
+      <span>Se déconnecter</span>
+      <img src="../../assets/illuminations/illumination7.png"/>
+    </button></a>
+
+    <a  [routerLink]="['/creature']" routerLinkActive="active"><button type="button" *ngIf="isAdmin()" class="button"
+      (mouseenter)="hoverSign()"  (click)="clickSign()">
+      <span>Gestion des creatures</span>
+      <img src="../../assets/illuminations/illumination1.png"/>
+    </button></a>
+
+    <a  [routerLink]="['/compte']" routerLinkActive="active"><button type="button" *ngIf="isAdmin()" class="button"
+      (mouseenter)="hoverSign()" (click)="clickSign()">
+      <span>Gestion des comptes</span>
+      <img src="../../assets/illuminations/illumination4.png"/>
+    </button></a>
   </div>
 
 
   <div class="accueil">
 
   <div class="section sec_combat">
-    <a  [routerLink]="['/combat']" routerLinkActive="active">
+    <a  [routerLink]="['/combat']" routerLinkActive="active" (click)="goCombat()"
+    (mouseenter)="hoverCombat(true)" (mouseout)="hoverCombat(false)">
       Affronter de terribles créatures mythologiques</a>
-      <div id="combat_deco">
+      <div id="combat_deco" class="deco">
         <img src="../../assets/weapons/weapons7.png"/>
         <img src="../../assets/weapons/weapons6.png"/>
         <img src="../../assets/weapons/weapons5.png"/>
@@ -44,10 +57,11 @@
   <div class="titre">Mythik</div>
 
   <div class="section sec_grimoire">
-    <a  [routerLink]="['/grimoire']" routerLinkActive="active">
+    <a  [routerLink]="['/grimoire']" routerLinkActive="active" (click)="goGrimoire()"
+    (mouseenter)="hoverGrimoire(true)" (mouseout)="hoverGrimoire(false)">
       Partir à la découverte du <br><span><span id="letterG">G</span>rimoire</span>
     </a>
-    <div id="grimoire_deco">
+    <div id="grimoire_deco" class="deco">
       <img src="../../assets/illuminations/illumination1.png"/>
       <img src="../../assets/illuminations/illumination2.png"/>
       <img src="../../assets/illuminations/illumination3.png"/>
@@ -62,7 +76,3 @@
 
   </div>
 </div>
-
-<div class="chain_dissolve"><app-chains></app-chains></div>
-
-</body>

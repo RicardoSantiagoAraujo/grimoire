@@ -17,15 +17,22 @@ import { SelectionCombatComponent } from './selection-combat/selection-combat.co
 
 import { CombatComponent } from './combat/combat.component';
 import { DieuPipe } from './dieu.pipe';
-import { CreaturePageAComponent } from './creature-page-a/creature-page-a.component';
-import { CreaturePageBComponent } from './creature-page-b/creature-page-b.component';
+import { CreaturePagesContentComponent } from './creature-pages-content/creature-pages-content.component';
 import { DesktopComponent } from './desktop/desktop.component';
 import { StatistiqueComponent } from './statistique/statistique.component';
 import { FlipBookModule } from '@labsforge/flipbook';
 import { ChainsComponent } from './chains/chains.component';
-import { ElementPipe } from './element.pipe';
 import { MythologiePipe } from './mythologie.pipe';
-import { GagnantPipe } from './gagnant.pipe'
+import { GagnantPipe } from './gagnant.pipe';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { CreatureDataPipe } from './creature-data.pipe';
+import { CombattanteDataPipe } from './combattant-data.pipe';
+import { AudioService } from './audio.service';
+import { AudioToggleComponent } from './audio-toggle/audio-toggle.component';
+import { ReduceImagePipe } from './reduce-image.pipe';
+
+
+
 
 
 @NgModule({
@@ -41,14 +48,17 @@ import { GagnantPipe } from './gagnant.pipe'
     SelectionCombatComponent,
     CombatComponent,
     DesktopComponent,
-    CreaturePageBComponent,
-    CreaturePageAComponent,
+    CreaturePagesContentComponent,
     DieuPipe,
     StatistiqueComponent,
     ChainsComponent,
-    ElementPipe,
     MythologiePipe,
     GagnantPipe,
+    PageNotFoundComponent,
+    CreatureDataPipe,
+    CombattanteDataPipe,
+    AudioToggleComponent,
+    ReduceImagePipe
   ],
   imports: [
     BrowserModule,
@@ -65,4 +75,6 @@ import { GagnantPipe } from './gagnant.pipe'
   }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+ }

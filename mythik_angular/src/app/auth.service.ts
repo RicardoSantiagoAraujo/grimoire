@@ -20,7 +20,7 @@ export class AuthService {
     return this.http.post<Compte>(environment.apiUrl + `/compte/connexion`, { "login": login, "password": password}).subscribe((resp) => {
       this.compte = resp;
       localStorage.setItem("compte", JSON.stringify(this.compte));
-      this.router.navigate(["/acceuil"])
+      this.router.navigate(["/accueil/intro"])
     });
   }
 

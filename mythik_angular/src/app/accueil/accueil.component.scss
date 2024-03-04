@@ -1,352 +1,465 @@
-app-accueil{
-  @font-face {
-      font-family: "bronzion";
-      font-style: normal;
-      font-weight: normal;
-      src: url("../../assets/fonts/bronzion_deco/BronzionDeco_PERSONAL_USE_ONLY.otf");
-    }
+@use '../../mixins' as *;
+@use '../../variables' as *;
 
-  @font-face {
-      font-family: 'Lugrasimo';
-      font-style: normal;
-      font-weight: normal;
-      src: url('../../assets/fonts/Lugrasimo/Lugrasimo-Regular.ttf');
-    }
+.section {
+  opacity: 0;
+  animation: accueilAppear 1s;
+  animation-fill-mode: forwards;
+  animation-delay: 3s;
+}
 
-  :root{
-      --glowColor1: #016ada;
-      --glowColor2: #00d8db;
-    }
-
-
-  body, html {
-      height: 100%;
-      overflow: hidden;
-      font-family: 'Lugrasimo';
-    }
-
-  body {
-      background: url("../../assets/flipbook-textures/wood-texture.jpeg"), radial-gradient(#e6b664, #000325);
-      background-blend-mode: multiply;
-      background-size: cover;
-      width: 100vw;  /* 50% de la largeur de la fenêtre */
-      height: 100vh;
-      cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
-    }
-
-
-  .section{
+@keyframes accueilAppear {
+  from {
     opacity: 0;
-    animation:  accueilAppear 1s;
-    animation-fill-mode: forwards;
-    animation-delay: 3s;
   }
 
-  @keyframes accueilAppear{
-    from{
-      opacity: 0;
-    }
-    to{
-      opacity: 1;
-    }
+  to {
+    opacity: 1;
+  }
+}
+
+
+.boutons {
+  position: absolute;
+  margin-top: -3000px;
+  top: 0px;
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  animation: boutonsAppear 1s;
+  animation-fill-mode: forwards;
+  animation-delay: 3s;
+
+  a {
+    text-decoration: none;
   }
 
+}
 
-  .boutons{
-    position: absolute;
-    display:flex;
-    width: 100vw;
-    justify-content: center;
-    animation:  boutonsAppear 1s;
+@keyframes boutonsAppear {
+  from {
     margin-top: -300px;
-    animation-fill-mode: forwards;
-    animation-delay: 3s;
+  }
 
-    .button{
-        cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
-        font-size: small;
-        min-width: 200px;
-        margin: 0px 10px;
+  to {
+    margin-top: 5vh;
+  }
+}
+
+
+
+.button {
+  font-size: small;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30vmin;
+  height: 15vmin;
+  margin: 0px 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  // background-color: #573d26; /* Couleur de fond avec une teinte terreux */
+  background: url(../../assets/wooden_sign_botton.png), radial-gradient(rgb(0, 0, 0), transparent 85%);
+  filter: drop-shadow(10px 10px 5px rgba(0, 0, 0, 0.711));
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: top;
+  color: #0d0101ab;
+  /* Couleur du texte */
+  border: none;
+  //border: 2px solid #8b735b; /* Bordure */
+  // border-radius: 8px; /* Coins arrondis */
+  // box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Ombre légère */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
+  transform-origin: top;
+  transition: 0.3s;
+
+  span {
+    font-size: 2vmin;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    z-index: 1;
+  }
+
+  img {
+    width: 100%;
+    padding: 30%;
+    opacity: 0.3;
+    position: absolute;
+    z-index: 0;
+    transition: 0.3s;
+    filter: sepia(1);
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 100%;
+    background: url(../../assets/wooden_sign_top.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom;
+    transition: 0.2s;
+  }
+
+  &:hover {
+    color: white;
+    text-shadow: 1px 1px 2px rgba(255, 0, 0, 0.764), 0 0 1em blue, 0 0 0.2em blue;
+    animation: swing 1s infinite ease-in-out;
+
+    img {
+      opacity: 0.8;
+      filter: sepia(0);
     }
   }
 
+  &:focus {
+    animation: zoomIn 0.6s ease-in;
+    position: relative;
+    z-index: 1000;
+    transform-origin: center;
 
-  @keyframes boutonsAppear{
-    from{
-      margin-top: -300px;
-    }
-    to{
-      margin-top: -20px;
-    }
-  }
-
-    .button {
-      display: inline-block;
-      padding: 50px 20px 10px;
-      height: 150px;
-      font-size: 18px;
-      font-weight: bold;
-      text-align: center;
-      text-decoration: none;
-      // background-color: #573d26; /* Couleur de fond avec une teinte terreux */
-      background: url(../../assets/wooden_sign.png);
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: center;
-      color: #0d0101ab; /* Couleur du texte */
-      border: none;
-      //border: 2px solid #8b735b; /* Bordure */
-      // border-radius: 8px; /* Coins arrondis */
-      // box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Ombre légère */
-      transition: background-color 0.3s ease, color 0.3s ease;
-      cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
-      transform-origin: top;
-      transition: 0.3s;
-      &:hover{
-        color:white;
-        text-shadow:  1px 1px 2px rgba(255, 0, 0, 0.764), 0 0 1em blue, 0 0 0.2em blue;
-        animation: swing 1s infinite  ease-in-out;
-      }
-    }
-
-    @keyframes swing {
-
-      0%{
-        transform: rotate(0deg);
-      }
-      25%{
-        transform: rotate(-2deg);
-      }
-      50%{
-        transform: rotate(0deg);
-      }
-      75%{
-        transform: rotate(2deg);
-      }
-      100%{
-        transform: rotate(0deg);
-      }
-    }
-
-
-
-
-
-    .titre{
-      margin-top: 100px;
+    &::before {
+      // content: none;
       opacity: 0;
-      background-image: url(../../assets/thunder2.gif);
-      background-blend-mode: lighten;
-      background-size: contain;
-      background-position: center;
-      background-repeat: no-repeat;
-      text-align: center;
-      font-family: bronzion;
-      color: rgba(67, 0, 0, 0.952);
-      font-size: 100px;
-      cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
-      animation: glowText 1s ease-in-out infinite alternate, titreAppear 3s 0.3s forwards;
-      animation: name duration timing-function delay iteration-count direction fill-mode;
-      transition: 2s;
-      &:hover{
-        filter: brightness(2);
-      }
     }
+  }
+}
 
-    @keyframes glowText {
-      from {
-        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--glowColor1), 0 0 40px var(--glowColor1), 0 0 50px var(--glowColor1), 0 0 60px var(--glowColor1), 0 0 70px var(--glowColor1);
-        // transform:translateX(0.5px);
-      }
-      to {
-        text-shadow: 0 0 20px #fff, 0 0 30px var(--glowColor2), 0 0 40px var(--glowColor2), 0 0 50px var(--glowColor2), 0 0 60px var(--glowColor2), 0 0 70px var(--glowColor2), 0 0 80px var(--glowColor2);
-        transform: skew(90deg 90deg);
-        // transform:translateX(-0.5px);
-      }
-      }
 
-    @keyframes titreAppear{
-    from{
-      opacity: 0;
-      transform: scale(3);
-      filter: hue-rotate(180deg);
-    }
-    to{
-      opacity: 1;
-      transform: scale(1);
-    }
-    }
 
-  .accueil{
 
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
+
+@keyframes swing {
+
+  0% {
+    transform: rotate(0deg);
   }
 
-  .section{
-      top: 150px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      width: 20vw;
-      height: 60vh;
-      border: 1px solid darkred;
-      // box-shadow: 0 0 0 10px black;
-      border-radius: 50%;
-      position: relative;
-      background-color:rgba(245, 245, 220, 0.555);
-      font-family: bronzion;
-      font-size: 25px;
-      z-index: 10;
-      cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
-      a{
-        z-index: 100;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        color: white !important;
-        font-family: "Lugrasimo";
-        height: 100%;
-        width: 100%;
-        border-radius: 50%;
-        transition: 2s;
-        text-decoration: none;
-      }
-      &:after{
-        position: absolute;
-        content:"";
-        top:50%;
-        left: 50%;
-        height: 120%;
-        width: 120%;
-        opacity: 0.5;
-        transform: translate(-50%,-50%);
-        background-image: url(../../assets/fire_ring.gif);
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-      }
-      transition: 0.1s ease-in-out;
-      transition-delay: 0s;
-      &:hover{
-        transform: scale(1.05);
-        a{
-          text-shadow: #FC0 1px 0 10px;
-          background: radial-gradient(red, blue);
-          box-shadow: 0px 0px 350px blue;
+  25% {
+    transform: rotate(-2deg);
+  }
+
+  50% {
+    transform: rotate(0deg);
+  }
+
+  75% {
+    transform: rotate(2deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(1)rotate(0deg);
+    filter: blur(0px) //background-color: transparent;
+
+  }
+
+  to {
+    transform: scale(10)rotate(360deg);
+    filter: blur(5px);
+    //background-color: black;
+  }
+}
+
+
+
+
+.titre {
+  font-size: 17.5vmin;
+  margin-top: 20vmin;
+  opacity: 0;
+  background-image: url(../../assets/thunder2.gif);
+  background-blend-mode: lighten;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+  font-family: bronzion;
+  color: rgba(67, 0, 0, 0.952);
+  cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
+  animation: glowText 2s ease-in-out infinite alternate, titreAppear 4s forwards;
+  transition: 2s;
+  &,*{
+    pointer-events: none;}
+
+  &:hover {
+    filter: brightness(2);
+  }
+}
+
+@keyframes glowText {
+  from {
+    --glowColor1: #016ada;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--glowColor1), 0 0 40px var(--glowColor1), 0 0 50px var(--glowColor1), 0 0 60px var(--glowColor1), 0 0 70px var(--glowColor1);
+    transform: translateX(0.5px);
+  }
+
+  to {
+    --glowColor2: #00d8db;
+    text-shadow: 0 0 20px #fff, 0 0 30px var(--glowColor2), 0 0 40px var(--glowColor2), 0 0 50px var(--glowColor2), 0 0 60px var(--glowColor2), 0 0 70px var(--glowColor2), 0 0 80px var(--glowColor2);
+    transform: translateX(-0.5px);
+  }
+}
+
+@keyframes titreAppear {
+  from {
+    opacity: 0;
+    transform: scale(3);
+    filter: hue-rotate(180deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.accueil {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
+}
+
+.section {
+  top: 25vmin;
+  // width: 20vw;
+  height: 50vmin;
+  aspect-ratio: 2 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid darkred;
+  // box-shadow: 0 0 0 10px black;
+  border-radius: 50%;
+  position: relative;
+  background-color: rgba(245, 245, 220, 0.555);
+  font-family: bronzion;
+  font-size: 15vmin;
+  z-index: 10;
+  cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
+  filter: drop-shadow(6px 6px 5px rgba(0, 0, 0, 0.999));
+
+  a {
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white !important;
+    font-family: "Lugrasimo";
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    transition: 2s;
+    text-decoration: none;
+
+    // animation on click
+    &:focus {
+      outline: none;
+      filter: brightness(10)blur(100px);;
+      transform: scale(2);
+
+      &+.deco {
+        // select immediate next sibling
+        $effect_duration: 0.5s;
+        animation: chooseMode alternate $effect_duration 2;
+
+        &::before {
+          content: "test";
+          position: absolute;
+          top: -100vh;
+          height: 200vh;
+          width: 200vw;
+          animation: chooseBg alternate $effect_duration 2;
+        }
+        img {
+          transition: $effect_duration !important;
+          transition-delay: 0s !important;
+          opacity: 0 !important;
         }
       }
-  }
-
-  .sec_grimoire{
-    background: url("../../assets/flipbook-textures/grimoire-cover2.jpeg"), radial-gradient(purple,black);
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    #letterG{
-      font-family: "bronzion";
-      font-size: 50px;
-    }
-    &:hover #grimoire_deco{
-      transform: scale(1.3)translate(-0px, -60px);
-    }
-    a{
-      cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
     }
   }
 
-  #grimoire_deco{
-    pointer-events: none;
-    user-select: none;
-    transition: 0.3s;
-    background-color: green;
+  &:after {
     position: absolute;
-    z-index: -10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: scale(0);
-    img{
-      position: absolute;
-      height: 300px;
-      transform-origin: bottom;
-    }
-  }
-
-  @for $i from 1 through 10 {
-    #grimoire_deco img:nth-child(#{$i}) {
-      bottom: calc(#{$i} * -10px);
-      right: calc(#{$i} * -15px + 0px);
-      padding-bottom: calc(#{$i} * 5px + 40px);;
-      transform: rotate( calc(#{$i} * 23deg))scale(-1);
-    }
-  }
-
-  .sec_combat{
-    background: url("../../assets/flipbook-textures/cockatrice.png"), radial-gradient(red,black);
-    background-size: contain;
-    background-position: center;
+    content: "";
+    top: 50%;
+    left: 50%;
+    height: 120%;
+    width: 120%;
+    opacity: 0.5;
+    transform: translate(-50%, -50%);
+    background-image: url(../../assets/fire_ring.gif);
     background-repeat: no-repeat;
-    &:hover #combat_deco{
-      transform: scale(1)translate(-50px, -300px);
-    }
-    a{
-      cursor: url("../../assets/cursors/sword.cur"), pointer;
-    }
+    background-size: 100% 100%;
   }
 
-  #combat_deco{
-    pointer-events: none;
-    user-select: none;
-    transition: 0.3s;
-    background-color: green;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: scale(0);
-    img{
+  transition: 0.1s ease-in-out;
+  transition-delay: 0s;
+
+  &:hover {
+    z-index: 10000; // bring oval above all else when vignetting
+    transform: scale(1.05);
+
+    a {
+      text-shadow: #FC0 1px 0 10px;
+      background: radial-gradient(red, blue);
+      box-shadow: 0px 0px 350px blue;
+    }
+
+    &:before {
+      // vignette effect
+      content: "";
       position: absolute;
-      height: 300px;
-      transform-origin: bottom;
+      pointer-events: none;
+      background: radial-gradient(transparent, rgba(0, 0, 0, 0.75) 75%);
+      width: 200vw;
+      height: 200vh;
     }
   }
+}
 
-  @for $i from 1 through 15 {
-    #combat_deco img:nth-child(#{$i}) {
-      top: calc(#{$i} * 10px);
-      left: calc(#{$i} * 15px);
-      padding-bottom: calc(#{$i} * 5px);;
-      transform: rotate( calc(#{$i} * 20deg));
-    }
+@keyframes chooseMode {
+  0% {
+    transform: scale(1.0);
   }
 
+  100% {
+    transform: scale(2)rotate(15deg);
+  }
+}
 
-  .chain_dissolve .chain{
-    animation: chainBreak 10s;
-    animation-fill-mode: forwards;
-    animation-delay: 0s;
+@keyframes chooseBg {
+  from {
+    background-color: transparent;
   }
 
+  to {
+    background-color: black;
+  }
+}
 
-  @keyframes chainBreak {
-    0%{
-      opacity: 1;
-    }
-    15%{
-      filter: brightness(5)blur(50px);
-      opacity: 0;
-    }
-    100%{
-      opacity: 0;
-      transform: scale(2);
-      // filter: brightness(10);
-    }
+.sec_grimoire {
+  background: url("../../assets/flipbook-textures/grimoire-cover2.jpeg"), radial-gradient(purple, black);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  span{
+    pointer-events: none;
   }
 
+  #letterG {
+    font-family: "bronzion";
+    font-size: 10vmin;
+  }
+
+  a {
+    cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
+  }
+}
+
+#grimoire_deco {
+  pointer-events: none;
+  user-select: none;
+  transition: 0.3s;
+  background-color: green;
+  position: absolute;
+  z-index: -10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    // animation props
+    position: absolute;
+    height: 40vmin;
+    transform-origin: center;
+    transform: scale(0.01);
+  }
+}
+
+@for $i from 1 through 10 {
+  #grimoire_deco img:nth-child(#{$i}) {
+    transition: calc(#{$i} * 0.1s);
+  }
+
+  .sec_grimoire:hover #grimoire_deco img:nth-child(#{$i}) {
+    transform: rotate(calc(#{$i} * 23deg))scale(-1)translateY(-35vmin);
+    animation: propAnimate 0.5s infinite alternate ease-in-out;
+    animation-delay: calc(#{$i} * 0.1s);
+  }
+}
+
+
+.sec_combat {
+  background: url("../../assets/flipbook-textures/cockatrice.png"), radial-gradient(red, black);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  a {
+    cursor: url("../../assets/cursors/sword.cur"), pointer;
+  }
+}
+
+#combat_deco {
+  pointer-events: none;
+  user-select: none;
+  transition: 0.3s;
+  background-color: green;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    // animation props
+    position: absolute;
+    height: 40vmin;
+    transform-origin: center;
+    transform: scale(0.01);
+  }
+}
+
+
+
+@for $i from 1 through 15 {
+  #combat_deco img:nth-child(#{$i}) {
+    transition: calc(#{$i} * 0.1s);
+  }
+
+  .sec_combat:hover #combat_deco img:nth-child(#{$i}) {
+    transform: rotate(calc(#{$i} * 15deg))scale(1)translateY(-30vmin);
+    animation: propAnimate 0.5s infinite alternate ease-in-out;
+    animation-delay: calc(#{$i} * 0.1s);
+  }
+}
+
+@keyframes propAnimate {
+  from {
+    margin-bottom: 1px;
+    // margin-left: 0px;
+  }
+
+  to {
+    margin-bottom: 1vmin;
+    // margin-left: 1vmin;
+  }
 }

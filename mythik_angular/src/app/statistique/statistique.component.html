@@ -1,55 +1,86 @@
-<body>
+<section id="stats_container">
+
+    <h1><span>Statistiques</span> de jeu</h1>
 
 
-<h1>Statistiques de jeu</h1>
-<div class="card mt-3">
-    <div class="card-header">
-        {{compte.login}}
+    <div id="btn_accueil">
+        <a [routerLink]="['/accueil']" routerLinkActive="active">
+            <button type="button" class="button"
+            (click)="exitAnimation()" (mouseenter)="this.audioService.playWoodCreak();">
+            <span>Accueil</span></button>
+        </a>
     </div>
-    <div>
-        <button (click)="mesparties()" >Mes parties</button>
-        <button (click)="IAparties()">Les parties de l'IA</button>
+
+    <div id="btn_stats"
+    *ngIf="combattants">
+        <div id="glass"
+        (mouseenter)="showStats(); this.audioService.playElectricHum(true); this.audioService.playLowBurst(0.5)"
+        (mouseout)="hideStats(); this.audioService.playElectricHum(false);  this.audioService.playLowBurst(0.1)"
+        >
+            <button
+            >Statistiques
+            </button>
+            <p class="stats" *ngIf="tauxVictoire && changement">
+                {{tauxVictoire | number: '1.2-2'}} % de victoires
+            </p>
+        </div>
     </div>
 
-    <div> 
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Nom de la creature</th>
-                    <th>Element</th>
-                    <th>Date et heure</th>
-                    <th>Gagnant / Perdant</th>
-                </tr>
-            </thead>
-            <tbody *ngIf="mesParties==true && IAParties==false">
-                <tr *ngFor="let c of this.combattants">
-                    <td>{{c.creature?.nom}}</td>
-                    <td>{{c.creature?.typeElement}}</td>
-                    <td>{{c.combat?.dateCombat}} {{c.combat?.heureCombat}}</td>
-                    <td>{{c.gagnant! | gagnant}}</td>
-                </tr>
-            </tbody>
-            <tbody *ngIf="mesParties==false && IAParties==true">
-                <tr *ngFor="let c of this.combattants">
-                    <td>{{c.creature?.nom}}</td>
-                    <td>{{c.creature?.typeElement}}</td>
-                    <td>{{c.combat?.dateCombat}} {{c.combat?.heureCombat}}</td>
-                    <td>{{c.gagnant}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-<div class="baspage">
-<div *ngIf="combattants" >
-    <button (click)="stat()" >Mes Statistiques</button>
-    <p class="stat" *ngIf="tauxVictoire && changement">{{tauxVictoire | number: '1.2-2'}} % de victoires</p>
-</div>
 
-<div>
-    <a  [routerLink]="['/accueil']" routerLinkActive="active">
-        <button type="button" class="button">Acceuil</button>
-      </a>
-</div>
-</div>
-</body>
+    <div class="card stats_list">
+        <div class="stats_list_header">
+            <div class="header_contents">
+                <h2>
+                    {{compte.login}}
+                </h2>
+
+                <div class="btns">
+                    <button (click)="mesparties()">Mes parties</button>
+                    <button (click)="IAparties()">Les parties de l'IA</button>
+                </div>
+            </div>
+            <p class="text_intro">
+                Statistiques de combate.
+            </p>
+        </div>
+
+
+        <div class="card-body stats_list_body">
+
+
+            <table id="table_stats">
+                <thead *ngIf="combattants !== undefined">
+                    <tr>
+                        <th (click)="sortTable(0, 'string')">Nom de la creature</th>
+                        <th (click)="sortTable(1, 'string')">Element </th>
+                        <th (click)="sortTable(2, 'string')">Date et heure </th>
+                        <th (click)="sortTable(3, 'string')">Résultat </th>
+                    </tr>
+                </thead>
+
+                <tbody *ngIf="mesParties==true && IAParties==false">
+                    <tr *ngFor="let c of this.combattants"
+                    [class]=" (c | CombattantData)" >
+                        <td class="name">{{c.creature?.nom}}</td>
+                        <td class="element">{{c.creature?.typeElement}}</td>
+                        <td class="date_time">{{c.combat?.dateCombat}} {{c.combat?.heureCombat}}</td>
+                        <td class="result">{{c.gagnant! | gagnant}}</td>
+                    </tr>
+                </tbody>
+                <tbody *ngIf="mesParties==false && IAParties==true">
+                    <tr *ngFor="let c of this.combattants"
+                    [class]=" (c | CombattantData)" >
+                        <td class="name">{{c.creature?.nom}}</td>
+                        <td class="element">{{c.creature?.typeElement}}</td>
+                        <td class="date_time">{{c.combat?.dateCombat}} {{c.combat?.heureCombat}}</td>
+                        <td class="result">{{c.gagnant! | gagnant}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer stats_list_footer">
+        </div>
+    </div>
+
+
+</section>

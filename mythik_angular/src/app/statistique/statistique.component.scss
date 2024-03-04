@@ -1,0 +1,628 @@
+@use '../../mixins' as *;
+@use '../../variables' as *;
+
+
+section {
+  width: 100vw;
+  /* 50% de la largeur de la fenêtre */
+  height: 100%;
+  cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
+  font-family: "Lugrasimo";
+  overflow: auto;
+}
+
+
+
+
+h1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: rgba(245, 245, 220, 0.555);
+  border-radius: 10px;
+  padding: 5px;
+  margin: 10px 100px;
+  background: url(../../assets/flipbook-textures/scroll_combat.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 200px;
+  position: relative;
+  filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.511));
+
+  z-index: 1;
+  color: $text-color;
+
+  &,
+  * {
+    font-family: "bronzion";
+    font-size: 35px;
+  }
+
+  span::first-letter {
+    font-family: "bronzion";
+    color: $title-color-sec;
+    font-size: 50px;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    height: 65%;
+    background: url(../../assets/flipbook-textures/scribe.png), $title-color-sec;
+    background-blend-mode: lighten;
+    transform: scaleX(-1);
+    opacity: 0.5;
+    @include bg-single-contain-center;
+    z-index: -1;
+    // mask with image to exclude transparent pixels
+    mask-image: url(../../assets/flipbook-textures/scribe.png);
+    mask-size: contain;
+    mask-mode: alpha;
+    mask-position: center;
+    mask-repeat: no-repeat;
+
+  }
+
+  animation: scrollAppear 2s forwards;
+}
+
+@keyframes scrollAppear {
+
+  0% {
+    transform: scale(0.5)translateY(-50%);
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+
+
+// generic style for ALL buttons
+button {
+  display: inline-block;
+  //padding: 10px 20px;
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  box-shadow: none;
+  filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.373));
+  width: fit-content;
+  height: fit-content;
+  color: #fff;
+  background: none;
+}
+
+#btn_accueil {
+  background-image: url(../../assets/flipbook-textures/board_side.png);
+  @include bg-single-contain-center;
+  background-position: right;
+  top: 1vh;
+  right: 0;
+  height: fit-content;
+  width: fit-content;
+  position: fixed;
+  z-index: 1000;
+  filter: drop-shadow(20px 20px 10px rgba(0, 0, 0, 0.341));
+  opacity: 0;
+  animation: boardAppear 2s forwards;
+  animation-delay: 1.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    width: 15vw;
+    aspect-ratio: 4/3.3;
+    padding-top: 25%;
+    padding-right: 10%;
+    opacity: 0.6;
+    cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
+
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2vw;
+      transition: 0.3s;
+      color: silver;
+      background: url(../../assets/flipbook-textures/chimera.png);
+      height: 70%;
+      @include bg-single-contain-center;
+    }
+
+    &:hover span {
+      transform: scale(1.05);
+      color: white;
+      filter: drop-shadow(0 0 5px $title-color-sec)
+    }
+
+    &:active span {
+      transition: 0.1s;
+      transform: scale(0.95);
+      filter: drop-shadow(0 0 5px $title-color-pri)
+    }
+  }
+}
+
+@keyframes boardAppear {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+$hideStatsAngle: 30deg;
+$showStatsAngle: 20deg;
+
+#btn_stats {
+  background-image: url(../../assets/flipbook-textures/magnifying_glass.png);
+  @include bg-single-contain-center;
+  background-position: left;
+  bottom: -20vh;
+  right: -5vw;
+  width: 35vw;
+  aspect-ratio: 1;
+  position: fixed;
+  z-index: 1000;
+  filter: drop-shadow(20px 20px 10px rgba(0, 0, 0, 0.341));
+  opacity: 1;
+  animation: magnifyingGlassAppear 2s;
+  animation-delay: 0s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  $font-size: 1.3vw;
+
+  #glass {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 50%;
+    margin-bottom: 50%;
+    transform: rotate(-$hideStatsAngle);
+  }
+
+  button {
+    opacity: 0.8;
+    pointer-events: none;
+    font-size: $font-size;
+    text-shadow: 0px 0px 3px black;
+  }
+
+  .stats {
+    opacity: 0;
+    transition: 0.5s;
+    pointer-events: none;
+    font-size: 0;
+  }
+
+  #glass {
+    transform: rotate(-$hideStatsAngle);
+    transition: 0.5s;
+    border-radius: 100%;
+    &:after{
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0.1;
+      transition: 0.5s;
+      z-index: -1;
+      background: url(../../assets/flipbook-textures/vortex.png);
+      @include bg-single-contain-center;
+      animation: spinElement infinite linear;
+      animation-duration: 10s;
+    }
+  }
+
+  .stats {
+    opacity: 0;
+    font-size: 0;
+  }
+
+  transform: translateX(0)rotate($hideStatsAngle)scale(1);
+  transition: 0.5s;
+  &:hover{
+    transform: rotate($showStatsAngle)scale(1.2);
+    #glass{
+      &:after{
+        opacity: 1;
+        animation-duration: 3s;
+        filter: brightness(10)drop-shadow(0 0 10px $title-color-sec);
+      }
+    }
+  }
+
+  &.showStats {
+    #glass {
+      transform: rotate(-$showStatsAngle);
+    }
+    .stats {
+      opacity: 1;
+      color: $title-color-pri;
+      text-shadow: 0px 0px 3px $title-color-sec;
+      font-size: $font-size;
+    }
+  }
+}
+
+@keyframes magnifyingGlassAppear {
+  from {
+    opacity: 0;
+    transform: translateX(100%)rotate(100deg)scale(1);
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes spinElement {
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+
+
+.stats_list {
+  background-color: transparent;
+  border: 0px solid #000000;
+  border-radius: 10px;
+  padding: 0px;
+  animation: listAppear 1.5s;
+  filter: drop-shadow(10px 10px 5px rgba(0, 0, 0, 0.711));
+}
+
+@keyframes listAppear {
+  from {
+    opacity: 0;
+    transform: translateY(100vh);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.stats_list_header {
+  position: relative;
+  color: rgba(119, 0, 0, 0.68);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: "Lugrasimo";
+  background: url(../../assets/flipbook-textures/rolled_scroll/head_unrolled.png);
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 400px;
+  text-align: center;
+  padding: 0px;
+  padding-top: 4.5vw;
+  // filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.873));
+
+  .header_contents {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10vw;
+  }
+
+  h2 {
+    opacity: 0.88;
+    font-family: "bronzion";
+    color: $title-color-sec;
+    text-transform: capitalize;
+    font-size: 7.5vw;
+    position: relative;
+
+    &::first-letter {
+      color: $title-color-pri;
+    }
+
+    &:before {
+      content: "";
+      $size: 7vw;
+      width: $size;
+      height: 100%;
+      bottom: 0px;
+      left: -$size;
+      position: absolute;
+      background: url(../../assets/flipbook-textures/heraldic_lion.png);
+      @include bg-single-contain-center;
+      opacity: 0.3;
+    }
+  }
+
+  .btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5vw;
+
+    button {
+      $btn_size: 120px;
+      width: $btn_size;
+      height: $btn_size;
+      transition: 0.4s;
+
+      &:hover {
+        transform: scale(1.05);
+        color: rgb(255, 225, 58);
+        text-shadow: 0 0 3px black;
+      }
+
+      &:active {
+        transform: scale(0.95);
+        transition: 0.1s;
+        filter: brightness(1.2);
+      }
+    }
+
+    button:nth-child(1) {
+      background-image: url(../../assets/flipbook-textures/rolled_scroll/stamp_green.png);
+      @include bg-single-contain-center
+    }
+
+    button:nth-child(2) {
+      background-image: url(../../assets/flipbook-textures/rolled_scroll/stamp_red.png);
+      @include bg-single-contain-center
+    }
+  }
+
+  &:before {
+    content: "";
+    height: 100%;
+    width: 100%;
+    bottom: 0px;
+    left: 0px;
+    position: absolute;
+    background: url(../../assets/flipbook-textures/page_decorative_divider5.jpeg);
+    @include bg-single-contain-center;
+    background-size: 25%;
+    background-position: bottom;
+    background-repeat: repeat-x;
+    opacity: 0.7;
+    mask: url(../../assets/flipbook-textures/rolled_scroll/head_unrolled.png);
+    mask-size: cover;
+  }
+
+  .text_intro {
+    color: $text-color;
+    position: absolute;
+    bottom: 20%;
+  }
+}
+
+
+
+.stats_list_body {
+  --unscroll_duration: 2.5s;
+  --text_appear_duration: 1s;
+  background: url(../../assets/flipbook-textures/rolled_scroll/body_mirrored.png);
+  background-size: 100%;
+  background-repeat: repeat-y;
+  background-position: top;
+  width: 100%;
+  max-height: 0px;
+  // height: fit-content;
+  // *{font-size: 0};
+  transition: var(--unscroll_duration);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 0px;
+  // overflow: hidden; // conflicts with sticky thead
+  padding: 0px;
+}
+
+.stats_list_footer {
+  position: relative;
+  background: url(../../assets/flipbook-textures/rolled_scroll/head_unrolled.png);
+  transform: scaleY(-1)scaleX(1);
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 400px;
+
+  // filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.873));
+  &:before {
+    content: "";
+    height: 100%;
+    width: 100%;
+    bottom: 0px;
+    left: 0px;
+    position: absolute;
+    background: url(../../assets/flipbook-textures/page_decorative_divider5.jpeg);
+    @include bg-single-contain-center;
+    background-size: 25%;
+    background-position: bottom;
+    background-repeat: repeat-x;
+    opacity: 0.7;
+    mask: url(../../assets/flipbook-textures/rolled_scroll/head_unrolled.png);
+    mask-size: cover;
+  }
+}
+
+
+
+table {
+  width: 65%;
+  margin-bottom: 100px;
+  // background-color: rgba(227, 108, 108, 0.646);
+  thead{
+    opacity: 0;
+    transform: scale(1.5);
+    filter: blur(10px)hue-rotate(180deg);
+    &.visible_thead{
+      transform: scale(1);
+      filter: blur(0px);
+      transition: var(--text_appear_duration);
+      transition-delay: calc(var(--unscroll_duration) * 0.5);
+      opacity: 1;
+    }
+  }
+
+  tbody tr td{
+  // font-size: 0;
+  transition: opacity var(--text_appear_duration), filter var(--text_appear_duration);
+  transition-delay: calc(var(--unscroll_duration) * 0.5);
+  filter: blur(3px) drop-shadow(0 0 3px $title-color-pri);
+  opacity: 0;
+  &.visible_td{
+    filter: blur(0px);
+    // font-size: 20px;
+    opacity: 1;
+  }
+  }
+}
+
+@for $i from 1 through 500 {
+  tbody tr:nth-child(#{$i}) td {
+  transition-delay: calc( var(--unscroll_duration) * 0.5 + #{$i} * 0.2s) !important;
+  }
+}
+
+tbody tr {
+      $alpha_bg : 0.3;
+      $linear_background:  linear-gradient(transparent, rgba(255, 255, 255, $alpha_bg), transparent);
+  &:hover td{
+    background:$linear_background;
+  }
+
+  td{
+    transition: background-color 1s;
+    text-align: center;
+
+    &:hover {
+      background: $linear_background,
+      radial-gradient(closest-side, rgba(255, 238, 178, 0.755), transparent);
+      background-blend-mode: lighten;
+    }
+  }
+
+  &.winner .result{
+    color: goldenrod;
+    text-shadow: 0 0 1px $text-color;
+  }
+  &.loser .result{
+    color: brown;
+    text-shadow: 0 0 1px $text-color;
+  }
+
+  &.feu .element{
+    color: $fire-color;
+    text-shadow: 0 0 1px $text-color;
+  }
+  &.eau .element{
+    color: $water-color;
+    text-shadow: 0 0 1px $text-color;
+  }
+  &.air .element{
+    color: $air-color;
+    text-shadow: 0 0 1px $text-color;
+  }
+  &.terre .element{
+    color: $earth-color;
+    text-shadow: 0 0 1px $text-color;
+  }
+}
+
+
+thead {
+  position: sticky;
+  z-index: 11;
+  text-transform: capitalize;
+  top: 0px;
+
+  //// Heropattern moroccan:
+  background-color: #48342eaa;
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='88' viewBox='0 0 80 88' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22 21.91V26h-2c-9.94 0-18 8.06-18 18 0 9.943 8.058 18 18 18h2v4.09c8.012.722 14.785 5.738 18 12.73 3.212-6.99 9.983-12.008 18-12.73V62h2c9.94 0 18-8.06 18-18 0-9.943-8.058-18-18-18h-2v-4.09c-8.012-.722-14.785-5.738-18-12.73-3.212 6.99-9.983 12.008-18 12.73zM54 58v4.696c-5.574 1.316-10.455 4.428-14 8.69-3.545-4.262-8.426-7.374-14-8.69V58h-5.993C12.27 58 6 51.734 6 44c0-7.732 6.275-14 14.007-14H26v-4.696c5.574-1.316 10.455-4.428 14-8.69 3.545 4.262 8.426 7.374 14 8.69V30h5.993C67.73 30 74 36.266 74 44c0 7.732-6.275 14-14.007 14H54zM42 88c0-9.94 8.06-18 18-18h2v-4.09c8.016-.722 14.787-5.738 18-12.73v7.434c-3.545 4.262-8.426 7.374-14 8.69V74h-5.993C52.275 74 46 80.268 46 88h-4zm-4 0c0-9.943-8.058-18-18-18h-2v-4.09c-8.012-.722-14.785-5.738-18-12.73v7.434c3.545 4.262 8.426 7.374 14 8.69V74h5.993C27.73 74 34 80.266 34 88h4zm4-88c0 9.943 8.058 18 18 18h2v4.09c8.012.722 14.785 5.738 18 12.73v-7.434c-3.545-4.262-8.426-7.374-14-8.69V14h-5.993C52.27 14 46 7.734 46 0h-4zM0 34.82c3.213-6.992 9.984-12.008 18-12.73V18h2c9.94 0 18-8.06 18-18h-4c0 7.732-6.275 14-14.007 14H14v4.696c-5.574 1.316-10.455 4.428-14 8.69v7.433z' fill='%239C92AC' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+
+  color: white;
+
+  th {
+    text-align: center;
+    text-shadow: 1px 1px 1px $text-color;
+    font-size: 1.3vw;
+    padding: 1vw;
+    cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
+    transition: 0.1s;
+    position: relative;
+    &:hover{
+      transform: scale(1.1);
+      background-color: rgba(13, 107, 13, 0.35);
+      &::after{
+        font-size:xx-small;
+        position: absolute;
+        bottom: 0.25vw;
+        right: 0px;
+        width: 100%;
+        content: "▼";
+        animation: listOrderPulse 0.3s alternate infinite;
+      }
+    }
+
+    &:first-letter {
+      color: $title-color-pri;
+      font-size: 1.75vw;
+    }
+  }
+}
+
+
+@keyframes listOrderPulse {
+  from{transform: scale(1.3);}
+  to{transform: scale(1);}
+}
+
+
+// exit animation(s)
+.exitAnimation {
+  animation: exitAnimation 0.25s ease-in-out !important;
+  animation-fill-mode: forwards;
+}
+
+@keyframes exitAnimation {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

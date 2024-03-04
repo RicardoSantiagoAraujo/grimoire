@@ -1,32 +1,44 @@
 
-<body>
+
 <div class="formulaire">
     <form [formGroup]="connexionForm" (ngSubmit)="connexion()">
     <div class="titre">
         Connexion
     </div>
-    <div class="card-body">
+    <img id="bg_img" src="../../assets/flipbook-textures/dialog_scroll.png"/>
 
+    <div class="container" (mouseenter)="this.audioService.playWoodCreak()">
+        <!-- USER NAME INPUT -->
         <div >
             <label for="login" class="form-label">Login:</label>
-            <input type="text" class="form-control" id="login" name="login" formControlName="login">
-            <span class="text-danger" *ngIf="loginCtrl.dirty && loginCtrl.hasError('required')">Le login est obligatoire</span>
+            <div class="input-div"><input type="text" class="form-control" id="login" name="login" formControlName="login" (focus)="onFocus()"></div>
         </div>
+        <!-- PASSWORD INPUT -->
         <div >
             <label for="password" class="form-label">Password:</label>
-            <input type="password" class="form-control" id="password" name="password" formControlName="password">
-            <span class="text-danger user-danger" *ngIf="passwordCtrl.dirty && passwordCtrl.hasError('required')">Le mot passe est obligatoire</span>
-            <span class="text-danger pass-danger" *ngIf="passwordCtrl.dirty && passwordCtrl.hasError('minlength')">Le mot passe doit avoir au moins 5 caractères</span>
+            <div class="input-div"><input type="password" class="form-control" id="password" name="password" formControlName="password" (focus)="onFocus()"></div>
         </div>
     </div>
     <div class="button_group">
-        <button type="submit" [disabled]="connexionForm.invalid">Se connecter</button>
-        <a  [routerLink]="['/menu']" routerLinkActive="active">
-            <button type="button" class="button">Retour</button>
+        <button type="submit" [disabled]="connexionForm.invalid" (click)="exitAnimation(); breakChainsAnimation();">
+            Connection
+        </button>
+        <a  [routerLink]="['/menu']" routerLinkActive="active" (click)="exitAnimation()">
+            <button type="button" class="button">
+                Retour
+            </button>
         </a>
     </div>
+
+    <div class="danger_group">
+        <p class="danger login_mandatory" *ngIf="loginCtrl.dirty && loginCtrl.hasError('required')">Le login est obligatoire</p>
+        <p class="danger pass_mandatory" *ngIf="passwordCtrl.dirty && passwordCtrl.hasError('required')">Le mot passe est obligatoire</p>
+        <p class="danger pass_min_length" *ngIf="passwordCtrl.dirty && passwordCtrl.hasError('minlength')">Le mot passe doit avoir au moins 5 caractères</p>
+    </div>
+
+
     </form>
-    <div class="shield"><span>M</span>ythik</div>
+    <div class="prop"><span>M</span>ythik</div>
 </div>
+
 <app-chains></app-chains>
-</body>

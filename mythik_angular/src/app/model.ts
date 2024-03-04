@@ -14,7 +14,7 @@ export class Compte {
 //     ;
 //     constructor(id?: number, login?: string, password?: string, email?: string,  public combattant?: Array<Combattant>) {
 //         super(id, login, password, email);
-        
+
 //     }
 
 // }
@@ -22,14 +22,14 @@ export class Compte {
 // export class Humain extends Joueur {
 
 //     constructor(id?: number, login?: string, password?: string, email?: string, combattant?: Array<Combattant> ){
-//        super(id, login, password, email) 
+//        super(id, login, password, email)
 //     }
-// } 
+// }
 
 // export class IA extends Joueur {
 
 //     constructor(id?: number, login?: string, password?: string, combattant?: Combattant, email?: string){
-//         super(id, login, password, email) 
+//         super(id, login, password, email)
 //      }
 // }
 
@@ -49,6 +49,5 @@ export class CombattantResponse {
 
 export class Combat {
     constructor(public id?: number, public dateCombat? : string, public heureCombat?: string, public combattants?: Combattant[]){}
-    
+
     }
-   

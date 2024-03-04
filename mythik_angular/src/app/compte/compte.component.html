@@ -1,69 +1,81 @@
-<body>
+<section>
 <h1>Gestion des comptes</h1>
-<div class="card mt-3">
-    <div class="card-header">
-        Liste des comptes
+
+<div class="card compte_list">
+    <div class="card-header compte_list_header">
+        <div>
+            <span>L</span>iste des comptes
+        </div>
     </div>
-    <div class="card-body"> 
-        <table class="table table-striped">
+    <div class="card-body compte_list_body">
+
+        <p class="text_intro">
+            Appuyez sur l'un des titres de colonne pour réorganiser les entrées en fonction de celui-ci.
+        </p>
+
+        <table id="table_compte">
             <thead>
                 <tr>
-                    <th>Identifiant</th>
-                    <th>Login</th>
-                    <th>Mot de passe</th>
-                    <th>Email</th>
-                    <th>Roles</th>
-                    <th></th>
+                    <th class="id" (click)="sortTable(0, 'number')">id</th>
+                    <th class="login" (click)="sortTable(1, 'string')">Login</th>
+                    <th class="password" (click)="sortTable(2, 'string')" >Mot de passe</th>
+                    <th class="email" (click)="sortTable(3, 'string')">E-mail</th>
+                    <th class="type" (click)="sortTable(4, 'string')">Role</th>
+                    <th class="btn_td"></th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let u of list() | async">
-                    <td>{{u.id}}</td>
-                    <td>{{u.login}}</td>
-                    <td>{{u.password}}</td>
-                    <td>{{u.email}}</td>
-                    <td>{{u.type}}</td>
-                    <td><div class="btn-group btn-group-sm">
-                        <a (click)="edit(u.id)" class="btn btn-primary"><i class="bi bi-pen"></i></a>
-                        <a (click)="remove(u.id)" class="btn btn-danger"><i class="bi bi-trash"></i></a>
-                      </div></td>
+                <tr *ngFor="let u of list() | async" [class]="u.type">
+                    <td class="id">{{u.id}}</td>
+                    <td class="login">{{u.login}}</td>
+                    <td class="password">{{u.password}}</td>
+                    <td class="email">{{u.email}}</td>
+                    <td class="type">{{u.type}}</td>
+                    <td class="btn_td">
+                        <div class="btn-group">
+                            <a (click)="edit(u.id)" class="btn"><i class="bi bi-feather"></i></a>
+                            <a (click)="remove(u.id)" class="btn">
+                                <!-- <i class="bi bi-trash"></i> -->
+                                <img src="../../assets/icons/skull-solid.svg"></a>
+                        </div>
+                    </td>
                 </tr>
-             
+
             </tbody>
 
         </table>
-        
+
     </div>
-    <div class="card-footer">
+    <div class="card-footer compte_list_footer">
         <a (click)="add()" class="btn btn-success btn-lg"><i class="bi bi-plus-lg"></i></a>
         <a (click)="retour()" class="btn btn-warning btn-lg mx-2"><i class="bi bi-backspace"></i></a>
     </div>
 </div>
 
-<div class="card mt-3" *ngIf="showForm">
+<div class="compte_edit" *ngIf="showForm">
     <form (ngSubmit)="save()" [formGroup]="compteForm">
     <div class="card-header">
         Edition d'un compte
     </div>
-    <div class="card-body"> 
-        <div class="mb-3 mt-3">
+    <div class="card-body">
+        <div class="form_item">
             <label for="id" class="form-label">Identifiant:</label>
             <input type="number" class="form-control" id="id" name="id" readonly formControlName="id">
         </div>
-        <div class="mb-3">
+        <div class="form_item">
             <label for="login" class="form-label">Login:</label>
             <input type="text" class="form-control" id="login" name="login" formControlName="login">
             <span class="text-danger" *ngIf="compteForm.get('login')?.dirty && compteForm.get('login')?.hasError('login')">Le login est obligatoire</span>
         </div>
-        <div class="mb-3">
+        <div class="form_item">
             <label for="password" class="form-label">Mot de passe:</label>
             <input type="text" class="form-control" id="password" name="password" formControlName="password">
         </div>
-        <div class="mb-3">
+        <div class="form_item">
             <label for="email" class="form-label">Email:</label>
             <input type="text" class="form-control" id="email" name="email" formControlName="email">
         </div>
-        <div class="mb-3">
+        <div class="form_item">
             <label for="type" class="form-label">Roles:</label>
             <select class="form-control" id="type" name="type" formControlName="type">
                 <option></option>
@@ -79,4 +91,4 @@
     </div>
     </form>
 </div>
-</body>
+</section>

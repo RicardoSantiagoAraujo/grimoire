@@ -1,0 +1,55 @@
+div {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  height: 90%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 10vmin;
+  background-image: url(../../assets/flipbook-textures/map.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#error_code {
+  font-family: "Lugrasimo";
+  font-weight: bolder;
+  color: rgba(107, 0, 50, 0.898);
+  text-shadow: 0px 0px 20px white;
+  font-size: 10vmin;
+  padding-top: 5%;
+}
+
+#error_msg {
+  font-family: "bronzion";
+  color: rgba(255, 255, 255, 0.824);
+  text-shadow: 0px 0px 20px black;
+  font-size: 10vmin;
+}
+
+#skulls {
+  width: 50vw;
+  position: fixed;
+  content: url(../../assets/flipbook-textures/skulls.png);
+  z-index: 1;
+  bottom: 0px;
+  right: 0px;
+  transform: translate(10%, 20%);
+}
+
+#compass {
+  width: 20vw;
+  position: fixed;
+  content: url(../../assets/flipbook-textures/compass.png);
+  z-index: 1;
+  top: 0px;
+  left: 0px;
+  transform: translate(10%, 20%);
+  filter: brightness(0.8);
+}/*# sourceMappingURL=page-not-found.component.css.map */

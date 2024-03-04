@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CreatureService } from '../creature/creature.service';
 import { Combattant, Compte, Creature} from '../model';
 import { Observable } from 'rxjs';
@@ -6,39 +6,45 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { CombattantService } from './combattant.service';
 import { CompteService } from '../compte/compte.service';
+import { AudioService } from '../audio.service';
 
 @Component({
   selector: 'app-selection-combat',
   templateUrl: './selection-combat.component.html',
   styleUrls: ['./selection-combat.component.css']
 })
-export class SelectionCombatComponent {
+export class SelectionCombatComponent implements OnInit, OnDestroy {
 
   creatures$!: Observable<Creature[]>;
-  creatures?: Creature[]; 
-  Ia$!: Observable<Compte>; 
-  Ia?: Compte; 
+  creatures?: Creature[];
+  Ia$!: Observable<Compte>;
+  Ia?: Compte;
 
   ready: boolean = false;
-  creationCombattant: boolean = true; 
-  
-  combattant1!: Combattant; 
-  combattant2!: Combattant; 
-  cb1: boolean = false; 
+  creationCombattant: boolean = true;
+
+  combattant1!: Combattant;
+  combattant2!: Combattant;
+  cb1: boolean = false;
   cb2: boolean = false;
 
-  constructor(private creatureService: CreatureService, private router: Router, private authService: AuthService, private combattantService: CombattantService, private compteService: CompteService){
-    this.load(); 
-    this.combattant1 = new Combattant(); 
-    this.combattant2 = new Combattant(); 
+  constructor(private creatureService: CreatureService, private router: Router, private authService: AuthService, private combattantService: CombattantService, private compteService: CompteService, public audioService: AudioService){
+    this.load();
+    this.combattant1 = new Combattant();
+    this.combattant2 = new Combattant();
   }
+
+
+
+
+
+
 
   load() {
     this.creatures$ = this.creatureService.findAll();
     this.creatures$.subscribe(resp => {this.creatures=resp})
-    this.Ia$ = this.compteService.findIA(); 
+    this.Ia$ = this.compteService.findIA();
     this.Ia$.subscribe(resp => {this.Ia=resp});
-   
   }
 
   list() {
@@ -46,28 +52,141 @@ export class SelectionCombatComponent {
   }
 
   creationCombattant1(creature : Creature){
+    this.audioService.playLowBurst(0.3);
+    this.audioService.playHorn(0.5);
 
     this.combattant1.compte = this.authService.getCompte();
     this.combattant1.creature = creature;
-    this.cb1 = true; 
+    this.cb1 = true;
 
+    const player =document.querySelector(".player");
+    console.log(player);
+    player!.classList.remove("combattantAppear");
+    setTimeout(() => {
+      player!.classList.add('combattantAppear');
+    }, 0);
+    this.activateBook()
   }
 
+  // function to skip selection in order to reach combat faster
+  public creationCombattants_skip(){
+    this.audioService.playGong(1);
+    let c_length = this.creatures!.length;
+    // let c_length = 10;
+    let nb1 = Math.floor(Math.random() * c_length);
+    let nb2;
+    do{
+      nb2 = Math.floor(Math.random() * c_length);
+    }
+    while(nb2 == nb1) // ensure that player and adv creatures are different
+
+    this.combattant1.compte = this.authService.getCompte();
+    this.combattant1.creature = this.creatures![nb1];
+    this.cb1 = true;
+    this.combattant2.compte = this.Ia;
+    this.combattant2.creature = this.creatures![nb2];
+    this.cb2 = true;
+    console.log(this.combattant1);
+    console.log(this.combattant2);
+    this.goCombat();
+  }
+
+
+  ngOnDestroy(): void {
+    this.audioService.switchCombatSelectionTheme(false, 0);
+  }
+
+  // trigger skip automatically on init
+  ngOnInit(): void{
+    // Check current route. If player chosen to do a new combat after the previous one, start music automatically
+    let current_route = this.router.url.split('?')[0];
+    if(this.audioService.isMuted() && current_route.includes("/combat/")){this.audioService.toggleMute()};
+
+    this.audioService.unrollScrollSound(1);
+    this.audioService.switchCombatSelectionTheme(true, 0.1);
+    this.audioService.playCombatSounds(false);
+    // console.log("skipping selection step on component init");
+    // setTimeout(() => { //timeout required for everything to load before triggering
+    //   this.creationCombattants_skip();
+    // }, 250);
+    this.creaturePaperSounds()
+
+    // ensure to kill result themes
+    this.audioService.switchResultTheme("victory", false, 0);
+    this.audioService.switchResultTheme("defeat", false, 0);
+  }
+
+
+  creaturePaperSounds(){
+    // add sound as each item appears
+    setTimeout(() => {
+      console.log(document.querySelectorAll<HTMLElement>(".item"))
+      document.querySelectorAll<HTMLElement>(".item").forEach((item)=>{
+        console.log(item)
+        let delay =getComputedStyle(item) .getPropertyValue('animation-delay');
+        console.log(parseFloat(delay) * 1000);
+        setTimeout(()=>{
+          this.audioService.playPageFlip(0.3);
+        }, parseFloat(delay) * 1000 * 1.2);
+      })
+    }, 100)
+  }
+
+
   creationCombattant2(){
-    
+    this.audioService.playLowBurst(0.3);
+    this.audioService.playKabuki(0.3);
+
     let nb = Math.floor(Math.random() * (this.creatures!.length))
     this.combattant2!.creature = this.creatures![nb];
-    this.combattant2!.compte = this.Ia; 
+    this.combattant2!.compte = this.Ia;
     console.log(this.Ia);
     console.log(this.combattant2);
     this.cb2=true;
+
+    const adv =document.querySelector(".adv");
+    console.log(adv);
+    adv!.classList.remove("combattantAppear");
+    setTimeout(() => {
+      adv!.classList.add('combattantAppear');
+    }, 0);
+    this.activateBook()
+  }
+
+  // turn on book effects upon interaction
+  activateBook(){
+    // If EITHER combatent is chosen
+    if(this.combattant1.creature != null || this.combattant2.creature != null){
+    let book = document.querySelector<HTMLBodyElement>("#book_deco");
+    book?.classList.add("activeBookFirst");
+    this.audioService.switchCombatSelectionTheme(true, 0.2);
+    }
+    // If BOTH combatents are chosen
+    if(this.combattant1.creature != null && this.combattant2.creature != null){
+    let book = document.querySelector<HTMLBodyElement>("#book_deco");
+    book?.classList.add("activeBookSecond");
+    let player = document.querySelector<HTMLBodyElement>(".player .illustration");
+    let adv = document.querySelector<HTMLBodyElement>(".adv .illustration");
+    player?.classList.add("activeBookSecond");
+    adv?.classList.add("activeBookSecond");
+    this.audioService.switchCombatSelectionTheme(true, 0.5);
+    }
   }
 
   goCombat(){
-    
-    this.ready = true; 
-    this.creationCombattant = false; 
-
+    this.audioService.playGong(1);
+    this.audioService.playLowBurst(1);
+    let book = document.querySelector<HTMLBodyElement>("#book_deco");
+    book?.classList.add("activeBookGo");
+    setTimeout(() => {
+    this.ready = true;
+    this.creationCombattant = false;
+    }, 500);
   }
 
+  goBack(){
+    this.audioService.playLowBurst(1);
+    let creation_screen = document.querySelector<HTMLBodyElement>("#creation_combattant_screen");
+    creation_screen?.classList.add("goBack");
+  }
 }

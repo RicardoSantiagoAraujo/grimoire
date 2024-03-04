@@ -1,151 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
-:root {
-  --text-color: rgb(71, 0, 0);
-  --paper-color-l: rgb(255, 251, 212);
-  --paper-color-d: rgb(100, 79, 30);
-  --paper-texture: url("../../assets/flipbook-textures/natural-paper.png");
-  /* --paper-texture: url(../pics/black-paper.png); */
-  /* --paper-texture: url(../pics/old-paper-texture.webp); */
-  /* Candlelight effect */
-  --color-overlay-l: #ffd58d;
-  --color-overlay-d: #00021e;
-  --blur-overlay-l: 60%;
-  --fire_light_effect-radial: radial-gradient(var(--color-overlay-l) var(--blur-overlay-l), var(--color-overlay-d) 75%);
-  --fire_light_effect-linear: linear-gradient(var(--color-overlay-l) var(--blur-overlay-l) 90%, var(--color-overlay-d) 100%);
-  --fire_light_effect-uniform: var(--color-overlay-l);
-  --fire_light_effect-pages: radial-gradient(var(--color-overlay-l) var(--blur-overlay-l), rgba(0,0,0,0) 75%);
+section #desktop_glow {
+  background: url(../../assets/flipbook-textures/wood-texture_glow_reduced.png);
 }
 
-body, html {
-  height: 100vh;
-  overflow: hidden;
-}
-
-body {
-  background: url("../../assets/flipbook-textures/wood-texture.jpeg"), radial-gradient(#e6b664, #000325);
-  background-blend-mode: multiply;
-  background-size: cover;
-  cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
-}
-
-#firelight_effect {
-  content: "";
-  display: block;
+#map {
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  opacity: 1;
-  z-index: 10;
-  pointer-events: none;
-  background: var(--fire_light_effect-radial);
-}
-
-@keyframes firelight_effect {
-  0% {
-    background-color: rgba(255, 0, 0, 0);
-  }
-  10% {
-    background-color: rgba(255, 0, 0, 0.001);
-  }
-  20% {
-    background-color: rgba(205, 133, 0, 0.01);
-  }
-  40% {
-    background-color: rgba(174, 153, 36, 0.05);
-  }
-  60% {
-    background-color: rgba(80, 62, 51, 0.005);
-  }
-  80% {
-    background-color: rgba(189, 0, 60, 0.05);
-  }
-  100% {
-    background-color: rgba(15, 6, 0, 0.01);
-  }
-}
-body #firewall {
-  position: absolute;
-  pointer-events: none;
-  display: flex;
-  visibility: hidden;
-  width: 100vw;
-  justify-content: center;
-  top: 50vh;
-}
-body #firewall img {
-  opacity: 0.1;
-  z-index: 2000;
-  background: url("../../assets/fire.gif");
-  animation: fire_effect 2s infinite;
-  display: none;
-}
-body #firewall::before {
-  content: "";
-  display: block;
-  position: absolute;
-  right: 0;
-  bottom: -1%;
-  left: 0;
-  width: 100%;
-  height: 70%;
-  opacity: 0.3;
-  z-index: 20;
-  background: url("../../assets/fire.gif");
-  animation: fire_effect 1s infinite;
-}
-
-@keyframes fireAppear {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes fire_effect {
-  0% {
-    filter: blur(3px) brightness(3);
-    transform: scaleY(1);
-  }
-  50% {
-    transform: scaleY(1.1);
-    filter: blur(1px) brightness(2);
-  }
-  100% {
-    filter: blur(5px) brightness(1.5);
-    transform: scaleY(1);
-  }
+  top: -40%;
+  left: -10%;
+  z-index: -2;
 }
 #map img {
   display: flex;
-  position: absolute;
-  box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.501);
-  top: -250px;
-  right: 700px;
-  height: 60%;
+  height: 60vmin;
   transform: rotate(30deg);
-  z-index: 0;
-  filter: brightness(0.7);
+  filter: brightness(0.7) drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.7));
 }
 
 #zodiac {
   width: -moz-fit-content;
   width: fit-content;
-  height: 199px;
-  background-image: url(../../assets/flipbook-textures/old-paper-texture_alt.png);
+  height: 50vmin;
   display: flex;
-  background-color: rgba(0, 0, 0, 0.168);
   position: absolute;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.501);
-  bottom: -150px;
-  right: 500px;
+  bottom: -10%;
+  left: 40%;
   height: 60%;
   transform: rotate(50deg);
-  z-index: 0;
+  z-index: -2;
   justify-content: center;
-  filter: brightness(0.7);
+  filter: brightness(0.7) drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.7));
 }
 #zodiac:after {
   content: "";
@@ -155,7 +37,7 @@ body #firewall::before {
   width: 70%;
   margin-top: 40px;
   align-content: center;
-  background-image: url(../../assets/flipbook-textures/astrology_print.png);
+  background-image: url(../../assets/flipbook-textures/astrology_print_reduced.png);
   background-size: contain;
   background-repeat: no-repeat;
   opacity: 0.2;
@@ -164,26 +46,23 @@ body #firewall::before {
 #book_greek img {
   display: flex;
   position: absolute;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.501);
-  top: 50px;
-  left: -150px;
-  height: 70%;
+  top: 10%;
+  left: -10%;
+  height: 70vmin;
   transform: rotate(50deg);
-  filter: brightness(0.8);
+  filter: brightness(0.8) drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.7));
   z-index: 0;
 }
 
 #book_japanese img {
   display: flex;
-  background-color: rgba(0, 0, 0, 0.501);
   position: absolute;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.501);
-  top: -50px;
-  right: -400px;
-  height: 60%;
+  top: -5%;
+  right: -20%;
+  height: 55vmin;
   transform: rotate(-30deg);
   z-index: 0;
-  filter: brightness(0.6);
+  filter: brightness(0.6) drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.7));
 }
 
 #padlock {
@@ -193,7 +72,7 @@ body #firewall::before {
   top: 45%;
   right: 240px;
   position: absolute;
-  background-image: url(../../assets/flipbook-textures/lock.png), radial-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0) 50%);
+  background-image: url(../../assets/flipbook-textures/lock_reduced.png), radial-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0) 50%);
   background-size: contain;
   background-repeat: no-repeat;
   background-blend-mode: lighten;
@@ -207,7 +86,7 @@ body #firewall::before {
   left: 400px;
   top: 200px;
   text-align: center;
-  background-image: url(../../assets/flipbook-textures/old-paper-texture_alt.png);
+  background-image: url(../../assets/flipbook-textures/old-paper-texture_alt_reduced.png);
   background-size: contain;
   background-repeat: no-repeat;
   transform: rotate(-20deg);
@@ -222,7 +101,7 @@ body #firewall::before {
   height: 250px;
   position: relative;
   width: 100px;
-  background: url(../../assets/flipbook-textures/key.png), radial-gradient(rgba(0, 0, 0, 0.5098039216), rgba(0, 0, 0, 0) 50%);
+  background: url(../../assets/flipbook-textures/key_reduced.png), radial-gradient(rgba(0, 0, 0, 0.5098039216), rgba(0, 0, 0, 0) 50%);
   border-radius: 50%;
   transform: rotate(50deg);
   background-blend-mode: lighten;
@@ -238,16 +117,17 @@ body #firewall::before {
 
 @keyframes pulse {
   0% {
-    filter: brightness(1);
+    filter: brightness(1) drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.7));
   }
   50% {
-    filter: brightness(2);
+    filter: brightness(2) drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.7));
   }
   100% {
-    filter: brightness(1);
+    filter: brightness(1) drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.7));
   }
 }
 .desktop_prop {
+  --item_delay: 0.2s;
   animation: booksAppear 1s ease-in;
   opacity: 0;
   animation-fill-mode: forwards;
@@ -258,23 +138,23 @@ body #firewall::before {
 }
 
 .desktop_prop:nth-child(1) {
-  animation-delay: calc(1 * 0.2s);
+  animation-delay: calc(1 * var(--item_delay));
 }
 
 .desktop_prop:nth-child(2) {
-  animation-delay: calc(2 * 0.2s);
+  animation-delay: calc(2 * var(--item_delay));
 }
 
 .desktop_prop:nth-child(3) {
-  animation-delay: calc(3 * 0.2s);
+  animation-delay: calc(3 * var(--item_delay));
 }
 
 .desktop_prop:nth-child(4) {
-  animation-delay: calc(4 * 0.2s);
+  animation-delay: calc(4 * var(--item_delay));
 }
 
 .desktop_prop:nth-child(5) {
-  animation-delay: calc(5 * 0.2s);
+  animation-delay: calc(5 * var(--item_delay));
 }
 
 @keyframes booksAppear {
@@ -289,33 +169,54 @@ body #firewall::before {
   display: flex;
   align-items: center;
   position: absolute;
-  left: 40px;
-  bottom: 1vh;
+  left: 1vmin;
+  bottom: 1vmin;
   font-family: "Lugrasimo";
+  animation: booksAppear 2s;
 }
 #retour_grimoire button {
+  cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
+  transition: 0.1s;
+  font-size: 1.5vw;
   z-index: 1000;
   position: absolute;
   opacity: 1;
-  color: rgba(98, 4, 4, 0.709);
-  top: 50px;
-  padding: 50px;
+  color: rgb(71, 0, 0);
+  bottom: 1vw;
+  padding: 5vw;
   background: none;
   border: none;
-  background-image: url(../../assets/flipbook-textures/old-paper-texture_alt.png);
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.7));
+  background: url(../../assets/flipbook-textures/old-paper-texture_alt_reduced.png);
   background-size: contain;
-  background-repeat: no-repeat;
   background-position: center;
+  background-repeat: no-repeat;
+}
+#retour_grimoire button:after {
+  content: "";
+  height: 70%;
+  width: 70%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: url(../../assets/flipbook-textures/cyclops_reduced.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.1;
+  transition: 0.3s;
+  z-index: -1;
 }
 #retour_grimoire #page_marker {
-  height: 250px;
+  height: 9vw;
+  width: 9vw;
   position: relative;
-  top: 80px;
-  width: 100px;
-  background: url(../../assets/flipbook-textures/dagger.png), radial-gradient(rgba(0, 0, 0, 0.5098039216), rgba(0, 0, 0, 0) 50%);
-  border-radius: 50%;
-  background-blend-mode: lighten;
+  bottom: 1vw;
+  left: 0vw;
+  background: url(../../assets/flipbook-textures/dagger_reduced.png);
   background-size: contain;
+  background-position: center;
   background-repeat: no-repeat;
   animation: pulse 2s infinite;
   transition: 1s;
@@ -323,9 +224,56 @@ body #firewall::before {
   pointer-events: none;
 }
 #retour_grimoire:hover button {
-  color: rgba(189, 4, 4, 0.657);
+  color: rgb(193, 0, 0);
+}
+#retour_grimoire:hover button::after {
+  opacity: 0.5;
 }
 #retour_grimoire:hover #page_marker {
   transform: scale(1.3) rotate(80deg);
-  top: 40px;
+  bottom: 1vw;
+  left: 7vw;
+}
+#retour_grimoire:active button {
+  text-shadow: 0 0 3px rgb(0, 100, 0);
+  transform: rotate(5deg) scale(1.1);
+}
+#retour_grimoire:active button:after {
+  filter: drop-shadow(0 0 10px rgb(0, 100, 0));
+}
+#retour_grimoire button.exitButtonTrigger:after {
+  transform: translate(-100%, -50%) rotate(-20deg);
+  transition: 2s;
+}
+
+.exitAnimation {
+  animation: exitAnimation 0.5s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes exitAnimation {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+#insect_track {
+  position: absolute;
+  width: 200vw;
+  height: 10vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center;
+  z-index: -1;
+}
+#insect_track img {
+  position: absolute;
+  right: 0%;
+  width: 10vmax;
+  height: auto;
+  background: radial-gradient(closest-side, black, transparent 35%);
+  filter: drop-shadow(0px 0px 3px black);
 }/*# sourceMappingURL=desktop.component.css.map */

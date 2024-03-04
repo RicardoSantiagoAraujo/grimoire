@@ -1,39 +1,10 @@
-@charset "UTF-8";
-@font-face {
-  font-family: "bronzion";
-  font-style: normal;
-  font-weight: normal;
-  src: url("../../assets/fonts/bronzion_deco/BronzionDeco_PERSONAL_USE_ONLY.otf");
-}
-@font-face {
-  font-family: "Lugrasimo";
-  font-style: normal;
-  font-weight: normal;
-  src: url("../../assets/fonts/Lugrasimo/Lugrasimo-Regular.ttf");
-}
-app-accueil :root {
-  --glowColor1: #016ada;
-  --glowColor2: #00d8db;
-}
-app-accueil body, app-accueil html {
-  height: 100%;
-  overflow: hidden;
-  font-family: "Lugrasimo";
-}
-app-accueil body {
-  background: url("../../assets/flipbook-textures/wood-texture.jpeg"), radial-gradient(#e6b664, #000325);
-  background-blend-mode: multiply;
-  background-size: cover;
-  width: 100vw; /* 50% de la largeur de la fenêtre */
-  height: 100vh;
-  cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
-}
-app-accueil .section {
+.section {
   opacity: 0;
   animation: accueilAppear 1s;
   animation-fill-mode: forwards;
   animation-delay: 3s;
 }
+
 @keyframes accueilAppear {
   from {
     opacity: 0;
@@ -42,54 +13,100 @@ app-accueil .section {
     opacity: 1;
   }
 }
-app-accueil .boutons {
+.boutons {
   position: absolute;
+  margin-top: -3000px;
+  top: 0px;
   display: flex;
   width: 100vw;
   justify-content: center;
   animation: boutonsAppear 1s;
-  margin-top: -300px;
   animation-fill-mode: forwards;
   animation-delay: 3s;
 }
-app-accueil .boutons .button {
-  cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
-  font-size: small;
-  min-width: 200px;
-  margin: 0px 10px;
+.boutons a {
+  text-decoration: none;
 }
+
 @keyframes boutonsAppear {
   from {
     margin-top: -300px;
   }
   to {
-    margin-top: -20px;
+    margin-top: 5vh;
   }
 }
-app-accueil .button {
-  display: inline-block;
-  padding: 50px 20px 10px;
-  height: 150px;
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
-  text-decoration: none;
-  background: url(../../assets/wooden_sign.png);
+.button {
+  font-size: small;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30vmin;
+  height: 15vmin;
+  margin: 0px 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: url(../../assets/wooden_sign_botton.png), radial-gradient(rgb(0, 0, 0), transparent 85%);
+  filter: drop-shadow(10px 10px 5px rgba(0, 0, 0, 0.711));
   background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  color: rgba(13, 1, 1, 0.6705882353); /* Couleur du texte */
+  background-size: 100% 100%;
+  background-position: top;
+  color: rgba(13, 1, 1, 0.6705882353);
+  /* Couleur du texte */
   border: none;
   transition: background-color 0.3s ease, color 0.3s ease;
   cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
   transform-origin: top;
   transition: 0.3s;
 }
-app-accueil .button:hover {
+.button span {
+  font-size: 2vmin;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  z-index: 1;
+}
+.button img {
+  width: 100%;
+  padding: 30%;
+  opacity: 0.3;
+  position: absolute;
+  z-index: 0;
+  transition: 0.3s;
+  filter: sepia(1);
+}
+.button:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 100%;
+  background: url(../../assets/wooden_sign_top.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+  transition: 0.2s;
+}
+.button:hover {
   color: white;
   text-shadow: 1px 1px 2px rgba(255, 0, 0, 0.764), 0 0 1em blue, 0 0 0.2em blue;
   animation: swing 1s infinite ease-in-out;
 }
+.button:hover img {
+  opacity: 0.8;
+  filter: sepia(0);
+}
+.button:focus {
+  animation: zoomIn 0.6s ease-in;
+  position: relative;
+  z-index: 1000;
+  transform-origin: center;
+}
+.button:focus::before {
+  opacity: 0;
+}
+
 @keyframes swing {
   0% {
     transform: rotate(0deg);
@@ -107,8 +124,19 @@ app-accueil .button:hover {
     transform: rotate(0deg);
   }
 }
-app-accueil .titre {
-  margin-top: 100px;
+@keyframes zoomIn {
+  from {
+    transform: scale(1) rotate(0deg);
+    filter: blur(0px);
+  }
+  to {
+    transform: scale(10) rotate(360deg);
+    filter: blur(5px);
+  }
+}
+.titre {
+  font-size: 17.5vmin;
+  margin-top: 20vmin;
   opacity: 0;
   background-image: url(../../assets/thunder2.gif);
   background-blend-mode: lighten;
@@ -118,22 +146,27 @@ app-accueil .titre {
   text-align: center;
   font-family: bronzion;
   color: rgba(67, 0, 0, 0.952);
-  font-size: 100px;
   cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
-  animation: glowText 1s ease-in-out infinite alternate, titreAppear 3s 0.3s forwards;
-  animation: name duration timing-function delay iteration-count direction fill-mode;
+  animation: glowText 2s ease-in-out infinite alternate, titreAppear 4s forwards;
   transition: 2s;
 }
-app-accueil .titre:hover {
+.titre, .titre * {
+  pointer-events: none;
+}
+.titre:hover {
   filter: brightness(2);
 }
+
 @keyframes glowText {
   from {
+    --glowColor1: #016ada;
     text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--glowColor1), 0 0 40px var(--glowColor1), 0 0 50px var(--glowColor1), 0 0 60px var(--glowColor1), 0 0 70px var(--glowColor1);
+    transform: translateX(0.5px);
   }
   to {
+    --glowColor2: #00d8db;
     text-shadow: 0 0 20px #fff, 0 0 30px var(--glowColor2), 0 0 40px var(--glowColor2), 0 0 50px var(--glowColor2), 0 0 60px var(--glowColor2), 0 0 70px var(--glowColor2), 0 0 80px var(--glowColor2);
-    transform: skew(90deg 90deg);
+    transform: translateX(-0.5px);
   }
 }
 @keyframes titreAppear {
@@ -147,7 +180,7 @@ app-accueil .titre:hover {
     transform: scale(1);
   }
 }
-app-accueil .accueil {
+.accueil {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -155,26 +188,28 @@ app-accueil .accueil {
   height: 100%;
   cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
 }
-app-accueil .section {
-  top: 150px;
+
+.section {
+  top: 25vmin;
+  height: 50vmin;
+  aspect-ratio: 2/3;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  width: 20vw;
-  height: 60vh;
   border: 1px solid darkred;
   border-radius: 50%;
   position: relative;
   background-color: rgba(245, 245, 220, 0.555);
   font-family: bronzion;
-  font-size: 25px;
+  font-size: 15vmin;
   z-index: 10;
   cursor: url("../../assets/cursors/middle-ages-cursor-32x32.png"), pointer;
+  filter: drop-shadow(6px 6px 5px rgba(0, 0, 0, 0.999));
   transition: 0.1s ease-in-out;
   transition-delay: 0s;
 }
-app-accueil .section a {
+.section a {
   z-index: 100;
   display: flex;
   align-items: center;
@@ -188,7 +223,28 @@ app-accueil .section a {
   transition: 2s;
   text-decoration: none;
 }
-app-accueil .section:after {
+.section a:focus {
+  outline: none;
+  filter: brightness(10) blur(100px);
+  transform: scale(2);
+}
+.section a:focus + .deco {
+  animation: chooseMode alternate 0.5s 2;
+}
+.section a:focus + .deco::before {
+  content: "test";
+  position: absolute;
+  top: -100vh;
+  height: 200vh;
+  width: 200vw;
+  animation: chooseBg alternate 0.5s 2;
+}
+.section a:focus + .deco img {
+  transition: 0.5s !important;
+  transition-delay: 0s !important;
+  opacity: 0 !important;
+}
+.section:after {
   position: absolute;
   content: "";
   top: 50%;
@@ -201,31 +257,58 @@ app-accueil .section:after {
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
-app-accueil .section:hover {
+.section:hover {
+  z-index: 10000;
   transform: scale(1.05);
 }
-app-accueil .section:hover a {
+.section:hover a {
   text-shadow: #FC0 1px 0 10px;
   background: radial-gradient(red, blue);
   box-shadow: 0px 0px 350px blue;
 }
-app-accueil .sec_grimoire {
+.section:hover:before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  background: radial-gradient(transparent, rgba(0, 0, 0, 0.75) 75%);
+  width: 200vw;
+  height: 200vh;
+}
+
+@keyframes chooseMode {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(2) rotate(15deg);
+  }
+}
+@keyframes chooseBg {
+  from {
+    background-color: transparent;
+  }
+  to {
+    background-color: black;
+  }
+}
+.sec_grimoire {
   background: url("../../assets/flipbook-textures/grimoire-cover2.jpeg"), radial-gradient(purple, black);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
-app-accueil .sec_grimoire #letterG {
+.sec_grimoire span {
+  pointer-events: none;
+}
+.sec_grimoire #letterG {
   font-family: "bronzion";
-  font-size: 50px;
+  font-size: 10vmin;
 }
-app-accueil .sec_grimoire:hover #grimoire_deco {
-  transform: scale(1.3) translate(0px, -60px);
-}
-app-accueil .sec_grimoire a {
+.sec_grimoire a {
   cursor: url("../../assets/cursors/middle-ages-pointer-32x32.png"), pointer;
 }
-app-accueil #grimoire_deco {
+
+#grimoire_deco {
   pointer-events: none;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -237,86 +320,125 @@ app-accueil #grimoire_deco {
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: scale(0);
 }
-app-accueil #grimoire_deco img {
+#grimoire_deco img {
   position: absolute;
-  height: 300px;
-  transform-origin: bottom;
+  height: 40vmin;
+  transform-origin: center;
+  transform: scale(0.01);
 }
-app-accueil #grimoire_deco img:nth-child(1) {
-  bottom: calc(1 * -10px);
-  right: calc(1 * -15px + 0px);
-  padding-bottom: calc(1 * 5px + 40px);
-  transform: rotate(calc(1 * 23deg)) scale(-1);
+
+#grimoire_deco img:nth-child(1) {
+  transition: calc(1 * 0.1s);
 }
-app-accueil #grimoire_deco img:nth-child(2) {
-  bottom: calc(2 * -10px);
-  right: calc(2 * -15px + 0px);
-  padding-bottom: calc(2 * 5px + 40px);
-  transform: rotate(calc(2 * 23deg)) scale(-1);
+
+.sec_grimoire:hover #grimoire_deco img:nth-child(1) {
+  transform: rotate(calc(1 * 23deg)) scale(-1) translateY(-35vmin);
+  animation: propAnimate 0.5s infinite alternate ease-in-out;
+  animation-delay: calc(1 * 0.1s);
 }
-app-accueil #grimoire_deco img:nth-child(3) {
-  bottom: calc(3 * -10px);
-  right: calc(3 * -15px + 0px);
-  padding-bottom: calc(3 * 5px + 40px);
-  transform: rotate(calc(3 * 23deg)) scale(-1);
+
+#grimoire_deco img:nth-child(2) {
+  transition: calc(2 * 0.1s);
 }
-app-accueil #grimoire_deco img:nth-child(4) {
-  bottom: calc(4 * -10px);
-  right: calc(4 * -15px + 0px);
-  padding-bottom: calc(4 * 5px + 40px);
-  transform: rotate(calc(4 * 23deg)) scale(-1);
+
+.sec_grimoire:hover #grimoire_deco img:nth-child(2) {
+  transform: rotate(calc(2 * 23deg)) scale(-1) translateY(-35vmin);
+  animation: propAnimate 0.5s infinite alternate ease-in-out;
+  animation-delay: calc(2 * 0.1s);
 }
-app-accueil #grimoire_deco img:nth-child(5) {
-  bottom: calc(5 * -10px);
-  right: calc(5 * -15px + 0px);
-  padding-bottom: calc(5 * 5px + 40px);
-  transform: rotate(calc(5 * 23deg)) scale(-1);
+
+#grimoire_deco img:nth-child(3) {
+  transition: calc(3 * 0.1s);
 }
-app-accueil #grimoire_deco img:nth-child(6) {
-  bottom: calc(6 * -10px);
-  right: calc(6 * -15px + 0px);
-  padding-bottom: calc(6 * 5px + 40px);
-  transform: rotate(calc(6 * 23deg)) scale(-1);
+
+.sec_grimoire:hover #grimoire_deco img:nth-child(3) {
+  transform: rotate(calc(3 * 23deg)) scale(-1) translateY(-35vmin);
+  animation: propAnimate 0.5s infinite alternate ease-in-out;
+  animation-delay: calc(3 * 0.1s);
 }
-app-accueil #grimoire_deco img:nth-child(7) {
-  bottom: calc(7 * -10px);
-  right: calc(7 * -15px + 0px);
-  padding-bottom: calc(7 * 5px + 40px);
-  transform: rotate(calc(7 * 23deg)) scale(-1);
+
+#grimoire_deco img:nth-child(4) {
+  transition: calc(4 * 0.1s);
 }
-app-accueil #grimoire_deco img:nth-child(8) {
-  bottom: calc(8 * -10px);
-  right: calc(8 * -15px + 0px);
-  padding-bottom: calc(8 * 5px + 40px);
-  transform: rotate(calc(8 * 23deg)) scale(-1);
+
+.sec_grimoire:hover #grimoire_deco img:nth-child(4) {
+  transform: rotate(calc(4 * 23deg)) scale(-1) translateY(-35vmin);
+  animation: propAnimate 0.5s infinite alternate ease-in-out;
+  animation-delay: calc(4 * 0.1s);
 }
-app-accueil #grimoire_deco img:nth-child(9) {
-  bottom: calc(9 * -10px);
-  right: calc(9 * -15px + 0px);
-  padding-bottom: calc(9 * 5px + 40px);
-  transform: rotate(calc(9 * 23deg)) scale(-1);
+
+#grimoire_deco img:nth-child(5) {
+  transition: calc(5 * 0.1s);
 }
-app-accueil #grimoire_deco img:nth-child(10) {
-  bottom: calc(10 * -10px);
-  right: calc(10 * -15px + 0px);
-  padding-bottom: calc(10 * 5px + 40px);
-  transform: rotate(calc(10 * 23deg)) scale(-1);
+
+.sec_grimoire:hover #grimoire_deco img:nth-child(5) {
+  transform: rotate(calc(5 * 23deg)) scale(-1) translateY(-35vmin);
+  animation: propAnimate 0.5s infinite alternate ease-in-out;
+  animation-delay: calc(5 * 0.1s);
 }
-app-accueil .sec_combat {
+
+#grimoire_deco img:nth-child(6) {
+  transition: calc(6 * 0.1s);
+}
+
+.sec_grimoire:hover #grimoire_deco img:nth-child(6) {
+  transform: rotate(calc(6 * 23deg)) scale(-1) translateY(-35vmin);
+  animation: propAnimate 0.5s infinite alternate ease-in-out;
+  animation-delay: calc(6 * 0.1s);
+}
+
+#grimoire_deco img:nth-child(7) {
+  transition: calc(7 * 0.1s);
+}
+
+.sec_grimoire:hover #grimoire_deco img:nth-child(7) {
+  transform: rotate(calc(7 * 23deg)) scale(-1) translateY(-35vmin);
+  animation: propAnimate 0.5s infinite alternate ease-in-out;
+  animation-delay: calc(7 * 0.1s);
+}
+
+#grimoire_deco img:nth-child(8) {
+  transition: calc(8 * 0.1s);
+}
+
+.sec_grimoire:hover #grimoire_deco img:nth-child(8) {
+  transform: rotate(calc(8 * 23deg)) scale(-1) translateY(-35vmin);
+  animation: propAnimate 0.5s infinite alternate ease-in-out;
+  animation-delay: calc(8 * 0.1s);
+}
+
+#grimoire_deco img:nth-child(9) {
+  transition: calc(9 * 0.1s);
+}
+
+.sec_grimoire:hover #grimoire_deco img:nth-child(9) {
+  transform: rotate(calc(9 * 23deg)) scale(-1) translateY(-35vmin);
+  animation: propAnimate 0.5s infinite alternate ease-in-out;
+  animation-delay: calc(9 * 0.1s);
+}
+
+#grimoire_deco img:nth-child(10) {
+  transition: calc(10 * 0.1s);
+}
+
+.sec_grimoire:hover #grimoire_deco img:nth-child(10) {
+  transform: rotate(calc(10 * 23deg)) scale(-1) translateY(-35vmin);
+  animation: propAnimate 0.5s infinite alternate ease-in-out;
+  animation-delay: calc(10 * 0.1s);
+}
+
+.sec_combat {
   background: url("../../assets/flipbook-textures/cockatrice.png"), radial-gradient(red, black);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
-app-accueil .sec_combat:hover #combat_deco {
-  transform: scale(1) translate(-50px, -300px);
-}
-app-accueil .sec_combat a {
+.sec_combat a {
   cursor: url("../../assets/cursors/sword.cur"), pointer;
 }
-app-accueil #combat_deco {
+
+#combat_deco {
   pointer-events: none;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -327,118 +449,169 @@ app-accueil #combat_deco {
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: scale(0);
 }
-app-accueil #combat_deco img {
+#combat_deco img {
   position: absolute;
-  height: 300px;
-  transform-origin: bottom;
+  height: 40vmin;
+  transform-origin: center;
+  transform: scale(0.01);
 }
-app-accueil #combat_deco img:nth-child(1) {
-  top: calc(1 * 10px);
-  left: calc(1 * 15px);
-  padding-bottom: calc(1 * 5px);
-  transform: rotate(calc(1 * 20deg));
+
+#combat_deco img:nth-child(1) {
+  transition: calc(1 * 0.1s);
 }
-app-accueil #combat_deco img:nth-child(2) {
-  top: calc(2 * 10px);
-  left: calc(2 * 15px);
-  padding-bottom: calc(2 * 5px);
-  transform: rotate(calc(2 * 20deg));
+
+.sec_combat:hover #combat_deco img:nth-child(1) {
+  transform: rotate(calc(1 * 15deg)) scale(1) translateY(-30vmin);
+  animation: propAnimate 0.5s infinite alternate ease-in-out;
+  animation-delay: calc(1 * 0.1s);
 }
-app-accueil #combat_deco img:nth-child(3) {
-  top: calc(3 * 10px);
-  left: calc(3 * 15px);
-  padding-bottom: calc(3 * 5px);
-  transform: rotate(calc(3 * 20deg));
+
+#combat_deco img:nth-child(2) {
+  transition: calc(2 * 0.1s);
 }
-app-accueil #combat_deco img:nth-child(4) {
-  top: calc(4 * 10px);
-  left: calc(4 * 15px);
-  padding-bottom: calc(4 * 5px);
-  transform: rotate(calc(4 * 20deg));
+
+.sec_combat:hover #combat_deco img:nth-child(2) {
+  transform: rotate(calc(2 * 15deg)) scale(1) translateY(-30vmin);
+  animation: propAnimate 0.5s infinite alternate ease-in-out;
+  animation-delay: calc(2 * 0.1s);
 }
-app-accueil #combat_deco img:nth-child(5) {
-  top: calc(5 * 10px);
-  left: calc(5 * 15px);
-  padding-bottom: calc(5 * 5px);
-  transform: rotate(calc(5 * 20deg));
+
+#combat_deco img:nth-child(3) {
+  transition: calc(3 * 0.1s);
 }
-app-accueil #combat_deco img:nth-child(6) {
-  top: calc(6 * 10px);
-  left: calc(6 * 15px);
-  padding-bottom: calc(6 * 5px);
-  transform: rotate(calc(6 * 20deg));
+
+.sec_combat:hover #combat_deco img:nth-child(3) {
+  transform: rotate(calc(3 * 15deg)) scale(1) translateY(-30vmin);
+  animation: propAnimate 0.5s infinite alternate ease-in-out;
+  animation-delay: calc(3 * 0.1s);
 }
-app-accueil #combat_deco img:nth-child(7) {
-  top: calc(7 * 10px);
-  left: calc(7 * 15px);
-  padding-bottom: calc(7 * 5px);
-  transform: rotate(calc(7 * 20deg));
+
+#combat_deco img:nth-child(4) {
+  transition: calc(4 * 0.1s);
 }
-app-accueil #combat_deco img:nth-child(8) {
-  top: calc(8 * 10px);
-  left: calc(8 * 15px);
-  padding-bottom: calc(8 * 5px);
-  transform: rotate(calc(8 * 20deg));
+
+.sec_combat:hover #combat_deco img:nth-child(4) {
+  transform: rotate(calc(4 * 15deg)) scale(1) translateY(-30vmin);
+  animation: propAnimate 0.5s infinite alternate ease-in-out;
+  animation-delay: calc(4 * 0.1s);
 }
-app-accueil #combat_deco img:nth-child(9) {
-  top: calc(9 * 10px);
-  left: calc(9 * 15px);
-  padding-bottom: calc(9 * 5px);
-  transform: rotate(calc(9 * 20deg));
+
+#combat_deco img:nth-child(5) {
+  transition: calc(5 * 0.1s);
 }
-app-accueil #combat_deco img:nth-child(10) {
-  top: calc(10 * 10px);
-  left: calc(10 * 15px);
-  padding-bottom: calc(10 * 5px);
-  transform: rotate(calc(10 * 20deg));
+
+.sec_combat:hover #combat_deco img:nth-child(5) {
+  transform: rotate(calc(5 * 15deg)) scale(1) translateY(-30vmin);
+  animation: propAnimate 0.5s infinite alternate ease-in-out;
+  animation-delay: calc(5 * 0.1s);
 }
-app-accueil #combat_deco img:nth-child(11) {
-  top: calc(11 * 10px);
-  left: calc(11 * 15px);
-  padding-bottom: calc(11 * 5px);
-  transform: rotate(calc(11 * 20deg));
+
+#combat_deco img:nth-child(6) {
+  transition: calc(6 * 0.1s);
 }
-app-accueil #combat_deco img:nth-child(12) {
-  top: calc(12 * 10px);
-  left: calc(12 * 15px);
-  padding-bottom: calc(12 * 5px);
-  transform: rotate(calc(12 * 20deg));
+
+.sec_combat:hover #combat_deco img:nth-child(6) {
+  transform: rotate(calc(6 * 15deg)) scale(1) translateY(-30vmin);
+  animation: propAnimate 0.5s infinite alternate ease-in-out;
+  animation-delay: calc(6 * 0.1s);
 }
-app-accueil #combat_deco img:nth-child(13) {
-  top: calc(13 * 10px);
-  left: calc(13 * 15px);
-  padding-bottom: calc(13 * 5px);
-  transform: rotate(calc(13 * 20deg));
+
+#combat_deco img:nth-child(7) {
+  transition: calc(7 * 0.1s);
 }
-app-accueil #combat_deco img:nth-child(14) {
-  top: calc(14 * 10px);
-  left: calc(14 * 15px);
-  padding-bottom: calc(14 * 5px);
-  transform: rotate(calc(14 * 20deg));
+
+.sec_combat:hover #combat_deco img:nth-child(7) {
+  transform: rotate(calc(7 * 15deg)) scale(1) translateY(-30vmin);
+  animation: propAnimate 0.5s infinite alternate ease-in-out;
+  animation-delay: calc(7 * 0.1s);
 }
-app-accueil #combat_deco img:nth-child(15) {
-  top: calc(15 * 10px);
-  left: calc(15 * 15px);
-  padding-bottom: calc(15 * 5px);
-  transform: rotate(calc(15 * 20deg));
+
+#combat_deco img:nth-child(8) {
+  transition: calc(8 * 0.1s);
 }
-app-accueil .chain_dissolve .chain {
-  animation: chainBreak 10s;
-  animation-fill-mode: forwards;
-  animation-delay: 0s;
+
+.sec_combat:hover #combat_deco img:nth-child(8) {
+  transform: rotate(calc(8 * 15deg)) scale(1) translateY(-30vmin);
+  animation: propAnimate 0.5s infinite alternate ease-in-out;
+  animation-delay: calc(8 * 0.1s);
 }
-@keyframes chainBreak {
-  0% {
-    opacity: 1;
+
+#combat_deco img:nth-child(9) {
+  transition: calc(9 * 0.1s);
+}
+
+.sec_combat:hover #combat_deco img:nth-child(9) {
+  transform: rotate(calc(9 * 15deg)) scale(1) translateY(-30vmin);
+  animation: propAnimate 0.5s infinite alternate ease-in-out;
+  animation-delay: calc(9 * 0.1s);
+}
+
+#combat_deco img:nth-child(10) {
+  transition: calc(10 * 0.1s);
+}
+
+.sec_combat:hover #combat_deco img:nth-child(10) {
+  transform: rotate(calc(10 * 15deg)) scale(1) translateY(-30vmin);
+  animation: propAnimate 0.5s infinite alternate ease-in-out;
+  animation-delay: calc(10 * 0.1s);
+}
+
+#combat_deco img:nth-child(11) {
+  transition: calc(11 * 0.1s);
+}
+
+.sec_combat:hover #combat_deco img:nth-child(11) {
+  transform: rotate(calc(11 * 15deg)) scale(1) translateY(-30vmin);
+  animation: propAnimate 0.5s infinite alternate ease-in-out;
+  animation-delay: calc(11 * 0.1s);
+}
+
+#combat_deco img:nth-child(12) {
+  transition: calc(12 * 0.1s);
+}
+
+.sec_combat:hover #combat_deco img:nth-child(12) {
+  transform: rotate(calc(12 * 15deg)) scale(1) translateY(-30vmin);
+  animation: propAnimate 0.5s infinite alternate ease-in-out;
+  animation-delay: calc(12 * 0.1s);
+}
+
+#combat_deco img:nth-child(13) {
+  transition: calc(13 * 0.1s);
+}
+
+.sec_combat:hover #combat_deco img:nth-child(13) {
+  transform: rotate(calc(13 * 15deg)) scale(1) translateY(-30vmin);
+  animation: propAnimate 0.5s infinite alternate ease-in-out;
+  animation-delay: calc(13 * 0.1s);
+}
+
+#combat_deco img:nth-child(14) {
+  transition: calc(14 * 0.1s);
+}
+
+.sec_combat:hover #combat_deco img:nth-child(14) {
+  transform: rotate(calc(14 * 15deg)) scale(1) translateY(-30vmin);
+  animation: propAnimate 0.5s infinite alternate ease-in-out;
+  animation-delay: calc(14 * 0.1s);
+}
+
+#combat_deco img:nth-child(15) {
+  transition: calc(15 * 0.1s);
+}
+
+.sec_combat:hover #combat_deco img:nth-child(15) {
+  transform: rotate(calc(15 * 15deg)) scale(1) translateY(-30vmin);
+  animation: propAnimate 0.5s infinite alternate ease-in-out;
+  animation-delay: calc(15 * 0.1s);
+}
+
+@keyframes propAnimate {
+  from {
+    margin-bottom: 1px;
   }
-  15% {
-    filter: brightness(5) blur(50px);
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-    transform: scale(2);
+  to {
+    margin-bottom: 1vmin;
   }
 }/*# sourceMappingURL=accueil.component.css.map */

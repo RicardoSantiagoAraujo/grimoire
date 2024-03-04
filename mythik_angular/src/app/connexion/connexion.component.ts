@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { AudioService } from '../audio.service';
 
 @Component({
   selector: 'app-connexion',
@@ -15,7 +16,7 @@ export class ConnexionComponent implements OnInit  {
   loginCtrl!: FormControl;
   passwordCtrl!: FormControl;
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router) {
+  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router, public audioService: AudioService) {
 
   }
 
@@ -27,7 +28,12 @@ export class ConnexionComponent implements OnInit  {
       login: this.loginCtrl,
       password: this.passwordCtrl
     });
+
+
+    this.audioService.unrollScrollSound(0.1);
   }
+
+
 
   connexion() {
     this.authService.login(this.loginCtrl.value, this.passwordCtrl.value);
@@ -39,4 +45,29 @@ export class ConnexionComponent implements OnInit  {
   cancel() {
     this.loginCtrl.reset();
   }
+
+  // add class to trigger exit animation on click
+  exitAnimation(){
+    document.querySelector(".formulaire")?.classList.add("exitAnimation");
+    this.audioService.clickButtonSound()
+  }
+
+  onFocus(){
+    this.audioService.brushSoundActive()
+  }
+
+  breakChainsAnimation(){
+    document.querySelector("app-chains")?.classList.add("chain_dissolve");
+    this.chainBreakSounds()
+  }
+
+  chainBreakSounds(){
+
+    setTimeout(()=>{
+      this.audioService.chainBreakSound();
+      }, 500)
+    // document.querySelectorAll<HTMLElement>(".chain").forEach((chain)=>{
+    // })
+  }
+
 }
