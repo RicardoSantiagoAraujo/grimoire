@@ -5,8 +5,14 @@
     </h1>
     <div id="combat_elements">
         <div class="combattants" [class]="combatTermine? 'finishedCombat' : 'ongoingCombat'" >
+            <!-- Combat winner covering screen during final strike -->
             <div id="combat_winner">
                 <div [class]="this.combattant1.gagnant? 'playerWin' : 'advWin' "></div>
+            </div>
+            <!-- 3D background arena -->
+            <div id="arena3d_wrapper">
+                <div id="arena3d">
+                </div>
             </div>
 
             <div [class]="'combattant player ' + (combattant1.creature! | creatureData)">

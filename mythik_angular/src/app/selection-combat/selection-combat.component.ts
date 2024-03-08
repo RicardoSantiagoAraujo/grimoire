@@ -105,7 +105,8 @@ export class SelectionCombatComponent implements OnInit, OnDestroy {
     this.audioService.unrollScrollSound(1);
     this.audioService.switchCombatSelectionTheme(true, 0.1);
     this.audioService.playCombatSounds(false);
-    // console.log("skipping selection step on component init");
+    // skipping straight to combat
+    console.log("skipping selection step on component init");
     // setTimeout(() => { //timeout required for everything to load before triggering
     //   this.creationCombattants_skip();
     // }, 250);

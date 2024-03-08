@@ -246,6 +246,10 @@ export class CombatComponent implements OnInit {
       this.roundSounds("adv");
     }
 
+    // this.arenaRotationAccelerate()
+    this.bgColorShift();
+    this.arenaOpacity();
+
     if (this.creature2.pv! <= 0 || this.creature1.pv! <= 0) { // if either runs out of life (combat over)
       this.audioService.playGong(1);
     }
@@ -425,19 +429,24 @@ export class CombatComponent implements OnInit {
 
   }
 
-
-  roundSounds(fighter: string) {
-    let attack_duration = parseFloat(this.animation_duration) * 1000; // get attack duration
-    let attack_duration_last = parseFloat(this.animation_duration_last) * 1000; // get attack duration
-
+  combatProgress(){
     var adj = 2;// to start our with some volume
     let vie_player = (this.vieRestant1 - adj) / 100;
     let vie_adv = (this.vieRestant2 - adj) / 100;
     let combatProgress = 1 - ((vie_player + vie_adv) / 2);
     if (combatProgress > 1) { combatProgress = 1 };
 
+    return combatProgress
+  }
+
+  roundSounds(fighter: string) {
+    let attack_duration = parseFloat(this.animation_duration) * 1000; // get attack duration
+    let attack_duration_last = parseFloat(this.animation_duration_last) * 1000; // get attack duration
+
+    let combatProgress: number  = this.combatProgress();
+
     let final_strike: boolean = false;
-    if (this.vieRestant2 <= 0 || this.vieRestant1 <= 0) { final_strike = true }
+    if (this.vieRestant2 <= 0 || this.vieRestant1 <= 0) { final_strike = true };
 
     setTimeout(() => {
       if (fighter == "player") {
@@ -472,4 +481,31 @@ export class CombatComponent implements OnInit {
         this.audioService.playMagicAttack(1);
     }
   }
+
+  arenaRotationAccelerate(){ // speed up arena as combat progresses (CAUSES JUMPS IN ANIMATION !)
+    let arena = document.querySelector<HTMLElement>("#arena3d");
+    let combatProgress: number  = this.combatProgress();
+    arena!.style.animationDuration = String(60 * (1-combatProgress)) + "s";
+    console.log("progress:" + combatProgress)
+    console.log(arena!.style.animationDuration )
+  }
+
+  arenaOpacity(){ // reveal arena as combat progresses(CAUSES JUMPS IN ANIMATION !)
+    let arena = document.querySelector<HTMLElement>("#arena3d");
+    let combatProgress: number  = this.combatProgress();
+    let opacity = combatProgress*2; // to make it visible faster
+    opacity = opacity > 1? 1 : opacity; // top opacity at 1
+    console.log(combatProgress)
+    console.log(opacity)
+    arena!.style.opacity = String(combatProgress);
+  }
+
+
+  bgColorShift(){ // change bg color for dramatic effect
+    let arena_bg = document.querySelector<HTMLElement>("#combat_container");
+    let combatProgress: number  = this.combatProgress();
+    arena_bg!.style.backgroundColor = `rgba(25, 0, 0, ${combatProgress})`;
+  }
+
+
 }
