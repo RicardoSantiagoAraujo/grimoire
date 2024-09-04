@@ -22,3 +22,11 @@ npm install
 ```
 ng serve --open
 ```
+
+
+## Login into the application:
+Accounts are managed in the DB "compte" table.
+Login example with an admin account:
+> User: **ricardo**
+>
+> password: **ricardo123456**
